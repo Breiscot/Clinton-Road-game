@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqox571gk3uh0"]
+
+[ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_jeyka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3tam"]
+size = Vector3(2.0399551, 0.7753906, 5.6000233)
+
+[node name="CrashedCar" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CarBody" type="MeshInstance3D" parent="StaticBody3D"]
+skeleton = NodePath("../..")
+
+[node name="Sketchfab_Scene" parent="StaticBody3D/CarBody" instance=ExtResource("1_jeyka")]
+
+[node name="BrokenGlass" type="GPUParticles3D" parent="StaticBody3D/CarBody"]
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="StaticBody3D/CarBody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011379242, -0.11230469, 0.43921375)
+shape = SubResource("BoxShape3D_f3tam")
+
+[node name="Headlights" type="Node3D" parent="."]
+
+[node name="HeadlightLeft" type="SpotLight3D" parent="Headlights"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5757006, -0.12576379, 3.251776)
+
+[node name="HeadlightRight" type="SpotLight3D" parent="Headlights"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.66360134, -0.1754985, 3.1898432)
+
+[node name="Hazardlights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3775585)
+
+[node name="HazardLeft" type="OmniLight3D" parent="Hazardlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76991683, 0.073156714, 0.068122625)
+light_color = Color(1, 0.44705883, 0, 1)
+
+[node name="HazardRight" type="OmniLight3D" parent="Hazardlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7793861, 0.04064156, 0.0769732)
+light_color = Color(1, 0.44705883, 0, 1)
+
+[node name="InteractionArea" type="Area3D" parent="."]

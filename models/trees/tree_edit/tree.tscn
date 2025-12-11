@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmng1a35s7t4e"]
+
+[ext_resource type="PackedScene" uid="uid://uvj06wev88yt" path="res://models/trees/oak_trees.glb" id="1_idcby"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_idcby")]
+
+[node name="Treesmall" parent="Sketchfab_model/02adfcf390aa4baba23338be73a5f04e_fbx/RootNode" index="0"]
+visible = false
+
+[node name="Treemedium" parent="Sketchfab_model/02adfcf390aa4baba23338be73a5f04e_fbx/RootNode" index="1"]
+visible = false
