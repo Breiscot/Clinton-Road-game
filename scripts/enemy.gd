@@ -12,9 +12,9 @@ enum State {
 @export var patrol_speed := 2.0
 @export var chase_speed := 4.5
 @export var attack_damage := 100.0
-@export var attack_cooldown := 1.5
+@export var attack_cooldown := 0.5
 @export var detection_range := 15.0
-@export var attack_range := 2.0
+@export var attack_range := 2.5
 @export var lose_interest_time := 5.0
 
 @onready var nav_agent := $NavigationAgent3D
@@ -41,22 +41,6 @@ var gravity := 9.8
 
 func _ready():
 	add_to_group("enemies")
-	# Trova i nodi
-	nav_agent = get_node_or_null("NavigationAgent3D")
-	detection_area = get_node_or_null("DetectionArea")
-	# Debug che controlla se manca qualcosa
-	print("NavigationAgent3D: ", nav_agent != null)
-	print("DetectionArea: ", detection_area != null)
-	
-	if detection_area:
-		if not detection_area.body_entered.is_connected(_on_detection_area_body_entered):
-			detection_area.body_entered.connect(_on_detection_area_body_entered)
-		if not detection_area.body_exited.connect(_on_detection_area_body_exited):
-			detection_area.body_exited.connect(_on_detection_area_body_exited)
-		print("Signals connected")
-	else:
-		print("DetectionArea not found")
-
 	setup_patrol_points()
 #	play_ambient_sound()
 	
@@ -97,6 +81,8 @@ func _physics_process(delta):
 		State.SEARCH:
 			process_search(delta)
 		State.ATTACK:
+			attack_timer = attack_cooldown
+			perform_attack()
 			process_attack(delta)
 
 	move_and_slide()
@@ -144,10 +130,21 @@ func process_patrol(delta):
 
 func process_chase(delta):
 	#anim_player.play("run")
-
-	if player == null:
-		change_state(State.SEARCH)
+	var distance = global_position.distance_to(player.global_position)
+	
+	if distance < attack_range:
+		change_state(State.ATTACK)
 		return
+	# Se può vedere il player, lo insegue
+	if can_see_player():
+		last_known_player_position = player.global_position
+		search_timer = 0.0
+	else:
+		search_timer += delta
+		# Se é lontano non lo vede
+		if search_timer > lose_interest_time and distance > detection_range:
+			change_state(State.SEARCH)
+			return
 
 	# Se abbastanza vicino per attaccare
 	if global_position.distance_to(player.global_position) < attack_range:
@@ -193,20 +190,25 @@ func process_search(delta):
 		change_state(State.PATROL)
 
 func process_attack(delta):
-	attack_timer += delta
 	velocity.x = 0
 	velocity.z = 0
 
-	if player:
-		look_at(player.global_position, Vector3.UP)
-
-	if attack_timer >= attack_cooldown:
-		attack_timer = 0.0
-		perform_attack()
-
-		# Torna a inseguire se il giocatore è ancora vicino
-		if player and global_position.distance_to(player.global_position) > attack_range:
-			change_state(State.CHASE)
+	if player == null:
+		change_state(State.PATROL)
+		return
+	# Guarda il player
+	var look_pos = Vector3(player.global_position.x, global_position.y, player.global_position.z)
+	look_at(look_pos)
+	
+	var distance = global_position.distance_to(player.global_position)
+	# Se il player e' nel range ATTACK
+	if distance <= attack_range:
+		attack_timer += delta
+		if attack_timer >= attack_cooldown:
+			attack_timer = 0.0
+			perform_attack()
+	else:
+		change_state(State.CHASE)
 
 func perform_attack():
 	#anim_player.play("attack")
