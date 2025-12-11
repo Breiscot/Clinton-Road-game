@@ -11,7 +11,7 @@ enum State {
 
 @export var patrol_speed := 2.0
 @export var chase_speed := 4.5
-@export var attack_damage := 25.0
+@export var attack_damage := 100.0
 @export var attack_cooldown := 1.5
 @export var detection_range := 15.0
 @export var attack_range := 2.0
@@ -21,11 +21,11 @@ enum State {
 @onready var attack_area := $AttackArea
 @onready var detection_area := $DetectionArea
 @onready var raycast := $RayCast3D
-@onready var audio := $AudioStreamPlayer3D
-@onready var anim_player := $AnimationPlayer
+#@onready var audio := $AudioStreamPlayer3D
+#@onready var anim_player := $AnimationPlayer
 
 var current_state: State = State.PATROL
-var player: Node3D = null
+var player: CharacterBody3D = null
 var last_known_player_position: Vector3
 var patrol_points: Array[Vector3] = []
 var current_patrol_index := 0
@@ -41,8 +41,35 @@ var gravity := 9.8
 
 func _ready():
 	add_to_group("enemies")
+	# Trova i nodi
+	nav_agent = get_node_or_null("NavigationAgent3D")
+	detection_area = get_node_or_null("DetectionArea")
+	# Debug che controlla se manca qualcosa
+	print("NavigationAgent3D: ", nav_agent != null)
+	print("DetectionArea: ", detection_area != null)
+	
+	if detection_area:
+		if not detection_area.body_entered.is_connected(_on_detection_area_body_entered):
+			detection_area.body_entered.connect(_on_detection_area_body_entered)
+		if not detection_area.body_exited.connect(_on_detection_area_body_exited):
+			detection_area.body_exited.connect(_on_detection_area_body_exited)
+		print("Signals connected")
+	else:
+		print("DetectionArea not found")
+
 	setup_patrol_points()
-	play_ambient_sound()
+#	play_ambient_sound()
+	
+	await get_tree().physics_frame
+	find_player()
+	
+func find_player():
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player = players[0]
+		print("Player found: ", player.name)
+	else:
+		print("No player found")
 
 func setup_patrol_points():
 	# Genera i punti di pattuglia casuali intorno alla posizione iniziale
@@ -75,15 +102,18 @@ func _physics_process(delta):
 	move_and_slide()
 
 func process_idle(delta):
-	anim_player.play("idle")
+	#anim_player.play("idle")
 	
 	# Riprende pattuglia
 	if randf() < 0.01:
 		change_state(State.PATROL)
 
 func process_patrol(delta):
-	anim_player.play("walk")
-
+	#anim_player.play("walk")
+	if player and can_see_player():
+		change_state(State.CHASE)
+		return
+	
 	if patrol_points.is_empty():
 		return
 
@@ -113,7 +143,7 @@ func process_patrol(delta):
 				change_state(State.PATROL)
 
 func process_chase(delta):
-	anim_player.play("run")
+	#anim_player.play("run")
 
 	if player == null:
 		change_state(State.SEARCH)
@@ -142,7 +172,7 @@ func process_chase(delta):
 		look_at(global_position + direction, Vector3.UP)
 
 func process_search(delta):
-	anim_player.play("search")
+	#anim_player.play("search")
 
 	search_timer += delta
 
@@ -179,41 +209,53 @@ func process_attack(delta):
 			change_state(State.CHASE)
 
 func perform_attack():
-	anim_player.play("attack")
-	audio.stream = sound_attack
-	audio.play()
+	#anim_player.play("attack")
+#	audio.stream = sound_attack
+#	audio.play()
 
 	# Controlla se il giocatore è ancora nell'area
-	var bodies = attack_area.get_overlapping_bodies()
-	for body in bodies:
-		if body.is_in_group("player"):
-			body.take_damage(attack_damage)
+	if player and global_position.distance_to(player.global_position) < attack_range:
+		if player.has_method("take_damage"):
+			player.take_damage(attack_damage)
+			print("ENEMY HIT PLAYER")
 
 func can_see_player() -> bool:
 	if player == null:
 		return false
+	# Calcola la distanza
+	var distance = global_position.distance_to(player.global_position)
+	# Se troppo lontano non vede
+	if distance > detection_range:
+		return false
+	# Raycast per vedere ostacoli
+	var space_state = get_world_3d().direct_space_state
+	var from = global_position + Vector3(0, 1, 0)
+	var to = player.global_position + Vector3(0, 1, 0)
 
-	raycast.target_position = raycast.to_local(player.global_position + Vector3.UP)
-	raycast.force_raycast_update()
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
 
-	if raycast.is_colliding():
-		var collider = raycast.get_collider()
-		return collider.is_in_group("player")
+	var result = space_state.intersect_ray(query)
 
+	if result:
+		if result.collider.is_in_group("player"):
+			print("Enemy can see player!")
+			return true
+			
 	return false
 
 func change_state(new_state: State):
 
-	match current_state:
-		State.CHASE:
-			audio.stop()
+#	match current_state:
+#		State.CHASE:
+#			audio.stop()
 
 	current_state = new_state
 
 	match new_state:
 		State.CHASE:
-			audio.stream = sound_chase
-			audio.play()
+#			audio.stream = sound_chase
+#			audio.play()
 			if player:
 				player.add_fear(0.4)
 		State.SEARCH:
@@ -221,19 +263,19 @@ func change_state(new_state: State):
 		State.ATTACK:
 			attack_timer = attack_cooldown * 0.8  # Attacca immediatamente
 
-func play_ambient_sound():
+#func play_ambient_sound():
 	# Suono ambientale
-	var timer = Timer.new()
-	timer.wait_time = randf_range(5.0, 15.0)
-	timer.one_shot = false
-	timer.timeout.connect(func():
-		if current_state in [State.IDLE, State.PATROL]:
-			if sound_ambient and randf() > 0.5:
-				audio.stream = sound_ambient
-				audio.play()
-	)
-	add_child(timer)
-	timer.start()
+#	var timer = Timer.new()
+#	timer.wait_time = randf_range(5.0, 15.0)
+#	timer.one_shot = false
+#	timer.timeout.connect(func():
+#		if current_state in [State.IDLE, State.PATROL]:
+#			if sound_ambient and randf() > 0.5:
+#				audio.stream = sound_ambient
+#				audio.play()
+#	)
+#	add_child(timer)
+#	timer.start()
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):

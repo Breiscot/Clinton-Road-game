@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwrgt3a55l1g8"]
+[gd_scene load_steps=10 format=3 uid="uid://bwrgt3a55l1g8"]
 
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="1_18oyk"]
 [ext_resource type="Script" uid="uid://coeob41w8q8ki" path="res://scripts/forest_managerV2.gd" id="1_u2qcj"]
@@ -25,7 +25,11 @@ radius = 0.10546875
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2qcj"]
 size = Vector3(5.3932495, 0.08085938, 100)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk0dc"]
+albedo_color = Color(0, 0.27450982, 0, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_18oyk"]
+material = SubResource("StandardMaterial3D_vk0dc")
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_18oyk"]

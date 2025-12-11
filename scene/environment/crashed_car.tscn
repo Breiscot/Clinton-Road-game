@@ -30,6 +30,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5
 [node name="HeadlightRight" type="SpotLight3D" parent="Headlights"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.66360134, -0.1754985, 3.1898432)
 
+[node name="HeadlightWhiteRight" type="OmniLight3D" parent="Headlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.1601552, 3.1819882)
+
+[node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Headlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.1899018)
+
 [node name="Hazardlights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3775585)
 
@@ -39,6 +45,14 @@ light_color = Color(1, 0.44705883, 0, 1)
 
 [node name="HazardRight" type="OmniLight3D" parent="Hazardlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7793861, 0.04064156, 0.0769732)
+light_color = Color(1, 0.44705883, 0, 1)
+
+[node name="HazardLeft2" type="OmniLight3D" parent="Hazardlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9441988, -0.1601552, 5.4383907)
+light_color = Color(1, 0.44705883, 0, 1)
+
+[node name="HazardRight2" type="OmniLight3D" parent="Hazardlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9029451, -0.16442645, 5.4477315)
 light_color = Color(1, 0.44705883, 0, 1)
 
 [node name="InteractionArea" type="Area3D" parent="."]

@@ -10,6 +10,7 @@ extends CharacterBody3D
 
 var gravity := 9.8
 var current_speed := 3.0
+var is_dead := false
 
 func _ready():
 	# Aggiungi al gruppo player
@@ -101,9 +102,23 @@ func _physics_process(delta):
 		print("---")
 
 		move_and_slide()
-
-func take_damage(amount: float):
-	print("Player took ", amount, " damage")
-
+		
 func add_fear(amount: float):
 	print("Fear added: ", amount)
+		
+func take_damage(amount: float):
+	print("Player took ", amount, " damage")
+	if is_dead:
+		return
+		
+	print("!!! PLAYER DIED !!!")
+	is_dead = true
+	# Blocca il player
+	set_physics_process(false)
+	# Aspetta un momento e ricarica
+	await get_tree().create_timer(1.5).timeout
+	# Ricarica la scena
+	get_tree().reload_current_scene()
+	
+func die():
+	take_damage(100)
