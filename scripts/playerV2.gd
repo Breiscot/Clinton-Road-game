@@ -220,7 +220,7 @@ func use_flash_stun():
 	
 	# Altri sistemi
 	perform_flash_effect()
-	stun_enemy_in_cone()
+	stun_enemies_in_cone()
 	
 func perform_flash_effect():
 	# Aumenta temporaneamente la luce
@@ -234,10 +234,55 @@ func perform_flash_effect():
 	tween.tween_property(flashlight, "light_energy", original_energy, 0.3)
 	tween.parallel().tween_property(flashlight, "spot_range", original_range, 0.3)
 	
-func stun_enemy_in_cone():
-	var enemy = get_tree().get_nodes_in_group("enemies")
+func stun_enemies_in_cone():
+	var enemies = get_tree().get_nodes_in_group("enemies")
 	
+	for enemy in enemies:
+		if is_enemy_in_flash_cone(enemy):
+			print("Enemy stunned: ", enemy.name)
+			if enemy.has_method("stun"):
+				enemy.stun(stun_duration)
+				
+func is_enemy_in_flash_cone(enemy: Node3D) -> bool:
+	var to_enemy = enemy.global_position - camera.global_position
+	var distance = to_enemy.length()
+	
+	if distance > flash_range:
+		return false
 		
+	# Angolo tra direzione camera e enemy
+	var forward = -camera.global_transform.basis.z
+	var angle = rad_to_deg(forward.angle_to(to_enemy.normalized()))
+	
+	if angle > flash_angle:
+		return false
+	
+	# Raycast per vedere che non ci siano ostacoli
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(
+		camera.global_position,
+		enemy.global_position + Vector3(0, 1, 0)
+	)
+	query.exclude = [self]
+	
+	var result = space_state.intersect_ray(query)
+	if result:
+		if result.collider == enemy or result.collider.get_parent() == enemy:
+			return true
+		# Se c'è un ostacolo
+		return false
+	
+	return true
+	
+func get_flash_cooldown_percent() -> float:
+	if can_flash:
+		return 1.0
+	return 1.0 - (flash_timer / flash_cooldown)
+	
+func toggle_flashlight():
+	if flashlight:
+		flashlight.visible = !flashlight.visible
+
 func take_damage(amount: float):
 	print("Player took ", amount, " damage")
 	if is_dead:

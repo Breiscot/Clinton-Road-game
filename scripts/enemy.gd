@@ -292,10 +292,24 @@ func _on_detection_area_body_entered(body):
 
 # Nemico stordito
 func stun(duration: float):
-	change_state(State.STUNNED)
+	print("Enemy STUNNED for: ", duration, " seconds.")
+	# Ferma il movimento
+	velocity = Vector3.ZERO
+	# Cambia stato
+	var previous_state = current_state
+	current_state = State.STUNNED
+	# Aspetta la durata
 	await get_tree().create_timer(duration).timeout
-	change_state(State.SEARCH)
-
+	# Riprende
+	print("Enemy not stunned anymore")
+	# Torna a cercare
+	current_state = State.SEARCH
+	search_timer = 0.0
+	
+func process_stunned(delta):
+	velocity.x = 0
+	velocity.z = 0
+	rotation.y += delta * 2
 
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("player"):
