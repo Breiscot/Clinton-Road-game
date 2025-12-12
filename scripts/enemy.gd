@@ -216,7 +216,11 @@ func perform_attack():
 #	audio.play()
 
 	# Controlla se il giocatore è ancora nell'area
-	if player and global_position.distance_to(player.global_position) < attack_range:
+	if player == null:
+		return
+		
+	var distance = global_position.distance_to(player.global_position)
+	if distance <= attack_range:
 		if player.has_method("take_damage"):
 			player.take_damage(attack_damage)
 			print("ENEMY HIT PLAYER")
