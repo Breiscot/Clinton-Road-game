@@ -23,6 +23,42 @@ func _ready():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 0.5)
 	
+	# Style nei Button
+	style_buttons()
+	
+func style_buttons():
+	var buttons = [play_button, options_button, exit_button]
+	
+	for button in buttons:
+		# Stile normale
+		var normal_style := StyleBoxFlat.new()
+		normal_style.bg_color = Color(0.1, 0.1, 0.15, 0.9)
+		normal_style.border_color = Color(0.3, 0.0, 0.0)
+		normal_style.set_border_width_all(2)
+		normal_style.set_corner_radius_all(5)
+		button.add_theme_stylebox_override("normal", normal_style)
+		
+		# Stile hover
+		var hover_style := StyleBoxFlat.new()
+		hover_style.bg_color = Color(0.2, 0.0, 0.0, 0.9)
+		hover_style.border_color = Color(0.6, 0.0, 0.0)
+		hover_style.set_border_width_all(2)
+		hover_style.set_corner_radius_all(5)
+		button.add_theme_stylebox_override("hover", hover_style)
+		
+		# Stile pressed
+		var pressed_style := StyleBoxFlat.new()
+		pressed_style.bg_color = Color(0.4, 0.0, 0.0, 0.9)
+		pressed_style.border_color = Color(0.8, 0.0, 0.0)
+		pressed_style.set_border_width_all(2)
+		pressed_style.set_corner_radius_all(5)
+		button.add_theme_stylebox_override("pressed", pressed_style)
+		
+		# Colore testo
+		button.add_theme_color_override("font_color", Color(0.9, 0.9, 0.9))
+		button.add_theme_color_override("font_hover_color", Color(1, 0.3, 0.3))
+		button.add_theme_font_size_override("font_size", 24)
+	
 func _on_play_pressed():
 	print("Starting game..")
 	
