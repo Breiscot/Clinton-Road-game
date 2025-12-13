@@ -44,6 +44,12 @@ func generate_trees():
 			
 	print("Created ", trees_created, " trees in ", attempts, " attempts")
 	
+	# Bake navigation automatico dopo aver creato gli alberi
+	await get_tree().physics_frame
+	var nav_region = get_tree().get_first_node_in_group("navigation") as NavigationRegion3D
+	if nav_region:
+		nav_region.bake_navigation_mesh()
+	
 func get_random_position() -> Vector3:
 	# Genera posizione casuale nel "cerchio"
 	var angle := randf() * TAU
@@ -75,6 +81,8 @@ func is_valid_position(pos: Vector3) -> bool:
 		
 	return true
 	
+
+	
 func spawn_tree(pos: Vector3):
 	# Crea instanza dell'albero
 	var tree := tree_scene.instantiate()
@@ -86,5 +94,24 @@ func spawn_tree(pos: Vector3):
 	# Scala casuale
 	var random_scale := randf_range(min_scale, max_scale)
 	tree.scale = Vector3.ONE * random_scale
+	# Collisione
+	add_tree_collision(tree, random_scale)
 	
 	add_child(tree)
+	
+func add_tree_collision(tree: Node3D, tree_scale: float):
+	# Crea StaticBody3D
+	var static_body := StaticBody3D.new()
+	static_body.name = "TreeCollision"
+	# Crea la forma
+	var collision := CollisionShape3D.new()
+	var shape := CylinderShape3D.new()
+	# Dimensioni
+	shape.radius = 0.02 * tree_scale
+	shape.height = 0.02 * tree_scale
+	
+	collision.shape = shape
+	collision.position.y = (shape.height / 2.0)
+	
+	static_body.add_child(collision)
+	tree.add_child(static_body)
