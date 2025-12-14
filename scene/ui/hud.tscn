@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cbrp4cagq0v16"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StaminaContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+pivot_offset = Vector2(20, -80)
+
+[node name="StaminaLabel" type="Label" parent="StaminaContainer"]
+layout_mode = 2
+text = "STAMINA"
+
+[node name="StaminaBar" type="ProgressBar" parent="StaminaContainer"]
+layout_mode = 2
