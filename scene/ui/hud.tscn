@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cbrp4cagq0v16"]
+[gd_scene load_steps=2 format=3 uid="uid://cbrp4cagq0v16"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_3h0bj"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -72,3 +74,29 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 show_percentage = false
+
+[node name="FlashReadyIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(-60, -120)
+texture = SubResource("ImageTexture_3h0bj")
+
+[node name="DamageOverlay" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3647059, 0, 0, 1)
