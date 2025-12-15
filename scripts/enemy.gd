@@ -167,6 +167,19 @@ func process_chase(delta):
 
 	if direction.length() > 0.1:
 		look_at(global_position + direction, Vector3.UP)
+		
+	# Paura durante l'inseguimento
+	if player and player.has_method("add_fear"):
+		var fear_amount = 0.0
+		
+		if distance < 5:
+			fear_amount = 15.0 * delta
+		elif distance < 10:
+			fear_amount = 8.0 * delta
+		else:
+			fear_amount = 3.0 * delta
+			
+		player.add_fear(fear_amount)
 
 func process_search(delta):
 	#anim_player.play("search")
@@ -262,12 +275,14 @@ func change_state(new_state: State):
 		State.CHASE:
 #			audio.stream = sound_chase
 #			audio.play()
-			if player:
-				player.add_fear(0.4)
+			if player and player.has_method("add_fear"):
+				player.add_fear(20.0) # Paura iniziale
 		State.SEARCH:
 			search_timer = 0.0
 		State.ATTACK:
 			attack_timer = attack_cooldown * 0.8  # Attacca immediatamente
+			if player and player.has_method("add_fear"):
+				player.add_fear(40.0)
 
 #func play_ambient_sound():
 	# Suono ambientale
