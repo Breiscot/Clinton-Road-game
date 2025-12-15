@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbrp4cagq0v16"]
+[gd_scene load_steps=3 format=3 uid="uid://cbrp4cagq0v16"]
+
+[ext_resource type="Script" uid="uid://p34ycywjngb3" path="res://scripts/hud.gd" id="1_7n5te"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_3h0bj"]
 
@@ -20,6 +22,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 pivot_offset = Vector2(20, -80)
+script = ExtResource("1_7n5te")
 
 [node name="StaminaLabel" type="Label" parent="StaminaContainer"]
 layout_mode = 2

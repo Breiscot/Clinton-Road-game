@@ -141,4 +141,39 @@ func update_flash_bar():
 		flash_bar.modulate = Color.WHITE
 	
 func update_fear_bar():
+	if not player.has_method("get_fear_percent"):
+		return
+		
+	var fear_percent = player.get_fear_percent() * 100
 	
+	# Mostra/Nascondi container Fear
+	if fear_percent > 0:
+		fear_container.visible = true
+		fear_bar.value = fear_percent
+		
+		# Effetto pulsante quando alta
+		if fear_percent > 50:
+			var pulse = abs(sin(Time.get_ticks_msec() / 100.0))
+			fear_container.modulate = Color(1 ,1 ,1 , 0.7 + pulse * 0.3)
+			
+			# Testo che cambia
+			if fear_percent > 80:
+				fear_label.text = "FEAR - PANIC"
+			else:
+				fear_label.text = "FEAR - HIGH"
+		else:
+			fear_container.modulate = Color.WHITE
+			fear_label.text = "FEAR"
+	else:
+		fear_container.visible = false
+		
+func show_damage_flash():
+	# Rosso quando il player muore
+	damage_overlay.modulate.a = 0.5
+	var tween = create_tween()
+	tween.tween_property(damage_overlay, "modulate:a", 0.0, 0.3)
+	
+func pulse_fear():
+	var tween = create_tween()
+	fear_container.scale = Vector2(1.2, 1.2)
+	tween.tween_property(fear_container, "scale", Vector2.ONE, 0.2)
