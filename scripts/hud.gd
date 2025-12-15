@@ -18,7 +18,7 @@ var player: CharacterBody3D = null
 var stamina_full_color := Color(0.2, 0.8, 0.2)
 var stamina_low_color := Color(0.8, 0.2, 0.2)
 var flash_ready_color := Color(0.2, 0.6, 1.0)
-var flash_charging_color := Color(0.3, 0.3, 0,3)
+var flash_charging_color := Color(0.3, 0.3, 0.3)
 var fear_color := Color(0.6, 0.0, 0.0)
 
 func _ready():
@@ -133,9 +133,9 @@ func update_flash_bar():
 			
 		# Mostra il tempo rimanente alla ricarica
 		if "flash_timer" in player:
-			flash_label.text = "FLASH [E] - %.1fs" % player.flash_timer
+			flash_label.text = "FLASH [Q] - %.1fs" % player.flash_timer
 		else:
-			flash_label.text = "FLASH [E] - CHARGING..."
+			flash_label.text = "FLASH [Q] - CHARGING..."
 			
 		flash_label.modulate = Color(0.5, 0.5, 0.5)
 		flash_bar.modulate = Color.WHITE

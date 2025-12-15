@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_7n5te")
 
 [node name="StaminaContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -22,7 +23,6 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 pivot_offset = Vector2(20, -80)
-script = ExtResource("1_7n5te")
 
 [node name="StaminaLabel" type="Label" parent="StaminaContainer"]
 layout_mode = 2
@@ -49,7 +49,7 @@ pivot_offset = Vector2(-220, -80)
 [node name="FlashLabel" type="Label" parent="FlashContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-text = "FLASH [E]"
+text = "FLASH [Q]"
 
 [node name="FlashBar" type="ProgressBar" parent="FlashContainer"]
 custom_minimum_size = Vector2(200, 20)
