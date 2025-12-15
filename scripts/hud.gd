@@ -20,3 +20,125 @@ var stamina_low_color := Color(0.8, 0.2, 0.2)
 var flash_ready_color := Color(0.2, 0.6, 1.0)
 var flash_charging_color := Color(0.3, 0.3, 0,3)
 var fear_color := Color(0.6, 0.0, 0.0)
+
+func _ready():
+	# Trova il player
+	await get_tree().physics_frame
+	find_player()
+	
+	# Applica stili iniziali
+	setup_bar_styles()
+	
+	# Nasconde paura inizialmente
+	fear_container.visible = false
+	
+	# Overlay invisibile
+	damage_overlay.modulate.a = 0
+	
+	print("HUD ready")
+	
+func find_player():
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player = players[0]
+	
+func setup_bar_styles():
+	# Stile Stamina
+	var stamina_fill := StyleBoxFlat.new()
+	stamina_fill.bg_color = stamina_full_color
+	stamina_fill.set_corner_radius_all(3)
+	stamina_bar.add_theme_stylebox_override("fill", stamina_fill)
+	
+	var stamina_bg := StyleBoxFlat.new()
+	stamina_bg.bg_color = Color(0.1, 0.1, 0.1, 0.8)
+	stamina_bg.set_corner_radius_all(3)
+	stamina_bar.add_theme_stylebox_override("background", stamina_bg)
+	
+	# Stile Flash
+	var flash_fill := StyleBoxFlat.new()
+	flash_fill.bg_color = flash_ready_color
+	flash_fill.set_corner_radius_all(3)
+	flash_bar.add_theme_stylebox_override("fill", flash_fill)
+	
+	var flash_bg := StyleBoxFlat.new()
+	flash_bg.bg_color = Color(0.1, 0.1, 0.1, 0.8)
+	flash_bg.set_corner_radius_all(3)
+	flash_bar.add_theme_stylebox_override("background", flash_bg)
+	
+	# Stile Fear
+	var fear_fill := StyleBoxFlat.new()
+	fear_fill.bg_color = fear_color
+	fear_fill.set_corner_radius_all(3)
+	fear_bar.add_theme_stylebox_override("fill", fear_fill)
+	
+	var fear_bg := StyleBoxFlat.new()
+	fear_bg.bg_color = Color(0.1, 0.1, 0.1, 0.8)
+	fear_bg.set_corner_radius_all(3)
+	fear_bar.add_theme_stylebox_override("background", fear_bg)
+	
+func _process(delta):
+	if player == null:
+		find_player()
+		return
+		
+	update_stamina_bar()
+	update_flash_bar()
+	update_fear_bar()
+	
+func update_stamina_bar():
+	if not player.has_method("get_stamina_percent"):
+		return
+		
+	var stamina_percent = player.get_stamina_percent() * 100
+	stamina_bar.value = stamina_percent
+	
+	# Cambia colore quando bassa
+	var fill_style = stamina_bar.get_theme_stylebox("fill") as StyleBoxFlat
+	if fill_style:
+		if stamina_percent < 30:
+			fill_style.bg_color = stamina_low_color
+			# Effetto pulsante quando si abbassa
+			var pulse = abs(sin(Time.get_ticks_msec() / 150.0))
+			stamina_bar.modulate = Color(1, 1, 1, 0.7 + pulse * 0.3)
+		else:
+			fill_style.bg_color = stamina_full_color
+			stamina_bar.modulate = Color.WHITE
+			
+func update_flash_bar():
+	if not player.has_method("get_flash_cooldown_percent"):
+		return
+		
+	var flash_percent = player.get_flash_cooldown_percent() * 100
+	flash_bar.value = flash_percent
+	
+	var fill_style = flash_bar.get_theme_stylebox("fill") as StyleBoxFlat
+	
+	# Controlla se può usare il Flash
+	var can_flash = true
+	if "can_flash" in player:
+		can_flash = player.can_flash
+		
+	if can_flash:
+		if fill_style:
+			fill_style.bg_color = flash_ready_color
+		flash_label.modulate = Color.WHITE
+		
+		# Effetto glow del pulsante
+		var glow = abs(sin(Time.get_ticks_msec() / 300.0))
+		flash_bar.modulate = Color(1, 1, 1, 0.8 + glow * 0.2)
+	else:
+		# In ricarica
+		if fill_style:
+			fill_style.bg_color = flash_charging_color
+			
+		# Mostra il tempo rimanente alla ricarica
+		if "flash_timer" in player:
+			flash_label.text = "FLASH [E] - %.1fs" % player.flash_timer
+		else:
+			flash_label.text = "FLASH [E] - CHARGING..."
+			
+		flash_label.modulate = Color(0.5, 0.5, 0.5)
+		flash_bar.modulate = Color.WHITE
+	
+func update_fear_bar():
+	
