@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwrgt3a55l1g8"]
+[gd_scene load_steps=11 format=3 uid="uid://bwrgt3a55l1g8"]
 
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="1_18oyk"]
 [ext_resource type="Script" uid="uid://coeob41w8q8ki" path="res://scripts/forest_managerV2.gd" id="1_u2qcj"]
 [ext_resource type="Script" uid="uid://ombs2ms6f88v" path="res://scripts/tree_spawner.gd" id="3_6dg63"]
+[ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="3_igbd1"]
 [ext_resource type="PackedScene" uid="uid://cba5pkiwwtj5o" path="res://models/road/road_edit/road.tscn" id="3_vk0dc"]
 
 [sub_resource type="Environment" id="Environment_1bugp"]
@@ -15,15 +16,21 @@ glow_enabled = true
 glow_intensity = 0.3
 fog_enabled = true
 fog_light_color = Color(0.08235294, 0.08235294, 0.1254902, 1)
-fog_density = 0.015
+fog_density = 0.02
+fog_height = -5.0
+fog_height_density = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.0627451, 0.08235294, 0.1254902, 1)
+volumetric_fog_gi_inject = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2qcj"]
 size = Vector3(5.3932495, 0.08085938, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk0dc"]
-albedo_color = Color(0, 0.27450982, 0, 1)
+albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
+albedo_texture = ExtResource("3_igbd1")
+uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_18oyk"]
 material = SubResource("StandardMaterial3D_vk0dc")
