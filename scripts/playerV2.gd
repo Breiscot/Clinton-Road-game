@@ -51,7 +51,7 @@ func _ready():
 	if camera:
 		base_fov = camera.fov
 	
-func _unhandled_input(event: InputEvent):
+#func _unhandled_input(event: InputEvent):
 	# Se non é ancora morto
 	if is_dead:
 		return
@@ -74,13 +74,6 @@ func _input(event):
 	# Flash stordimento
 	if event is InputEventKey and event.pressed and event.keycode == KEY_Q:
 		use_flash_stun()
-
-	# Sblocca/Blocca il mouse con ESC (menu di pausa)
-	if event.is_action_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 	if is_dead:
