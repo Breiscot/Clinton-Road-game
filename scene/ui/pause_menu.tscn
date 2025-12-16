@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://1dq04pm7460b"]
+[gd_scene load_steps=2 format=3 uid="uid://1dq04pm7460b"]
+
+[ext_resource type="Script" uid="uid://0dbjrgvtaoty" path="res://scripts/pause_menu.gd" id="1_v5dk4"]
 
 [node name="PauseMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v5dk4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.003921569)
@@ -48,14 +52,33 @@ layout_mode = 2
 text = "RESUME"
 
 [node name="Spacer2" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "OPTIONS"
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="Spacer4" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT GAME"
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
