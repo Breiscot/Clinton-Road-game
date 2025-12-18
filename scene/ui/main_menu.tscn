@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvllrvx7avhea"]
+[gd_scene load_steps=5 format=3 uid="uid://dvllrvx7avhea"]
 
 [ext_resource type="Script" uid="uid://dcne8jgjv4cvg" path="res://scripts/main_menu.gd" id="1_3er1b"]
+[ext_resource type="AudioStream" uid="uid://bgd2me7bu78il" path="res://audio/music/menu_music.ogg" id="2_8wb42"]
+[ext_resource type="AudioStream" uid="uid://c6swfd47hbxfn" path="res://audio/ambience/audio_ambience.ogg" id="2_vww0c"]
+[ext_resource type="AudioStream" uid="uid://b3uqsdpncvu8p" path="res://audio/sfx/button_hover.wav" id="3_k75cp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -71,14 +74,17 @@ text = "EXIT"
 [node name="AudioManager" type="Node" parent="."]
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("2_8wb42")
 volume_db = -10.0
 autoplay = true
 
 [node name="AmbientPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("2_vww0c")
 volume_db = -15.0
 autoplay = true
 
 [node name="HoverSound" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("3_k75cp")
 volume_db = -5.0
 
 [node name="OptionsMenu" type="Control" parent="."]
