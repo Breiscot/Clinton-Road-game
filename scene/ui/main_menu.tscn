@@ -66,3 +66,22 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "EXIT"
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+volume_db = -10.0
+autoplay = true
+
+[node name="AmbientPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+volume_db = -15.0
+autoplay = true
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="AudioManager"]
+volume_db = -5.0
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
