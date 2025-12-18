@@ -119,9 +119,20 @@ func _on_play_pressed():
 	)
 
 func _on_options_pressed():
-	print("Options..")
-	pass
+	print("Options button clicked")
+	print("options_menu exists: ", options_menu != null)
+	print("main_container exists: ", main_container != null)
 	
+	if options_menu == null:
+		print("not found")
+		return
+		
+	main_container.visible = false
+	options_menu.visible = true
+	
+	if back_button:
+		back_button.grab_focus()
+		
 func _on_exit_pressed():
 	print("Exting..")
 	
@@ -184,10 +195,9 @@ func load_settings():
 		if volume_slider:
 			volume_slider.value = config.get_value("audio", "volume", 100)
 		if fullscreen_check:
-			fullscreen_check.value = config.get_value("video", "fullscreen", false)
+			fullscreen_check.button_pressed = config.get_value("video", "fullscreen", false)
 			if fullscreen_check.button_pressed:
 				_apply_fullscreen(true)
-	config.save("user://settings.cfg")
 	print("Settings saved!")
 
 func _input(event):
