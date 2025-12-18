@@ -78,7 +78,125 @@ func start_audio():
 		ambience_player.play()
 		var tween = create_tween()
 		tween.tween_property(ambience_player, "volume_db", -15.0, 2.0)
+		
+func setup_button_sounds():
+	var buttons = [play_button, options_button, exit_button]
+	if back_button:
+		buttons.append(back_button)
+		
+	for button in buttons:
+		if button:
+			button.mouse_entered.connect(_on_button_hover)
+			button.pressed.connect(_on_button_click)
+			
+func _on_button_hover():
+	if hover_sound and hover_sound.stream:
+		hover_sound.pitch_scale = randf_range(0.95, 1.05)
+		hover_sound.play()
+
+func _on_button_click():
+	# Suono click
+	if hover_sound and hover_sound.stream:
+		hover_sound.pitch_scale = 0.8
+		hover_sound.play()
+
+func _on_play_pressed():
+	print("Starting game..")
 	
+	# Fade out Audio
+	if music_player:
+		var tween = create_tween()
+		tween.tween_property(music_player, "volume_db", -40.0, 0.5)
+	
+	# Fade out e carica il gioco
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(func():
+		if game_scene:
+			get_tree().change_scene_to_packed(game_scene)
+		else:
+			get_tree().change_scene_to_file("res://scene/main.tscn")
+	)
+
+func _on_options_pressed():
+	print("Options..")
+	pass
+	
+func _on_exit_pressed():
+	print("Exting..")
+	
+	# Fade out
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(func():
+		get_tree().quit()
+	)
+	
+# Options
+
+func _on_back_pressed():
+	close_options()
+	
+func close_options():
+	if options_menu:
+		options_menu.visible = false
+	main_container.visible = true
+	play_button.grab_focus()
+	save_settings()
+	
+func _on_sensitivity_changed(value: float):
+	print("Sensitivity: ", value)
+	
+func _on_volume_changed(value: float):
+	var db = lerp(-60.0, 0.0, value / 100.0)
+	AudioServer.set_bus_volume_db(0, db)
+	print("Volume: ", value, "%")
+	
+func _on_fullscreen_toggled(enabled: bool):
+	call_deferred("_apply_fullscreen", enabled)
+
+func _apply_fullscreen(enabled: bool):
+	if enabled:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	print("Fullscreen: ", enabled)
+	
+# Salva/Carica
+func save_settings():
+	var config = ConfigFile.new()
+	if sensitivity_slider:
+		config.set_value("controls", "sensitivity", sensitivity_slider.value)
+	if volume_slider:
+		config.set_value("audio", "volume", volume_slider.value)
+	if fullscreen_check:
+		config.set_value("video", "fullscreen", fullscreen_check.button_pressed)
+	config.save("user://settings.cfg")
+	print("Settings saved!")
+
+func load_settings():
+	var config = ConfigFile.new()
+	var err = config.load("user://settings.cfg")
+	
+	if err == OK:
+		if sensitivity_slider:
+			sensitivity_slider.value = config.get_value("controls", "sensitivity", 0.003)
+		if volume_slider:
+			volume_slider.value = config.get_value("audio", "volume", 100)
+		if fullscreen_check:
+			fullscreen_check.value = config.get_value("video", "fullscreen", false)
+			if fullscreen_check.button_pressed:
+				_apply_fullscreen(true)
+	config.save("user://settings.cfg")
+	print("Settings saved!")
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		var focused = get_viewport().gui_get_focus_owner()
+		if focused is Button:
+			focused.emit_signal("pressed")
+			
+# Style
 func style_buttons():
 	var buttons = [play_button, options_button, exit_button]
 	
@@ -112,29 +230,3 @@ func style_buttons():
 		button.add_theme_color_override("font_hover_color", Color(1, 0.3, 0.3))
 		button.add_theme_font_size_override("font_size", 24)
 	
-func _on_play_pressed():
-	print("Starting game..")
-	
-	# Fade out e carica il gioco
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func():
-		if game_scene:
-			get_tree().change_scene_to_packed(game_scene)
-		else:
-			get_tree().change_scene_to_file("res://scene/main.tscn")
-	)
-
-func _on_options_pressed():
-	print("Options..")
-	pass
-	
-func _on_exit_pressed():
-	print("Exting..")
-	get_tree().quit()
-	
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		var focused = get_viewport().gui_get_focus_owner()
-		if focused is Button:
-			focused.emit_signal("pressed")
