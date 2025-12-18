@@ -129,11 +129,24 @@ func _on_volume_changed(value: float):
 	AudioServer.set_bus_volume_db(0, db)
 	print("Volume: ", value, "%(",db," dB)")
 	
+func _apply_fullscreen(enabled: bool):
+	call_deferred("_apply_fullscreen", enabled)
+	print("Fullscreen: ", enabled)
+	
 func _on_fullscreen_toggled(enabled: bool):
 	if enabled:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		# Deve coprire tutto lo schermo
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		var screen_size = DisplayServer.screen_get_size()
+		var window_size = Vector2i(1200, 720)
+		DisplayServer.window_set_size(window_size)
+		var pos = (screen_size - window_size) / 2
+		DisplayServer.window_set_position(pos)
+		
 	print("Fullscreen: ", enabled)
 	
 # Salva/Carica Options
