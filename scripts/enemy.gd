@@ -64,7 +64,7 @@ func setup_audio():
 	
 	var footstep_stream = load("res://audio/sfx/footstep.ogg")
 	if footstep_stream:
-		footstep_stream.stream = footstep_stream
+		footstep_player.stream = footstep_stream
 		
 	# Growl
 	growl_player = AudioStreamPlayer3D.new()
@@ -113,6 +113,8 @@ func _physics_process(delta):
 	# Gravità
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	update_enemy_footsteps(delta)
 
 	match current_state:
 		State.IDLE:
@@ -137,6 +139,17 @@ func update_enemy_footsteps(delta: float):
 	var speed = Vector2(velocity.x, velocity.z).length()
 	if speed < 0.5:
 		return
+		
+	var interval = 0.6
+	if current_state == State.CHASE:
+		interval = 0.35
+		
+	footstep_timer += delta
+	
+	if footstep_timer >= interval:
+		footstep_timer = 0
+		footstep_player.pitch_scale = randf_range(0.7, 0.9)
+		footstep_player.play()
 
 func process_idle(delta):
 	#anim_player.play("idle")
@@ -319,11 +332,21 @@ func change_state(new_state: State):
 #	match current_state:
 #		State.CHASE:
 #			audio.stop()
-
+	var old_state = current_state
 	current_state = new_state
 
 	match new_state:
 		State.CHASE:
+			# Growl
+			if old_state != State.CHASE:
+				if growl_player and growl_player.stream:
+					growl_player.pitch_scale = randf_range(0.8, 1.0)
+					growl_player.play()
+					
+			# Suono Inseguimento
+			if chase_player and chase_player.stream:
+				if not chase_player.playing:
+					chase_player.play()
 #			audio.stream = sound_chase
 #			audio.play()
 			if player and player.has_method("add_fear"):
@@ -332,6 +355,11 @@ func change_state(new_state: State):
 			search_timer = 0.0
 		State.ATTACK:
 			attack_timer = attack_cooldown * 0.8  # Attacca immediatamente
+			# Growl durante attacco
+			if growl_player and growl_player.stream:
+				growl_player.pitch_scale = randf_range(0.6, 0.8)
+				growl_player.play()
+				
 			if player and player.has_method("add_fear"):
 				player.add_fear(40.0)
 
