@@ -1,10 +1,82 @@
 extends Node3D
 
+# Audio
+var wind_player: AudioStreamPlayer3D = null
+var crickets_player: AudioStreamPlayer3D = null
+var owl_player: AudioStreamPlayer3D = null
+
 func _ready():
 	setup_environment()
 	setup_grass_texture()
+	setup_ambient_audio()
 	print("Forest ready")
 	
+func setup_ambient_audio():
+	var audio_container = Node3D.new()
+	audio_container.name = "AmbientAudio"
+	add_child(audio_container)
+	
+	# Wind
+	wind_player = AudioStreamPlayer3D.new()
+	wind_player.name = "Ambience"
+	wind_player.max_distance = 100
+	wind_player.volume_db = -10
+	audio_container.add_child(wind_player)
+	
+	var wind_stream = load("res://audio/ambience/wind.ogg")
+	if wind_stream:
+		wind_player.stream = wind_stream
+		wind_player.play()
+		
+	# Crickets
+	crickets_player = AudioStreamPlayer3D.new()
+	crickets_player.name = "Crickets"
+	crickets_player.max_distance = 80
+	crickets_player.volume_db = -15
+	audio_container.add_child(crickets_player)
+	
+	var crickets_stream = load("res://audio/ambience/crickets.ogg")
+	if crickets_stream == null:
+		crickets_stream = load("res://audio/ambience/wind.ogg")
+	if crickets_stream:
+		crickets_player.stream = crickets_stream
+		crickets_player.play()
+		
+	# Owl
+	owl_player = AudioStreamPlayer3D.new()
+	owl_player.name = "Owl"
+	owl_player.max_distance = 50
+	owl_player.volume_db = -8
+	audio_container.add_child(owl_player)
+	
+	var owl_stream = load("res://audio/ambience/owl.ogg")
+	if owl_stream:
+		owl_player.stream = owl_stream
+		var owl_timer = Timer.new()
+		owl_timer.wait_time = randf_range(20.0, 60.0)
+		owl_timer.one_shot = false
+		owl_timer.timeout.connect(_on_owl_timer)
+		add_child(owl_timer)
+		owl_timer.start()
+	
+func _on_owl_timer():
+	if owl_player and owl_player.stream and randf() > 0.5:
+		owl_player.position = Vector3(
+			randf_range(-30, 30),
+			randf_range(5, 15),
+			randf_range(-30, 30)
+		)
+		owl_player.play()
+		
+func _process(delta):
+	var player = get_tree().get_first_node_in_group("player")
+	if player and wind_player:
+		# L'audio segue il player
+		wind_player.global_position = player.global_position
+		if crickets_player:
+			crickets_player.global_position = player.global_position
+		
+		
 func setup_environment():
 	var world_env: WorldEnvironment
 	
