@@ -55,8 +55,10 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if options_menu and options_menu.visible:
 			close_options()
+			get_viewport().set_input_as_handled()
 		else:
 			toggle_pause()
+			get_viewport().set_input_as_handled()
 			
 func toggle_pause():
 	is_paused = !is_paused
