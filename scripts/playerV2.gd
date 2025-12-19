@@ -119,6 +119,8 @@ func _physics_process(delta):
 	update_fear(delta)
 	update_flash_cooldown(delta)
 	apply_fear_effects(delta)
+	update_footsteps(delta)
+	update_breathing(delta)
 	
 	# Applica la gravità
 	velocity.y -= gravity * delta
@@ -287,7 +289,7 @@ func update_breathing(delta: float):
 			breath_player.play()
 	else:
 		# Diminuisci volume
-		breath_player.volume_db = lerp(breath_player.volume_db, -40, delta * 3)
+		breath_player.volume_db = lerp(breath_player.volume_db, -40.0, delta * 3)
 		
 		if breath_player.volume_db < -35:
 			breath_player.stop()

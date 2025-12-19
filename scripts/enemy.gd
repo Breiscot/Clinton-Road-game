@@ -33,6 +33,12 @@ var search_timer := 0.0
 var attack_timer := 0.0
 var gravity := 9.8
 
+# Audio
+var footstep_player: AudioStreamPlayer3D = null
+var growl_player: AudioStreamPlayer3D = null
+var chase_player: AudioStreamPlayer3D = null
+var footstep_timer := 0.0
+
 # Suoni
 @export var sound_idle: AudioStream
 @export var sound_chase: AudioStream
@@ -42,10 +48,47 @@ var gravity := 9.8
 func _ready():
 	add_to_group("enemies")
 	setup_patrol_points()
+	setup_audio()
 #	play_ambient_sound()
 	
 	await get_tree().physics_frame
 	find_player()
+
+func setup_audio():
+	# Footsteps Enemy
+	footstep_player = AudioStreamPlayer3D.new()
+	footstep_player.name = "EnemyFootsteps"
+	footstep_player.max_distance = 30
+	footstep_player.volume_db = -5
+	add_child(footstep_player)
+	
+	var footstep_stream = load("res://audio/sfx/footstep.ogg")
+	if footstep_stream:
+		footstep_stream.stream = footstep_stream
+		
+	# Growl
+	growl_player = AudioStreamPlayer3D.new()
+	growl_player.name = "EnemyGrowl"
+	growl_player.max_distance = 40
+	growl_player.volume_db = 0
+	add_child(growl_player)
+	
+	var growl_stream = load("res://audio/enemy/growl.ogg")
+	if growl_stream == null:
+		growl_stream = load("res://audio/enemy/growl.ogg")
+	if growl_stream:
+		growl_player.stream = growl_stream
+		
+	# Suono inseguimento
+	chase_player = AudioStreamPlayer3D.new()
+	chase_player.name = "EnemyChase"
+	chase_player.max_distance = 50
+	chase_player.volume_db = -10
+	add_child(chase_player)
+	
+	var chase_stream = load("res://audio/enemy/enemy_chase.ogg")
+	if chase_stream:
+		chase_player.stream = chase_stream
 	
 func find_player():
 	var players = get_tree().get_nodes_in_group("player")
@@ -86,6 +129,14 @@ func _physics_process(delta):
 			process_attack(delta)
 
 	move_and_slide()
+	
+func update_enemy_footsteps(delta: float):
+	if footstep_player == null or footstep_player.stream == null:
+		return
+		
+	var speed = Vector2(velocity.x, velocity.z).length()
+	if speed < 0.5:
+		return
 
 func process_idle(delta):
 	#anim_player.play("idle")
