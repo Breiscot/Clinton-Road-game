@@ -202,6 +202,8 @@ func load_settings():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
+		if options_menu and options_menu.visible:
+			_on_back_pressed()
 		var focused = get_viewport().gui_get_focus_owner()
 		if focused is Button:
 			focused.emit_signal("pressed")
