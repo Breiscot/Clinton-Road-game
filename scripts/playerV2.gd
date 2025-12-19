@@ -40,6 +40,12 @@ var base_fov := 75.0
 var fear_shake_intensity := 0.0
 var shake_time := 0.0
 
+# Audio
+var footstep_player: AudioStreamPlayer3D = null
+var breath_player: AudioStreamPlayer3D = null
+var footstep_timer := 0.0
+var footstep_interval := 0.5 	# Tempo tra passi
+
 func _ready():
 	# Aggiungi al gruppo player
 	add_to_group("player")
@@ -51,10 +57,39 @@ func _ready():
 	if camera:
 		base_fov = camera.fov
 	
-#func _unhandled_input(event: InputEvent):
 	# Se non é ancora morto
 	if is_dead:
 		return
+		
+	setup_audio()
+	
+func setup_audio():
+	# Footsteps
+	footstep_player = AudioStreamPlayer3D.new()
+	footstep_player.name = "FootstepPlayer"
+	footstep_player.max_distance = 20
+	footstep_player.volume_db = -5
+	add_child(footstep_player)
+	
+	var footstep_stream = load("res://audio/sfx/footstep.ogg")
+	if footstep_stream == null:
+		footstep_stream = load("res://audio/sfx/footstep.wav")
+	if footstep_stream:
+		footstep_player.stream = footstep_stream
+	else:
+		print("Footstep audio not found")
+		
+	breath_player = AudioStreamPlayer3D.new()
+	breath_player.name = "BreathPlayer"
+	breath_player.max_distance = 10
+	breath_player.volume_db = -20 # Inizia basso
+	add_child(breath_player)
+	
+	var breath_stream = load("res://audio/sfx/breathing.ogg")
+	if breath_stream == null:
+		breath_stream = load("res://audio/sfx/breath_heavy.ogg")
+	if breath_stream:
+		breath_player.stream = breath_stream
 
 func _input(event):
 	# Rotazione della visuale con il mouse
@@ -199,6 +234,64 @@ func update_flash_cooldown(delta: float):
 			can_flash = true
 			print("Flash READY")
 			
+func update_footsteps(delta: float):
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	var is_moving = horizontal_speed > 0.5 and is_on_floor()
+	
+	if not is_moving:
+		footstep_timer = 0
+		return
+		
+	# Intervallo dipende dalla velocità
+	if current_speed == run_speed:
+		footstep_interval = 0.3 # Passi Veloci
+	else:
+		footstep_interval = 0.5 # Passi Normali
+		
+		footstep_timer += delta
+		
+		if footstep_timer >= footstep_interval:
+			footstep_timer = 0
+			play_footstep()
+			
+func play_footstep():
+	if footstep_player and footstep_player.stream:
+		footstep_player.pitch_scale = randf_range(0.9, 1.1)
+		
+		if current_speed == run_speed:
+			footstep_player.volume_db = -3
+		else:
+			footstep_player.volume_db = -8
+			
+		footstep_player.play()
+		
+func update_breathing(delta: float):
+	if breath_player == null or breath_player.stream == null:
+		return
+		
+	var fear_percent = get_fear_percent()
+	var stamina_percent = get_stamina_percent()
+	
+	# Respiro
+	var should_breathe_heavy = fear_percent > 0.5 or stamina_percent < 0.3
+	
+	if should_breathe_heavy:
+		# Aumenta il volume gradualmente
+		var target_volume = -5.0
+		if fear_percent > 0.8:
+			target_volume = 0.0 # Forte quando c'è il panico
+			
+		breath_player.volume_db = lerp(breath_player.volume_db, target_volume, delta * 2)
+		
+		if not breath_player.playing:
+			breath_player.play()
+	else:
+		# Diminuisci volume
+		breath_player.volume_db = lerp(breath_player.volume_db, -40, delta * 3)
+		
+		if breath_player.volume_db < -35:
+			breath_player.stop()
+	
 func use_flash_stun():
 	if not can_flash:
 		print("Flash not ready, wait ", "%.1f" % flash_timer, "s")
