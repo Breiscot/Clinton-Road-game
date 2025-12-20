@@ -1,8 +1,8 @@
 extends Node3D
 
 @export var tree_scene: PackedScene
-@export var tree_count: int = 200
-@export var spawn_radius: float = 50.0
+@export var tree_count: int = 1000
+@export var spawn_radius: float = 150.0
 @export var min_distance_from_center: float = 5.0
 
 @export var road_width: float = 10.0
