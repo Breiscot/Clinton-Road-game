@@ -6,7 +6,8 @@ enum State {
 	CHASE,
 	SEARCH,
 	ATTACK,
-	STUNNED
+	STUNNED,
+	FLEE_ROAD
 }
 
 @export var patrol_speed := 2.0
@@ -45,10 +46,17 @@ var footstep_timer := 0.0
 @export var sound_attack: AudioStream
 @export var sound_ambient: AudioStream
 
+# Evita Strada
+var avoidance_area: Area3D = null
+var is_fleeing_road := false
+var flee_direction := Vector3.ZERO
+var flee_timer := 0.0
+
 func _ready():
 	add_to_group("enemies")
 	setup_patrol_points()
 	setup_audio()
+	setup_avoidance()
 #	play_ambient_sound()
 	
 	await get_tree().physics_frame
@@ -89,6 +97,53 @@ func setup_audio():
 	var chase_stream = load("res://audio/enemy/enemy_chase.ogg")
 	if chase_stream:
 		chase_player.stream = chase_stream
+		
+func setup_avoidance():
+	if has_node("AvoidanceArea"):
+		avoidance_area = $AvoidanceArea
+	else:
+		avoidance_area = Area3D.new()
+		avoidance_area.name = "AvoidanceArea"
+		
+		var collision = CollisionShape3D.new()
+		var shape = SphereShape3D.new()
+		shape.radius = 2.0
+		collision.shape = shape
+		avoidance_area.add_child(collision)
+		
+		add_child(avoidance_area)
+		
+	# Connetti segnali
+	avoidance_area.body_entered.connect(_on_avoidance_body_entered)
+	avoidance_area.area_entered.connect(_on_avoidance_area_entered)
+	
+func _on_avoidance_body_entered(body: Node3D):
+	if body.is_in_group("road_fence"):
+		start_fleeing_road(body)
+		
+func _on_avoidance_area_entered(area: Area3D):
+	if area.is_in_group("road_fence") or area.get_parent().is_in_group("road_fence"):
+		start_fleeing_road(area)
+		
+func start_fleeing_road(obstacle: Node3D):
+	if is_fleeing_road:
+		return
+		
+	print("Enemy hit fence, Fleeing back")
+	
+	is_fleeing_road = true
+	flee_timer = 3.0 # Fugge per 3 secondi
+	
+	# Calcola direzione opposta alla fence
+	var to_obstacle = obstacle.global_position - global_position
+	to_obstacle.y = 0
+	flee_direction = -to_obstacle.normalized()
+	
+	if flee_direction.length() < 0.1:
+		flee_direction = -global_position.normalized()
+		flee_direction.y = 0
+		
+	change_state(State.FLEE_ROAD)
 	
 func find_player():
 	var players = get_tree().get_nodes_in_group("player")

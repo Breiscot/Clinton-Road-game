@@ -6,6 +6,9 @@ var crickets_player: AudioStreamPlayer3D = null
 var owl_player: AudioStreamPlayer3D = null
 
 func _ready():
+	for child in get_children():
+		child.add_to_group("road_fence")
+		
 	setup_environment()
 	setup_grass_texture()
 	setup_ambient_audio()
