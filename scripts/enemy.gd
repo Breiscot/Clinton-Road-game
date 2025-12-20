@@ -145,6 +145,21 @@ func start_fleeing_road(obstacle: Node3D):
 		
 	change_state(State.FLEE_ROAD)
 	
+func process_flee_road(delta: float):
+	flee_timer -= delta
+	
+	velocity.x = flee_direction.x * chase_speed * 1.2
+	velocity.z = flee_direction.z * chase_speed * 1.2
+	
+	if flee_direction.length() > 0.1:
+		var look_pos = global_position + flee_direction
+		look_at(Vector3(look_pos.x, global_position.y, look_pos.z))
+		
+	if flee_timer <= 0:
+		is_fleeing_road = false
+		flee_timer = 0
+		change_state(State.PATROL)
+	
 func find_player():
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
@@ -184,6 +199,8 @@ func _physics_process(delta):
 			attack_timer = attack_cooldown
 			perform_attack()
 			process_attack(delta)
+		State.FLEE_ROAD:
+			process_flee_road(delta)
 
 	move_and_slide()
 	
@@ -391,6 +408,10 @@ func change_state(new_state: State):
 	current_state = new_state
 
 	match new_state:
+		State.FLEE_ROAD:
+			print("FLEEING from road!")
+			if chase_player:
+				chase_player.stop()
 		State.CHASE:
 			# Growl
 			if old_state != State.CHASE:
