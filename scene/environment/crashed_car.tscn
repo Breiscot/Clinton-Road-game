@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqox571gk3uh0"]
+[gd_scene load_steps=14 format=3 uid="uid://cqox571gk3uh0"]
 
+[ext_resource type="Script" uid="uid://bq7r5vdm8vhm6" path="res://scripts/crashed_car.gd" id="1_f3tam"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_jeyka"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f3tam"]
@@ -68,9 +69,10 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_jeyka")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f3tam"]
-size = Vector3(2.0399551, 0.7753906, 5.6000233)
+size = Vector3(2.0399551, 1.335083, 5.6000233)
 
 [node name="CrashedCar" type="Node3D"]
+script = ExtResource("1_f3tam")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -97,7 +99,7 @@ process_material = SubResource("ParticleProcessMaterial_jeyka")
 draw_pass_1 = SubResource("QuadMesh_f3tam")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011379242, -0.11230469, 0.43921375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011379242, 0.1675415, 0.43921375)
 shape = SubResource("BoxShape3D_f3tam")
 
 [node name="Headlights" type="Node3D" parent="."]

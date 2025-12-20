@@ -5,7 +5,7 @@ extends Node3D
 @export var spawn_radius: float = 50.0
 @export var min_distance_from_center: float = 5.0
 
-@export var road_width: float = 6.0
+@export var road_width: float = 10.0
 @export var road_direction: String = "Z"
 
 @export var min_scale: float = 3.7
@@ -108,7 +108,7 @@ func add_tree_collision(tree: Node3D, tree_scale: float):
 	var shape := CylinderShape3D.new()
 	# Dimensioni
 	shape.radius = 0.02 * tree_scale
-	shape.height = 0.02 * tree_scale
+	shape.height = 0.10 * tree_scale
 	
 	collision.shape = shape
 	collision.position.y = (shape.height / 2.0)

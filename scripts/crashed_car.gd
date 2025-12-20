@@ -5,6 +5,8 @@ extends Node3D
 @onready var hazard_right := $Hazardlights/HazardRight
 @onready var smoke := $SmokeParticles
 
+var smoke_particles: GPUParticles3D = null
+
 var hazard_timer := 0.0
 var hazard_on := false
 var headlight_flicker_timer := 0.0
@@ -14,15 +16,13 @@ func _ready():
 	start_effects()
 
 func setup_car_damage():
-	# Rotazione per simulare l'incidente
-	rotation_degrees = Vector3(-5, 15, 8)
-
 	# Posiziona la testa fuori strada
 	position.x += 2.5
 
 func start_effects():
 	# Fumo che esce dal motore
-	smoke.emitting = true
+	if smoke_particles:
+		smoke_particles.emitting = true
 
 func _process(delta):
 	update_hazard_lights(delta)
