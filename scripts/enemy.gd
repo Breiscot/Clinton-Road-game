@@ -125,31 +125,41 @@ func _on_avoidance_area_entered(area: Area3D):
 	if area.is_in_group("road_fence") or area.get_parent().is_in_group("road_fence"):
 		start_fleeing_road(area)
 		
+var road_center_x := 0.0
+
 func start_fleeing_road(obstacle: Node3D):
+	print("START FLEEING FROM ROAD")
+	print("Enemy position: ", global_position)
+	print("Enemy X: ", global_position.x)
+	print("Obstacle position: ", obstacle.global_position)
+	
 	if is_fleeing_road:
+		print("Already fleeing, skip")
 		return
 		
-	print("Enemy hit fence, Fleeing back")
-	
 	is_fleeing_road = true
 	flee_timer = 3.0 # Fugge per 3 secondi
-	
-	# Calcola direzione opposta alla fence
-	var to_obstacle = obstacle.global_position - global_position
-	to_obstacle.y = 0
-	flee_direction = -to_obstacle.normalized()
-	
-	if flee_direction.length() < 0.1:
-		flee_direction = -global_position.normalized()
-		flee_direction.y = 0
 		
+	if global_position.x > road_center_x:
+		# Zona B - Fuggi verso destra
+		flee_direction = Vector3(1, 0, 0)
+	else:
+		# Zona A - Fuggi verso sinistra
+		flee_direction = Vector3(-1, 0, 0)
+		
+	flee_direction.z = randf_range(-0.3, 0.3)
+	flee_direction = flee_direction.normalized()
+	
+	print("Final flee direction: ", flee_direction)
+	
 	change_state(State.FLEE_ROAD)
 	
 func process_flee_road(delta: float):
 	flee_timer -= delta
 	
-	velocity.x = flee_direction.x * chase_speed * 1.2
-	velocity.z = flee_direction.z * chase_speed * 1.2
+	var flee_speed = chase_speed * 1.5
+	velocity.x = flee_direction.x * flee_speed
+	velocity.z = flee_direction.z * flee_speed
 	
 	if flee_direction.length() > 0.1:
 		var look_pos = global_position + flee_direction

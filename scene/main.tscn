@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xv4b1yi0a233"]
+[gd_scene load_steps=14 format=3 uid="uid://xv4b1yi0a233"]
 
 [ext_resource type="Script" uid="uid://jb3bomtng6o6" path="res://scripts/game_manager.gd" id="1_0ha60"]
 [ext_resource type="PackedScene" uid="uid://bwrgt3a55l1g8" path="res://scene/environment/forest.tscn" id="1_brvut"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uya40i87yk5o" path="res://scene/enemies/enemy.tscn" id="4_p1hux"]
 [ext_resource type="PackedScene" uid="uid://cbrp4cagq0v16" path="res://scene/ui/hud.tscn" id="6_4j5ol"]
 [ext_resource type="PackedScene" uid="uid://1dq04pm7460b" path="res://scene/ui/pause_menu.tscn" id="7_p1hux"]
+[ext_resource type="Script" uid="uid://cuv7wctuiui5w" path="res://scripts/zone_manager.gd" id="9_b5f6u"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_brvut"]
 vertices = PackedVector3Array(-3.25, 0, -117.5, -1.5, 0, -117.75, -1.75, 0, -149.5, -149.5, 0, -149.5, -4, 0, -32.75, -3.25, 0, -29.25, -4.5, 0, -33.25, -5.75, 0, -33.25, -149.5, 0, -33.25, 1.5, 0, -117.75, 1.75, 0, -149.5, 3.25, 0, -117.5, 149.5, 0, -149.5, 3.25, 0, 14.25, 5.5, 0, 9.25, 7, 0, 9, 7.5, 0, 10, 149.5, 0, 10, -2.25, 0.5, -116.75, -2.25, 0.5, 138.25, 2.25, 0.5, 138.25, 2.25, 0.5, -116.75, -6.25, 0, -32.75, -149.5, 0, -29.25, -5.75, 0, -29.5, -3.25, 0, 139, -3.25, 0, 135.5, -4.75, 0, 135.25, -1.75, 0, 149.5, -1.5, 0, 139.25, -149.5, 0, 149.5, -5.25, 0, -26.25, -4.75, 0, -26, 5, 0, 134.25, 3.25, 0, 134.25, 3.25, 0, 139, 1.5, 0, 139.25, 1.75, 0, 149.5, 149.5, 0, 149.5, 5, 0, 15.5)
@@ -37,7 +38,7 @@ transform = Transform3D(-0.9864294, 0.077623904, 0.1446783, 0.076802224, 0.99698
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39821485, 0)
 
 [node name="Enemies" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -14.246564, 25)
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_p1hux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43803215, 0.4712143, 2.64077)
@@ -72,3 +73,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3716002, -0.01830244, -4.06
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Tree"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3790164, 1.3125693, -3.9407165)
 shape = SubResource("CylinderShape3D_of57s")
+
+[node name="ZoneManager" type="Node3D" parent="."]
+script = ExtResource("9_b5f6u")
