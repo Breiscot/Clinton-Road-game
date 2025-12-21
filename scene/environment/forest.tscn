@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bwrgt3a55l1g8"]
+[gd_scene load_steps=31 format=4 uid="uid://bwrgt3a55l1g8"]
 
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="1_18oyk"]
 [ext_resource type="Script" uid="uid://coeob41w8q8ki" path="res://scripts/forest_managerV2.gd" id="1_u2qcj"]
@@ -58,6 +58,18 @@ size = Vector3(118.85044, 2.333321, 0.54)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ysv7"]
 size = Vector3(5.9018173, 2.7597046, 0.6067581)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_guc75"]
+size = Vector3(24.029823, 2.9537354, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djlq6"]
+size = Vector3(6.0666504, 2.9719238, 0.8457031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qn7tc"]
+size = Vector3(24.024841, 2.8454285, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2xm2"]
+size = Vector3(5.896118, 2.8423767, 0.99316406)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djlq6"]
 resource_local_to_scene = true
 render_priority = 0
@@ -110,6 +122,9 @@ buffer = PackedFloat32Array(0.6201779, 0, 0.78446114, 8.95233, 0, 1, 0, -0.5, -0
 [sub_resource type="BoxShape3D" id="BoxShape3D_exk3i"]
 size = Vector3(7.9561768, 2.9550781, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pckxb"]
+size = Vector3(302.25015, 3.1350098, 1)
+
 [node name="Forest" type="Node3D"]
 script = ExtResource("1_u2qcj")
 
@@ -160,6 +175,9 @@ transform = Transform3D(-7.430936e-08, 0, 1.7, 0, 1.7, 0, -1.7, 0, -7.430936e-08
 [node name="Sketchfab_Scene11" parent="Road" instance=ExtResource("3_vk0dc")]
 transform = Transform3D(-7.430936e-08, 0, 1.7, 0, 1.7, 0, -1.7, 0, -7.430936e-08, 3.5831242, 0, 127.918755)
 
+[node name="Sketchfab_Scene13" parent="Road" instance=ExtResource("3_vk0dc")]
+transform = Transform3D(-7.430936e-08, 0, 1.7, 0, 1.7, 0, -1.7, 0, -7.430936e-08, 3.5831242, 0, 148.9707)
+
 [node name="Sketchfab_Scene12" parent="Road" instance=ExtResource("3_vk0dc")]
 transform = Transform3D(-7.430936e-08, 0, 1.7, 0, 1.7, 0, -1.7, 0, -7.430936e-08, 3.5831242, 0, 106.58762)
 
@@ -193,175 +211,250 @@ tree_scene = ExtResource("1_18oyk")
 [node name="road_fence" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -3.9512687, 0.06511593, -2.9141738)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
+[node name="fences_left" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
 
-[node name="Sketchfab_Scene" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
-[node name="Sketchfab_Scene2" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene2" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999998, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999998, -5.981318, 0, -9.536743e-07)
 
-[node name="Sketchfab_Scene3" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene3" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999964, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.99999964, -11.95727, 0, -1.66893e-06)
 
-[node name="Sketchfab_Scene4" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene4" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999995, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.9999995, -17.938585, 0, -2.3841858e-06)
 
-[node name="Sketchfab_Scene9" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene9" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999995, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.9999995, 23.910004, 0, 9.536743e-07)
 
-[node name="Sketchfab_Scene13" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene13" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9794688, 0, 0.20159057, 0, 1, 0, -0.20159057, 0, 0.9794688, 29.685566, 0, -1.1655037)
 
-[node name="Sketchfab_Scene10" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene10" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999994, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999994, 17.928684, 0, 0)
 
-[node name="Sketchfab_Scene11" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene11" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999992, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999992, 11.952749, 0, -7.1525574e-07)
 
-[node name="Sketchfab_Scene12" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene12" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999991, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 0.9999991, 5.9714346, 0, -1.66893e-06)
 
-[node name="Sketchfab_Scene5" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene5" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999946, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.99999946, -23.933418, 0, -2.6226044e-06)
 
-[node name="Sketchfab_Scene6" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene6" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999934, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.99999934, -29.914734, 0, -3.0994415e-06)
 
-[node name="Sketchfab_Scene7" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene7" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999993, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999993, -35.90606, 0, -3.33786e-06)
 
-[node name="Sketchfab_Scene8" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene8" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999917, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 0.99999917, -41.887375, 0, -3.8146973e-06)
 
-[node name="Sketchfab_Scene14" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene14" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999997, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999997, -71.80224, 0, -4.053116e-06)
 
-[node name="Sketchfab_Scene15" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene15" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999996, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.9999996, -77.78356, 0, -5.00679e-06)
 
-[node name="Sketchfab_Scene16" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene16" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999994, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999994, -83.75951, 0, -5.722046e-06)
 
-[node name="Sketchfab_Scene17" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene17" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999993, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999993, -89.74082, 0, -6.4373016e-06)
 
-[node name="Sketchfab_Scene18" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene18" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999993, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999993, -47.89225, 0, -2.1457672e-06)
 
-[node name="Sketchfab_Scene19" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene19" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999917, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 0.99999917, -53.873566, 0, -3.0994415e-06)
 
-[node name="Sketchfab_Scene20" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene20" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.999999, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.999999, -59.849503, 0, -3.8146973e-06)
 
-[node name="Sketchfab_Scene21" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene21" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999887, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.99999887, -65.8308, 0, -5.722046e-06)
 
-[node name="Sketchfab_Scene22" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene22" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999992, 0, -1.0658141e-14, 0, 1, 0, 1.0658141e-14, 0, 0.9999992, -95.73566, 0, -5.9604645e-06)
 
-[node name="Sketchfab_Scene23" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene23" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999991, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 0.9999991, -101.71697, 0, -6.4373016e-06)
 
-[node name="Sketchfab_Scene24" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene24" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999905, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 0.99999905, -107.7083, 0, -6.4373016e-06)
 
-[node name="Sketchfab_Scene25" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene25" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999989, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.9999989, -113.68961, 0, -6.914139e-06)
 
-[node name="Sketchfab_Scene26" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene26" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.9999989, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.9999989, -119.68459, 0, -7.1525574e-06)
 
-[node name="Sketchfab_Scene27" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene27" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999887, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.99999887, -125.67592, 0, -7.867813e-06)
 
-[node name="Sketchfab_Scene28" parent="road_fence/StaticBody3D" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene28" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(0.99999875, 0, -2.1316282e-14, 0, 1, 0, 2.1316282e-14, 0, 0.99999875, -131.65721, 0, -8.34465e-06)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/StaticBody3D"]
+[node name="Sketchfab_Scene29" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.9999988, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.9999988, -137.51443, 0, -8.106232e-06)
+
+[node name="Sketchfab_Scene30" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.9999988, 0, -1.7763568e-14, 0, 1, 0, 1.7763568e-14, 0, 0.9999988, -143.5094, 0, -8.34465e-06)
+
+[node name="Sketchfab_Scene31" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.99999875, 0, -2.1316282e-14, 0, 1, 0, 2.1316282e-14, 0, 0.99999875, -149.50073, 0, -9.059906e-06)
+
+[node name="Sketchfab_Scene32" parent="road_fence/fences_left" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.9999986, 0, -2.1316282e-14, 0, 1, 0, 2.1316282e-14, 0, 0.9999986, -155.48203, 0, -9.536743e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/fences_left"]
 transform = Transform3D(0.99991137, 0, -1.4104273e-12, 0, 1, 0, 1.4104273e-12, 0, 0.99991137, -56.877716, 1.168457, 0.092707634)
 shape = SubResource("BoxShape3D_usfbw")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/fences_left"]
 transform = Transform3D(0.9791881, 0, 0.20269063, 0, 1, 0, -0.20269063, 0, 0.9791881, 26.685062, 0.9597168, -0.7074263)
 shape = SubResource("BoxShape3D_52iun")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
+[node name="fences_right" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 collision_layer = 17
 collision_mask = 7
 
-[node name="Sketchfab_Scene9" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene9" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999991, 0, -8.742269e-08, 0, 1, 0, 8.742269e-08, 0, -0.9999991, -47.932247, 0, 8.034777)
 
-[node name="Sketchfab_Scene10" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene10" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.999999, 0, -8.7422684e-08, 0, 1, 0, 8.7422684e-08, 0, -0.999999, -41.937546, 0, 8.074955)
 
-[node name="Sketchfab_Scene11" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene11" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99999887, 0, -8.742268e-08, 0, 1, 0, 8.742268e-08, 0, -0.99999887, -35.956364, 0, 8.115044)
 
-[node name="Sketchfab_Scene12" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene12" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99999887, 0, -8.742268e-08, 0, 1, 0, 8.742268e-08, 0, -0.99999887, -29.965199, 0, 8.155197)
 
-[node name="Sketchfab_Scene13" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene13" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99999875, 0, -8.742265e-08, 0, 1, 0, 8.742265e-08, 0, -0.99999875, -23.984013, 0, 8.195285)
 
-[node name="Sketchfab_Scene15" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene15" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999629, 0, -0.00849973, 0, 1, 0, 0.00849973, 0, -0.9999629, -77.87885, 0, 8.1365795)
 
-[node name="Sketchfab_Scene16" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene16" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999628, 0, -0.008499729, 0, 1, 0, 0.008499729, 0, -0.9999628, -71.88402, 0, 8.125804)
 
-[node name="Sketchfab_Scene17" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene17" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -65.90271, 0, 8.115053)
 
-[node name="Sketchfab_Scene18" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene18" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -59.91141, 0, 8.104282)
 
-[node name="Sketchfab_Scene19" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene19" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99996257, 0, -0.008499728, 0, 1, 0, 0.008499728, 0, -0.99996257, -53.930103, 0, 8.093529)
 
-[node name="Sketchfab_Scene20" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene20" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999629, 0, -0.00849973, 0, 1, 0, 0.00849973, 0, -0.9999629, -107.71556, 0, 8.250838)
 
-[node name="Sketchfab_Scene21" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene21" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999628, 0, -0.008499729, 0, 1, 0, 0.008499729, 0, -0.9999628, -101.720726, 0, 8.240062)
 
-[node name="Sketchfab_Scene22" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene22" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -95.7394, 0, 8.229307)
 
-[node name="Sketchfab_Scene23" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene23" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -89.748116, 0, 8.218541)
 
-[node name="Sketchfab_Scene24" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene24" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99996257, 0, -0.008499728, 0, 1, 0, 0.008499728, 0, -0.99996257, -83.766815, 0, 8.207787)
 
-[node name="Sketchfab_Scene25" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene25" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999629, 0, -0.00849973, 0, 1, 0, 0.00849973, 0, -0.9999629, -136.81061, 0, 8.250837)
 
-[node name="Sketchfab_Scene26" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene26" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999628, 0, -0.008499729, 0, 1, 0, 0.008499729, 0, -0.9999628, -130.81578, 0, 8.240061)
 
-[node name="Sketchfab_Scene27" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene27" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -124.83447, 0, 8.229305)
 
-[node name="Sketchfab_Scene28" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene28" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -118.843185, 0, 8.218539)
 
-[node name="Sketchfab_Scene29" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene30" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.9999629, 0, -0.00849973, 0, 1, 0, 0.00849973, 0, -0.9999629, -160.60817, 0, 8.250836)
+
+[node name="Sketchfab_Scene31" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.9999628, 0, -0.008499729, 0, 1, 0, 0.008499729, 0, -0.9999628, -154.61334, 0, 8.24006)
+
+[node name="Sketchfab_Scene32" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -148.63202, 0, 8.229304)
+
+[node name="Sketchfab_Scene33" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.9999627, 0, -0.0084997285, 0, 1, 0, 0.0084997285, 0, -0.9999627, -142.64075, 0, 8.218537)
+
+[node name="Sketchfab_Scene29" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.99996257, 0, -0.008499728, 0, 1, 0, 0.008499728, 0, -0.99996257, -112.86188, 0, 8.207785)
 
-[node name="Sketchfab_Scene14" parent="road_fence/StaticBody3D2" instance=ExtResource("9_hl8ri")]
+[node name="Sketchfab_Scene14" parent="road_fence/fences_right" instance=ExtResource("9_hl8ri")]
 transform = Transform3D(-0.91319615, 0, 0.40751705, 0, 1, 0, -0.40751705, 0, -0.91319615, -18.18241, 0, 8.175034)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/fences_right"]
 transform = Transform3D(0.9999688, 0, -1.5347723e-12, 0, 1, 0, 1.5347723e-12, 0, 0.9999688, -77.397896, 1.1196809, 8.077598)
 shape = SubResource("BoxShape3D_hl8ri")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/StaticBody3D2"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/fences_right"]
 transform = Transform3D(0.9143812, 0, -0.40485436, 0, 1, 0, 0.40485436, 0, 0.9143812, -15.331293, 0.8798523, 9.314682)
 shape = SubResource("BoxShape3D_0ysv7")
+
+[node name="fences_left2" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
+transform = Transform3D(0.99999976, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999976, 80.94531, 0, 3.0994415e-06)
+
+[node name="Sketchfab_Scene" parent="road_fence/fences_left2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Sketchfab_Scene2" parent="road_fence/fences_left2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.9999998, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.9999998, -5.981318, 0, -9.536743e-07)
+
+[node name="Sketchfab_Scene3" parent="road_fence/fences_left2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.99999964, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.99999964, -11.95727, 0, -1.66893e-06)
+
+[node name="Sketchfab_Scene4" parent="road_fence/fences_left2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.9999995, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 0.9999995, -17.938585, 0, -2.3841858e-06)
+
+[node name="Sketchfab_Scene5" parent="road_fence/fences_left2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(0.96509343, 0, -0.26190266, 0, 1, 0, 0.26190266, 0, 0.96509343, -23.892052, 0, -2.6226044e-06)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/fences_left2"]
+transform = Transform3D(0.9999704, 0, -5.8975047e-13, 0, 1, 0, 5.8975047e-13, 0, 0.9999704, -11.950264, 0.9768677, 0)
+shape = SubResource("BoxShape3D_guc75")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/fences_left2"]
+transform = Transform3D(0.97102374, 0, -0.23884763, 0, 1, 0, 0.23884763, 0, 0.97102374, -26.800812, 0.9859619, -0.6467731)
+shape = SubResource("BoxShape3D_djlq6")
+
+[node name="fences_right2" type="StaticBody3D" parent="road_fence" groups=["road_fence"]]
+
+[node name="Sketchfab_Scene9" parent="road_fence/fences_right2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.99999887, 0, -8.742265e-08, 0, 1, 0, 8.742265e-08, 0, -0.99999887, 62.63052, 0, 8.034778)
+
+[node name="Sketchfab_Scene10" parent="road_fence/fences_right2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.99999875, 0, -8.742265e-08, 0, 1, 0, 8.742265e-08, 0, -0.99999875, 68.6252, 0, 8.074956)
+
+[node name="Sketchfab_Scene11" parent="road_fence/fences_right2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.9999986, 0, -8.7422634e-08, 0, 1, 0, 8.7422634e-08, 0, -0.9999986, 74.606384, 0, 8.115045)
+
+[node name="Sketchfab_Scene19" parent="road_fence/fences_right2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.99996233, 0, -0.008499724, 0, 1, 0, 0.008499724, 0, -0.99996233, 56.63266, 0, 8.093528)
+
+[node name="Sketchfab_Scene20" parent="road_fence/fences_right2" instance=ExtResource("9_hl8ri")]
+transform = Transform3D(-0.97223705, 0, -0.2339878, 0, 1, 0, 0.2339878, 0, -0.97223705, 50.989876, 0, 9.468835)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="road_fence/fences_right2"]
+transform = Transform3D(0.99997556, 0, -3.872458e-13, 0, 1, 0, 3.872458e-13, 0, 0.99997556, 68.62984, 0.92271423, 8.157738)
+shape = SubResource("BoxShape3D_qn7tc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="road_fence/fences_right2"]
+transform = Transform3D(0.97791076, 0, 0.2088948, 0, 1, 0, -0.2088948, 0, 0.97791076, 53.84255, 0.92118835, 8.757567)
+shape = SubResource("BoxShape3D_r2xm2")
 
 [node name="SimpleGrassTextured" type="MultiMeshInstance3D" parent="."]
 multimesh = SubResource("MultiMesh_52iun")
@@ -388,3 +481,15 @@ metadata/SimpleGrassTextured = "2.0.5"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWalls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06854248, 0.97753906, 41.291588)
 shape = SubResource("BoxShape3D_exk3i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvisibleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14494324, 1.0675049, 104.41659)
+shape = SubResource("BoxShape3D_pckxb")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="InvisibleWalls"]
+transform = Transform3D(6.9864094e-05, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 6.9864094e-05, 100.298836, 1.0675049, -47.079422)
+shape = SubResource("BoxShape3D_pckxb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="InvisibleWalls"]
+transform = Transform3D(6.9864094e-05, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 6.9864094e-05, -106.62789, 1.0675049, -47.079422)
+shape = SubResource("BoxShape3D_pckxb")
