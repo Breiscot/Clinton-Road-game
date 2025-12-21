@@ -60,6 +60,10 @@ func _ready():
 #	play_ambient_sound()
 	
 	await get_tree().physics_frame
+	
+	var fences = get_tree().get_nodes_in_group("road_fence")
+	print("ALL FENCES IN GROUP")
+	print("Total fences: ", fences.size())
 	find_player()
 
 func setup_audio():
@@ -162,8 +166,16 @@ func process_flee_road(delta: float):
 	velocity.z = flee_direction.z * flee_speed
 	
 	if flee_direction.length() > 0.1:
-		var look_pos = global_position + flee_direction
-		look_at(Vector3(look_pos.x, global_position.y, look_pos.z))
+		var look_target = global_position + flee_direction
+		look_at(Vector3(look_target.x, global_position.y, look_target.z))
+		
+	if int(flee_timer * 2) % 1 == 0:
+		print("Fleeing.. Pos: ", global_position, " Dir: ", flee_direction, " Timer. ", flee_timer)
+		
+	# Controlla se siamo abbastanza lontani dalla strada
+	var distance_from_road = abs(global_position.x - road_center_x)
+	if distance_from_road > 10.0 and flee_timer < 2.0:
+		flee_timer = 0
 		
 	if flee_timer <= 0:
 		is_fleeing_road = false
