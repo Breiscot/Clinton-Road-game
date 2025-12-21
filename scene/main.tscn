@@ -59,6 +59,7 @@ navigation_mesh = SubResource("NavigationMesh_brvut")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
 mesh = SubResource("PlaneMesh_0ha60")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
