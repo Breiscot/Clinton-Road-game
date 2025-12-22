@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqox571gk3uh0"]
+[gd_scene load_steps=15 format=3 uid="uid://cqox571gk3uh0"]
 
 [ext_resource type="Script" uid="uid://bq7r5vdm8vhm6" path="res://scripts/crashed_car.gd" id="1_f3tam"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_jeyka"]
@@ -71,6 +71,9 @@ material = SubResource("StandardMaterial3D_jeyka")
 [sub_resource type="BoxShape3D" id="BoxShape3D_f3tam"]
 size = Vector3(2.0399551, 1.335083, 5.6000233)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3k7xg"]
+size = Vector3(3, 2, 2)
+
 [node name="CrashedCar" type="Node3D"]
 script = ExtResource("1_f3tam")
 
@@ -136,3 +139,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9029451, -0.16442645, 5.44
 light_color = Color(1, 0.44705883, 0, 1)
 
 [node name="InteractionArea" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+shape = SubResource("BoxShape3D_3k7xg")
+
+[node name="InteractionPrompt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+
+[node name="Label3D" type="Label3D" parent="InteractionPrompt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3035543, -1.0672469, 0.51750183)
+billboard = 1
+no_depth_test = true
+text = "[E] Repair Car"
