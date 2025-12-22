@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ee365iefwnw"]
+
+[ext_resource type="PackedScene" uid="uid://02t22lloio1e" path="res://models/collectibles/battery.glb" id="1_85elb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_85elb"]
+radius = 1.0
+
+[node name="CollectiblePart" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="MeshInstance3D" instance=ExtResource("1_85elb")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_85elb")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "[E] Pick Up"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.8, 0, 1)
+light_energy = 0.5
+omni_range = 3.0
