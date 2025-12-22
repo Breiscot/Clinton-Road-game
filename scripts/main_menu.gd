@@ -112,12 +112,64 @@ func _on_play_pressed():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(func():
-		if game_scene:
-			get_tree().change_scene_to_packed(game_scene)
-		else:
-			get_tree().change_scene_to_file("res://scene/main.tscn")
+		show_loading_screen()
 	)
 
+func show_loading_screen():
+	# Carica la schermata di caricamento
+	var loading_scene = load("res://scene/ui/loading_screen.tscn")
+	var loading_screen = loading_scene.instantiate()
+	
+	get_tree().root.add_child(loading_screen)
+	
+	# Rimuovi il menu
+	queue_free()
+	
+	loading_screen.load_scene("res://scene/main.tscn")
+	
+func load_game_scene(loading_screen: Control):
+	var progress_bar = loading_screen.get_node("VBoxContainer/ProgressBar") as ProgressBar
+	var scene_path := "res://scene/main.tscn"
+	
+	var error = ResourceLoader.load_threaded_request(scene_path)
+	
+	if error != OK:
+		loading_screen.queue_free()
+		get_tree().change_scene_to_file(scene_path)
+		return
+		
+	var load_progress := []
+	var scene_load_status := 0
+	
+	while true:
+		scene_load_status = ResourceLoader.load_threaded_get_status(scene_path, load_progress)
+		
+		if load_progress.size() > 0 and progress_bar:
+			progress_bar.value = load_progress[0] * 100
+			
+		match scene_load_status:
+			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				await get_tree().process_frame
+				
+			ResourceLoader.THREAD_LOAD_LOADED:
+				if progress_bar:
+					progress_bar.value = 100
+				# Aspetta un attimo	
+				await  get_tree().create_timer(0.3).timeout
+				# Scena caricata
+				var loaded_scene = ResourceLoader.load_threaded_get(scene_path)
+				# Rimuovi loading screen
+				loading_screen.queue_free()
+				await get_tree().process_frame
+				# Cambia scena
+				get_tree().change_scene_to_packed(loaded_scene)
+				return
+				
+			ResourceLoader.THREAD_LOAD_FAILED:
+				loading_screen.queue_free()
+				get_tree().change_scene_to_file(scene_path)
+				return
+				
 func _on_options_pressed():
 	print("Options button clicked")
 	print("options_menu exists: ", options_menu != null)

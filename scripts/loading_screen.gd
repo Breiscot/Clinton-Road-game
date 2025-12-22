@@ -8,9 +8,22 @@ var scene_to_load: String = ""
 var loader: ResourceLoader
 var load_progress: Array = []
 var scene_load_status := 0
+var scene_loaded := false
 
 func _ready():
 	animate_title()
+	style_progress_bar()
+	
+func style_progress_bar():
+	var bg_style := StyleBoxFlat.new()
+	bg_style.bg_color = Color(0.1, 0.1, 0.1)
+	bg_style.set_corner_radius_all(5)
+	progress_bar.add_theme_stylebox_override("background", bg_style)
+	
+	var fill_style := StyleBoxFlat.new()
+	fill_style.bg_color = Color(0.8, 0.2, 0.2)
+	fill_style.set_corner_radius_all(5)
+	progress_bar.add_theme_stylebox_override("fill", fill_style)
 	
 func animate_title():
 	var tween = create_tween()
@@ -36,25 +49,24 @@ func _process(delta):
 	if scene_to_load == "":
 		return
 		
-	# Controlla progresso caricamento
-	scene_load_status = ResourceLoader.load_threaded_get_status(scene_to_load, load_progress)
+	if scene_loaded:
+		return
+		
+	var status = ResourceLoader.load_threaded_get_status(scene_to_load, load_progress)
 	
 	# ProgressBar
-	if load_progress.size() > 0:
-		var progress = load_progress[0] * 100
-		progress_bar.value = lerp(progress_bar.value, progress, delta * 10)
+	if load_progress.size() > 0 and progress_bar:
+		progress_bar.value = load_progress[0] * 100
 		
-	match scene_load_status:
-		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			pass
-		ResourceLoader.THREAD_LOAD_LOADED:
-			progress_bar.value = 100
-			title_label.text = "Compleated.."
-			
-			await get_tree().create_timer(0.5).timeout
-			
-			var loaded_scene = ResourceLoader.load_threaded_get(scene_to_load)
-			get_tree().change_scene_to_packed(loaded_scene)
-			
-		ResourceLoader.THREAD_LOAD_FAILED:
-			print("Failed to load")
+	if status == ResourceLoader.THREAD_LOAD_LOADED:
+		scene_loaded = true
+		finish_loading()
+		
+func finish_loading():
+	if progress_bar:
+		progress_bar.value = 100
+	if title_label:
+		title_label.text = "Compleated.."
+		
+	queue_free()
+	get_tree().change_scene_to_file(scene_to_load)
