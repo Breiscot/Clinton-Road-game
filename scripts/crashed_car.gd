@@ -183,4 +183,107 @@ func update_headlight_flicker(delta):
 			headlight_left.light_energy = 0.0
 			
 func update_prompt():
+	if interaction_prompt == null:
+		return
+		
+	# Mostra/Nascondi prompt
+	interaction_prompt.visible = player_in_range
 	
+	# Aggiorna testo
+	if prompt_label:
+		prompt_label.text = get_prompt_text()
+		
+		# Colore in base allo stato
+		if collected_parts >= required_parts:
+			prompt_label.modulate = Color(0.2, 1.0, 0.2)
+		else:
+			prompt_label.modulate = Color(1.0, 0.5, 0.2)
+			
+func _input(event):
+	if not player_in_range:
+		return
+		
+	if event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E):
+		try_interact()
+		
+func try_interact():
+	print("Parts: ", collected_parts, "/", required_parts)
+	
+	if car_repaired:
+		escape_victory()
+	elif collected_parts >= required_parts:
+		repair_car()
+	else:
+		show_missing_parts_message()
+		
+func show_missing_parts_message():
+	var missing := required_parts - collected_parts
+	print("Need ", missing, " more parts")
+	
+	var missing_parts := []
+	if not parts_collected["battery"]:
+		missing_parts.append("Battery")
+	if not parts_collected["fuel"]:
+		missing_parts.append("Fuel Can")
+	if not parts_collected["spark_plug"]:
+		missing_parts.append("Spark Plug")
+		
+	print("Missing: ", missing_parts)
+	
+	# Aggiungi paura per frustazione
+	if player_ref and player_ref.has_method("add_fear"):
+		player_ref.add_fear(5.0)
+		
+func repair_car():
+	car_repaired = true
+	
+	# Ferma il fumo
+	if smoke_particles:
+		smoke.emitting = false
+		
+	# Emetti segnale
+	car_repaired_signal.emit()
+	
+	# Aggiorna prompt
+	if prompt_label:
+		prompt_label.text = "[E] ESCAPE!"
+		prompt_label.modulate = Color(0.2, 1.0, 0.2)
+		
+	print("Car repaired! Press E to escape!")
+	
+func escape_victory():
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
+	
+# Raccolta parti
+func add_part(part_id: String):
+	if parts_collected.has(part_id) and not parts_collected[part_id]:
+		parts_collected[part_id] = true
+		collected_parts += 1
+		
+		var part_name = part_id.replace("_", " ").capitalize()
+		print("Collected: ", part_name, " (", collected_parts, "/", required_parts, ")")
+		
+		part_collected.emit(part_name, collected_parts, required_parts)
+		
+		return true
+	return false
+	
+func has_all_parts() -> bool:
+	return collected_parts >= required_parts
+	
+# Segnali
+
+func _on_interaction_area_entered(body: Node3D):
+	if body.is_in_group("player"):
+		print("Player entered car interaction area")
+		player_in_range = true
+		player_ref = body
+		interaction_availble.emit(true)
+		
+func _on_interaction_area_exited(body: Node3D):
+	if body.is_in_group("player"):
+		print("Player left car interaction area")
+		player_in_range = false
+		player_ref = null
+		interaction_availble.emit(false)
