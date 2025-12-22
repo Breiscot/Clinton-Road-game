@@ -1,23 +1,63 @@
 extends Node3D
 
-@onready var headlight_left := $Headlights/HeadlightLeft
-@onready var hazard_left := $Hazardlights/HazardLeft
-@onready var hazard_right := $Hazardlights/HazardRight
+# Particelle
+var smoke_particles: GPUParticles3D = null
+var glass_particles: GPUParticles3D = null
+
+# Luci
+@onready var headlight_left := $Headlights/HeadlightLeft if has_node("Headlights/HeadlightLeft") else null
+@onready var hazard_left := $Hazardlights/HazardLeft if has_node("Hazardlights/HazardLeft") else null
+@onready var hazard_right := $Hazardlights/HazardRight if has_node("Hazardlights/HazardRight") else null
+
+# Fumo
 @onready var smoke := $SmokeParticles
 
-var smoke_particles: GPUParticles3D = null
+# Interazione
+var interaction_area: Area3D = null
+var interaction_prompt: Node3D = null
+var prompt_label: Label3D = null
+var player_in_range := false
+var player_ref: CharacterBody3D = null
 
+# Sistema Riparazione
+var required_parts := 3
+var collected_parts := 0
+var part_names := ["Battery", "Fuel Can", "Spark Plug"]
+var parts_collected := {
+	"battery":  false,
+	"fuel": false,
+	"spark plug": false
+}
+var car_repaired := false
+
+# Timer luci
 var hazard_timer := 0.0
 var hazard_on := false
 var headlight_flicker_timer := 0.0
 
-func _ready():
-	setup_car_damage()
-	start_effects()
+# Segnali
+signal car_repaired_signal
+signal part_collected(part_name: String, total: int, required: int)
+signal interaction_availble(availble: bool)
 
+func _ready():
+	add_to_group("crashed_car")
+	
+	setup_car_damage()
+	setup_smoke_particles()
+	setup_interaction_area()
+	setup_interaction_prompt()
+	start_effects()
+	
+	print("Crashed car ready")
+	print("Parts needed: ", required_parts)
+	
 func setup_car_damage():
 	# Posiziona la testa fuori strada
 	position.x += 2.5
+	
+func setup_smoke_particles():
+	
 
 func start_effects():
 	# Fumo che esce dal motore
