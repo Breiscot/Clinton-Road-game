@@ -26,7 +26,7 @@ var part_names := ["Battery", "Fuel Can", "Spark Plug"]
 var parts_collected := {
 	"battery":  false,
 	"fuel": false,
-	"spark plug": false
+	"spark_plug": false
 }
 var car_repaired := false
 
@@ -159,6 +159,9 @@ func _process(delta):
 	update_prompt()
 
 func update_hazard_lights(delta):
+	if hazard_left == null or hazard_right == null:
+		return
+		
 	hazard_timer += delta
 	if hazard_timer >= 0.8:
 		hazard_timer = 0.0
@@ -172,6 +175,9 @@ func update_hazard_lights(delta):
 			hazard_right.light_color = Color(1.0, 0.5, 0.0)
 
 func update_headlight_flicker(delta):
+	if headlight_left == null:
+		return
+		
 	headlight_flicker_timer += delta
 
 	# Faro sinistro danneggiato che lampeggia
@@ -239,7 +245,7 @@ func repair_car():
 	
 	# Ferma il fumo
 	if smoke_particles:
-		smoke.emitting = false
+		smoke_particles.emitting = false
 		
 	# Emetti segnale
 	car_repaired_signal.emit()

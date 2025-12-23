@@ -5,7 +5,7 @@ extends Area3D
 
 @onready var mesh := $MeshInstance3D
 @onready var label := $Label3D
-@onready var light := OmniLight3D if has_node("OmniLight3D") else null
+@onready var light := $OmniLight3D if has_node("OmniLight3D") else null
 
 var player_in_range := false
 var player_ref: CharacterBody3D = null
