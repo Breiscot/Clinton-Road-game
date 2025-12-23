@@ -48,3 +48,60 @@ func apply_part_color():
 			mat.emission_enabled = true
 			mat.emission = Color(0.3, 0.3, 0.1)
 			
+	mat.emission_energy_multiplier = 0.5
+	
+	if mesh:
+		mesh.material_override = mat
+		
+func _process(delta):
+	if is_collected:
+		return
+		
+	# Animazione fluttuante
+	float_time += delta
+	position.y = base_y + sin(float_time * 2) * 0.1
+	
+	# Rotazione lenta
+	rotation.y += delta * 0.5
+	
+	# Mostra/Nascondi label
+	if label:
+		label.visible = player_in_range
+		
+	# Luce pulsa
+	if light:
+		light.light_energy = 0.3 + sin(float_time * 3) * 0.2
+		
+func _input(event):
+	if not player_in_range or is_collected:
+		return
+		
+	if event.is_action_pressed("interact") or (event is InputEventKey and event.pressed and event.keycode == KEY_E):
+		collect()
+		
+func collect():
+	print("Collecting: ", part_display_name)
+	is_collected = true
+	
+	# Aggiungi la parte alla macchina
+	var car = get_tree().get_first_node_in_group("crashed_car")
+	if car and car.has_method("add_part"):
+		car.add_part(part_id)
+		
+	# Animazione raccolta
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector3.ZERO, 0.3)
+	tween.parallel().tween_property(self, "position:y", position.y + 2, 0.3)
+	tween.tween_callback(func():
+		queue_free()
+	)
+	
+func _on_body_entered(body: Node3D):
+	if body.is_in_group("player"):
+		player_in_range = true
+		player_ref = body
+		
+func _on_body_exited(body: Node3D):
+	if body.is_in_group("player"):
+		player_in_range = false
+		player_ref = null
