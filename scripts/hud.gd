@@ -70,6 +70,25 @@ func update_parts_display():
 		if parts.get("battery", false):
 			battery_label.text = "[X] Battery"
 			battery_label.modulate = Color(0.2, 1.0, 0.2)
+		else:
+			battery_label.text = "[ ] Battery"
+			battery_label.modulate = Color(1.0, 1.0, 1.0)
+			
+	if fuel_label:
+		if parts.get("fuel", false):
+			fuel_label.text = "[X] Fuel Can"
+			fuel_label.modulate = Color(0.2, 1.0, 0.2)
+		else:
+			fuel_label.text = "[ ] Fuel Can"
+			fuel_label.modulate = Color(1.0, 1.0, 1.0)
+			
+	if spark_plug_label:
+		if parts.get("spark_plug", false):
+			spark_plug_label.text = "[X] Spark Plug"
+			spark_plug_label.modulate = Color(0.2, 1.0, 0.2)
+		else:
+			spark_plug_label.text = "[ ] Spark Plug"
+			spark_plug_label.modulate = Color(1.0, 1.0, 1.0)
 
 func find_player():
 	var players = get_tree().get_nodes_in_group("player")
