@@ -152,4 +152,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3035543, -1.0672469, 0.51750183)
 billboard = 1
 no_depth_test = true
-text = "[E] Repair Car"

@@ -44,7 +44,7 @@ func _ready():
 	add_to_group("crashed_car")
 	
 	setup_car_damage()
-	setup_smoke_particles()
+	#setup_smoke_particles()
 	setup_interaction_area()
 	setup_interaction_prompt()
 	start_effects()
@@ -123,7 +123,7 @@ func setup_interaction_area():
 func setup_interaction_prompt():
 	interaction_prompt = Node3D.new()
 	interaction_prompt.name = "InteractionPrompt"
-	interaction_prompt.position = Vector3(0, 2.5, 2.5)
+	interaction_prompt.position = Vector3(1, 1.0, 2.5)
 	
 	prompt_label = Label3D.new()
 	prompt_label.text = get_prompt_text()
@@ -140,7 +140,7 @@ func setup_interaction_prompt():
 	# Nascondi all'inizio
 	interaction_prompt.visible = false
 		
-func get_prompt_text():
+func get_prompt_text() -> String:
 	if car_repaired:
 		return "[E] Escape!"
 	elif collected_parts >= required_parts:
@@ -150,8 +150,8 @@ func get_prompt_text():
 
 func start_effects():
 	# Fumo che esce dal motore
-	if smoke_particles:
-		smoke_particles.emitting = true
+	if smoke:
+		smoke.emitting = true
 
 func _process(delta):
 	update_hazard_lights(delta)
@@ -200,7 +200,9 @@ func update_prompt():
 		prompt_label.text = get_prompt_text()
 		
 		# Colore in base allo stato
-		if collected_parts >= required_parts:
+		if car_repaired:
+			prompt_label.modulate = Color(0.2, 1.0, 0.2)
+		elif collected_parts >= required_parts:
 			prompt_label.modulate = Color(0.2, 1.0, 0.2)
 		else:
 			prompt_label.modulate = Color(1.0, 0.5, 0.2)
@@ -244,16 +246,11 @@ func repair_car():
 	car_repaired = true
 	
 	# Ferma il fumo
-	if smoke_particles:
-		smoke_particles.emitting = false
+	if smoke:
+		smoke.emitting = false
 		
 	# Emetti segnale
 	car_repaired_signal.emit()
-	
-	# Aggiorna prompt
-	if prompt_label:
-		prompt_label.text = "[E] ESCAPE!"
-		prompt_label.modulate = Color(0.2, 1.0, 0.2)
 		
 	print("Car repaired! Press E to escape!")
 	
