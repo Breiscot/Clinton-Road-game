@@ -12,6 +12,13 @@ extends Control
 
 @onready var damage_overlay := $DamageOverlay
 
+@onready var parts_container := $PartsContainer
+@onready var battery_label := $PartsContainer/BatteryLabel
+@onready var fuel_label := $PartsContainer/FuelLabel
+@onready var spark_plug_label := $PartsContainer/SparkPlugLabel
+
+var car: Node3D = null
+
 var player: CharacterBody3D = null
 
 # Colori
@@ -35,8 +42,35 @@ func _ready():
 	# Overlay invisibile
 	damage_overlay.modulate.a = 0
 	
+	find_car()
+	
 	print("HUD ready")
 	
+func find_car():
+	car = get_tree().get_first_node_in_group("crashed_car")
+	if car:
+		if car.has_signal("part_collected"):
+			car.part_collected.connect(_on_part_collected)
+		print("HUD: Car found")
+	
+func _on_part_collected(part_name: String, total: int, required: int):
+	print("HUD: Collected ", part_name)
+	update_parts_display()
+	
+func update_parts_display():
+	if car == null:
+		return
+		
+	if not "parts_collected" in car:
+		return
+		
+	var parts = car.parts_collected
+	
+	if battery_label:
+		if parts.get("battery", false):
+			battery_label.text = "[X] Battery"
+			battery_label.modulate = Color(0.2, 1.0, 0.2)
+
 func find_player():
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:

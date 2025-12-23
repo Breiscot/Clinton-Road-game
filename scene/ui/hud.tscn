@@ -103,3 +103,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.3647059, 0, 0, 1)
+
+[node name="PartsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+pivot_offset = Vector2(-220, 20)
+
+[node name="PartsTitle" type="Label" parent="PartsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CAR PARTS"
+
+[node name="BatteryLabel" type="Label" parent="PartsContainer"]
+layout_mode = 2
+text = "[ ] Battery"
+
+[node name="FuelLabel" type="Label" parent="PartsContainer"]
+layout_mode = 2
+text = "[ ] Fuel Can"
+
+[node name="SparkPlugLabel" type="Label" parent="PartsContainer"]
+layout_mode = 2
+text = "[ ] Spark Plug"
