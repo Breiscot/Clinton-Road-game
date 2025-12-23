@@ -82,14 +82,14 @@ script = ExtResource("9_b5f6u")
 [node name="Collectibles" type="Node3D" parent="."]
 
 [node name="Battery" parent="Collectibles" instance=ExtResource("10_tqoya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 30)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.8, 30)
 
 [node name="FuelCan" parent="Collectibles" instance=ExtResource("10_tqoya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0.8, 15)
 part_id = "fuel"
 part_display_name = "Fuel Can"
 
 [node name="SparkPlug" parent="Collectibles" instance=ExtResource("10_tqoya")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.375, 1, -82.872)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.375, 0.8, -82.872)
 part_id = "spark_plug"
 part_display_name = "Spark Plug"

@@ -30,6 +30,7 @@ func _ready():
 		
 	# Colore in base tipo
 	apply_part_color()
+	load_part_model()
 	
 func apply_part_color():
 	var mat := StandardMaterial3D.new()
@@ -52,6 +53,32 @@ func apply_part_color():
 	
 	if mesh:
 		mesh.material_override = mat
+		
+func load_part_model():
+	var model_path := ""
+	var model_scale := Vector3(1, 1, 1)
+	
+	match part_id:
+		"battery":
+			model_path = "res://models/collectibles/battery.glb"
+			model_scale = Vector3(0.01, 0.01, 0.01)
+		"fuel":
+			model_path = "res://models/collectibles/fuel_can_2k.glb"
+			model_scale = Vector3(1, 1, 1)
+		"spark_plug":
+			model_path = "res://models/collectibles/spark_plug.glb"
+			model_scale = Vector3(1, 1, 1)
+			
+	if model_path != "" and ResourceLoader.exists(model_path):
+		var model_scene = load(model_path)
+		if model_scene:
+			var model = model_scene.instantiate()
+			model.scale = model_scale
+			
+			if mesh:
+				mesh.queue_free()
+				
+			add_child(model)
 		
 func _process(delta):
 	if is_collected:

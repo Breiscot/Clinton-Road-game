@@ -134,6 +134,9 @@ func _process(delta):
 		find_player()
 		return
 		
+	if car == null:
+		find_car()
+		
 	update_stamina_bar()
 	update_flash_bar()
 	update_fear_bar()
