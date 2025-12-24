@@ -21,6 +21,8 @@ extends Control
 @onready var jumpscare_image := $JumpscareImage
 @onready var jumpscare_sound := $JumpscareSound
 
+@onready var message_label := $MessageContainer/MessageLabel
+
 var car: Node3D = null
 
 var player: CharacterBody3D = null
@@ -48,6 +50,8 @@ func _ready():
 	damage_overlay.modulate.a = 0
 	
 	find_car()
+	# Messaggio iniziale
+	show_intro_message()
 	
 	print("HUD ready")
 	
@@ -57,6 +61,10 @@ func find_car():
 		if car.has_signal("part_collected"):
 			car.part_collected.connect(_on_part_collected)
 		print("HUD: Car found")
+		
+func show_intro_message():
+	await get_tree().create_timer(1.0).timeout
+	show_message("I need to find a way out of here...", 4.0)
 	
 func _on_part_collected(part_name: String, total: int, required: int):
 	print("HUD: Collected ", part_name)
@@ -250,16 +258,14 @@ func show_jumpscare():
 	# Mostra immagine mostro
 	if jumpscare_image:
 		jumpscare_image.visible = true
-		jumpscare_image.modulate.a = 0
-		
-		# Fade in veloce dell'immagine
-		var tween = create_tween()
-		tween.tween_property(jumpscare_image, "modulate:a", 1.0, 0.1)
+		jumpscare_image.modulate.a = 1.0
 		
 		# Shake dell'immagine
+		var tween = create_tween()
 		tween.tween_property(jumpscare_image, "position:x", 20.0, 0.05)
 		tween.tween_property(jumpscare_image, "position:x", -20.0, 0.05)
 		tween.tween_property(jumpscare_image, "position:x", 10.0, 0.05)
+		tween.tween_property(jumpscare_image, "position:x", -10.0, 0.05)
 		tween.tween_property(jumpscare_image, "position:x", 0.0, 0.05)
 		
 	# Suono
@@ -269,8 +275,25 @@ func show_jumpscare():
 	# Dopo qualche secondo, Fade Out e restart
 	await get_tree().create_timer(1.5).timeout
 	
-	var tween2 = create_tween()
-	tween2.tween_property(jumpscare_overlay, "modulate:a", 0.0, 0.5)
-	tween2.tween_callback(func():
-		get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
+		
+func show_message(text: String, duration: float = 3.0):
+	if message_label == null:
+		return
+		
+	message_label.text = text
+	message_label.visible = true
+	message_label.modulate.a = 0
+	
+	# Fade In
+	var tween = create_tween()
+	tween.tween_property(message_label, "modulate:a", 1.0, 0.5)
+	
+	# Aspetta
+	tween.tween_interval(duration)
+	
+	# Fade Out
+	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func():
+		message_label.visible = false
 		)
