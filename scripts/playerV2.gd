@@ -252,7 +252,7 @@ func start_crouch():
 	
 	if collision_shape and collision_shape.shape is CapsuleShape3D:
 		collision_shape.shape.height = crouch_height
-		collision_shape.shape.position.y = crouch_height / 2
+		collision_shape.position.y = crouch_height / 2
 		
 	# Abbassa la testa
 	if head:

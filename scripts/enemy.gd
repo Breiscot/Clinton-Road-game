@@ -401,8 +401,12 @@ func can_see_player() -> bool:
 		return false
 	# Calcola la distanza
 	var distance = global_position.distance_to(player.global_position)
-	# Se troppo lontano non vede
-	if distance > detection_range:
+	# Range ridotto se il player é accovacciato
+	var effective_range = detection_range
+	if player.has_method("is_crouching") or "is_crouching" in player:
+		if player.is_crouching:
+			effective_range = detection_range * 0.5
+	if distance > effective_range:
 		return false
 	# Raycast per vedere ostacoli
 	var space_state = get_world_3d().direct_space_state
