@@ -10,13 +10,13 @@ enum State {
 	FLEE_ROAD
 }
 
-@export var patrol_speed := 2.0
-@export var chase_speed := 4.5
+@export var patrol_speed := 3.0
+@export var chase_speed := 6.0
 @export var attack_damage := 100.0
-@export var attack_cooldown := 0.5
-@export var detection_range := 15.0
+@export var attack_cooldown := 0.8
+@export var detection_range := 20.0
 @export var attack_range := 2.5
-@export var lose_interest_time := 5.0
+@export var lose_interest_time := 15.0
 
 @onready var nav_agent := $NavigationAgent3D
 @onready var attack_area := $AttackArea
@@ -299,9 +299,9 @@ func process_chase(delta):
 		search_timer = 0.0
 	else:
 		search_timer += delta
-		# Se é lontano non lo vede
-		if search_timer > lose_interest_time and distance > detection_range:
-			change_state(State.SEARCH)
+		if search_timer > lose_interest_time:
+			last_known_player_position = player.global_position
+			search_timer = 0
 			return
 
 	# Se abbastanza vicino per attaccare
@@ -448,7 +448,7 @@ func change_state(new_state: State):
 #			audio.stream = sound_chase
 #			audio.play()
 			if player and player.has_method("add_fear"):
-				player.add_fear(20.0) # Paura iniziale
+				player.add_fear(40.0) # Paura iniziale
 		State.SEARCH:
 			search_timer = 0.0
 		State.ATTACK:
