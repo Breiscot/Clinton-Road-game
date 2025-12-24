@@ -17,6 +17,10 @@ extends Control
 @onready var fuel_label := $PartsContainer/FuelLabel
 @onready var spark_plug_label := $PartsContainer/SparkPlugLabel
 
+@onready var jumpscare_overlay := $JumpscareOverlay
+@onready var jumpscare_image := $JumpscareImage
+@onready var jumpscare_sound := $JumpscareSound
+
 var car: Node3D = null
 
 var player: CharacterBody3D = null
@@ -29,6 +33,7 @@ var flash_charging_color := Color(0.3, 0.3, 0.3)
 var fear_color := Color(0.6, 0.0, 0.0)
 
 func _ready():
+	add_to_group("hud")
 	# Trova il player
 	await get_tree().physics_frame
 	find_player()
@@ -233,3 +238,39 @@ func pulse_fear():
 	var tween = create_tween()
 	fear_container.scale = Vector2(1.2, 1.2)
 	tween.tween_property(fear_container, "scale", Vector2.ONE, 0.2)
+	
+func show_jumpscare():
+	if jumpscare_overlay == null:
+		return
+		
+	# Mostra Overlay nero
+	jumpscare_overlay.visible = true
+	jumpscare_overlay.modulate.a = 1.0
+	
+	# Mostra immagine mostro
+	if jumpscare_image:
+		jumpscare_image.visible = true
+		jumpscare_image.modulate.a = 0
+		
+		# Fade in veloce dell'immagine
+		var tween = create_tween()
+		tween.tween_property(jumpscare_image, "modulate:a", 1.0, 0.1)
+		
+		# Shake dell'immagine
+		tween.tween_property(jumpscare_image, "position:x", 20.0, 0.05)
+		tween.tween_property(jumpscare_image, "position:x", -20.0, 0.05)
+		tween.tween_property(jumpscare_image, "position:x", 10.0, 0.05)
+		tween.tween_property(jumpscare_image, "position:x", 0.0, 0.05)
+		
+	# Suono
+	if jumpscare_sound and jumpscare_sound.stream:
+		jumpscare_sound.play()
+		
+	# Dopo qualche secondo, Fade Out e restart
+	await get_tree().create_timer(1.5).timeout
+	
+	var tween2 = create_tween()
+	tween2.tween_property(jumpscare_overlay, "modulate:a", 0.0, 0.5)
+	tween2.tween_callback(func():
+		get_tree().reload_current_scene()
+		)

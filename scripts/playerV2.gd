@@ -380,10 +380,18 @@ func take_damage(amount: float):
 	is_dead = true
 	# Blocca il player
 	set_physics_process(false)
-	# Aspetta un momento e ricarica
-	await get_tree().create_timer(1.5).timeout
-	# Ricarica la scena
-	get_tree().reload_current_scene()
+	set_process_unhandled_input(false)
+	
+	# Jumpscare HUD
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud and hud.has_method("show_jumpscare"):
+		hud.show_jumpscare()
+	else:
+		# Fallback non c'è hud
+		# Aspetta un momento e ricarica
+		await get_tree().create_timer(1.5).timeout
+		# Ricarica la scena
+		get_tree().reload_current_scene()
 	
 func die():
 	take_damage(100)
