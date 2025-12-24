@@ -96,6 +96,7 @@ draw_pass_1 = SubResource("BoxMesh_3k7xg")
 
 [node name="SmokeParticles" type="GPUParticles3D" parent="StaticBody3D/CarBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32886147, 2.3308077)
+visible = false
 amount = 50
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_jeyka")

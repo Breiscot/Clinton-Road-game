@@ -9,9 +9,6 @@ var glass_particles: GPUParticles3D = null
 @onready var hazard_left := $Hazardlights/HazardLeft if has_node("Hazardlights/HazardLeft") else null
 @onready var hazard_right := $Hazardlights/HazardRight if has_node("Hazardlights/HazardRight") else null
 
-# Fumo
-@onready var smoke := $SmokeParticles
-
 # Interazione
 var interaction_area: Area3D = null
 var interaction_prompt: Node3D = null
@@ -44,7 +41,7 @@ func _ready():
 	add_to_group("crashed_car")
 	
 	setup_car_damage()
-	#setup_smoke_particles()
+	setup_smoke_particles()
 	setup_interaction_area()
 	setup_interaction_prompt()
 	start_effects()
@@ -62,7 +59,7 @@ func setup_smoke_particles():
 	smoke_particles.amount = 50
 	smoke_particles.lifetime = 3.0
 	smoke_particles.emitting = true
-	smoke_particles.position = Vector3(0, 1.2, 0.8)
+	smoke_particles.position = Vector3(0, 0.5, 1.8)
 	
 	var smoke_mat := ParticleProcessMaterial.new()
 	smoke_mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
@@ -150,8 +147,8 @@ func get_prompt_text() -> String:
 
 func start_effects():
 	# Fumo che esce dal motore
-	if smoke:
-		smoke.emitting = true
+	if smoke_particles:
+		smoke_particles.emitting = true
 
 func _process(delta):
 	update_hazard_lights(delta)
@@ -245,9 +242,11 @@ func show_missing_parts_message():
 func repair_car():
 	car_repaired = true
 	
+	print(" Repairing Car..")
+	
 	# Ferma il fumo
-	if smoke:
-		smoke.emitting = false
+	if smoke_particles:
+		smoke_particles.emitting = false
 		
 	# Emetti segnale
 	car_repaired_signal.emit()
