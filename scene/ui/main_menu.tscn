@@ -191,3 +191,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "BACK"
+
+[node name="GithubLink" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 120.0
+grow_vertical = 0
+text = "View on GitHub"
+uri = "https://github.com/Breiscot/Clinton-Road-game"
