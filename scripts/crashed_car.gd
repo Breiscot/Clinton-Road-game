@@ -268,9 +268,17 @@ func add_part(part_id: String):
 		
 		part_collected.emit(part_name, collected_parts, required_parts)
 		
+		if collected_parts >= required_parts:
+			show_all_parts_message()
+			
 		return true
 	return false
 	
+func show_all_parts_message():
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud and hud.has_method("show_message"):
+		hud.show_message("Finally I got a way out of here, I'll return back to my car", 4.0)
+		
 func has_all_parts() -> bool:
 	return collected_parts >= required_parts
 	
