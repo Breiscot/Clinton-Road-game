@@ -146,9 +146,11 @@ func _physics_process(delta):
 		stop_crouch()
 		
 	# Velocità in base allo stato
+	var wants_to_run = Input.is_key_pressed(KEY_SHIFT) or Input.is_action_pressed("run")
+	
 	if is_crouching:
 		current_speed = crouch_speed
-	elif Input.is_key_pressed(KEY_SHIFT) or Input.is_action_pressed("run"):
+	elif wants_to_run and can_run and stamina > 0:
 		current_speed = run_speed
 	else:
 		current_speed = walk_speed

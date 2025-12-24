@@ -482,9 +482,7 @@ func change_state(new_state: State):
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
-		if current_state == State.CHASE:
-			last_known_player_position = player.global_position
-			change_state(State.SEARCH)
+		change_state(State.SEARCH)
 
 # Nemico stordito
 func stun(duration: float):
