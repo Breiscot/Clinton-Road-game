@@ -5,6 +5,12 @@ extends CharacterBody3D
 @export var run_speed := 5.5
 @export var mouse_sensitivity := 0.002
 @export var jump_force := 4.5
+@export var crouch_speed := 1.5
+var is_crouching := false
+var default_height := 1.8
+var crouch_height := 0.9
+var default_head_y := 0.8
+var crouch_head_y := 0.3
 
 # Stamina
 @export var max_stamina := 100.0
@@ -29,6 +35,7 @@ var can_flash := true
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var flashlight: SpotLight3D = $Head/Flashlight
+@onready var collision_shape := $CollisionShape3D
 
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_speed := 3.0
@@ -130,9 +137,18 @@ func _physics_process(delta):
 		velocity.y = jump_force
 		print("Jump")
 
-	# Corsa
-	var wants_to_run = Input.is_key_pressed(KEY_SHIFT) or Input.is_action_pressed("run")
-	if wants_to_run and can_run and stamina > 0:
+	# Accovacciamento
+	var wants_to_crouch = Input.is_key_pressed(KEY_CTRL) or Input.is_action_pressed("crouch")
+	
+	if wants_to_crouch:
+		start_crouch()
+	else:
+		stop_crouch()
+		
+	# Velocità in base allo stato
+	if is_crouching:
+		current_speed = crouch_speed
+	elif Input.is_key_pressed(KEY_SHIFT) or Input.is_action_pressed("run"):
 		current_speed = run_speed
 	else:
 		current_speed = walk_speed
@@ -227,6 +243,54 @@ func apply_fear_effects(delta: float):
 	if fear_percent > 0.5:
 		var breath = sin(shake_time * 2) * 0.01 * fear_percent
 		head.position.y = 0.8 + breath
+		
+func start_crouch():
+	if is_crouching:
+		return
+		
+	is_crouching = true
+	
+	if collision_shape and collision_shape.shape is CapsuleShape3D:
+		collision_shape.shape.height = crouch_height
+		collision_shape.shape.position.y = crouch_height / 2
+		
+	# Abbassa la testa
+	if head:
+		var tween = create_tween()
+		tween.tween_property(head, "position:y", crouch_head_y, 0.15)
+		
+func stop_crouch():
+	if not is_crouching:
+		return
+		
+	# Controlla se può alzarsi
+	if not can_stand_up():
+		return
+		
+	is_crouching = false
+	
+	# Ripristina altezza collisione
+	if collision_shape and collision_shape.shape is CapsuleShape3D:
+		collision_shape.shape.height = default_height
+		collision_shape.position.y = default_height / 2
+		
+	# Alza testa
+	if head:
+		var tween = create_tween()
+		tween.tween_property(head, "position:y", default_head_y, 0.15)
+		
+func can_stand_up() -> bool:
+	# Raycast verso l'alto
+	var space_state = get_world_3d().direct_space_state
+	var from = global_position + Vector3(0, crouch_height, 0)
+	var to = global_position + Vector3(0, default_height, 0)
+	
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
+	
+	var result = space_state.intersect_ray(query)
+	
+	return result.is_empty()
 		
 func update_flash_cooldown(delta: float):
 	if flash_timer > 0:

@@ -29,6 +29,11 @@ func _ready():
 	intro_label.text = ""
 	skip_label.modulate.a = 0.5
 	
+	# Avvia suono
+	if intro_sound and intro_sound.stream:
+		intro_sound.volume_db = -10
+		intro_sound.play()
+	
 	await get_tree().create_timer(1.0).timeout
 	can_skip = true
 	start_intro()

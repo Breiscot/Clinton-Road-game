@@ -69,4 +69,4 @@ func finish_loading():
 		title_label.text = "Compleated.."
 		
 	queue_free()
-	get_tree().change_scene_to_file(scene_to_load)
+	get_tree().change_scene_to_file("res://scene/ui/intro_screen.tscn")

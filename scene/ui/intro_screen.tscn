@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://defrp04ur4s0o"]
+[gd_scene load_steps=3 format=3 uid="uid://defrp04ur4s0o"]
 
 [ext_resource type="AudioStream" uid="uid://dp8mmsavprao6" path="res://audio/music/intro_music.ogg" id="1_a2iqf"]
+[ext_resource type="Script" uid="uid://cp0t0jc23tpsc" path="res://scripts/intro_screen.gd" id="1_llksd"]
 
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_llksd")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

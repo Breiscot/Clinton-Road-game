@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv1bm7j0krd4h"
 path.s3tc="res://.godot/imported/road_separation_fence_0.png-6924824c402c13573bc59be16e73381a.s3tc.ctex"
+path.etc2="res://.godot/imported/road_separation_fence_0.png-6924824c402c13573bc59be16e73381a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/road/road_separation_fence/road_separation_fence_0.png"
-dest_files=["res://.godot/imported/road_separation_fence_0.png-6924824c402c13573bc59be16e73381a.s3tc.ctex"]
+dest_files=["res://.godot/imported/road_separation_fence_0.png-6924824c402c13573bc59be16e73381a.s3tc.ctex", "res://.godot/imported/road_separation_fence_0.png-6924824c402c13573bc59be16e73381a.etc2.ctex"]
 
 [params]
 
