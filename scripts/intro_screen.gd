@@ -24,6 +24,7 @@ var current_text_index := 0
 var is_typing := false
 var can_skip := false
 var skip_all := false
+var skip_current_text := false
 
 func _ready():
 	intro_label.text = ""
@@ -57,12 +58,17 @@ func show_text(text: String):
 		return
 		
 	is_typing = true
+	skip_current_text = false
 	intro_label.text = ""
 	intro_label.modulate.a = 1.0
 	
 	# Typing effect
 	for i in range(text.length()):
 		if skip_all:
+			intro_label.text = text
+			break
+			
+		if skip_current_text:
 			intro_label.text = text
 			break
 			
@@ -85,9 +91,8 @@ func _input(event):
 	# Spazio per skippare
 	if event.is_action_pressed("ui_accept") or (event is InputEventKey and event.pressed and event.keycode == KEY_SPACE):
 		if is_typing:
-			# Se sta scrivendo, mostra tutto il resto
-			skip_all = false
-			intro_label.text = intro_texts[current_text_index]
+			# Skip solo testo corrente
+			skip_current_text = true
 		else:
 			# Skip tutta intro
 			skip_all = true
