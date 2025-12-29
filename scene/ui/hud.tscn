@@ -229,5 +229,43 @@ theme_override_font_sizes/font_size = 32
 text = "HOW TO PLAY"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+[node name="Spacer" type="Control" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
 layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "CONTROLS:
+WASD - Move
+SHIFT - Run (uses stamina)
+CTRL - Crouch
+SPACE - Jump
+F - Toggle Flashlight
+Q - Flash Stun
+E - Interact
+ESC - Pause Menu"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer2" type="Control" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "OBJECTIVE:
+Find 3 car parts scattered in the forest.
+Return to your crashed car and repair it to escape.
+
+BEWARE: there may be something strange that can hurt you.
+Use your flashlight with [Q] to stun it temporarily."
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueLabel" type="Label" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
+modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
+layout_mode = 2
+text = "Press SPACE to continue"
+horizontal_alignment = 1
