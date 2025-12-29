@@ -241,7 +241,7 @@ SHIFT - Run (uses stamina)
 CTRL - Crouch
 SPACE - Jump
 F - Toggle Flashlight
-Q - Flash Stun
+Q - Flash Stun (you can use it when flashlight is ON)
 E - Interact
 ESC - Pause Menu"
 horizontal_alignment = 1

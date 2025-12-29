@@ -23,6 +23,12 @@ extends Control
 
 @onready var message_label := $MessageContainer/MessageLabel
 
+@onready var tutorial_popup := $TutorialPopup
+@onready var tutorial_background := $TutorialPopup/TutorialBackground
+
+var tutorial_shown := false
+var game_paused_for_tutorial := false
+
 var car: Node3D = null
 
 var player: CharacterBody3D = null
@@ -36,6 +42,9 @@ var fear_color := Color(0.6, 0.0, 0.0)
 
 func _ready():
 	add_to_group("hud")
+	
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	# Trova il player
 	await get_tree().physics_frame
 	find_player()
@@ -50,8 +59,12 @@ func _ready():
 	damage_overlay.modulate.a = 0
 	
 	find_car()
-	# Messaggio iniziale
-	show_intro_message()
+	
+	# Mostra il tutorial iniziale
+	show_tutorial()
+	
+	if tutorial_popup:
+		tutorial_popup.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	print("HUD ready")
 	
@@ -62,9 +75,61 @@ func find_car():
 			car.part_collected.connect(_on_part_collected)
 		print("HUD: Car found")
 		
-func show_intro_message():
-	await get_tree().create_timer(1.0).timeout
-	show_message("I need to find a way out of here...", 4.0)
+func show_tutorial():
+	if tutorial_popup == null:
+		return
+		
+	tutorial_shown = false
+	game_paused_for_tutorial = true
+	
+	# Pausa di gioco
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	# Mostra popup
+	tutorial_popup.visible = true
+	tutorial_popup.modulate.a = 0
+	
+	# Fade In
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(tutorial_popup, "modulate:a", 1.0, 0.5)
+	
+func hide_tutorial():
+	if tutorial_popup == null:
+		return
+		
+	if tutorial_shown:
+		return
+		
+	tutorial_shown = true
+	
+	# Fade Out
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(tutorial_popup, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(func():
+		tutorial_popup.visible = false
+		
+		# Riprendi il gioco
+		get_tree().paused = false
+		game_paused_for_tutorial = false
+		
+		# Nascondi il mouse
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+		# Mostra messaggio dopo tutorial
+		await get_tree().create_timer(1.0).timeout
+		show_message("I need to find a way out of here...", 4.0)
+	)
+	
+func _unhandled_input(event):
+	# Chiude tutorial con SPACE
+	if game_paused_for_tutorial and not tutorial_shown:
+		if event.is_action_pressed("ui_accept") or (event is InputEventKey and event.pressed and event.keycode == KEY_SPACE):
+			hide_tutorial()
+			get_viewport().set_input_as_handled()
+	
 	
 func _on_part_collected(part_name: String, total: int, required: int):
 	print("HUD: Collected ", part_name)

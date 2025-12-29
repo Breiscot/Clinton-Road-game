@@ -203,3 +203,17 @@ offset_right = 135.0
 grow_vertical = 0
 text = "View on GitHub"
 uri = "https://github.com/Breiscot/Clinton-Road-game"
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(-20, -20)
+text = "V1.02"
