@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://deknx0jxd2un"]
+
+[ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_7e42f"]
+[ext_resource type="PackedScene" uid="uid://bwrgt3a55l1g8" path="res://scene/environment/forest.tscn" id="1_f6k6l"]
+[ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="3_l8qf7"]
+[ext_resource type="Script" uid="uid://ombs2ms6f88v" path="res://scripts/tree_spawner.gd" id="4_l8qf7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ndxfj"]
+height = 0.57629395
+radius = 0.088378906
+
+[node name="EscapeSequence" type="Node3D"]
+
+[node name="Forest" parent="." instance=ExtResource("1_f6k6l")]
+
+[node name="Car" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0745211, 0)
+
+[node name="CarMesh" parent="Car" instance=ExtResource("1_7e42f")]
+
+[node name="PlayerSeat" type="Node3D" parent="Car"]
+
+[node name="Camera3D" type="Camera3D" parent="Car"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5553746, 0.34177452, 0.43558955)
+fov = 70.0
+
+[node name="Tree" type="StaticBody3D" parent="."]
+
+[node name="Tree" parent="Tree" instance=ExtResource("3_l8qf7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3716002, -0.01830244, -4.0619926)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3790164, 1.3125693, -3.9407165)
+shape = SubResource("CylinderShape3D_ndxfj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TreeSpawner" type="Node3D" parent="."]
+script = ExtResource("4_l8qf7")
+tree_scene = ExtResource("3_l8qf7")
+tree_count = 2000
