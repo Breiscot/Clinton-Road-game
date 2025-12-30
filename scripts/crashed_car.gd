@@ -37,6 +37,9 @@ signal car_repaired_signal
 signal part_collected(part_name: String, total: int, required: int)
 signal interaction_availble(availble: bool)
 
+# Audio
+var engine_sound: AudioStreamPlayer3D = null
+
 func _ready():
 	add_to_group("crashed_car")
 	
@@ -44,6 +47,7 @@ func _ready():
 	setup_smoke_particles()
 	setup_interaction_area()
 	setup_interaction_prompt()
+	setup_engine_sound()
 	start_effects()
 	
 	print("Crashed car ready")
@@ -136,6 +140,25 @@ func setup_interaction_prompt():
 	
 	# Nascondi all'inizio
 	interaction_prompt.visible = false
+	
+func setup_engine_sound():
+	engine_sound = AudioStreamPlayer3D.new()
+	engine_sound.name = "EngineSound"
+	engine_sound.max_distance = 30
+	engine_sound.volume_db = 0
+	add_child(engine_sound)
+	
+	var engine_stream = load("res://audio/sfx/engine_start.ogg")
+	if engine_stream == null:
+		engine_stream = load("res://audio/sfx/car_engine.ogg")
+	if engine_stream == null:
+		engine_stream = load("res://audio/sfx/engine.wav")
+		
+	if engine_stream:
+		engine_sound.stream = engine_stream
+		print("Engine sound loaded.")
+	else:
+		print("Engine sound not found")
 		
 func get_prompt_text() -> String:
 	if car_repaired:
@@ -151,6 +174,12 @@ func start_effects():
 		smoke_particles.emitting = true
 
 func _process(delta):
+	# Trova player se non c'è
+	if player_ref == null:
+		var players = get_tree().get_nodes_in_group("player")
+		if players.size() > 0:
+			player_ref = players[0]
+			
 	update_hazard_lights(delta)
 	update_headlight_flicker(delta)
 	update_prompt()
@@ -190,7 +219,16 @@ func update_prompt():
 		return
 		
 	# Mostra/Nascondi prompt
-	interaction_prompt.visible = player_in_range
+	var show_prompt := false
+	
+	if player_ref:
+		var distance = global_position.distance_to(player_ref.global_position)
+		if distance < 15.0:
+			show_prompt = true
+	elif player_in_range:
+		show_prompt = true
+		
+	interaction_prompt.visible = show_prompt
 	
 	# Aggiorna testo
 	if prompt_label:
@@ -247,6 +285,10 @@ func repair_car():
 	# Ferma il fumo
 	if smoke_particles:
 		smoke_particles.emitting = false
+		
+	# Suono motore che parte
+	if engine_sound and engine_sound.stream:
+		engine_sound.play()
 		
 	# Emetti segnale
 	car_repaired_signal.emit()
