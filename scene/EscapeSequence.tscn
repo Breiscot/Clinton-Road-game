@@ -25,6 +25,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 
 [node name="Camera3D" type="Camera3D" parent="Car"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5553746, 0.34177452, 0.43558955)
+current = true
 fov = 70.0
 
 [node name="Headlights" type="Node3D" parent="Car"]
@@ -238,13 +239,13 @@ stream = ExtResource("5_k8dvr")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="EscapeText" type="Label" parent="CanvasLayer"]
 anchors_preset = 8

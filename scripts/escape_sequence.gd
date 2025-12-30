@@ -12,10 +12,13 @@ extends Node3D
 
 var time_elapsed := 0.0
 var is_fading_out := false
+var is_started := false
 var original_camera_pos: Vector3
 var escape_direction := Vector3(0, 0, -1)
 
 func _ready():
+	print("Car node: ", car)
+	print("Camera node: ", camera)
 	# Nascondi il cursore
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
@@ -35,15 +38,24 @@ func _ready():
 		audio.play()
 		
 func fade_in():
+	print("Fade In started..")
 	var tween = create_tween()
 	tween.tween_property(black_overlay, "color:a", 0.0, 1.5)
+	tween.tween_callback(func():
+		is_started = true
+		print("Fade in finisched! is_started = true")
+	)
 	
 func _process(delta):
-	if is_fading_out:
+	if not is_started or is_fading_out:
 		return
 	
 	time_elapsed += delta
 	
+	if int(time_elapsed) != int(time_elapsed - delta):
+		print("Time: ", int(time_elapsed), " / ", escape_duration)
+		print("Car position: ", car.global_position)
+		
 	# Muove la macchina in avanti
 	move_environment(delta)
 	
@@ -51,7 +63,7 @@ func _process(delta):
 	apply_camera_shake(delta)
 	
 	# Controlla se deve finire
-	if time_elapsed >= escape_duration - 3.0 and not escape_text.visible:
+	if time_elapsed >= escape_duration - 5.0 and not escape_text.visible:
 		show_escape_text()
 		
 	if time_elapsed >= escape_duration:
@@ -75,14 +87,19 @@ func show_escape_text():
 	escape_text.text = "You Escaped..."
 	
 	var tween = create_tween()
+	tween.set_parallel(true)
 	tween.tween_property(escape_text, "modulate:a", 1.0, 2.0)
+	tween.tween_property(black_overlay, "color:a", 0.5, 3.0)
 	
 func start_fade_out():
 	is_fading_out = true
 	
 	var tween = create_tween()
+	tween.set_parallel(true)
 	tween.tween_property(escape_text, "modulate:a", 0.0, 1.0)
 	tween.tween_property(black_overlay, "color:a", 1.0, 2.0)
+	tween.set_parallel(false)
+	
 	tween.tween_callback(go_to_main_menu)
 	
 func go_to_main_menu():
