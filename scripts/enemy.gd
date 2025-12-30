@@ -31,6 +31,7 @@ var last_known_player_position: Vector3
 var patrol_points: Array[Vector3] = []
 var current_patrol_index := 0
 var search_timer := 0.0
+var time_since_last_seen := 0.0
 var attack_timer := 0.0
 var gravity := 9.8
 
@@ -65,6 +66,18 @@ func _ready():
 	print("ALL FENCES IN GROUP")
 	print("Total fences: ", fences.size())
 	find_player()
+	
+func check_for_player():
+	if player == null:
+		find_player()
+		return
+		
+	if can_see_player():
+		last_known_player_position = player.global_position
+		time_since_last_seen = 0.0
+		
+		if current_state != State.CHASE and current_state != State.ATTACK:
+			change_state(State.CHASE)
 
 func setup_audio():
 	# Footsteps Enemy
@@ -207,6 +220,9 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		
 	update_enemy_footsteps(delta)
+	
+	if current_state not in [State.ATTACK, State.STUNNED, State.FLEE_ROAD]:
+		check_for_player()
 
 	match current_state:
 		State.IDLE:
@@ -287,22 +303,28 @@ func process_patrol(delta):
 				change_state(State.PATROL)
 
 func process_chase(delta):
-	#anim_player.play("run")
+	if player == null:
+		change_state(State.PATROL)
+		return
+	
 	var distance = global_position.distance_to(player.global_position)
 	
-	if distance < attack_range:
+	if distance <= attack_range:
 		change_state(State.ATTACK)
 		return
-	# Se può vedere il player, lo insegue
+		
+	# Controlla se può ancora vedere il player
 	if can_see_player():
 		last_known_player_position = player.global_position
-		search_timer = 0.0
+		time_since_last_seen = 0.0
 	else:
-		search_timer += delta
-		if search_timer > lose_interest_time:
-			last_known_player_position = player.global_position
-			search_timer = 0
+		time_since_last_seen += delta
+		if time_since_last_seen > lose_interest_time:
+			change_state(State.SEARCH)
 			return
+			
+	# Insegue il player
+	nav_agent.target_position = last_known_player_position
 
 	# Se abbastanza vicino per attaccare
 	if global_position.distance_to(player.global_position) < attack_range:
@@ -316,27 +338,32 @@ func process_chase(delta):
 
 	# Insegue il giocatore
 	nav_agent.target_position = last_known_player_position
-	var next_position = nav_agent.get_next_path_position()
-	var direction = (next_position - global_position).normalized()
-	direction.y = 0
-
-	velocity.x = direction.x * chase_speed
-	velocity.z = direction.z * chase_speed
-
-	if direction.length() > 0.1:
-		look_at(global_position + direction, Vector3.UP)
+	
+	if not nav_agent.is_navigation_finished():
+		var next_position = nav_agent.get_next_path_position()
+		var direction = (next_position - global_position).normalized()
+		direction.y = 0
 		
-	# Paura durante l'inseguimento
+		velocity.x = direction.x * chase_speed
+		velocity.z = direction.z * chase_speed
+		
+		if direction.length() > 0.1:
+			var target_rotation = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, 10.0 * delta)
+	else:
+		# Ha raggiunto la posizione ma non vede il player
+		if time_since_last_seen > 0.5:
+			change_state(State.SEARCH)
+			
+	# Paura
 	if player and player.has_method("add_fear"):
 		var fear_amount = 0.0
-		
 		if distance < 5:
 			fear_amount = 15.0 * delta
 		elif distance < 10:
 			fear_amount = 8.0 * delta
 		else:
 			fear_amount = 3.0 * delta
-			
 		player.add_fear(fear_amount)
 
 func process_search(delta):
@@ -439,6 +466,7 @@ func change_state(new_state: State):
 			if chase_player:
 				chase_player.stop()
 		State.CHASE:
+			time_since_last_seen = 0.0
 			# Growl
 			if old_state != State.CHASE:
 				if growl_player and growl_player.stream:
@@ -465,24 +493,13 @@ func change_state(new_state: State):
 			if player and player.has_method("add_fear"):
 				player.add_fear(40.0)
 
-#func play_ambient_sound():
-	# Suono ambientale
-#	var timer = Timer.new()
-#	timer.wait_time = randf_range(5.0, 15.0)
-#	timer.one_shot = false
-#	timer.timeout.connect(func():
-#		if current_state in [State.IDLE, State.PATROL]:
-#			if sound_ambient and randf() > 0.5:
-#				audio.stream = sound_ambient
-#				audio.play()
-#	)
-#	add_child(timer)
-#	timer.start()
-
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
-		change_state(State.SEARCH)
+		if can_see_player():
+			change_state(State.CHASE)
+		else:
+			change_state(State.SEARCH)
 
 # Nemico stordito
 func stun(duration: float):
