@@ -297,7 +297,7 @@ func repair_car():
 	
 func escape_victory():
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scene/EscapeSequence.tscn")
 	
 # Raccolta parti
 func add_part(part_id: String):

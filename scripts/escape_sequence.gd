@@ -71,4 +71,23 @@ func apply_camera_shake(delta):
 	camera.position.y += sin(time_elapsed * 8.0) * 0.02
 	
 func show_escape_text():
+	escape_text.visible = true
+	escape_text.text = "You Escaped..."
+	
+	var tween = create_tween()
+	tween.tween_property(escape_text, "modulate:a", 1.0, 2.0)
+	
+func start_fade_out():
+	is_fading_out = true
+	
+	var tween = create_tween()
+	tween.tween_property(escape_text, "modulate:a", 0.0, 1.0)
+	tween.tween_property(black_overlay, "color:a", 1.0, 2.0)
+	tween.tween_callback(go_to_main_menu)
+	
+func go_to_main_menu():
+	if audio.playing:
+		audio.stop()
+		
+	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
 	

@@ -11,7 +11,7 @@ enum State {
 }
 
 @export var patrol_speed := 3.0
-@export var chase_speed := 6.0
+@export var chase_speed := 4.0
 @export var attack_damage := 100.0
 @export var attack_cooldown := 0.8
 @export var detection_range := 20.0
