@@ -60,8 +60,8 @@ func setup_car_damage():
 func setup_smoke_particles():
 	smoke_particles = GPUParticles3D.new()
 	smoke_particles.name = "SmokeParticles"
-	smoke_particles.amount = 50
-	smoke_particles.lifetime = 3.0
+	smoke_particles.amount = 20
+	smoke_particles.lifetime = 1.5
 	smoke_particles.emitting = true
 	smoke_particles.position = Vector3(0, 0.5, 1.8)
 	

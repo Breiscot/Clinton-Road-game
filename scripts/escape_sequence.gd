@@ -63,7 +63,7 @@ func _process(delta):
 	apply_camera_shake(delta)
 	
 	# Controlla se deve finire
-	if time_elapsed >= escape_duration - 5.0 and not escape_text.visible:
+	if time_elapsed >= escape_duration - 4.0 and not escape_text.visible:
 		show_escape_text()
 		
 	if time_elapsed >= escape_duration:
