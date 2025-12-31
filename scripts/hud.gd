@@ -338,9 +338,9 @@ func show_jumpscare():
 		jumpscare_sound.play()
 		
 	# Dopo qualche secondo, Fade Out e restart
-	await get_tree().create_timer(1.5).timeout
+	#await get_tree().create_timer(1.5).timeout
 	
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
 		
 func show_message(text: String, duration: float = 3.0):
 	if message_label == null:

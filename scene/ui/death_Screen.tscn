@@ -27,6 +27,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 150)
+mouse_filter = 2
 theme_override_constants/separation = 20
 
 [node name="DeathLabel" type="Label" parent="VBoxContainer"]

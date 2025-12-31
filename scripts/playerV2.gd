@@ -37,6 +37,7 @@ var can_flash := true
 @onready var flashlight: SpotLight3D = $Head/Flashlight
 @onready var collision_shape := $CollisionShape3D
 @onready var fear_effects := $FearEffects
+@onready var death_screen := $DeathScreen
 
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_speed := 3.0
@@ -466,12 +467,15 @@ func take_damage(amount: float):
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud and hud.has_method("show_jumpscare"):
 		hud.show_jumpscare()
-	else:
-		# Fallback non c'è hud
-		# Aspetta un momento e ricarica
 		await get_tree().create_timer(1.5).timeout
-		# Ricarica la scena
-		get_tree().reload_current_scene()
+	
+	print("Showing death screen...")
+	print("death_screen is: ", death_screen)
+	
+	if death_screen:
+		death_screen.show_death_screen()
+	else:
+		print("ERROR: death_screen is null.")
 	
 func die():
 	take_damage(100)
