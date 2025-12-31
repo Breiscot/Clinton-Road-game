@@ -15,12 +15,31 @@ var is_fading_out := false
 var is_started := false
 var original_camera_pos: Vector3
 var escape_direction := Vector3(0, 0, -1)
+var mouse_sensitivity := 0.002
+var camera_rotation := Vector2.ZERO
+var max_look_angle := 80.0
+var max_horizontal_angle := 120.0
+
+func _input(event):
+	if not is_started or is_fading_out:
+		return
+		
+	if event is InputEventMouseMotion:
+		camera_rotation.x -= event.relative.x * mouse_sensitivity
+		camera_rotation.y -= event.relative.y * mouse_sensitivity
+		
+		# Limite della rotazione orizzontale
+		camera_rotation.x = clamp(camera_rotation.x, deg_to_rad(-max_horizontal_angle), deg_to_rad(max_horizontal_angle))
+		
+		# Limite della rotazione verticale
+		camera_rotation.y = clamp(camera_rotation.y, deg_to_rad(-max_look_angle), deg_to_rad(max_look_angle))
 
 func _ready():
+	# Blocca e nascondi Mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	print("Car node: ", car)
 	print("Camera node: ", camera)
-	# Nascondi il cursore
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	# Setup iniziale
 	black_overlay.color = Color(0, 0, 0, 1)
@@ -79,8 +98,11 @@ func apply_camera_shake(delta):
 		0
 	)
 	camera.position = original_camera_pos + shake
-	
 	camera.position.y += sin(time_elapsed * 8.0) * 0.02
+	
+	# Rotazione Mouse
+	camera.rotation.x = camera_rotation.y
+	camera.rotation.y = camera_rotation.x + PI
 	
 func show_escape_text():
 	escape_text.visible = true

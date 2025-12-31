@@ -80,6 +80,8 @@ custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 show_percentage = false
 
+[node name="FearEffects" type="CanvasLayer" parent="."]
+
 [node name="FlashReadyIcon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
