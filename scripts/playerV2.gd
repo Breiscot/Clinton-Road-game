@@ -36,6 +36,7 @@ var can_flash := true
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var flashlight: SpotLight3D = $Head/Flashlight
 @onready var collision_shape := $CollisionShape3D
+@onready var fear_effects := $FearEffects
 
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_speed := 3.0
@@ -213,11 +214,24 @@ func update_fear(delta: float):
 	if fear > 0:
 		fear -= fear_decay * delta
 		fear = max(fear, 0)
+		update_fear_effects()
+		
+func update_fear_effects():
+	var fear_percent = fear / max_fear
+	if fear_effects == null:
+		print("WARNING: fear_effects is null.")
+		return
+		
+	if fear_effects.has_method("set_fear_level"):
+		fear_effects.set_fear_level(fear_percent)
+	else:
+		print("WARNING: set_fear_level method not found.")
 
 func add_fear(amount: float):
 	fear += amount
 	fear = min(fear, max_fear)
 	print("Fear: ", int(fear), "%")
+	update_fear_effects()
 
 func get_fear_percent() -> float:
 	return fear / max_fear

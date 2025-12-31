@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsngxgg8s0t1i"]
+
+[ext_resource type="Script" uid="uid://83kandj35vy3" path="res://scripts/fear_effects.gd" id="1_s5lsb"]
+[ext_resource type="Shader" uid="uid://b83lp722pm7ln" path="res://shader/hud_vignette.gdshader" id="2_7eoqc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_euvbb"]
+shader = ExtResource("2_7eoqc")
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_softness = 0.5
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="FearEffects" type="CanvasLayer"]
+script = ExtResource("1_s5lsb")
+
+[node name="VignetteRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_euvbb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
