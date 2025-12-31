@@ -9,6 +9,8 @@ var intro_texts := [
 	"11:47 PM",
 	"...",
 	"I was driving home late at night...",
+	"To go home this time I wanted to take another road",
+	"The Clinton Road",
 	"The road was empty... too empty.",
 	"Then I saw it.",
 	"Something standing in the middle of the road.",
