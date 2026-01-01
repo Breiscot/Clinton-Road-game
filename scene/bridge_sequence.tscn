@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://csp8pbegflpj5"]
+[gd_scene load_steps=21 format=3 uid="uid://csp8pbegflpj5"]
 
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_lml47"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_yc3ud"]
 [ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="3_fl0fn"]
 [ext_resource type="PackedScene" uid="uid://biv4nea5nm3tt" path="res://models/road/road_in_2_edit/sketchfab_scene.tscn" id="4_fl0fn"]
+[ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="4_lub3u"]
+[ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="5_fninm"]
+[ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="6_p76k8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1uc1l"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -34,6 +37,52 @@ size = Vector3(600, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fl0fn"]
 size = Vector3(607.5436, 0, 397.94336)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gu5n0"]
+albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
+albedo_texture = ExtResource("3_fl0fn")
+
+[sub_resource type="BoxMesh" id="BoxMesh_lub3u"]
+material = SubResource("StandardMaterial3D_gu5n0")
+size = Vector3(700, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiul3"]
+resource_name = "Water_002_COLOR"
+transparency = 4
+albedo_color = Color(1, 1, 1, 0.65228856)
+albedo_texture = ExtResource("4_lub3u")
+metallic = 1.0
+metallic_texture = ExtResource("5_fninm")
+metallic_texture_channel = 2
+roughness = 0.3969213
+roughness_texture = ExtResource("5_fninm")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("6_p76k8")
+uv1_scale = Vector3(90, 90, 90)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbcdf"]
+material = SubResource("StandardMaterial3D_wiul3")
+size = Vector3(700, 1, 100)
+
+[sub_resource type="Environment" id="Environment_lub3u"]
+background_mode = 1
+background_color = Color(0.007843138, 0.007843138, 0.015686275, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.019607844, 0.019607844, 0.0627451, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+tonemap_exposure = 0.8
+glow_enabled = true
+glow_intensity = 0.3
+fog_enabled = true
+fog_light_color = Color(0.011764706, 0.011764706, 0.03137255, 1)
+fog_density = 0.3
+fog_height = -5.0
+fog_height_density = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.03137255, 0.03137255, 0.0627451, 1)
+volumetric_fog_gi_inject = 0.0
 
 [node name="BridgeSequence" type="Node3D"]
 
@@ -104,6 +153,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.16015518, 3.18
 [node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Car/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.2999992)
 
+[node name="Child" type="Node3D" parent="."]
+
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="floor1" type="MeshInstance3D" parent="Floor"]
@@ -140,6 +191,16 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 transform = Transform3D(1.0264559, 0, 0, 0, 2.6340704, 0, 0, 0, 1, 0, 0, 98.37629)
 mesh = SubResource("PlaneMesh_1uc1l")
 
+[node name="Floor4" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.7231708, -35.44818)
+mesh = SubResource("BoxMesh_lub3u")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.714584, -4.813598, -46.088726)
+mesh = SubResource("BoxMesh_rbcdf")
+
 [node name="Roads" type="Node3D" parent="."]
 transform = Transform3D(-9.8350625e-08, 0, 2.25, 0, 2.25, 0, -2.25, 0, -9.8350625e-08, -7.7000136, -0.08663678, 12.676499)
 
@@ -165,3 +226,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.83728, 0, 2.3841858e-06)
 
 [node name="Sketchfab_Scene8" parent="Roads" instance=ExtResource("4_fl0fn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.272285, 0, 1.9073486e-06)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lub3u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, 21.60014, 21.92472)
+visible = false
+light_color = Color(0.0627451, 0.0627451, 0.14509805, 1)
+light_energy = 0.02
+shadow_enabled = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
