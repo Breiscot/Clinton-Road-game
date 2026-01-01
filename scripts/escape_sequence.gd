@@ -122,11 +122,11 @@ func start_fade_out():
 	tween.tween_property(black_overlay, "color:a", 1.0, 2.0)
 	tween.set_parallel(false)
 	
-	tween.tween_callback(go_to_main_menu)
+	tween.tween_callback(go_to_bridge_sequence)
 	
-func go_to_main_menu():
+func go_to_bridge_sequence():
 	if audio.playing:
 		audio.stop()
 		
-	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scene/bridge_sequence.tscn")
 	
