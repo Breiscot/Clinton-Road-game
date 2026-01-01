@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://biv4nea5nm3tt"]
+
+[ext_resource type="PackedScene" uid="uid://cim2sr1sjossg" path="res://models/road/road_free.glb" id="1_vmdlo"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_vmdlo")]
+
+[node name="Plane_001" parent="Sketchfab_model/4b74769ab7c143c2b8616e89c0d44673_fbx/RootNode" index="1"]
+visible = false
+
+[node name="Plane_001__0" parent="Sketchfab_model/4b74769ab7c143c2b8616e89c0d44673_fbx/RootNode/Plane_001" index="0"]
+visible = false
+
+[node name="Plane" parent="Sketchfab_model/4b74769ab7c143c2b8616e89c0d44673_fbx/RootNode" index="2"]
+visible = false
+
+[node name="Plane__0" parent="Sketchfab_model/4b74769ab7c143c2b8616e89c0d44673_fbx/RootNode/Plane" index="0"]
+visible = false
