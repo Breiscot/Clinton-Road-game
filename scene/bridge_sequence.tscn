@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://csp8pbegflpj5"]
+[gd_scene load_steps=28 format=3 uid="uid://csp8pbegflpj5"]
 
 [ext_resource type="Script" uid="uid://5k5ffaj8croh" path="res://scripts/bridge_sequence.gd" id="1_fninm"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_lml47"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="5_fninm"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="6_p76k8"]
 [ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="10_wiul3"]
+[ext_resource type="AudioStream" uid="uid://dhre2i8mv6epa" path="res://audio/sfx/brake_sound.wav" id="11_1bx61"]
+[ext_resource type="Script" uid="uid://dt1jd42uoob7x" path="res://scripts/envronment_new_area.gd" id="11_rbcdf"]
+[ext_resource type="AudioStream" uid="uid://divu6e7ikkh7a" path="res://audio/sfx/crash_sound.wav" id="12_8h3qx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1uc1l"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -134,18 +137,18 @@ fov = 70.0
 [node name="Headlights" type="Node3D" parent="Car"]
 
 [node name="HeadlightLeft" type="SpotLight3D" parent="Car/Headlights"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5757006, -0.12576379, 3.251776)
-spot_range = 12.503324
+transform = Transform3D(-1, -1.5180806e-08, 8.609462e-08, 0, 0.9848077, 0.17364818, -8.742278e-08, 0.17364818, -0.9848077, -0.6, 0.5, 3)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 40.0
+spot_angle = 35.0
 
 [node name="HeadlightRight" type="SpotLight3D" parent="Car/Headlights"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.66360134, -0.1754985, 3.1898432)
-spot_range = 12.444503
-
-[node name="HeadlightWhiteRight" type="OmniLight3D" parent="Car/Headlights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.16015518, 3.182825)
-
-[node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Car/Headlights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.2999992)
+transform = Transform3D(-1, -1.5180806e-08, 8.609462e-08, 0, 0.9848077, 0.17364818, -8.742278e-08, 0.17364818, -0.9848077, 0.6, 0.5, 3)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 40.0
+spot_angle = 35.0
 
 [node name="Girl" type="Node3D" parent="."]
 
@@ -246,5 +249,10 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="BrakeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1bx61")
 
 [node name="CrashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_8h3qx")
+
+[node name="Environment" type="Node3D" parent="."]
+script = ExtResource("11_rbcdf")

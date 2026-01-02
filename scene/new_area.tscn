@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=26 format=3 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
+[ext_resource type="Script" uid="uid://dt1jd42uoob7x" path="res://scripts/envronment_new_area.gd" id="2_pwv01"]
 [ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="2_qjw1y"]
 [ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="3_1fb26"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="4_geqtq"]
@@ -9,32 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://biv4nea5nm3tt" path="res://models/road/road_in_2_edit/sketchfab_scene.tscn" id="6_dbekj"]
 [ext_resource type="PackedScene" uid="uid://c28sgfln8nlok" path="res://scene/player/player.tscn" id="7_qjw1y"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="8_1fb26"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_geqtq"]
-sky_top_color = Color(0.039215688, 0.039215688, 0.08235294, 1)
-sky_horizon_color = Color(0.101960786, 0.101960786, 0.18039216, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.039215688, 0.039215688, 0.08235294, 1)
-
-[sub_resource type="Sky" id="Sky_pwv01"]
-sky_material = SubResource("ProceduralSkyMaterial_geqtq")
-
-[sub_resource type="Environment" id="Environment_dbekj"]
-background_mode = 1
-background_color = Color(0.019607844, 0.019607844, 0.019607844, 1)
-sky = SubResource("Sky_pwv01")
-ambient_light_source = 2
-ambient_light_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-ambient_light_energy = 0.05
-tonemap_mode = 2
-glow_intensity = 0.3
-glow_bloom = 0.1
-glow_blend_mode = 0
-fog_enabled = true
-fog_light_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
-fog_density = 0.003
-fog_height = 10.0
-fog_height_density = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0kpx"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -106,9 +81,7 @@ size = Vector3(50.194336, 0.559391, 6.282135)
 script = ExtResource("1_geqtq")
 
 [node name="Environment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_dbekj")
+script = ExtResource("2_pwv01")
 
 [node name="Bridge" type="Node3D" parent="."]
 
