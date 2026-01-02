@@ -17,39 +17,39 @@ size = Vector3(290.7171, 1, 423.0991)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lub3u"]
 size = Vector3(20.851524, 1, 6.514862)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk0dc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiul3"]
 albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
 albedo_texture = ExtResource("3_fl0fn")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1uc1l"]
-material = SubResource("StandardMaterial3D_vk0dc")
+material = SubResource("StandardMaterial3D_wiul3")
 size = Vector2(600, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gu5n0"]
 size = Vector3(300, 0.49899292, 151.55157)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uc1l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbcdf"]
 albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
 albedo_texture = ExtResource("3_fl0fn")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gu5n0"]
-material = SubResource("StandardMaterial3D_1uc1l")
+material = SubResource("StandardMaterial3D_rbcdf")
 size = Vector3(600, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fl0fn"]
 size = Vector3(607.5436, 0, 397.94336)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gu5n0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cb6b"]
 albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
 albedo_texture = ExtResource("3_fl0fn")
 
 [sub_resource type="BoxMesh" id="BoxMesh_lub3u"]
-material = SubResource("StandardMaterial3D_gu5n0")
+material = SubResource("StandardMaterial3D_2cb6b")
 size = Vector3(700, 1, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiul3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bx61"]
 resource_name = "Water_002_COLOR"
 transparency = 4
 albedo_color = Color(1, 1, 1, 0.65228856)
@@ -65,7 +65,7 @@ normal_texture = ExtResource("6_p76k8")
 uv1_scale = Vector3(90, 90, 90)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rbcdf"]
-material = SubResource("StandardMaterial3D_wiul3")
+material = SubResource("StandardMaterial3D_1bx61")
 size = Vector3(700, 1, 100)
 
 [node name="BridgeSequence" type="Node3D"]

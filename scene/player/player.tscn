@@ -36,3 +36,4 @@ spot_angle = 35.0
 [node name="FearEffects" parent="." instance=ExtResource("2_cm2cf")]
 
 [node name="DeathScreen" parent="." instance=ExtResource("3_6smn3")]
+visible = false
