@@ -254,3 +254,5 @@ offset_bottom = 40.0
 [node name="TextLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="BrakeSound" type="AudioStreamPlayer" parent="."]
