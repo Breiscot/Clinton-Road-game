@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://csp8pbegflpj5"]
+[gd_scene load_steps=23 format=3 uid="uid://csp8pbegflpj5"]
 
+[ext_resource type="Script" uid="uid://5k5ffaj8croh" path="res://scripts/bridge_sequence.gd" id="1_fninm"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_lml47"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_yc3ud"]
 [ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="3_fl0fn"]
 [ext_resource type="PackedScene" uid="uid://biv4nea5nm3tt" path="res://models/road/road_in_2_edit/sketchfab_scene.tscn" id="4_fl0fn"]
 [ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="4_lub3u"]
+[ext_resource type="PackedScene" uid="uid://dt0tnmn8pngyl" path="res://models/girl/girl_normal.tscn" id="4_p76k8"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="5_fninm"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="6_p76k8"]
 
@@ -85,6 +87,7 @@ volumetric_fog_albedo = Color(0.03137255, 0.03137255, 0.0627451, 1)
 volumetric_fog_gi_inject = 0.0
 
 [node name="BridgeSequence" type="Node3D"]
+script = ExtResource("1_fninm")
 
 [node name="Bridge" type="Node3D" parent="."]
 
@@ -153,7 +156,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.16015518, 3.18
 [node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Car/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.2999992)
 
-[node name="Child" type="Node3D" parent="."]
+[node name="Girl" type="Node3D" parent="."]
+
+[node name="Sketchfab_Scene2" parent="Girl" instance=ExtResource("4_p76k8")]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 4.6568227, 0.13292342, -13.628045)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt0tnmn8pngyl"]
+
+[ext_resource type="PackedScene" uid="uid://dulndrupxtvi4" path="res://models/girl/crazy_ex_gf_game_mesh.glb" id="1_sucpu"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_sucpu")]
+
+[node name="Object_3" parent="Sketchfab_model/CreepyBase_obj_cleaner_materialmerger_gles" index="1"]
+visible = false
+
+[node name="Object_4" parent="Sketchfab_model/CreepyBase_obj_cleaner_materialmerger_gles" index="2"]
+visible = false
+
+[node name="Object_5" parent="Sketchfab_model/CreepyBase_obj_cleaner_materialmerger_gles" index="3"]
+visible = false
+
+[node name="Object_9" parent="Sketchfab_model/CreepyBase_obj_cleaner_materialmerger_gles" index="7"]
+visible = false
