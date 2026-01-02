@@ -28,13 +28,13 @@ size = Vector2(600, 200)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmlm8"]
 size = Vector3(300, 0.49899292, 151.55157)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uc1l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geqtq"]
 albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
 albedo_texture = ExtResource("2_qjw1y")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_d8kf4"]
-material = SubResource("StandardMaterial3D_1uc1l")
+material = SubResource("StandardMaterial3D_geqtq")
 size = Vector3(600, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_geqtq"]
@@ -246,7 +246,23 @@ shape = SubResource("BoxShape3D_1fb26")
 transform = Transform3D(0.8471961, 0, 0.5312803, 0, 1, 0, -0.5312803, 0, 0.8471961, 14.298491, 0, -0.4956243)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
-transform = Transform3D(-0.98902345, 0.0024091967, 0.14774124, -0.056418378, 0.9179559, -0.3926495, -0.13656588, -0.3966747, -0.9077441, 19.559992, -4.376966, -12.243938)
+transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)
+
+[node name="Headlights" type="Node3D" parent="Car"]
+
+[node name="HeadlightLeft" type="SpotLight3D" parent="Car/Headlights"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5757006, -0.12576379, 3.251776)
+spot_range = 12.503324
+
+[node name="HeadlightRight" type="SpotLight3D" parent="Car/Headlights"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.66360134, -0.1754985, 3.1898432)
+spot_range = 12.444503
+
+[node name="HeadlightWhiteRight" type="OmniLight3D" parent="Car/Headlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.16015518, 3.182825)
+
+[node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Car/Headlights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.2999992)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

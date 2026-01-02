@@ -19,11 +19,15 @@ var current_state: State = State.DRIVING
 var time_elapsed := 0.0
 var car_speed := 30.0
 var original_camera_pos: Vector3
+var fall_speed := 0.0
+var fall_acceleration := 15.0
+var max_fall_speed := 30.0
+var fade_started := false
 
 # Timing
 var girl_appear_time := 3.0
 var swerve_duration := 1.5
-var crash_duration := 2.0
+var crash_duration := 1.5
 
 # Movimento
 var drive_direction := Vector3(0, 0, -1)
@@ -116,8 +120,7 @@ func start_swerving():
 		brake_sound.play()
 		
 	# Direzione sterzata
-	var swerve_side = 1 if randf() > 0.5 else -1
-	swerve_direction = Vector3(swerve_side, 0, -0.3).normalized()
+	swerve_direction = Vector3(1, 0, -0.5).normalized()
 	
 func process_swerving(delta):
 	swerve_timer += delta
@@ -128,7 +131,7 @@ func process_swerving(delta):
 	
 	# Ruota la macchina
 	var rotation_speed = 2.0
-	car.rotation.y += swerve_direction.x * rotation_speed * delta
+	car.rotation.y += rotation_speed * delta
 	
 	# Camera shake crescente
 	var shake = swerve_timer / swerve_duration * 0.05
@@ -138,6 +141,10 @@ func process_swerving(delta):
 		0
 	)
 	
+	# Inizia a inclinare la camera verso il basso
+	var tilt_process = swerve_timer / swerve_duration
+	camera.rotation.x = lerp(camera.rotation.x, deg_to_rad(-5), delta * 2)
+	
 	# Dopo la sterzata c'è il crash
 	if swerve_timer >= swerve_duration:
 		start_crash()
@@ -145,6 +152,8 @@ func process_swerving(delta):
 func start_crash():
 	current_state = State.CRASHING
 	crash_timer = 0.0
+	fall_speed = 0.0
+	fade_started = false
 	
 	print("Crashing!")
 	
@@ -158,20 +167,34 @@ func start_crash():
 func process_crashing(delta):
 	crash_timer += delta
 	
+	# Accelera caduta
+	fall_speed += fall_acceleration * delta
+	fall_speed = min(fall_speed, max_fall_speed)
+	
+	# La macchina cade verso il basso
+	car.global_position.y -= fall_speed * delta
+	
+	car.global_position += drive_direction * car_speed * 0.3 * delta
+	
+	car.rotation.x = lerp(car.rotation.x, deg_to_rad(-45), delta * 3)
+	
+	car.rotation.z = lerp(car.rotation.z, deg_to_rad(15), delta * 2)
+	
 	# Forte shake
 	var shake = crash_shake_intensity * (1.0 - crash_timer / crash_duration)
 	camera.position = original_camera_pos + Vector3(
 		randf_range(-shake, shake),
-		randf_range(-shake, shake) + sin(crash_timer * 20) * shake,
+		randf_range(-shake, shake),
 		randf_range(-shake, shake)
 	)
 	
 	# La camera si inclina
-	camera.rotation.z = lerp(camera.rotation.z, deg_to_rad(15), delta * 2)
-	camera.rotation.x = lerp(camera.rotation.x, deg_to_rad(-10), delta * 2)
+	camera.rotation.z = lerp(camera.rotation.x, deg_to_rad(-30), delta * 4)
+	camera.rotation.x = lerp(camera.rotation.z, deg_to_rad(10), delta * 2)
 	
 	# Fade Out
-	if crash_timer >= crash_duration:
+	if crash_timer >= 0.8 and not fade_started:
+		fade_started = true
 		start_fade_out()
 		
 func start_fade_out():
@@ -180,7 +203,7 @@ func start_fade_out():
 	print("Fading out..")
 	
 	var tween = create_tween()
-	tween.tween_property(black_overlay, "color:a", 1.0, 2.0)
+	tween.tween_property(black_overlay, "color:a", 1.0, 1.0)
 	tween.tween_callback(go_to_new_area)
 	
 func go_to_new_area():

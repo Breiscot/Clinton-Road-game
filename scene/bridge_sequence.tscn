@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csp8pbegflpj5"]
+[gd_scene load_steps=25 format=3 uid="uid://csp8pbegflpj5"]
 
 [ext_resource type="Script" uid="uid://5k5ffaj8croh" path="res://scripts/bridge_sequence.gd" id="1_fninm"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_lml47"]
@@ -36,6 +36,15 @@ uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gu5n0"]
 material = SubResource("StandardMaterial3D_rbcdf")
+size = Vector3(600, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uc1l"]
+albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
+albedo_texture = ExtResource("3_fl0fn")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wiul3"]
+material = SubResource("StandardMaterial3D_1uc1l")
 size = Vector3(600, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fl0fn"]
@@ -156,6 +165,14 @@ shape = SubResource("BoxShape3D_gu5n0")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5246863, -1.1230927)
 mesh = SubResource("BoxMesh_gu5n0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 2.2732675, -2.350782, 0, 2.5373375, 2.1061273, 0, -6.897247, -6.9190426)
+mesh = SubResource("BoxMesh_wiul3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(-1, -2.2167532e-07, -1.842741e-07, 0, 2.275127, -2.3492372, 8.742278e-08, -2.5356703, -2.10785, 0, -6.897247, -62.94536)
+mesh = SubResource("BoxMesh_wiul3")
 
 [node name="Floor2" type="StaticBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -69.81091)
