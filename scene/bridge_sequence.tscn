@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dt0tnmn8pngyl" path="res://models/girl/girl_normal.tscn" id="4_p76k8"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="5_fninm"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="6_p76k8"]
+[ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="10_wiul3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1uc1l"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -66,25 +67,6 @@ uv1_scale = Vector3(90, 90, 90)
 [sub_resource type="BoxMesh" id="BoxMesh_rbcdf"]
 material = SubResource("StandardMaterial3D_wiul3")
 size = Vector3(700, 1, 100)
-
-[sub_resource type="Environment" id="Environment_lub3u"]
-background_mode = 1
-background_color = Color(0.007843138, 0.007843138, 0.015686275, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.019607844, 0.019607844, 0.0627451, 1)
-ambient_light_energy = 0.5
-tonemap_mode = 2
-tonemap_exposure = 0.8
-glow_enabled = true
-glow_intensity = 0.3
-fog_enabled = true
-fog_light_color = Color(0.011764706, 0.011764706, 0.03137255, 1)
-fog_density = 0.3
-fog_height = -5.0
-fog_height_density = 0.5
-volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.03137255, 0.03137255, 0.0627451, 1)
-volumetric_fog_gi_inject = 0.0
 
 [node name="BridgeSequence" type="Node3D"]
 script = ExtResource("1_fninm")
@@ -233,17 +215,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.83728, 0, 2.3841858e-06)
 [node name="Sketchfab_Scene8" parent="Roads" instance=ExtResource("4_fl0fn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.272285, 0, 1.9073486e-06)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lub3u")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.8660254, -0.3535534, 0.3535534, 0, 0.7071068, 0.7071068, -0.5, -0.61237246, 0.61237246, 0, 21.60014, 21.92472)
-visible = false
-light_color = Color(0.0627451, 0.0627451, 0.14509805, 1)
-light_energy = 0.02
-shadow_enabled = true
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_wiul3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -256,3 +229,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="BrakeSound" type="AudioStreamPlayer" parent="."]
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="."]

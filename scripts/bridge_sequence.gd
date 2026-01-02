@@ -10,7 +10,7 @@ enum State {
 
 @onready var car := $Car
 @onready var camera := $Car/Camera3D
-@onready var girl := $Girl
+@onready var girl := $Girl/Sketchfab_Scene2
 @onready var black_overlay := $CanvasLayer/BlackOverlay
 @onready var audio := $AudioStreamPlayer3D
 @onready var brake_sound := $BrakeSound
@@ -89,7 +89,7 @@ func show_girl():
 	current_state = State.GIRL_APPEARS
 	
 	# Posiziona la ragazza davanti alla macchina
-	var spawn_distance := 40.0
+	var spawn_distance := 20.0
 	girl.global_position = car.global_position + drive_direction * spawn_distance
 	girl.global_position.y = 0
 	girl.visible = true
@@ -137,3 +137,53 @@ func process_swerving(delta):
 		randf_range(-shake, shake),
 		0
 	)
+	
+	# Dopo la sterzata c'è il crash
+	if swerve_timer >= swerve_duration:
+		start_crash()
+		
+func start_crash():
+	current_state = State.CRASHING
+	crash_timer = 0.0
+	
+	print("Crashing!")
+	
+	# Ferma il suono del motore
+	if audio.playing:
+		audio.stop()
+		
+	# Suono crash
+	$CrashSound.play()
+	
+func process_crashing(delta):
+	crash_timer += delta
+	
+	# Forte shake
+	var shake = crash_shake_intensity * (1.0 - crash_timer / crash_duration)
+	camera.position = original_camera_pos + Vector3(
+		randf_range(-shake, shake),
+		randf_range(-shake, shake) + sin(crash_timer * 20) * shake,
+		randf_range(-shake, shake)
+	)
+	
+	# La camera si inclina
+	camera.rotation.z = lerp(camera.rotation.z, deg_to_rad(15), delta * 2)
+	camera.rotation.x = lerp(camera.rotation.x, deg_to_rad(-10), delta * 2)
+	
+	# Fade Out
+	if crash_timer >= crash_duration:
+		start_fade_out()
+		
+func start_fade_out():
+	current_state = State.FADE_OUT
+	
+	print("Fading out..")
+	
+	var tween = create_tween()
+	tween.tween_property(black_overlay, "color:a", 1.0, 2.0)
+	tween.tween_callback(go_to_new_area)
+	
+func go_to_new_area():
+	get_tree().change_scene_to_file("res://scene/new_area.tscn")
+		
+	
