@@ -25,7 +25,7 @@ var max_fall_speed := 30.0
 var fade_started := false
 
 # Timing
-var girl_appear_time := 3.0
+var girl_appear_time := 4.9
 var swerve_duration := 1.5
 var crash_duration := 1.5
 
@@ -93,7 +93,7 @@ func show_girl():
 	current_state = State.GIRL_APPEARS
 	
 	# Posiziona la ragazza davanti alla macchina
-	var spawn_distance := 20.0
+	var spawn_distance := 50.0
 	girl.global_position = car.global_position + drive_direction * spawn_distance
 	girl.global_position.y = 0
 	girl.visible = true
@@ -106,7 +106,7 @@ func process_girl_appears(delta):
 	# Calcola distanza dalla ragazza
 	var distance = car.global_position.distance_to(girl.global_position)
 	# Se abbastanza vicino sterza
-	if distance < 15.0:
+	if distance < 8.0:
 		start_swerving()
 		
 func start_swerving():

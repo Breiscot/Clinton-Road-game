@@ -123,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 0.98460406, 0.17479965, 0, -0.17479965, 0.98
 shape = SubResource("BoxShape3D_lub3u")
 
 [node name="Car" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.2853074, 1.0745211, 104.44514)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.2853074, 1.0745211, 188.65643)
 
 [node name="CarMesh" parent="Car" instance=ExtResource("1_lml47")]
 
@@ -149,6 +149,8 @@ light_energy = 3.0
 shadow_enabled = true
 spot_range = 40.0
 spot_angle = 35.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Car"]
 
 [node name="Girl" type="Node3D" parent="."]
 
@@ -222,6 +224,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.072163, 0, -1.1920929e-06
 
 [node name="Sketchfab_Scene4" parent="Roads" instance=ExtResource("4_fl0fn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.63716, 0, -1.66893e-06)
+
+[node name="Sketchfab_Scene9" parent="Roads" instance=ExtResource("4_fl0fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.14709, 0, -2.3841858e-06)
+
+[node name="Sketchfab_Scene10" parent="Roads" instance=ExtResource("4_fl0fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.712093, 0, -3.0994415e-06)
+
+[node name="Sketchfab_Scene11" parent="Roads" instance=ExtResource("4_fl0fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.219246, 0, -3.33786e-06)
+
+[node name="Sketchfab_Scene12" parent="Roads" instance=ExtResource("4_fl0fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.784256, 0, -3.8146973e-06)
 
 [node name="Sketchfab_Scene5" parent="Roads" instance=ExtResource("4_fl0fn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.90946, 0, 3.5762787e-06)
