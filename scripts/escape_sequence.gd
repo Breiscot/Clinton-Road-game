@@ -106,7 +106,7 @@ func apply_camera_shake(delta):
 	
 func show_escape_text():
 	escape_text.visible = true
-	escape_text.text = "You Escaped..."
+	escape_text.text = "Finally out of here"
 	
 	var tween = create_tween()
 	tween.set_parallel(true)

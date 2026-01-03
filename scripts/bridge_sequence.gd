@@ -96,6 +96,7 @@ func show_girl():
 	var spawn_distance := 50.0
 	girl.global_position = car.global_position + drive_direction * spawn_distance
 	girl.global_position.y = 0
+	girl.global_position.x += 2.1
 	girl.visible = true
 	
 	print("Girl appeared")
