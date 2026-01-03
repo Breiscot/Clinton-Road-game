@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://svaaebci6hr6"]
+
+[ext_resource type="PackedScene" uid="uid://dqoewtt12m678" path="res://models/roadblocks/costruction_road/construction_signs_set.glb" id="1_4nu2w"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_4nu2w")]
+
+[node name="pCube42" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="0"]
+visible = false
+
+[node name="pCube44" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="1"]
+visible = false
+
+[node name="pCube45" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="2"]
+visible = false
+
+[node name="pCube46" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="3"]
+visible = false
+
+[node name="pCube49" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="5"]
+visible = false
+
+[node name="pCube48" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="6"]
+visible = false
+
+[node name="pCube41" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="7"]
+visible = false
+
+[node name="pCube43" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="8"]
+visible = false
+
+[node name="pCube40" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="9"]
+visible = false
+
+[node name="pCube101" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="0"]
+visible = false
+
+[node name="pCube105" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="2"]
+visible = false
+
+[node name="pCube107" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="3"]
+visible = false
+
+[node name="pCube108" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="4"]
+visible = false
+
+[node name="pCube109" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="5"]
+visible = false
+
+[node name="pCube110" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="6"]
+visible = false
+
+[node name="pCube111" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="7"]
+visible = false
+
+[node name="pCube112" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="8"]
+visible = false
+
+[node name="pCube113" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="9"]
+visible = false
+
+[node name="pCube118" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction/Poles5" index="10"]
+visible = false
+
+[node name="pCube51" parent="Sketchfab_model/97b8f0bc39214d8d860b15d45f88dcfb_fbx/RootNode/Construction" index="11"]
+visible = false

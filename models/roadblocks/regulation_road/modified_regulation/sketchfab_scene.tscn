@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://bylflrlujvmnh"]
+
+[ext_resource type="PackedScene" uid="uid://ckqn0ti08ye5j" path="res://models/roadblocks/regulation_road/regulation_signs_set.glb" id="1_yd0r6"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_yd0r6")]
+
+[node name="pCube99" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="0"]
+visible = false
+
+[node name="pCube124" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="1"]
+visible = false
+
+[node name="pCube126" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="2"]
+visible = false
+
+[node name="pCube128" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="3"]
+visible = false
+
+[node name="pCube129" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="4"]
+visible = false
+
+[node name="pCube130" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="5"]
+visible = false
+
+[node name="pCube131" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="6"]
+visible = false
+
+[node name="pCube132" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="7"]
+visible = false
+
+[node name="pCube133" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="8"]
+visible = false
+
+[node name="pCube134" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="9"]
+visible = false
+
+[node name="pCube135" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="10"]
+visible = false
+
+[node name="pCube137" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="12"]
+visible = false
+
+[node name="pCube138" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="13"]
+visible = false
+
+[node name="pCube139" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="14"]
+visible = false
+
+[node name="pCube140" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="15"]
+visible = false
+
+[node name="pCube141" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="16"]
+visible = false
+
+[node name="pCube142" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="17"]
+visible = false
+
+[node name="pCube143" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="18"]
+visible = false
+
+[node name="pCube144" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations" index="19"]
+visible = false
+
+[node name="pCube97" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="0"]
+visible = false
+
+[node name="pCube98" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="1"]
+visible = false
+
+[node name="pCube992" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="2"]
+visible = false
+
+[node name="pCube100" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="3"]
+visible = false
+
+[node name="pCube101" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="4"]
+visible = false
+
+[node name="pCube102" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="5"]
+visible = false
+
+[node name="pCube103" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="6"]
+visible = false
+
+[node name="pCube104" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="7"]
+visible = false
+
+[node name="pCube105" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="8"]
+visible = false
+
+[node name="pCube106" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="9"]
+visible = false
+
+[node name="pCube107" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="10"]
+visible = false
+
+[node name="pCube108" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="11"]
+visible = false
+
+[node name="pCube109" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="12"]
+visible = false
+
+[node name="pCube110" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="13"]
+visible = false
+
+[node name="pCube111" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="14"]
+visible = false
+
+[node name="pCube113" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="16"]
+visible = false
+
+[node name="pCube114" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="17"]
+visible = false
+
+[node name="pCube116" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="18"]
+visible = false
+
+[node name="pCube117" parent="Sketchfab_model/93d94765032746aa876e8d4a640456e2_fbx/RootNode/Regulations/Poles2" index="19"]
+visible = false

@@ -1,14 +1,19 @@
-[gd_scene load_steps=41 format=3 uid="uid://csp8pbegflpj5"]
+[gd_scene load_steps=48 format=3 uid="uid://csp8pbegflpj5"]
 
 [ext_resource type="Script" uid="uid://5k5ffaj8croh" path="res://scripts/bridge_sequence.gd" id="1_fninm"]
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_lml47"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_yc3ud"]
+[ext_resource type="PackedScene" uid="uid://btf0rmwkcftv8" path="res://models/roadblocks/costruction_road/modified_constuction/sketchfab_scene.tscn" id="3_bmous"]
 [ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="3_fl0fn"]
+[ext_resource type="PackedScene" uid="uid://svaaebci6hr6" path="res://models/roadblocks/costruction_road/modified_constuction/sketchfab_scene2.tscn" id="4_4o76v"]
 [ext_resource type="PackedScene" uid="uid://biv4nea5nm3tt" path="res://models/road/road_in_2_edit/sketchfab_scene.tscn" id="4_fl0fn"]
 [ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="4_lub3u"]
 [ext_resource type="PackedScene" uid="uid://dt0tnmn8pngyl" path="res://models/girl/girl_normal.tscn" id="4_p76k8"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="5_fninm"]
+[ext_resource type="PackedScene" uid="uid://bylflrlujvmnh" path="res://models/roadblocks/regulation_road/modified_regulation/sketchfab_scene.tscn" id="5_ihtt4"]
+[ext_resource type="PackedScene" uid="uid://dvv3ieq4ukqtx" path="res://models/roadblocks/road_block/road_block_b.glb" id="6_27qsc"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="6_p76k8"]
+[ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="7_hx225"]
 [ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="10_wiul3"]
 [ext_resource type="AudioStream" uid="uid://dhre2i8mv6epa" path="res://audio/sfx/brake_sound.wav" id="11_1bx61"]
 [ext_resource type="Script" uid="uid://dt1jd42uoob7x" path="res://scripts/envronment_new_area.gd" id="11_rbcdf"]
@@ -20,6 +25,13 @@ size = Vector3(290.7171, 1, 423.0991)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lub3u"]
 size = Vector3(20.851524, 1, 6.514862)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx225"]
+albedo_texture = ExtResource("7_hx225")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qwurr"]
+material = SubResource("StandardMaterial3D_hx225")
+size = Vector3(10, 5, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wiul3"]
 albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
@@ -160,6 +172,90 @@ transform = Transform3D(1, 0, 0, 0, 0.98460406, 0.17479965, 0, -0.17479965, 0.98
 shape = SubResource("BoxShape3D_lub3u")
 
 [node name="RoadUnderRepair" type="Node3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.49194407, -5.8323836)
+
+[node name="Sketchfab_Scene" parent="RoadUnderRepair" instance=ExtResource("3_bmous")]
+transform = Transform3D(0.07351099, 0, 0.29085416, 0, 0.29999998, 0, -0.29085416, 0, 0.07351099, -3.3878238, -0.17959154, -70.005325)
+
+[node name="Sketchfab_Scene13" parent="RoadUnderRepair" instance=ExtResource("3_bmous")]
+transform = Transform3D(0.036799833, 0, -0.29773438, 0, 0.3, 0, 0.29773438, 0, 0.036799833, -9.071386, -0.4293045, -10.91133)
+
+[node name="Sketchfab_Scene2" parent="RoadUnderRepair" instance=ExtResource("4_4o76v")]
+transform = Transform3D(0.05868627, 0, 0.29420388, 0, 0.29999998, 0, -0.29420388, 0, 0.05868627, -9.99612, -0.054089367, -66.73718)
+
+[node name="Sketchfab_Scene3" parent="RoadUnderRepair" instance=ExtResource("5_ihtt4")]
+transform = Transform3D(0.05868627, 0, 0.29420388, 0, 0.29999998, 0, -0.29420388, 0, 0.05868627, 5.653684, 0.51703894, -63.826958)
+
+[node name="Sketchfab_Scene4" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(1.673647, 0.14064498, 1.8517897, -0.26797217, 2.485022, 0.053453702, -1.8376878, -0.23427632, 1.6786957, -2.6757953, 1.8928496, -62.655)
+
+[node name="Sketchfab_Scene15" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(0.15772726, -0.03665447, 2.49475, -0.58328146, 2.4299212, 0.07257914, -2.425882, -0.5866358, 0.14475386, -7.4413776, 1.4365321, -65.05583)
+
+[node name="Sketchfab_Scene16" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(0.15772726, -0.03665447, 2.49475, -0.58328146, 2.4299212, 0.07257914, -2.425882, -0.5866358, 0.14475386, -12.160215, 2.0759683, -64.05539)
+
+[node name="Sketchfab_Scene5" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.499132, 0, 0.06587858, -0.009186743, 2.4755728, 0.348503, -0.06523489, -0.34862402, 2.4747133, -0.63255715, 2.5402746, -57.834145)
+
+[node name="Sketchfab_Scene6" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.4991317, 2.0705007e-09, 0.06587855, -0.004907387, 2.4930537, 0.18616372, -0.06569552, -0.18622856, 2.4921887, -0.63255715, 3.198432, -52.02417)
+
+[node name="Sketchfab_Scene7" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.499132, 2.070257e-09, 0.06587855, -0.0030366897, 2.4973423, 0.11519807, -0.06580853, -0.1152383, 2.4964762, -0.63255715, 3.4161868, -46.09387)
+
+[node name="Sketchfab_Scene8" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.4991322, 1.4862092e-09, 0.06587857, -0.00047716088, 2.4999344, 0.018101228, -0.065876834, -0.018107746, 2.4990666, -0.63255715, 3.5045772, -39.776466)
+
+[node name="Sketchfab_Scene9" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.4991324, 1.3915802e-09, 0.065878585, 0.0025048072, 2.4981928, -0.09502103, -0.06583094, 0.095053755, 2.4973257, -0.74948484, 3.2536407, -33.47267)
+
+[node name="Sketchfab_Scene10" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.4991322, 1.4191587e-09, 0.06587859, 0.007001669, 2.4858408, -0.2656115, -0.06550543, 0.26570347, 2.4849777, -0.63255715, 2.889697, -27.319115)
+
+[node name="Sketchfab_Scene11" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(2.4982164, -0.019259317, -0.09244775, 0.0059060017, 2.4745288, -0.35591203, 0.09424772, 0.35543957, 2.4728086, -0.9774557, 2.0361476, -21.414886)
+
+[node name="Sketchfab_Scene12" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(1.8160267, -0.24885085, -1.7000362, 0.0059060007, 2.4745286, -0.355912, 1.7181429, 0.25452206, 1.7981119, -2.5930843, 1.2361196, -16.580742)
+
+[node name="Sketchfab_Scene14" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(1.0888169, 0.016750962, -2.2503777, 0.018861145, 2.4997752, 0.027733104, 2.2503612, -0.029056292, 1.0885925, -6.523989, 0.6442419, -13.189548)
+
+[node name="Sketchfab_Scene17" parent="RoadUnderRepair" instance=ExtResource("6_27qsc")]
+transform = Transform3D(0.7078221, 0.37416944, -2.3683302, -0.081963055, 2.4717045, 0.36600527, 2.3963034, -0.0259803, 0.7120779, -11.334566, 0.970701, -11.406808)
+
+[node name="BrokenRoad" type="Node3D" parent="RoadUnderRepair"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(1.0332031, 0, 0, 0, 1, 0, 0, 0, 1, -7.2975106, 0.69808924, -27.711086)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(0.92366767, 0, 0, 0, 0.40135345, 0, 0, 0, 1, -8.423564, 0.25890762, -25.578255)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(0.6912394, 0, 0, 0, 0.36178517, 0, 0, 0, 1, -6.930095, 3.5352259, -30.81929)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(1, 0, 0, 0, 1.568348, 0, 0, 0, 1, -7.2975106, 0.8228934, -44.734932)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(1, 0, 0, 0, 1.568348, 0, 0, 0, 1, -8.201354, 3.091711, -36.976753)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RoadUnderRepair/BrokenRoad"]
+transform = Transform3D(0.92366767, 0, 0, 0, 0.629462, 0, 0, 0, 1, -6.655129, 0.13410354, -49.39166)
+mesh = SubResource("BoxMesh_qwurr")
+skeleton = NodePath("../..")
 
 [node name="Car" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.2834227, 1.0745211, 188.65643)
@@ -179,14 +275,14 @@ fov = 70.0
 transform = Transform3D(-1, -1.5180806e-08, 8.609462e-08, 0, 0.9848077, 0.17364818, -8.742278e-08, 0.17364818, -0.9848077, -0.6, 0.5, 3)
 light_energy = 3.0
 shadow_enabled = true
-spot_range = 40.0
+spot_range = 1000.0
 spot_angle = 35.0
 
 [node name="HeadlightRight" type="SpotLight3D" parent="Car/Headlights"]
 transform = Transform3D(-1, -1.5180806e-08, 8.609462e-08, 0, 0.9848077, 0.17364818, -8.742278e-08, 0.17364818, -0.9848077, 0.6, 0.5, 3)
 light_energy = 3.0
 shadow_enabled = true
-spot_range = 40.0
+spot_range = 1000.0
 spot_angle = 35.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Car"]
@@ -302,6 +398,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.00202, 0, 4.529953e-06)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.43703, 0, 4.053116e-06)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 110.35876)
 stream = ExtResource("10_wiul3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
