@@ -167,7 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4033661, 3.8762207, 0)
 shape = SubResource("BoxShape3D_ldmev")
 
 [node name="TheRakeEndTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -121.28366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -251.25847)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheRakeEndTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77108765, 4.070282, 0)

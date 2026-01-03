@@ -12,6 +12,8 @@ enum State {
 @export var retreat_speed := 8.0
 @export var retreat_duration := 8.0
 @export var min_distance_behind := 2.0
+@export var anim_idle := "idle"
+@export var anim_walk := "walk"
 
 var player: Node3D = null
 var flashlight: SpotLight3D = null
@@ -28,19 +30,27 @@ var gravity := 9.8
 
 func _ready():
 	add_to_group("the_rake")
+	print("TheRake: _ready() called")
 	find_player()
 	
 func find_player():
 	await get_tree().physics_frame
 	
 	var players = get_tree().get_nodes_in_group("player")
+	print("TheRake: Found ", players.size(), " players")
+	
 	if players.size() > 0:
 		player = players[0]
-		print("TheRake: Player found!")
+		print("TheRake: Player = ", player.name)
 		
 		# Trova la torcia
 		if player.has_node("Head/Flashlight"):
 			flashlight = player.get_node("Head/Flashlight")
+			print("TheRake: Flashlight found")
+		else:
+			print("TheRake: Error, No Flashlight found")
+	else:
+		print("TheRake: Error, No player found")
 		
 		# Trova la camera
 		if player.has_node("Head/Camera3D"):
@@ -51,24 +61,30 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
+	if Engine.get_physics_frames() % 60 == 0:
+		print("TheRake: is_active=", is_active, " state=", State.keys()[current_state])
+		print("TheRake: position=", global_position)
+		if player:
+			print("TheRake: player position=", player.global_position)
+	
 	if not is_active or player == null:
 		velocity.x = 0
 		velocity.z = 0
 		move_and_slide()
 		return
 		
-		match current_state:
-			State.INACTIVE:
-				velocity.x = 0
-				velocity.z = 0
-			State.IDLE:
-				process_idle(delta)
-			State.WALKING:
-				process_walking(delta)
-			State.RETREATING:
-				process_retreating(delta)
-				
-		move_and_slide()
+	match current_state:
+		State.INACTIVE:
+			velocity.x = 0
+			velocity.z = 0
+		State.IDLE:
+			process_idle(delta)
+		State.WALKING:
+			process_walking(delta)
+		State.RETREATING:
+			process_retreating(delta)
+			
+	move_and_slide()
 		
 func process_idle(delta):
 	velocity.x = 0
@@ -175,10 +191,17 @@ func change_state(new_state: State):
 func play_animation(anim_name: String):
 	if anim_player == null:
 		return
-		
-	if anim_player.has_animation(anim_name):
-		if anim_player.current_animation != anim_name:
-			anim_player.play(anim_name)
+	
+	var real_name = anim_name
+	match anim_name:
+		"metarig|idle standing":
+			real_name = anim_idle
+		"metarig|walk":
+			real_name = anim_walk
+			
+	if anim_player.has_animation(real_name):
+		if anim_player.current_animation != real_name:
+			anim_player.play(real_name)
 			
 # Chiamato dal trigger per attivare il nemico
 func activate():

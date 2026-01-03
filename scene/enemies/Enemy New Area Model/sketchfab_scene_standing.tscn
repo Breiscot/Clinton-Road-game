@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxt8cyx7h10qj"]
+[gd_scene load_steps=3 format=3 uid="uid://cxt8cyx7h10qj"]
 
 [ext_resource type="PackedScene" uid="uid://trwsmae6jjaq" path="res://scene/enemies/Enemy New Area Model/the_rake.glb" id="1_lgcpe"]
+[ext_resource type="AnimationLibrary" uid="uid://crucwtm3gmolf" path="res://animations/the_rake.res" id="2_u5ba6"]
 
 [node name="Sketchfab_Scene" instance=ExtResource("1_lgcpe")]
 
@@ -52,3 +53,8 @@ transform = Transform3D(0.9899871, 0.040770873, -0.1351387, 0.11303307, -0.80241
 
 [node name="head_07" parent="Sketchfab_model/e2bace225ad5443492873eb466567ff0_fbx/Object_2/RootNode/metarig/Object_6/Skeleton3D" index="1"]
 transform = Transform3D(0.98998713, 0.10996833, 0.08849585, 0.11303265, -0.24208859, -0.9636467, -0.0845469, 0.96400154, -0.25209498, 0.117091015, -0.41499943, 0.9242127)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": ExtResource("2_u5ba6")
+}

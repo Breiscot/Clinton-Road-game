@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://duwrmsa2u7k2h"]
+[gd_scene load_steps=5 format=3 uid="uid://duwrmsa2u7k2h"]
 
 [ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="1_kqeoi"]
 [ext_resource type="Script" uid="uid://cv2iwia2i11nd" path="res://scripts/the_rake.gd" id="1_ny3v0"]
+[ext_resource type="AnimationLibrary" uid="uid://crucwtm3gmolf" path="res://animations/the_rake.res" id="3_hldhg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ny3v0"]
 radius = 0.89160156
@@ -11,12 +12,16 @@ height = 4.8881836
 script = ExtResource("1_ny3v0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103880346, 1.4440918, 0.6792443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103880346, 1.4440918, -0.3713758)
 shape = SubResource("CapsuleShape3D_ny3v0")
 
-[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_kqeoi")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_kqeoi")]
+transform = Transform3D(-6, 0, -5.2453663e-07, 0, 6, 0, 5.2453663e-07, 0, -6, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sketchfab_Scene")
+libraries = {
+&"the_rake": ExtResource("3_hldhg")
+}
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
