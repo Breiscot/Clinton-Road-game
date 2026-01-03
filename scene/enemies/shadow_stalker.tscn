@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://duwrmsa2u7k2h"]
+
+[ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="1_h15ad"]
+
+[node name="ShadowStalker" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_h15ad")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
