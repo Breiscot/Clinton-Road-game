@@ -412,6 +412,14 @@ func stun_enemies_in_cone():
 			if enemy.has_method("stun"):
 				enemy.stun(stun_duration)
 				
+	# Respingi TheRake
+	var rake = get_tree().get_nodes_in_group("the_rake")
+	for the_rake in rake:
+		if is_enemy_in_flash_cone(the_rake):
+			print("The Rake hit by flash.")
+			if the_rake.has_method("flash_hit"):
+				the_rake.flash_hit()
+				
 func is_enemy_in_flash_cone(enemy: Node3D) -> bool:
 	var to_enemy = enemy.global_position - camera.global_position
 	var distance = to_enemy.length()

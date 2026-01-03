@@ -34,7 +34,7 @@ func find_player():
 	await get_tree().physics_frame
 	
 	var players = get_tree().get_nodes_in_group("player")
-	if player.size() > 0:
+	if players.size() > 0:
 		player = players[0]
 		print("TheRake: Player found!")
 		
@@ -159,6 +159,37 @@ func is_flashlight_pointing_at_me() -> bool:
 	if is_lit:
 		print("TheRake: Flashlight, freezing..")
 		
+	return is_lit
+	
+func flash_hit():
+	if not is_active:
+		return
 		
+	change_state(State.RETREATING)
+	retreat_timer = retreat_duration
 	
+func change_state(new_state: State):
+	var old_state = current_state
+	current_state = new_state
 	
+func play_animation(anim_name: String):
+	if anim_player == null:
+		return
+		
+	if anim_player.has_animation(anim_name):
+		if anim_player.current_animation != anim_name:
+			anim_player.play(anim_name)
+			
+# Chiamato dal trigger per attivare il nemico
+func activate():
+	print("TheRake: Spawned")
+	is_active = true
+	change_state(State.WALKING)
+	
+# Chiamato dal trigger per disattivare il nemico
+func deactivate():
+	print("TheRake: Despawned")
+	is_active = false
+	change_state(State.INACTIVE)
+	queue_free()
+		

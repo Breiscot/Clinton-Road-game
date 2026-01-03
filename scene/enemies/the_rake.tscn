@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://duwrmsa2u7k2h"]
+[gd_scene load_steps=4 format=3 uid="uid://duwrmsa2u7k2h"]
 
 [ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="1_kqeoi"]
 [ext_resource type="Script" uid="uid://cv2iwia2i11nd" path="res://scripts/the_rake.gd" id="1_ny3v0"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ny3v0"]
+radius = 0.89160156
+height = 4.8881836
+
 [node name="TheRake" type="CharacterBody3D"]
 script = ExtResource("1_ny3v0")
-walk_speed = null
-retreat_speed = null
-retreat_duration = null
-min_distance_behind = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103880346, 1.4440918, 0.6792443)
+shape = SubResource("CapsuleShape3D_ny3v0")
 
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_kqeoi")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
