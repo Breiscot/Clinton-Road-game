@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=51 format=3 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
 [ext_resource type="Script" uid="uid://dt1jd42uoob7x" path="res://scripts/envronment_new_area.gd" id="2_pwv01"]
 [ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="2_qjw1y"]
+[ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="2_r7pqo"]
 [ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="3_1fb26"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="4_geqtq"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="5_pwv01"]
@@ -17,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://dvv3ieq4ukqtx" path="res://models/roadblocks/road_block/road_block_b.glb" id="15_scf2g"]
 [ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="16_d8kf4"]
 [ext_resource type="PackedScene" uid="uid://c2kutkxffmdq1" path="res://scene/ui/hud_new_area.tscn" id="17_scf2g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_215j1"]
+size = Vector3(12.243042, 5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0kpx"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -135,9 +139,17 @@ size = Vector3(10, 5, 20)
 
 [node name="NewArea" type="Node3D"]
 script = ExtResource("1_geqtq")
+enemy_scene = ExtResource("2_r7pqo")
 
 [node name="Environment" type="Node3D" parent="."]
 script = ExtResource("2_pwv01")
+
+[node name="BridgeTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6823502, 0, -49.53904)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55303955, 2.9705155, 0)
+shape = SubResource("BoxShape3D_215j1")
 
 [node name="Bridge" type="Node3D" parent="."]
 
@@ -347,29 +359,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68561405, -0.16015518, 3.18
 
 [node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Car/Headlights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62868387, -0.16442645, 3.2999992)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.072842635, 0.072842635, 0.072842635, 1)
-
-[node name="IntroText" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -45.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(200, 200)
-theme_override_font_sizes/font_size = 32
 
 [node name="Fences" type="Node3D" parent="."]
 
@@ -1003,5 +992,28 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.92366767, 0, 0, 0, 0.629462, 0, 0, 0, 1, -6.655129, 0.13410354, -49.39166)
 mesh = SubResource("BoxMesh_scf2g")
 skeleton = NodePath("../..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+
+[node name="IntroText" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(200, 200)
+theme_override_font_sizes/font_size = 32
 
 [node name="HudNewArea" parent="." instance=ExtResource("17_scf2g")]

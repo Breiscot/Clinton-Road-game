@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7j7plvk54ep"]
+
+[ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="1_lpjla"]
+
+[node name="TheRakeScene" type="Node3D"]
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("1_lpjla")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
