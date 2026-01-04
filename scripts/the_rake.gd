@@ -12,8 +12,9 @@ enum State {
 @export var retreat_speed := 8.0
 @export var retreat_duration := 8.0
 @export var min_distance_behind := 2.0
-@export var anim_idle := "idle"
-@export var anim_walk := "walk"
+@export var anim_idle := "the_rake/metarig|idle"
+@export var anim_walk := "the_rake/metarig|walk"
+@export var anim_run := "the_rake/metarig|run"
 
 var player: Node3D = null
 var flashlight: SpotLight3D = null
@@ -31,6 +32,14 @@ var gravity := 9.8
 func _ready():
 	add_to_group("the_rake")
 	print("TheRake: _ready() called")
+	
+	if anim_player:
+		print("Animazioni disponibili:")
+		var animations = anim_player.get_animation_list()
+		for anim in animations:
+			print(" - ", anim)
+		print("===========================")
+		
 	find_player()
 	
 func find_player():
@@ -112,7 +121,7 @@ func process_walking(delta):
 func process_retreating(delta):
 	retreat_timer -= delta
 	
-	play_animation("walk")
+	play_animation("run")
 	
 	# Si allontana dal player
 	var direction = (global_position - player.global_position).normalized()
@@ -181,6 +190,15 @@ func flash_hit():
 	if not is_active:
 		return
 		
+	is_active = false
+	velocity = Vector3.ZERO
+	
+	# Screech
+	
+	if anim_player and anim_player.has_animation("the_rake/metarig|screech"):
+		anim_player.play("the_rake/metarig|screech")
+		await get_tree().create_timer(0.5).timeout
+		
 	change_state(State.RETREATING)
 	retreat_timer = retreat_duration
 	
@@ -194,18 +212,34 @@ func play_animation(anim_name: String):
 	
 	var real_name = anim_name
 	match anim_name:
-		"metarig|idle standing":
+		"idle":
 			real_name = anim_idle
-		"metarig|walk":
+		"walk":
 			real_name = anim_walk
+		"run":
+			real_name = anim_run
 			
 	if anim_player.has_animation(real_name):
 		if anim_player.current_animation != real_name:
 			anim_player.play(real_name)
+	else:
+		print("TheRake: Animation not found: ", real_name)
 			
 # Chiamato dal trigger per attivare il nemico
 func activate():
 	print("TheRake: Spawned")
+	is_active = false
+	
+	var getup_anim = "the_rake/metarig|getup1"
+	if anim_player and anim_player.has_animation(getup_anim):
+		print("TheRake: Playing getup animation...")
+		anim_player.play(getup_anim)
+		anim_player.animation_finished.connect(_on_getup_finished, CONNECT_ONE_SHOT)
+	else:
+		print("TheRake: No getup animation")
+		_on_getup_finished("")
+		
+func _on_getup_finished(anim_name: String):
 	is_active = true
 	change_state(State.WALKING)
 	
