@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://g5bpnur0eloo"]
+
+[ext_resource type="Script" uid="uid://jetneb4v6r4o" path="res://scripts/message_ui.gd" id="1_q51bb"]
+
+[node name="MessageUi" type="CanvasLayer"]
+script = ExtResource("1_q51bb")
+
+[node name="MessageLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "\"\""

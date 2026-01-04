@@ -1,0 +1,28 @@
+extends CanvasLayer
+
+@onready var message_label := $MessageLabel
+
+func _ready():
+	message_label.visible = false
+	message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	
+	# Centra lo shermo
+	message_label.anchor_left = 0
+	message_label.anchor_right = 1
+	message_label.anchor_top = 0.7
+	message_label.anchor_bottom = 0.9
+	message_label.add_theme_font_size_override("font_size", 24)
+	message_label.add_theme_color_override("font_color", Color.WHITE)
+	
+func show_message(text: String, duration := 3.0):
+	message_label.text = text
+	message_label.modulate.a = 0
+	message_label.visible = true
+	
+	# Fade In
+	var tween = create_tween()
+	tween.tween_property(message_label, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(duration)
+	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func(): message_label.visible = false)
