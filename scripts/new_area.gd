@@ -91,15 +91,19 @@ func spawn_the_rake():
 		return
 		
 	# Spawna dietro al player
-	var player_back = player.global_transform.basis.z
-	the_rake_spawn_position = player.global_position + player_back * 15.0
-	the_rake_spawn_position.y = 0
+	the_rake_spawn_position = Vector3(
+		player.global_position.x,
+		0,
+		player.global_position.z + 15
+	)
 	
 	current_the_rake = the_rake_scene.instantiate()
 	current_the_rake.global_position = the_rake_spawn_position
 	current_the_rake.scale = Vector3(1.0, 1.0, 1.0)
 	
 	add_child(current_the_rake)
+	
+	await get_tree().physics_frame
 	
 	# Attiva The Rake
 	if current_the_rake.has_method("activate"):

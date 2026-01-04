@@ -194,11 +194,18 @@ func flash_hit():
 	velocity = Vector3.ZERO
 	
 	# Screech
-	
-	if anim_player and anim_player.has_animation("the_rake/metarig|screech"):
-		anim_player.play("the_rake/metarig|screech")
-		await get_tree().create_timer(0.5).timeout
+	var screech_anim = "the_rake/metarig|screech"
+	if anim_player and anim_player.has_animation(screech_anim):
+		print("TheRake: Playing screech")
+		anim_player.play(screech_anim)
+		anim_player.animation_finished.connect(_on_screech_finished, CONNECT_ONE_SHOT)
+	else:
+		print("TheRake: No screech animation")
+		_on_screech_finished("")
 		
+func _on_screech_finished(anim_name: String):
+	is_active = true
+	
 	change_state(State.RETREATING)
 	retreat_timer = retreat_duration
 	
