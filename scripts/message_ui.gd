@@ -16,6 +16,7 @@ func _ready():
 	message_label.add_theme_color_override("font_color", Color.WHITE)
 	
 func show_message(text: String, duration := 3.0):
+	print("showing message on screen: ", text)
 	message_label.text = text
 	message_label.modulate.a = 0
 	message_label.visible = true

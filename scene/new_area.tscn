@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=57 format=3 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dvv3ieq4ukqtx" path="res://models/roadblocks/road_block/road_block_b.glb" id="15_scf2g"]
 [ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="16_d8kf4"]
 [ext_resource type="PackedScene" uid="uid://c2kutkxffmdq1" path="res://scene/ui/hud_new_area.tscn" id="17_scf2g"]
+[ext_resource type="Script" uid="uid://m7bd5t1hj0is" path="res://scripts/invisible_wall.gd" id="20_eo525"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_215j1"]
 size = Vector3(12.243042, 5, 2)
@@ -143,6 +144,12 @@ albedo_texture = ExtResource("16_d8kf4")
 [sub_resource type="BoxMesh" id="BoxMesh_scf2g"]
 material = SubResource("StandardMaterial3D_k6dab")
 size = Vector3(10, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nnxgq"]
+size = Vector3(19.9599, 6.256714, 2.053955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_if066"]
+size = Vector3(33.704834, 6.7589417, 2.4467163)
 
 [node name="NewArea" type="Node3D"]
 script = ExtResource("1_geqtq")
@@ -1039,3 +1046,30 @@ pivot_offset = Vector2(200, 200)
 theme_override_font_sizes/font_size = 32
 
 [node name="HudNewArea" parent="." instance=ExtResource("17_scf2g")]
+
+[node name="InvisibleWalls" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2796936, 2.30542, 19.417751)
+shape = SubResource("BoxShape3D_nnxgq")
+
+[node name="MessageArea" type="Area3D" parent="InvisibleWalls"]
+script = ExtResource("20_eo525")
+wall_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWalls/MessageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2796936, 2.628357, 19.105862)
+shape = SubResource("BoxShape3D_nnxgq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvisibleWalls"]
+transform = Transform3D(0.8017756, 0, 0.59762526, 0, 1, 0, -0.59762526, 0, 0.8017756, 24.443111, 2.597931, 7.7883215)
+shape = SubResource("BoxShape3D_if066")
+
+[node name="MessageArea2" type="Area3D" parent="InvisibleWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2337265, 0, 0)
+script = ExtResource("20_eo525")
+wall_type = 3
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvisibleWalls/MessageArea2"]
+transform = Transform3D(0.8017756, 0, 0.59762526, 0, 1, 0, -0.59762526, 0, 0.8017756, 23.937729, 2.8794708, 7.4238667)
+shape = SubResource("BoxShape3D_if066")

@@ -2,7 +2,9 @@ extends Area3D
 
 enum WallType {
 	ROAD,
-	FOREST
+	FOREST,
+	ROAD_NEW_AREA_BACK,
+	FOREST_NEW_AREA
 }
 
 @export var wall_type: WallType = WallType.FOREST
@@ -17,14 +19,29 @@ var messages_forest := [
 	"I'm straying too far, I need to turn back."
 ]
 
+var messages_road_new_area_back := [
+	"I don't want turn back, I need to go ahead."
+]
+
+var messages_forest_new_area := [
+	"I don't want turn back to the forest.",
+	"The road is my only way out of here."
+]
+
 var can_show_message := true
 var cooldown := 3.0
 
 func _ready():
+	print("InvisibleWall ready, type: ", WallType.keys()[wall_type])
 	body_entered.connect(_on_body_entered)
 	
 func _on_body_entered(body: Node3D):
+	print("something entered wall: ", body.name)
+	print("is in player group: ", body.is_in_group("player"))
+	print("can show message: ", can_show_message)
+	
 	if body.is_in_group("player") and can_show_message:
+		print("showing message")
 		show_message()
 		
 func show_message():
@@ -36,18 +53,29 @@ func show_message():
 			message = messages_road[randi() % messages_road.size()]
 		WallType.FOREST:
 			message = messages_forest[randi() % messages_forest.size()]
+		WallType.ROAD_NEW_AREA_BACK:
+			message = messages_road_new_area_back[randi() % messages_road_new_area_back.size()]
+		WallType.FOREST_NEW_AREA:
+			message = messages_forest_new_area[randi() % messages_forest_new_area.size()]
 			
-	# Hud e mostra messaggio
-	var hud = get_tree().get_first_node_in_group("hud")
-	if hud and hud.has_method("show_message"):
-		hud.show_message(message)
-	else:
-		# Fallback
-		var player = get_tree().get_first_node_in_group("player")
-		if player and player.has_node("MessageUI"):
+	print("message to show: ", message)
+	
+	var player = get_tree().get_first_node_in_group("player")
+	print("Player: ", player)
+	
+	if player:
+		print("Has MessageUI: ", player.has_node("MessageUI"))
+		
+		if player.has_node("MessageUI"):
+			print("Calling MessageUI.show_message()")
 			player.get_node("MessageUI").show_message(message)
+		elif player.has_method("show_message"):
+			print("Calling player.show_message()")
+			player.show_message(message)
 		else:
-			print("Message: ", message)
+			print("No MessageUI found, message: ", message)
+	else:
+		print("no player found")
 			
 	await get_tree().create_timer(cooldown).timeout
 	can_show_message = true
