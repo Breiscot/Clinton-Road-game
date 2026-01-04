@@ -39,4 +39,4 @@ spot_angle = 35.0
 [node name="DeathScreen" parent="." instance=ExtResource("3_6smn3")]
 visible = false
 
-[node name="MessageUi" parent="." instance=ExtResource("4_5lop3")]
+[node name="MessageUI" parent="." instance=ExtResource("4_5lop3")]

@@ -20,7 +20,7 @@ var messages_forest := [
 ]
 
 var messages_road_new_area_back := [
-	"I don't want turn back, I need to go ahead."
+	"I don't want turn back, I need to go ahead.",
 ]
 
 var messages_forest_new_area := [
