@@ -1,9 +1,40 @@
 CREDITS:
 
-Model of Wendigo Enemy: DannyAg | https://sketchfab.com/3d-models/wendigo-28dea1b1f0eb4e348ab8a8afeae1b5ab
-Model of Trees: DJMaesen | https://sketchfab.com/3d-models/oak-trees-d841c3bcc5324daebee50f45619e05fc
-Model of Road: VX-Designs | https://sketchfab.com/3d-models/road-free-d42c4932221747a9af29ad20bf85a490
-Model of Battery: hoschu | https://sketchfab.com/3d-models/battery-4cab1d1dfcb54ab79230a0a8d44a087e
-Model of Fuel Can: Forge_Of_Hephaestus | https://sketchfab.com/3d-models/fuel-can-2k-c6d46b0285d64455873681c91038b17e
-Model of Spark Plug: Unity Fan youtube channel | https://sketchfab.com/3d-models/spark-plug-dcd81accfd58412ca276711335bc6a5d
-Model of Car: Oliv1e | https://sketchfab.com/3d-models/small-price-car-67c84e4d30ae42fda22c0a0c7526df26
+Model of Wendigo Enemy:
+	DannyAg | https://sketchfab.com/3d-models/wendigo-28dea1b1f0eb4e348ab8a8afeae1b5ab
+	
+Model of The Rake Enemy:
+	Sealife Fan 3 | https://sketchfab.com/3d-models/the-rake-92898b04b24e4315b0673fcfe307f64e
+
+Model of Trees:
+	 DJMaesen | https://sketchfab.com/3d-models/oak-trees-d841c3bcc5324daebee50f45619e05fc
+
+Model of Road:
+	 VX-Designs | https://sketchfab.com/3d-models/road-free-d42c4932221747a9af29ad20bf85a490
+
+Model of Battery:
+	 hoschu | https://sketchfab.com/3d-models/battery-4cab1d1dfcb54ab79230a0a8d44a087e
+
+Model of Fuel Can:
+	 Forge_Of_Hephaestus | https://sketchfab.com/3d-models/fuel-can-2k-c6d46b0285d64455873681c91038b17e
+
+Model of Spark Plug: 
+	Unity Fan youtube channel | https://sketchfab.com/3d-models/spark-plug-dcd81accfd58412ca276711335bc6a5d
+
+Model of Car: 
+	Oliv1e | https://sketchfab.com/3d-models/small-price-car-67c84e4d30ae42fda22c0a0c7526df26
+
+Model of Broken Road:
+	Caboose3d: | https://sketchfab.com/3d-models/construction-signs-set-96b3785bb7654f4f8812d23bfaa9830d,
+			   | https://sketchfab.com/3d-models/regulation-signs-set-d195a258a20c4b67bd95822e86f4495d
+			
+	Den: | https://sketchfab.com/3d-models/road-block-b-3fb46f4de80244849abdf992047dafad
+	
+Model of Bridge:
+	jimbogies: | https://sketchfab.com/3d-models/american-road-bridge-62412773c6ba408c9fb2985024760278
+	
+Model of Girl:
+	schmoldt.art: | https://sketchfab.com/3d-models/crazy-ex-gf-game-mesh-fdecbc5840eb4d2da3a871fb49fed9bd
+	
+
+	
