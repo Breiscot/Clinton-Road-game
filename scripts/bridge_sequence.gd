@@ -40,6 +40,8 @@ var crash_timer := 0.0
 var crash_shake_intensity := 0.1
 
 # Messaggi
+var message_1_time := 2.0
+var message_2_time := 7.0
 var message_shown_1 := false
 var message_shown_2 := false
 var message_shown_3 := false
@@ -87,40 +89,6 @@ func _process(delta):
 			process_crashing(delta)
 		State.FADE_OUT:
 			pass
-			
-func show_message_1():
-	if message_shown_1:
-		return
-	message_shown_1 = true
-	
-	show_subtitle("What was that creature before... Thank God I escaped.", 3.0)
-	
-	await get_tree().create_timer(7.0).timeout
-	show_message_2()
-	
-func show_message_2():
-	if message_shown_2:
-		return
-	message_shown_2 = true
-	
-	show_subtitle("That part of the bridge looks like it needs repairs...", 3.0)
-	
-func show_message_3():
-	if message_shown_3:
-		return
-	message_shown_3 = true
-	
-	show_subtitle("WHAT THE.. I NEED TO BRAKE!, SHIT", 2.0)
-	
-func show_subtitle(text: String, duration := 2.0):
-	message_label.text = text
-	message_label.visible = true
-	
-	var tween = create_tween()
-	tween.tween_property(message_label, "modulate:a", 1.0, 0.3)
-	tween.tween_interval(duration)
-	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
-	tween.tween_callback(func(): message_label.visible = false)
 
 func process_driving(delta):
 	# Muove la macchina
@@ -133,9 +101,38 @@ func process_driving(delta):
 		0
 	)
 	
+	# Messaggi al tempo
+	if time_elapsed >= message_1_time and not message_shown_1:
+		show_message_1()
+		
+	if time_elapsed >= message_2_time and not message_shown_2:
+		show_message_2()
+	
 	# Dopo appare girl
 	if time_elapsed >= girl_appear_time:
 		show_girl()
+		
+func show_message_1():
+	message_shown_1 = true
+	show_subtitle("What was that creature before... Thank God I escaped.", 3.0)
+	
+func show_message_2():
+	message_shown_2 = true
+	show_subtitle("That part of the bridge looks like it needs repairs...", 3.0)
+	
+func show_message_3():
+	message_shown_3 = true
+	show_subtitle("WHAT THE.. A GIRL, I NEED TO BRAKE!, SHIT", 2.0)
+	
+func show_subtitle(text: String, duration := 2.0):
+	message_label.text = text
+	message_label.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(message_label, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(duration)
+	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func(): message_label.visible = false)
 		
 func show_girl():
 	current_state = State.GIRL_APPEARS
@@ -157,7 +154,7 @@ func process_girl_appears(delta):
 	# Calcola distanza dalla ragazza
 	var distance = car.global_position.distance_to(girl.global_position)
 	# Se abbastanza vicino sterza
-	if distance < 8.0:
+	if distance < 12.0:
 		start_swerving()
 		
 func start_swerving():
