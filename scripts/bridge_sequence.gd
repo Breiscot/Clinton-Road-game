@@ -12,7 +12,8 @@ enum State {
 @onready var camera := $Car/Camera3D
 @onready var girl := $Girl/Sketchfab_Scene2
 @onready var black_overlay := $CanvasLayer/BlackOverlay
-@onready var audio := $AudioStreamPlayer3D
+@onready var message_label := $CanvasLayer/MessageLabel
+@onready var audio := $AudioStreamPlayer
 @onready var brake_sound := $BrakeSound
 
 var current_state: State = State.DRIVING
@@ -25,7 +26,7 @@ var max_fall_speed := 30.0
 var fade_started := false
 
 # Timing
-var girl_appear_time := 4.9
+var girl_appear_time := 12.0
 var swerve_duration := 1.5
 var crash_duration := 1.5
 
@@ -38,6 +39,11 @@ var crash_timer := 0.0
 # Camera Shake per crash
 var crash_shake_intensity := 0.1
 
+# Messaggi
+var message_shown_1 := false
+var message_shown_2 := false
+var message_shown_3 := false
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
@@ -47,6 +53,10 @@ func _ready():
 	# Setup Overlay
 	black_overlay.color = Color(0, 0, 0, 1)
 	black_overlay.visible = true
+	
+	# Setup Messaggi
+	message_label.visible = false
+	message_label.modulate.a = 0
 	
 	original_camera_pos = camera.position
 	camera.current = true
@@ -58,6 +68,10 @@ func _ready():
 	# Avvia suono motore
 	if audio and audio.stream:
 		audio.play()
+		
+	# Mostra primo messaggio dopo Fade In
+	await get_tree().create_timer(2.0).timeout
+	show_message_1()
 		
 func _process(delta):
 	time_elapsed += delta
@@ -74,6 +88,40 @@ func _process(delta):
 		State.FADE_OUT:
 			pass
 			
+func show_message_1():
+	if message_shown_1:
+		return
+	message_shown_1 = true
+	
+	show_subtitle("What was that creature before... Thank God I escaped.", 3.0)
+	
+	await get_tree().create_timer(7.0).timeout
+	show_message_2()
+	
+func show_message_2():
+	if message_shown_2:
+		return
+	message_shown_2 = true
+	
+	show_subtitle("That part of the bridge looks like it needs repairs...", 3.0)
+	
+func show_message_3():
+	if message_shown_3:
+		return
+	message_shown_3 = true
+	
+	show_subtitle("WHAT THE.. I NEED TO BRAKE!, SHIT", 2.0)
+	
+func show_subtitle(text: String, duration := 2.0):
+	message_label.text = text
+	message_label.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(message_label, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(duration)
+	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func(): message_label.visible = false)
+
 func process_driving(delta):
 	# Muove la macchina
 	car.global_position += drive_direction * car_speed * delta
@@ -98,6 +146,8 @@ func show_girl():
 	girl.global_position.y = 0
 	girl.global_position.x += 2.1
 	girl.visible = true
+	
+	show_message_3()
 	
 	print("Girl appeared")
 	
