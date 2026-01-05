@@ -16,6 +16,11 @@ enum State {
 @export var anim_walk := "the_rake/metarig|walk"
 @export var anim_run := "the_rake/metarig|run"
 
+# Audio
+@export var footstep_sound: AudioStream
+@export var screech_sound: AudioStream
+@export var ambient_sound: AudioStream
+
 var player: Node3D = null
 var flashlight: SpotLight3D = null
 var camera: Camera3D = null
@@ -26,8 +31,15 @@ var retreat_timer := 0.0
 var is_active := false
 var gravity := 9.8
 
-# Animazioni
+# Audio Timing
+var footstep_timer := 0.0
+var footstep_interval := 0.4
+
+# Nodi
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
+@onready var screech_player: AudioStreamPlayer3D = $ScreechPlayer
+@onready var ambient_player: AudioStreamPlayer3D = $AmbientPlayer
 
 func _ready():
 	add_to_group("the_rake")
@@ -40,8 +52,28 @@ func _ready():
 			print(" - ", anim)
 		print("===========================")
 		
+	setup_audio()
 	find_player()
 	
+func setup_audio():
+	# Footsteps
+	if footstep_player and footstep_sound:
+		footstep_player.stream = screech_sound
+		footstep_player.max_distance = 30
+		footstep_player.volume_db = -5
+		
+	# Screech
+	if screech_player and screech_sound:
+		screech_player.stream = screech_sound
+		screech_player.max_distance = 50
+		screech_player.volume_db = 0
+		
+	# Ambient
+	if ambient_player and ambient_sound:
+		ambient_player.stream = ambient_sound
+		ambient_player.max_distance = 20
+		ambient_player.volume_db = -10
+
 func find_player():
 	await get_tree().physics_frame
 	
@@ -104,12 +136,17 @@ func process_idle(delta):
 	# Guarda sempre il player
 	look_at_player()
 	
+	footstep_timer = 0
+	
 	# Se non puntato dalla torcia, inizia a camminare
 	if not is_flashlight_pointing_at_me():
 		change_state(State.WALKING)
 		
 func process_walking(delta):
 	play_animation("walk")
+	
+	# Passi
+	update_footsteps(delta, 0.5)
 	
 	# Se viene puntato dalla torcia, si ferma
 	if is_flashlight_pointing_at_me():
@@ -122,6 +159,9 @@ func process_retreating(delta):
 	retreat_timer -= delta
 	
 	play_animation("run")
+	
+	# Passi veloci
+	update_footsteps(delta, 0.25)
 	
 	# Si allontana dal player
 	var direction = (global_position - player.global_position).normalized()
@@ -138,6 +178,32 @@ func process_retreating(delta):
 	if retreat_timer <= 0:
 		print("TheRake: Retreat finished, back to the player")
 		change_state(State.WALKING)
+		
+func update_footsteps(delta: float, interval: float):
+	footstep_timer += delta
+	
+	if footstep_timer >= interval:
+		footstep_timer = 0
+		play_footstep()
+		
+func play_footstep():
+	if footstep_player and footstep_player.stream:
+		footstep_player.pitch_scale = randf_range(0.8, 1.2)
+		footstep_player.play()
+		
+func play_screech():
+	if screech_player and screech_player.stream:
+		screech_player.pitch_scale = randf_range(0.9, 1.1)
+		screech_player.play()
+		
+func start_ambient():
+	if ambient_player and ambient_player.stream:
+		if not ambient_player.playing:
+			ambient_player.play()
+			
+func stop_ambient():
+	if ambient_player and ambient_player.playing:
+		ambient_player.stop()
 		
 func move_behind_player(delta):
 	if player == null:
@@ -194,6 +260,8 @@ func flash_hit():
 	velocity = Vector3.ZERO
 	
 	# Screech
+	play_screech()
+	
 	var screech_anim = "the_rake/metarig|screech"
 	if anim_player and anim_player.has_animation(screech_anim):
 		print("TheRake: Playing screech")
@@ -248,12 +316,14 @@ func activate():
 		
 func _on_getup_finished(anim_name: String):
 	is_active = true
+	start_ambient()
 	change_state(State.WALKING)
 	
 # Chiamato dal trigger per disattivare il nemico
 func deactivate():
 	print("TheRake: Despawned")
 	is_active = false
+	stop_ambient()
 	change_state(State.INACTIVE)
 	queue_free()
 		

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://duwrmsa2u7k2h"]
+[gd_scene load_steps=8 format=3 uid="uid://duwrmsa2u7k2h"]
 
 [ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="1_kqeoi"]
 [ext_resource type="Script" uid="uid://cv2iwia2i11nd" path="res://scripts/the_rake.gd" id="1_ny3v0"]
+[ext_resource type="AudioStream" uid="uid://cfigfq3niyfls" path="res://audio/sfx/footstep.wav" id="2_2kvt7"]
+[ext_resource type="AudioStream" uid="uid://dpf5du13rh1pw" path="res://audio/enemy/growl.ogg" id="3_71gh4"]
 [ext_resource type="AnimationLibrary" uid="uid://crucwtm3gmolf" path="res://animations/the_rake.res" id="3_hldhg"]
+[ext_resource type="AudioStream" uid="uid://bsoffuusict2s" path="res://audio/sfx/breath_heavy.ogg" id="4_wr8wt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ny3v0"]
 radius = 0.89160156
@@ -10,6 +13,9 @@ height = 4.2521973
 
 [node name="TheRake" type="CharacterBody3D"]
 script = ExtResource("1_ny3v0")
+footstep_sound = ExtResource("2_2kvt7")
+screech_sound = ExtResource("3_71gh4")
+ambient_sound = ExtResource("4_wr8wt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103880346, 2.1440942, -0.3713758)
@@ -25,3 +31,12 @@ libraries = {
 }
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_2kvt7")
+
+[node name="ScreechPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_71gh4")
+
+[node name="AmbientPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_wr8wt")
