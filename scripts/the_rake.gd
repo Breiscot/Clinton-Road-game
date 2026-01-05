@@ -8,9 +8,9 @@ enum State {
 }
 
 # Parametri
-@export var walk_speed := 3.5
+@export var walk_speed := 6.0
 @export var retreat_speed := 8.0
-@export var retreat_duration := 8.0
+@export var retreat_duration := 4.0
 @export var min_distance_behind := 2.0
 @export var anim_idle := "the_rake/metarig|idle"
 @export var anim_walk := "the_rake/metarig|walk"

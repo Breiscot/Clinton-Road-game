@@ -12,10 +12,16 @@ var current_the_rake: Node3D = null
 var enemy_spawn_position := Vector3(3.3, 0.2, -60.0)
 var the_rake_spawn_position := Vector3(0, 0, 10.0)
 
+var message_shown_1 := false
+var message_shown_2 := false
+var message_shown_3 := false
+var message_shown_4 := false
+
 @onready var player := $Player
 @onready var black_overlay :=$CanvasLayer/BlackOverlay
 @onready var intro_text := $CanvasLayer/IntroText
 @onready var intro_text_2 := $CanvasLayer/IntroText2
+@onready var message_label := $CanvasLayer/MessageLabel
 @onready var bridge_trigger := $BridgeTrigger
 @onready var the_rake_trigger := $TheRakeTrigger
 @onready var the_rake_end_trigger := $TheRakeEndTrigger
@@ -54,6 +60,51 @@ func start_gameplay():
 	player.set_physics_process(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	show_message_1()
+	
+func show_message_1():
+	if message_shown_1:
+		return
+	message_shown_1 = true
+	
+	await get_tree().create_timer(2.0).timeout
+	show_subtitle("I don't know if I should have run her over instead.. but, where is she?")
+	
+	await get_tree().create_timer(3.0).timeout
+	show_message_2()
+	
+func show_message_2():
+	if message_shown_2:
+		return
+	message_shown_2 = true
+	
+	await get_tree().create_timer(2.0).timeout
+	show_subtitle("The only thing I can do now is keep walking down this road...")
+	
+func show_message_3():
+	if message_shown_3:
+		return
+	message_shown_3 = true
+	
+	show_subtitle("WHAT IS THAT?!... I wonder if I'll make it out of here alive...")
+	
+func show_message_4():
+	if message_shown_4:
+		return
+	message_shown_4 = true
+	
+	show_subtitle("I have a strange feeling behind me...")
+	
+func show_subtitle(text: String, duration := 3.5):
+	message_label.text = text
+	message_label.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(message_label, "modulate:a", 1.0, 0.3)
+	tween.tween_interval(duration)
+	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func(): message_label.visible = false)
+	
 func _on_bridge_trigger_entered(body: Node3D):
 	if body.is_in_group("player") and not enemy_spawned:
 		spawn_enemy()
@@ -74,6 +125,7 @@ func spawn_enemy():
 	
 	# Despawn dopo qualche secondo
 	await get_tree().create_timer(enemy_visible_time).timeout
+	show_message_3()
 	despawn_enemy()
 	
 func despawn_enemy():
@@ -108,6 +160,8 @@ func spawn_the_rake():
 	current_the_rake.scale = Vector3(1.0, 1.0, 1.0)
 	
 	add_child(current_the_rake)
+	
+	show_message_4()
 	
 	await get_tree().physics_frame
 	
