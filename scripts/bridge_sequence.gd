@@ -41,7 +41,7 @@ var crash_shake_intensity := 0.1
 
 # Messaggi
 var message_1_time := 2.0
-var message_2_time := 7.0
+var message_2_time := 8.0
 var message_shown_1 := false
 var message_shown_2 := false
 var message_shown_3 := false
