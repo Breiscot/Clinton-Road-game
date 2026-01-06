@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=75 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -121,6 +121,15 @@ size = Vector3(100.54364, 0.559391, 6.282135)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgrff"]
 size = Vector3(5.522, 0.25402832, 1.692)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hi81"]
+size = Vector3(0.5021515, 0.076408386, 0.010772705)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww6od"]
+size = Vector3(0.46505737, 0.07788086, 0.009796143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_350pk"]
+size = Vector3(0.50390625, 0.1281128, 0.10546875)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_641ss"]
 size = Vector3(161.58797, 2.5229492, 0.539917)
@@ -461,9 +470,97 @@ transform = Transform3D(-33.260555, 0, -94.30659, 0, 100.00001, 0, 94.30659, 0, 
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tunnel"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
-transform = Transform3D(0.9999994, 0, 1.7881393e-07, 0, 1, 0, -1.7881393e-07, 0, 0.9999994, -0.27988625, -0.103666276, -0.19692206)
+[node name="floor" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999994, 0, 1.7881393e-07, 0, 1, 0, -1.7881393e-07, 0, 0.9999994, -0.27988625, -0.1036662, -0.19692206)
 shape = SubResource("BoxShape3D_dgrff")
+
+[node name="wall" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9483501, 0, 0.31722197, 0, 1, 0, -0.31722197, 0, 0.9483501, 2.243657, 0.060329463, -0.21589541)
+shape = SubResource("BoxShape3D_0hi81")
+
+[node name="wall2" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9500685, 0, 0.31203628, 0, 1, 0, -0.31203628, 0, 0.9500685, 2.1881642, 0.05920409, -0.4117902)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall14" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.96963173, 0, 0.24456295, 0, 1, 0, -0.24456295, 0, 0.96963173, 1.7436094, 0.059204094, -0.28297472)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall15" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98252666, 0, 0.18611278, 0, 1, 0, -0.18611278, 0, 0.98252666, 1.2925963, 0.059204094, -0.18321157)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall16" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99261594, 0, 0.121280834, 0, 1, 0, -0.121280834, 0, 0.99261594, 0.83434105, 0.059204094, -0.11157012)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall17" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99863076, 0, 0.05224955, 0, 1, 0, -0.05224955, 0, 0.99863076, 0.373991, 0.059204094, -0.071535945)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall18" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99885446, 0, -0.04776755, 0, 1, 0, 0.04776755, 0, 0.99885446, -0.085700035, 0.059204094, -0.070287704)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall19" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999557, 0, -0.00889951, 0, 1, 0, 0.00889951, 0, 0.9999557, -0.16443682, 0.059204094, -0.065616965)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall20" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9951487, 0, -0.09832734, 0, 1, 0, 0.09832734, 0, 0.9951487, -0.6244879, 0.059204094, -0.0906564)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall21" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9893101, 0, -0.14578655, 0, 1, 0, 0.14578655, 0, 0.9893101, -1.0860362, 0.059204094, -0.14960372)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall22" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9768008, 0, -0.21411759, 0, 1, 0, 0.21411759, 0, 0.9768008, -1.5425191, 0.059204094, -0.23307085)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall3" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.96667707, 0, 0.25598592, 0, 1, 0, -0.25598592, 0, 0.96667707, 1.877702, 0.0786438, -0.056853652)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall4" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98105603, 0, 0.19370417, 0, 1, 0, -0.19370417, 0, 0.98105603, 1.4838924, 0.0786438, 0.035179734)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall5" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9911044, 0, 0.13305324, 0, 1, 0, -0.13305324, 0, 0.9911044, 1.017447, 0.0786438, 0.11231923)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall6" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9977102, 0, 0.06752992, 0, 1, 0, -0.06752992, 0, 0.9977102, 0.5153146, 0.0786438, 0.16648531)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall9" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99260235, 0, 0.12135151, 0, 1, 0, -0.12135151, 0, 0.99260235, 0.51893616, 0.0786438, 0.1767528)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall7" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999725, 0, -0.0062452257, 0, 1, 0, 0.0062452257, 0, 0.9999725, 0.0109272, 0.0786438, 0.18513894)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall10" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99900824, 0, -0.044330657, 0, 1, 0, 0.044330657, 0, 0.99900824, -0.49462557, 0.0786438, 0.17291045)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall11" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9950452, 0, -0.09925988, 0, 1, 0, 0.09925988, 0, 0.9950452, -0.7656965, 0.0786438, 0.15009451)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall12" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9879285, 0, -0.15480515, 0, 1, 0, 0.15480515, 0, 0.9879285, -1.1125302, 0.0786438, 0.102219224)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall13" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9719218, 0, -0.23523378, 0, 1, 0, 0.23523378, 0, 0.9719218, -1.5894995, 0.0786438, 0.008390665)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall8" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98807436, 0, 0.15390193, 0, 1, 0, -0.15390193, 0, 0.98807436, 0.018864632, 0.0786438, 0.21793413)
+shape = SubResource("BoxShape3D_350pk")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
 transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 14.298491, 0, -0.4956243)
