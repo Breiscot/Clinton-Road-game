@@ -72,7 +72,7 @@ func setup_audio():
 	if ambient_player and ambient_sound:
 		ambient_player.stream = ambient_sound
 		ambient_player.max_distance = 20
-		ambient_player.volume_db = -10
+		ambient_player.volume_db = -20
 
 func find_player():
 	await get_tree().physics_frame
@@ -278,8 +278,12 @@ func _on_screech_finished(anim_name: String):
 	retreat_timer = retreat_duration
 	
 func change_state(new_state: State):
-	var old_state = current_state
 	current_state = new_state
+	
+	if new_state == State.WALKING or new_state == State.RETREATING:
+		start_ambient()
+	else:
+		stop_ambient()
 	
 func play_animation(anim_name: String):
 	if anim_player == null:

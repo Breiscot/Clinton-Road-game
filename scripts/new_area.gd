@@ -3,6 +3,10 @@ extends Node3D
 @export var enemy_scene: PackedScene
 @export var the_rake_scene: PackedScene
 @export var enemy_visible_time := 0.5
+@export var appear_sound: AudioStream
+@export var disappear_sound: AudioStream
+
+@onready var appear_audio := AudioStreamPlayer.new()
 
 var enemy_spawned := false
 var the_rake_spawned := false
@@ -55,6 +59,10 @@ func _ready():
 	bridge_trigger.body_entered.connect(_on_bridge_trigger_entered)
 	the_rake_trigger.body_entered.connect(_on_the_rake_trigger_entered)
 	the_rake_end_trigger.body_entered.connect(_on_the_rake_end_trigger_entered)
+	
+	# Setup audio apparizione
+	appear_audio.bus = "Master"
+	add_child(appear_audio)
 	
 func start_gameplay():
 	player.set_physics_process(true)
@@ -123,6 +131,11 @@ func spawn_enemy():
 	
 	add_child(current_enemy)
 	
+	# Suono
+	if appear_sound:
+		appear_audio.stream = appear_sound
+		appear_audio.play()
+	
 	# Despawn dopo qualche secondo
 	await get_tree().create_timer(enemy_visible_time).timeout
 	show_message_3()
@@ -133,6 +146,11 @@ func despawn_enemy():
 		return
 		
 	print("Enemy despawning.")
+	
+	# Suono
+	if disappear_sound:
+		appear_audio.stream = disappear_sound
+		appear_audio.play()
 	
 	current_enemy.queue_free()
 	current_enemy = null
