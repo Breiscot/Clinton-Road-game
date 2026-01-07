@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=101 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="16_d8kf4"]
 [ext_resource type="PackedScene" uid="uid://b673ysh5pm7kg" path="res://models/lights/industrial_caged_light.glb" id="16_nnxgq"]
 [ext_resource type="PackedScene" uid="uid://c2kutkxffmdq1" path="res://scene/ui/hud_new_area.tscn" id="17_scf2g"]
+[ext_resource type="Script" uid="uid://cdjqkvm7yi8bd" path="res://scripts/tunnel_door.gd" id="19_dgrff"]
 [ext_resource type="Script" uid="uid://m7bd5t1hj0is" path="res://scripts/invisible_wall.gd" id="20_eo525"]
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="21_jue2w"]
 [ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="22_b1wa3"]
@@ -42,6 +43,9 @@ size = Vector3(22.43631, 8.752441, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7oi"]
 size = Vector3(21.038025, 9.140564, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d6oh"]
+size = Vector3(21.894104, 9.40863, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u0kpx"]
 size = Vector3(290.7171, 1, 423.0991)
@@ -196,6 +200,9 @@ albedo_texture = ExtResource("14_ldmev")
 material = SubResource("StandardMaterial3D_dgrff")
 size = Vector3(7, 7, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_os54k"]
+size = Vector3(0.57177734, 2.3720703, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_43gye"]
 size = Vector3(3.1228027, 6.671753, 7.607605)
 
@@ -339,6 +346,13 @@ transform = Transform3D(0.9411819, 0, -0.33790028, 0, 1, 0, 0.33790028, 0, 0.941
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheRakeEndTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77108765, 4.070282, 0)
 shape = SubResource("BoxShape3D_is7oi")
+
+[node name="ChaseTrigger" type="Area3D" parent="."]
+transform = Transform3D(0.902277, 0, -0.43115687, 0, 1, 0, 0.43115687, 0, 0.902277, 83.9686, 0, -637.6188)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseTrigger"]
+transform = Transform3D(0.9929593, 0, -0.118455976, 0, 1, 0, 0.118455976, 0, 0.9929593, 0.5443573, 4.204315, 6.1035156e-05)
+shape = SubResource("BoxShape3D_4d6oh")
 
 [node name="Bridge" type="Node3D" parent="."]
 
@@ -1171,47 +1185,55 @@ shape = SubResource("BoxShape3D_350pk")
 transform = Transform3D(0.98807436, 0, 0.15390193, 0, 1, 0, -0.15390193, 0, 0.98807436, 0.018864632, 0.0786438, 0.21793413)
 shape = SubResource("BoxShape3D_350pk")
 
-[node name="Door" type="Node3D" parent="."]
+[node name="TunnelDoor" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TunnelDoor"]
 transform = Transform3D(0.8599592, 0, -0.5103628, 0, 1, 0, 0.5103628, 0, 0.8599592, 61.874847, 1.2104492, -621.431)
 mesh = SubResource("BoxMesh_l542c")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Door"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TunnelDoor"]
 transform = Transform3D(0.8599592, 0, -0.5103628, 0, 1, 0, 0.5103628, 0, 0.8599592, 65.168045, 1.2104492, -626.91284)
 mesh = SubResource("BoxMesh_l542c")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Door"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TunnelDoor"]
 transform = Transform3D(0.47623825, 0, 0.87931633, 0, 1, 0, -0.87931633, 0, 0.47623825, 67.4978, 2.7053287, -621.59326)
 mesh = SubResource("BoxMesh_0hi81")
 
-[node name="Sketchfab_Scene" parent="Door" instance=ExtResource("15_is7oi")]
-transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0, 0.004806368, 67.923065, 0.07404393, -621.32825)
+[node name="Area3D" type="Area3D" parent="TunnelDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.49796, 0, -621.5653)
+script = ExtResource("19_dgrff")
 
-[node name="Sketchfab_Scene2" parent="Door" instance=ExtResource("16_nnxgq")]
+[node name="Sketchfab_Scene" parent="TunnelDoor/Area3D" instance=ExtResource("15_is7oi")]
+transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0, 0.004806368, 1.4251022, 0.07404393, 0.23706055)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/Area3D"]
+transform = Transform3D(0.8450286, 0, -0.53472114, 0, 1, 0, 0.53472114, 0, 0.8450286, 1.6836472, 0.68603516, 0.40771484)
+shape = SubResource("BoxShape3D_os54k")
+
+[node name="Sketchfab_Scene2" parent="TunnelDoor" instance=ExtResource("16_nnxgq")]
 transform = Transform3D(-3.4830332e-08, -0.7968253, -0.6042098, 1, -4.371139e-08, 0, -2.6410847e-08, -0.6042098, 0.7968253, 113.64942, 5.0560017, -609.60175)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Door/Sketchfab_Scene2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="TunnelDoor/Sketchfab_Scene2"]
 transform = Transform3D(1, 8.881784e-15, 1.7763568e-15, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 42.808258, 20.002441)
 light_color = Color(0.63529414, 0.4745098, 0, 1)
 omni_range = 10.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+[node name="StaticBody3D" type="StaticBody3D" parent="TunnelDoor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
 transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 66.71851, 2.8358765, -622.2028)
 shape = SubResource("BoxShape3D_43gye")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
 transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 61.3525, 2.8358765, -617.69745)
 shape = SubResource("BoxShape3D_43gye")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Door/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
 transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.9038288, 67.17807, 2.8358765, -629.7232)
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 14.298491, 0, -0.4956243)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 73.59003, 0, -608.0032)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)

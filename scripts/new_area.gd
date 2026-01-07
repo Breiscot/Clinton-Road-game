@@ -2,6 +2,7 @@ extends Node3D
 
 @export var enemy_scene: PackedScene
 @export var the_rake_scene: PackedScene
+@export var the_rake_chase_scene: PackedScene
 @export var enemy_visible_time := 0.5
 @export var appear_sound: AudioStream
 @export var disappear_sound: AudioStream
@@ -10,6 +11,8 @@ extends Node3D
 
 var enemy_spawned := false
 var the_rake_spawned := false
+var chase_rake_spawned := false
+var current_chase_rake: Node3D = null
 var current_enemy: Node3D = null
 var current_the_rake: Node3D = null
 
@@ -29,6 +32,8 @@ var message_shown_4 := false
 @onready var bridge_trigger := $BridgeTrigger
 @onready var the_rake_trigger := $TheRakeTrigger
 @onready var the_rake_end_trigger := $TheRakeEndTrigger
+@onready var tunnel_door := $TunnelDoor/Area3D
+@onready var chase_trigger := $ChaseTrigger
 
 func _ready():
 	# Fade In della schermata nera
@@ -59,6 +64,7 @@ func _ready():
 	bridge_trigger.body_entered.connect(_on_bridge_trigger_entered)
 	the_rake_trigger.body_entered.connect(_on_the_rake_trigger_entered)
 	the_rake_end_trigger.body_entered.connect(_on_the_rake_end_trigger_entered)
+	chase_trigger.body_entered.connect(_on_chase_trigger_entered)
 	
 	# Setup audio apparizione
 	appear_audio.bus = "Master"
@@ -191,6 +197,40 @@ func spawn_the_rake():
 func _on_the_rake_end_trigger_entered(body: Node3D):
 	if body.is_in_group("player") and current_the_rake != null:
 		despawn_the_rake()
+		
+func _on_chase_trigger_entered(body: Node3D):
+	if body.is_in_group("player") and not chase_rake_spawned:
+		spawn_chase_rake()
+		
+func spawn_chase_rake():
+	chase_rake_spawned = true
+	
+	if the_rake_chase_scene == null:
+		the_rake_chase_scene = the_rake_scene
+		
+	if the_rake_chase_scene == null:
+		return
+		
+	# Abilita la porta
+	if tunnel_door and tunnel_door.has_method("enable_entry"):
+		tunnel_door.enable_entry()
+		
+	var spawn_pos = player.global_position + player.global_transform.basis.z * 20.0
+	spawn_pos.y = 0
+	
+	current_chase_rake = the_rake_chase_scene.instantiate()
+	current_chase_rake.global_position = spawn_pos
+	current_chase_rake.scale = Vector3(1.0, 1.0, 1.0)
+	
+	add_child(current_chase_rake)
+	
+	show_subtitle("NO FUCK! I NEED TO GET OUT OF HERE!")
+	
+	await get_tree().physics_frame
+	
+	# Attiva in chase mode
+	if current_chase_rake.has_method("activate_chase"):
+		current_chase_rake.activate_chase()
 		
 func despawn_the_rake():
 	if current_the_rake != null:
