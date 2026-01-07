@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=98 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -196,6 +196,9 @@ albedo_texture = ExtResource("14_ldmev")
 material = SubResource("StandardMaterial3D_dgrff")
 size = Vector3(7, 7, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_43gye"]
+size = Vector3(3.1228027, 6.671753, 7.607605)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_641ss"]
 size = Vector3(161.58797, 2.5229492, 0.539917)
 
@@ -331,7 +334,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4033661, 3.8762207, 0)
 shape = SubResource("BoxShape3D_ldmev")
 
 [node name="TheRakeEndTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -251.25847)
+transform = Transform3D(0.9411819, 0, -0.33790028, 0, 1, 0, 0.33790028, 0, 0.9411819, 43.407898, 0, -544.66766)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheRakeEndTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77108765, 4.070282, 0)
@@ -836,6 +839,24 @@ transform = Transform3D(-9.650666e-05, 0, 0.0009953314, 0, 0.001, 0, -0.00099533
 [node name="lightoff22" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
 transform = Transform3D(-8.708684e-05, 0, 0.0009962003, 0, 0.001, 0, -0.0009962003, 0, -8.708684e-05, 0.48583508, 0.13702756, 0.021303415)
 
+[node name="lightoff27" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.077409744, 0.13702756, 0.03729379)
+
+[node name="lightoff28" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(2.502458e-05, 0, 0.0009996861, 0, 0.0010000002, 0, -0.0009996861, 0, 2.502458e-05, -0.13328838, 0.13702756, 0.03502488)
+
+[node name="lightoff29" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.18771839, 0.13702756, 0.032877922)
+
+[node name="lightoff30" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.24391985, 0.13702756, 0.03146696)
+
+[node name="lightoff31" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(2.502458e-05, 0, 0.0009996861, 0, 0.0010000002, 0, -0.0009996861, 0, 2.502458e-05, -0.29979897, 0.13702756, 0.02919805)
+
+[node name="lightoff32" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.3542285, 0.13702756, 0.027051568)
+
 [node name="lightoff23" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
 transform = Transform3D(-6.183321e-05, 0, 0.0009980856, 0, 0.0010000002, 0, -0.0009980856, 0, -6.183321e-05, 0.3184681, 0.13702756, 0.033212185)
 
@@ -876,6 +897,176 @@ script = ExtResource("15_if066")
 transform = Transform3D(1.99044e-06, 0, -0.0009999975, 0, 0.0010000004, 0, 0.0009999975, 0, 1.99044e-06, 0.20590544, 0.13670798, 0.037150145)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton16"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lightoff25" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-5.238902e-05, 0, 0.0009986265, 0, 0.001, 0, -0.0009986265, 0, -5.238902e-05, 0.15026522, 0.13702756, 0.0398618)
+
+[node name="lighton17" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(1.99044e-06, 0, -0.0009999975, 0, 0.0010000004, 0, 0.0009999975, 0, 1.99044e-06, 0.09211016, 0.13670798, 0.041215777)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton17"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lightoff26" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-5.593174e-07, 0, 0.0009999999, 0, 0.001, 0, -0.0009999999, 0, -5.593174e-07, 0.035858154, 0.13702756, 0.040694833)
+
+[node name="lighton18" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.022287369, 0.13670798, 0.039032817)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton18"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton19" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.409297, 0.13670798, 0.024853945)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton19"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton20" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.46542263, 0.13670798, 0.02251494)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton20"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lightoff33" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(7.2802155e-05, 0, 0.0009973457, 0, 0.0010000002, 0, -0.0009973457, 0, 7.2802155e-05, -0.52013826, 0.13702756, 0.01910603)
+
+[node name="lightoff34" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(8.2233455e-05, 0, 0.0009966126, 0, 0.0010000004, 0, -0.0009966126, 0, 8.2233455e-05, -0.57440376, 0.13702756, 0.014359593)
+
+[node name="lightoff35" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(7.2802155e-05, 0, 0.0009973457, 0, 0.0010000002, 0, -0.0009973457, 0, 7.2802155e-05, -0.73945284, 0.13702756, -0.0010533333)
+
+[node name="lightoff36" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(8.2233455e-05, 0, 0.0009966126, 0, 0.0010000004, 0, -0.0009966126, 0, 8.2233455e-05, -0.7937207, 0.13702756, -0.0057991743)
+
+[node name="lightoff37" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00010695733, 0, 0.0009942629, 0, 0.0010000002, 0, -0.0009942629, 0, 0.00010695733, -0.84865236, 0.13702756, -0.011264563)
+
+[node name="lightoff38" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.0001163579, 0, 0.0009932066, 0, 0.0010000004, 0, -0.0009932066, 0, 0.0001163579, -0.9027257, 0.13702756, -0.017867565)
+
+[node name="lightoff39" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.0118775, 0.13702756, -0.03364837)
+
+[node name="lightoff40" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.069304, 0.13702756, -0.042372823)
+
+[node name="lightoff41" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.1803803, 0.13702756, -0.059554935)
+
+[node name="lightoff42" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.4089155, 0.13702756, -0.10327995)
+
+[node name="lightoff43" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.4654965, 0.13702756, -0.114277005)
+
+[node name="lightoff44" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.5213037, 0.13702756, -0.12648273)
+
+[node name="lightoff45" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.5746994, 0.13702756, -0.13884044)
+
+[node name="lightoff46" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.6308875, 0.13702756, -0.15170038)
+
+[node name="lightoff47" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.6862612, 0.13702756, -0.16574252)
+
+[node name="lightoff48" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.7457585, 0.13702756, -0.1775651)
+
+[node name="lightoff49" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.8019481, 0.13702756, -0.19042456)
+
+[node name="lightoff50" parent="Tunnel/LightController" instance=ExtResource("13_is7oi")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.8573213, 0.13702756, -0.20446694)
+
+[node name="lighton21" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-9.754719e-05, 0, -0.0009952309, 0, 0.0010000006, 0, 0.0009952309, 0, -9.754719e-05, -0.6293049, 0.13670798, 0.0095306635)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton21"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton22" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-9.754719e-05, 0, -0.0009952309, 0, 0.0010000006, 0, 0.0009952309, 0, -9.754719e-05, -0.6852536, 0.13670798, 0.0045102835)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton22"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton23" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-0.0001508458, 0, -0.0009885572, 0, 0.0010000006, 0, 0.0009885572, 0, -0.0001508458, -0.9572458, 0.13670798, -0.025236487)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton23"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton24" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-0.0001508458, 0, -0.0009885572, 0, 0.0010000006, 0, 0.0009885572, 0, -0.0001508458, -1.1245251, 0.13670798, -0.051055312)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton24"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton25" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-0.00017799408, 0, -0.0009840317, 0, 0.0010000006, 0, 0.0009840317, 0, -0.00017799408, -1.2372885, 0.13670798, -0.06846511)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton25"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton26" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-0.00022952215, 0, -0.0009733038, 0, 0.0010000009, 0, 0.0009733038, 0, -0.00022952215, -1.2948728, 0.13670798, -0.07992065)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton26"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lighton27" parent="Tunnel/LightController" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(-0.00022952212, 0, -0.0009733038, 0, 0.0010000009, 0, 0.0009733038, 0, -0.00022952212, -1.3521738, 0.13670798, -0.09152973)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton27"]
 transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
 light_color = Color(1, 0.9607843, 0.8392157, 1)
 spot_range = 15.0
@@ -972,6 +1163,10 @@ shape = SubResource("BoxShape3D_350pk")
 transform = Transform3D(0.9719218, 0, -0.23523378, 0, 1, 0, 0.23523378, 0, 0.9719218, -1.5894995, 0.0786438, 0.008390665)
 shape = SubResource("BoxShape3D_350pk")
 
+[node name="wall23" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(-0.26256582, 0, -0.9648966, 0, 1, 0, 0.9648966, 0, -0.26256582, -1.6546478, 0.0786438, -0.16869688)
+shape = SubResource("BoxShape3D_350pk")
+
 [node name="wall8" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
 transform = Transform3D(0.98807436, 0, 0.15390193, 0, 1, 0, -0.15390193, 0, 0.98807436, 0.018864632, 0.0786438, 0.21793413)
 shape = SubResource("BoxShape3D_350pk")
@@ -991,7 +1186,7 @@ transform = Transform3D(0.47623825, 0, 0.87931633, 0, 1, 0, -0.87931633, 0, 0.47
 mesh = SubResource("BoxMesh_0hi81")
 
 [node name="Sketchfab_Scene" parent="Door" instance=ExtResource("15_is7oi")]
-transform = Transform3D(0.007209552, 0, 0.013153796, 0, 0.015, 0, -0.013153796, 0, 0.007209552, 67.923065, 0.07404393, -621.32825)
+transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0, 0.004806368, 67.923065, 0.07404393, -621.32825)
 
 [node name="Sketchfab_Scene2" parent="Door" instance=ExtResource("16_nnxgq")]
 transform = Transform3D(-3.4830332e-08, -0.7968253, -0.6042098, 1, -4.371139e-08, 0, -2.6410847e-08, -0.6042098, 0.7968253, 113.64942, 5.0560017, -609.60175)
@@ -1000,6 +1195,20 @@ transform = Transform3D(-3.4830332e-08, -0.7968253, -0.6042098, 1, -4.371139e-08
 transform = Transform3D(1, 8.881784e-15, 1.7763568e-15, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 42.808258, 20.002441)
 light_color = Color(0.63529414, 0.4745098, 0, 1)
 omni_range = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
+transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 66.71851, 2.8358765, -622.2028)
+shape = SubResource("BoxShape3D_43gye")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door/StaticBody3D"]
+transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 61.3525, 2.8358765, -617.69745)
+shape = SubResource("BoxShape3D_43gye")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Door/StaticBody3D"]
+transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.9038288, 67.17807, 2.8358765, -629.7232)
+shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
 transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 14.298491, 0, -0.4956243)

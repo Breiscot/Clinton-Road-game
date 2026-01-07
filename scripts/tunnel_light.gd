@@ -1,7 +1,7 @@
 extends SpotLight3D
 
 @export var flicker_enabled := true
-@export var min_energy := 0.3
+@export var min_energy := 0.5
 @export var max_energy := 1.0
 @export var flicker_speed := 2.0
 @export var turn_off_chance := 0.02

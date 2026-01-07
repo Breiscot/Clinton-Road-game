@@ -21,7 +21,7 @@ func find_lights(node: Node):
 		
 func setup_light(light: Light3D):
 	light.light_color = Color("fff5d6")
-	light.light_energy = 0.8
+	light.light_energy = 1.0
 	
 	if light is OmniLight3D:
 		light.omni_range = 10
