@@ -4,17 +4,26 @@ enum State {
 	INACTIVE,
 	IDLE,
 	WALKING,
-	RETREATING
+	RETREATING,
+	SCREAMING,
+	CHASING,
+	ATTACKING
 }
 
 # Parametri
 @export var walk_speed := 6.0
 @export var retreat_speed := 8.0
+@export var chase_speed := 7.0
 @export var retreat_duration := 4.0
 @export var min_distance_behind := 2.0
+@export var attack_range := 1.5
+
+# Animazioni
 @export var anim_idle := "the_rake/metarig|idle"
 @export var anim_walk := "the_rake/metarig|walk"
 @export var anim_run := "the_rake/metarig|run"
+@export var anim_screech := "the_rake/metarig|screech"
+@export var anim_getup := "the_rake/metarig|getup1"
 
 # Audio
 @export var footstep_sound: AudioStream
@@ -30,6 +39,7 @@ var current_state: State = State.INACTIVE
 var retreat_timer := 0.0
 var is_active := false
 var gravity := 9.8
+var is_chase_mode := false
 
 # Audio Timing
 var footstep_timer := 0.0
@@ -124,6 +134,13 @@ func _physics_process(delta):
 			process_walking(delta)
 		State.RETREATING:
 			process_retreating(delta)
+		State.SCREAMING:
+			process_screaming(delta)
+		State.CHASING:
+			process_chasing(delta)
+		State.ATTACKING:
+			velocity.x = 0
+			velocity.z = 0
 			
 	move_and_slide()
 		
@@ -179,6 +196,43 @@ func process_retreating(delta):
 		print("TheRake: Retreat finished, back to the player")
 		change_state(State.WALKING)
 		
+func process_screaming(delta):
+	velocity.x = 0
+	velocity.z = 0
+	look_at_player()
+	
+func process_chasing(delta):
+	play_animation("run")
+	update_footsteps(delta, 0.2)
+	
+	if not is_chase_mode and is_flashlight_pointing_at_me():
+		change_state(State.IDLE)
+		return
+		
+	# Corre verso il player
+	var direction = (player.global_position - global_position).normalized()
+	direction.y = 0
+	
+	velocity.x = direction.x * chase_speed
+	velocity.z = direction.z * chase_speed
+	
+	look_at_player()
+	
+	# Controlla se può attaccare
+	var distance = global_position.distance_to(player.global_position)
+	if distance <= attack_range:
+		attack_player()
+		
+func attack_player():
+	print("TheRake: Attacking player!")
+	change_state(State.ATTACKING)
+	is_active = false
+	
+	play_screech()
+	
+	if player.has_method("take_damage"):
+		player.take_damage(100)
+		
 func update_footsteps(delta: float, interval: float):
 	footstep_timer += delta
 	
@@ -230,6 +284,9 @@ func look_at_player():
 	look_at(look_pos)
 	
 func is_flashlight_pointing_at_me() -> bool:
+	if is_chase_mode:
+		return false
+	
 	# Se la torcia é spenta non conta
 	if flashlight == null or not flashlight.visible:
 		return false
@@ -253,6 +310,9 @@ func is_flashlight_pointing_at_me() -> bool:
 	return is_lit
 	
 func flash_hit():
+	if is_chase_mode:
+		return
+	
 	if not is_active:
 		return
 		
@@ -308,6 +368,7 @@ func play_animation(anim_name: String):
 func activate():
 	print("TheRake: Spawned")
 	is_active = false
+	is_chase_mode = false
 	
 	var getup_anim = "the_rake/metarig|getup1"
 	if anim_player and anim_player.has_animation(getup_anim):
@@ -321,13 +382,39 @@ func activate():
 func _on_getup_finished(anim_name: String):
 	is_active = true
 	start_ambient()
-	change_state(State.WALKING)
 	
+	if is_chase_mode:
+		change_state(State.CHASING)
+	else:
+		change_state(State.WALKING)
+	
+func activate_chase():
+	print("TheRake: Chase mode activated")
+	is_chase_mode = true
+	is_active = false
+	
+	# Urlo
+	change_state(State.SCREAMING)
+	play_screech()
+	
+	if anim_player and anim_player.has_animation(anim_screech):
+		anim_player.play(anim_screech)
+		anim_player.animation_finished.connect(_on_chase_scream_finished, CONNECT_ONE_SHOT)
+	else:
+		await get_tree().create_timer(1.0).timeout
+		_on_chase_scream_finished("")
+		
+func _on_chase_scream_finished(anim_name: String):
+	is_active = true
+	start_ambient()
+	change_state(State.CHASING)
+
+
 # Chiamato dal trigger per disattivare il nemico
 func deactivate():
 	print("TheRake: Despawned")
 	is_active = false
+	is_chase_mode = false
 	stop_ambient()
 	change_state(State.INACTIVE)
 	queue_free()
-		
