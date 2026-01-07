@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=96 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://svaaebci6hr6" path="res://models/roadblocks/costruction_road/modified_constuction/sketchfab_scene2.tscn" id="13_xmlm8"]
 [ext_resource type="PackedScene" uid="uid://bylflrlujvmnh" path="res://models/roadblocks/regulation_road/modified_regulation/sketchfab_scene.tscn" id="14_d8kf4"]
 [ext_resource type="Texture2D" uid="uid://t0o882g5en3k" path="res://models/bridge/american_road_bridge_0.jpg" id="14_ldmev"]
+[ext_resource type="PackedScene" uid="uid://biaqsf8um6nom" path="res://models/lights/worn_overlead_light.glb" id="14_nnxgq"]
+[ext_resource type="Script" uid="uid://bpxwx3pd3kxg1" path="res://scripts/tunnel_light.gd" id="15_if066"]
 [ext_resource type="PackedScene" uid="uid://0kvaahu5xhyj" path="res://models/door/door_with_frame.glb" id="15_is7oi"]
 [ext_resource type="PackedScene" uid="uid://dvv3ieq4ukqtx" path="res://models/roadblocks/road_block/road_block_b.glb" id="15_scf2g"]
 [ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="16_d8kf4"]
@@ -737,8 +739,47 @@ shape = SubResource("BoxShape3D_350pk")
 transform = Transform3D(0.98807436, 0, 0.15390193, 0, 1, 0, -0.15390193, 0, 0.98807436, 0.018864632, 0.0786438, 0.21793413)
 shape = SubResource("BoxShape3D_350pk")
 
-[node name="light" parent="Tunnel" instance=ExtResource("13_is7oi")]
-transform = Transform3D(0.0009596282, 0, 0.00028126978, 0, 0.001, 0, -0.00028126978, 0, 0.0009596282, 2.3298595, 0.13574752, -0.34930682)
+[node name="lightoff" parent="Tunnel" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-0.00034808126, 0, 0.00093746354, 0, 0.001, 0, -0.00093746354, 0, -0.00034808126, 2.3298588, 0.13702747, -0.34930706)
+
+[node name="lighton" parent="Tunnel" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(0.0003465264, 0, -0.00093803956, 0, 0.001, 0, 0.00093803956, 0, 0.0003465264, 2.2781684, 0.13670793, -0.33099544)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/lighton"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lightoff2" parent="Tunnel" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-0.00032706946, 0, 0.00094499905, 0, 0.001, 0, -0.00094499905, 0, -0.00032706946, 2.227389, 0.13702752, -0.3127222)
+
+[node name="lighton2" parent="Tunnel" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(0.00032550213, 0, -0.0009455403, 0, 0.001, 0, 0.0009455403, 0, 0.00032550213, 2.1753032, 0.13670798, -0.29556918)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/lighton2"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
+
+[node name="lightoff3" parent="Tunnel" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-0.000293006, 0, 0.00095610926, 0, 0.001, 0, -0.00095610926, 0, -0.000293006, 2.1229684, 0.13702756, -0.27875984)
+
+[node name="lightoff4" parent="Tunnel" instance=ExtResource("13_is7oi")]
+transform = Transform3D(-0.00029300604, 0, 0.00095610914, 0, 0.001, 0, -0.00095610914, 0, -0.00029300604, 2.06736, 0.13702756, -0.26074195)
+
+[node name="lighton3" parent="Tunnel" instance=ExtResource("14_nnxgq")]
+transform = Transform3D(0.00020596533, 0, -0.0009785581, 0, 0.001, 0, 0.0009785581, 0, 0.00020596533, 2.0133576, 0.13670798, -0.24680316)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/lighton3"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("15_if066")
 
 [node name="Door" type="Node3D" parent="."]
 
