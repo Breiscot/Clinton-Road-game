@@ -156,6 +156,8 @@ func process_idle(delta):
 	
 	footstep_timer = 0
 	
+	start_ambient()
+	
 	# Timer per teletrasporto se guardato troppo a lungo
 	if is_flashlight_pointing_at_me():
 		stare_timer += delta
@@ -177,6 +179,8 @@ func teleport_behind_player():
 	
 	var player_back = player.global_transform.basis.z
 	var new_position = player.global_position + player_back * teleport_distance
+	
+	new_position.x = player.global_position.x
 	new_position.y = 0
 	
 	visible = false
@@ -395,7 +399,7 @@ func change_state(new_state: State):
 	if new_state != State.IDLE:
 		stare_timer = 0.0
 	
-	if new_state == State.WALKING or new_state == State.RETREATING:
+	if new_state in [State.IDLE, State.WALKING, State.RETREATING, State.CHASING]:
 		start_ambient()
 	else:
 		stop_ambient()
