@@ -40,6 +40,10 @@ var retreat_timer := 0.0
 var is_active := false
 var gravity := 9.8
 var is_chase_mode := false
+var has_attacked := false
+var stare_timer := 0.0
+var stare_duration := 3.0
+var teleport_distance := 20.0
 
 # Audio Timing
 var footstep_timer := 0.0
@@ -150,15 +154,41 @@ func process_idle(delta):
 	
 	play_animation("idle")
 	
-	# Guarda sempre il player
-	look_at_player()
-	
 	footstep_timer = 0
+	
+	# Timer per teletrasporto se guardato troppo a lungo
+	if is_flashlight_pointing_at_me():
+		stare_timer += delta
+		
+		if stare_timer >= stare_duration:
+			teleport_behind_player()
+			return
+	else:
+		stare_timer = 0.0
+		change_state(State.WALKING)
 	
 	# Se non puntato dalla torcia, inizia a camminare
 	if not is_flashlight_pointing_at_me():
 		change_state(State.WALKING)
 		
+func teleport_behind_player():
+	print("TheRake: Teleporting..")
+	stare_timer = 0.0
+	
+	var player_back = player.global_transform.basis.z
+	var new_position = player.global_position + player_back * teleport_distance
+	new_position.y = 0
+	
+	visible = false
+	
+	await get_tree().create_timer(0.3).timeout
+	
+	# Teleport
+	global_position = new_position
+	visible = true
+	
+	change_state(State.WALKING)
+	
 func process_walking(delta):
 	play_animation("walk")
 	
@@ -171,6 +201,11 @@ func process_walking(delta):
 		return
 		
 	move_behind_player(delta)
+	
+	# Controlla se può attaccare
+	var distance = global_position.distance_to(player.global_position)
+	if distance <= attack_range and not has_attacked:
+		attack_player()
 	
 func process_retreating(delta):
 	retreat_timer -= delta
@@ -193,8 +228,10 @@ func process_retreating(delta):
 		look_at(Vector3(look_pos.x, global_position.y, look_pos.z))
 		
 	if retreat_timer <= 0:
-		print("TheRake: Retreat finished, back to the player")
-		change_state(State.WALKING)
+		if is_chase_mode:
+			change_state(State.CHASING)
+		else:
+			change_state(State.WALKING)
 		
 func process_screaming(delta):
 	velocity.x = 0
@@ -216,7 +253,7 @@ func process_chasing(delta):
 	
 	# Controlla se può attaccare
 	var distance = global_position.distance_to(player.global_position)
-	if distance <= attack_range:
+	if distance <= attack_range and not has_attacked:
 		attack_player()
 		
 	if not is_chase_mode and is_flashlight_pointing_at_me():
@@ -224,6 +261,11 @@ func process_chasing(delta):
 		return
 	
 func attack_player():
+	if has_attacked:
+		return
+		
+	has_attacked = true
+	
 	print("TheRake: Attacking player!")
 	change_state(State.ATTACKING)
 	is_active = false
@@ -349,6 +391,9 @@ func _on_screech_finished(anim_name: String):
 	
 func change_state(new_state: State):
 	current_state = new_state
+	
+	if new_state != State.IDLE:
+		stare_timer = 0.0
 	
 	if new_state == State.WALKING or new_state == State.RETREATING:
 		start_ambient()
