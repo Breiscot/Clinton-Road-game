@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=102 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="23_iy73c"]
 [ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="24_4pu46"]
 [ext_resource type="PackedScene" uid="uid://cjaljwq7lqrsi" path="res://models/road/road_tunnel/tunnel_road.glb" id="25_iy73c"]
+[ext_resource type="PackedScene" uid="uid://1dq04pm7460b" path="res://scene/ui/pause_menu.tscn" id="35_0hi81"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_215j1"]
 size = Vector3(12.243042, 5, 2)
@@ -2308,3 +2309,5 @@ sgt_tool_shape = {
 }
 metadata/_custom_type_script = "uid://2juaclm8gc1n"
 metadata/SimpleGrassTextured = "2.0.5"
+
+[node name="PauseMenu" parent="." instance=ExtResource("35_0hi81")]

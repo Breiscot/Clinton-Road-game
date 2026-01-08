@@ -35,6 +35,8 @@ func hide_prompt():
 		player.get_node("MessageUI").hide_prompt()
 		
 func interact():
+	hide_prompt()
+	
 	if can_enter:
 		# The Rake apparso
 		enter_door()
