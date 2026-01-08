@@ -215,7 +215,8 @@ func spawn_chase_rake():
 	if tunnel_door and tunnel_door.has_method("enable_entry"):
 		tunnel_door.enable_entry()
 		
-	var spawn_pos = player.global_position + player.global_transform.basis.z * 20.0
+	var player_forward = -player.global_transform.basis.z
+	var spawn_pos = player.global_position + player_forward * 25.0
 	spawn_pos.y = 0
 	
 	current_chase_rake = the_rake_chase_scene.instantiate()
