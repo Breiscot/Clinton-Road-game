@@ -16,7 +16,7 @@ enum State {
 @export var chase_speed := 7.0
 @export var retreat_duration := 4.0
 @export var min_distance_behind := 2.0
-@export var attack_range := 1.5
+@export var attack_range := 2.5
 
 # Animazioni
 @export var anim_idle := "the_rake/metarig|idle"
@@ -205,10 +205,6 @@ func process_chasing(delta):
 	play_animation("run")
 	update_footsteps(delta, 0.2)
 	
-	if not is_chase_mode and is_flashlight_pointing_at_me():
-		change_state(State.IDLE)
-		return
-		
 	# Corre verso il player
 	var direction = (player.global_position - global_position).normalized()
 	direction.y = 0
@@ -223,15 +219,29 @@ func process_chasing(delta):
 	if distance <= attack_range:
 		attack_player()
 		
+	if not is_chase_mode and is_flashlight_pointing_at_me():
+		change_state(State.IDLE)
+		return
+	
 func attack_player():
 	print("TheRake: Attacking player!")
 	change_state(State.ATTACKING)
 	is_active = false
+	velocity = Vector3.ZERO
 	
 	play_screech()
 	
-	if player.has_method("take_damage"):
+	look_at_player()
+	
+	await get_tree().create_timer(0.3).timeout
+	
+	if player and player.has_method("take_damage"):
 		player.take_damage(100)
+	else:
+		print("TheRake: ERROR - Player has no take_damage method")
+		# Fallback
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
 		
 func update_footsteps(delta: float, interval: float):
 	footstep_timer += delta
