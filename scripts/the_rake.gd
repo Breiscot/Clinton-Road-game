@@ -281,6 +281,8 @@ func attack_player():
 	
 	await get_tree().create_timer(0.3).timeout
 	
+	show_jumpscare()
+	
 	if player and player.has_method("take_damage"):
 		player.take_damage(100)
 	else:
@@ -288,6 +290,46 @@ func attack_player():
 		# Fallback
 		await get_tree().create_timer(1.0).timeout
 		get_tree().reload_current_scene()
+		
+func show_jumpscare():
+	if player:
+		player.set_physics_process(false)
+		player.set_process_input(false)
+		
+	# Audio
+	play_screech()
+		
+	var jumpscare_layer = CanvasLayer.new()
+	jumpscare_layer.layer = 50
+	jumpscare_layer.name = "JumpscareLayer"
+	get_tree().current_scene.add_child(jumpscare_layer)
+	
+	# Sfondo nero
+	var black_bg = ColorRect.new()
+	black_bg.color = Color(0, 0, 0, 1)
+	black_bg.anchor_right = 1.0
+	black_bg.anchor_bottom = 1.0
+	jumpscare_layer.add_child(black_bg)
+	
+	# Immagine jumpscare
+	var jumpscare_image = TextureRect.new()
+	var texture = load("res://images/jumpscare_the_rake.png")
+	if texture:
+		jumpscare_image.texture = texture
+	jumpscare_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	jumpscare_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	jumpscare_image.anchor_right = 1.0
+	jumpscare_image.anchor_bottom = 1.0
+	jumpscare_image.offset_left = 0
+	jumpscare_image.offset_right = 0
+	jumpscare_image.offset_top = 0
+	jumpscare_image.offset_bottom = 0
+	jumpscare_layer.add_child(jumpscare_image)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	if player and player.has_method("take_damage"):
+		player.take_damage(100)
 		
 func update_footsteps(delta: float, interval: float):
 	footstep_timer += delta
