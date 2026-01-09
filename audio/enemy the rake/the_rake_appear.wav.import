@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://celabgoemo8kl"
-path="res://.godot/imported/the_rake_appear.wav-ecc3d96efe9bb67b7dba799bd8608772.sample"
+path="res://.godot/imported/the_rake_appear.wav-5d2dc1afc10e7b86e79f95929fed604e.sample"
 
 [deps]
 
-source_file="res://audio/sfx/the_rake_appear.wav"
-dest_files=["res://.godot/imported/the_rake_appear.wav-ecc3d96efe9bb67b7dba799bd8608772.sample"]
+source_file="res://audio/enemy the rake/the_rake_appear.wav"
+dest_files=["res://.godot/imported/the_rake_appear.wav-5d2dc1afc10e7b86e79f95929fed604e.sample"]
 
 [params]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d1qq46inpst6m"
+path="res://.godot/imported/jumpscare.ogg-5092a8d1d9551f1819f6c361a2147ff6.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/enemy wendigo/jumpscare.ogg"
+dest_files=["res://.godot/imported/jumpscare.ogg-5092a8d1d9551f1819f6c361a2147ff6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ibm4af04u8sl"
-path="res://.godot/imported/enemy_chase.ogg-290d1f5de632b306fc73f0645bd64f4e.sample"
+path="res://.godot/imported/enemy_chase.ogg-386d5c6f6548f464e4559b1f93af1013.sample"
 
 [deps]
 
-source_file="res://audio/enemy/enemy_chase.ogg"
-dest_files=["res://.godot/imported/enemy_chase.ogg-290d1f5de632b306fc73f0645bd64f4e.sample"]
+source_file="res://audio/enemy wendigo/enemy_chase.ogg"
+dest_files=["res://.godot/imported/enemy_chase.ogg-386d5c6f6548f464e4559b1f93af1013.sample"]
 
 [params]
 

@@ -3,14 +3,35 @@ extends CanvasLayer
 @onready var message_label := $MessageLabel
 var prompt_label: Label = null
 var prompt_timer: Timer = null
+#var message_container: Control = null
+#var prompt_container: Control = null
 
 func _ready():
 	print("MessageUI ready")
-	layer = 100
+	layer = 10
 	message_label.visible = false
 	
+	#setup_message_label()
 	create_prompt_label()
 	
+#func setup_message_label():
+	#message_container = Control.new()
+	#message_container.name = "MessageContainer"
+	#message_container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	#message_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#add_child(message_container)
+	
+	#message_label = Label.new()
+	#message_label.name = "MessageLabel"
+	#message_label.visible = false
+	#message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	#message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	#message_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	#message_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#message_label.add_theme_font_size_override("font_size", 28)
+	#message_label.add_theme_color_override("font_color", Color.WHITE)
+	#message_container.add_child(message_label)
+
 func create_prompt_label():
 	# PromptContainer
 	var container = Control.new()

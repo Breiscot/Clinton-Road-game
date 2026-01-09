@@ -29,6 +29,7 @@ enum State {
 @export var footstep_sound: AudioStream
 @export var screech_sound: AudioStream
 @export var ambient_sound: AudioStream
+@export var jumpscare_sound: AudioStream
 
 var player: Node3D = null
 var flashlight: SpotLight3D = null
@@ -58,6 +59,7 @@ var footstep_interval := 0.4
 @onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
 @onready var screech_player: AudioStreamPlayer3D = $ScreechPlayer
 @onready var ambient_player: AudioStreamPlayer3D = $AmbientPlayer
+@onready var jumpscare_player: AudioStreamPlayer3D = $JumpscarePlayer
 
 func _ready():
 	add_to_group("the_rake")
@@ -91,6 +93,12 @@ func setup_audio():
 		ambient_player.stream = ambient_sound
 		ambient_player.max_distance = 20
 		ambient_player.volume_db = -20
+		
+	# Jumpscare
+	if jumpscare_player and jumpscare_sound:
+		jumpscare_player.stream = jumpscare_sound
+		jumpscare_player.max_distance = 30
+		jumpscare_player.volume_db = 0
 
 func find_player():
 	await get_tree().physics_frame
@@ -310,13 +318,14 @@ func attack_player():
 	is_active = false
 	velocity = Vector3.ZERO
 	
-	play_screech()
+	if player and player.has_method("add_fear"):
+		player.add_fear(100.0)
+		
+	show_jumpscare()
 	
 	look_at_player()
 	
 	await get_tree().create_timer(0.3).timeout
-	
-	show_jumpscare()
 	
 	if player and player.has_method("take_damage"):
 		player.take_damage(100)
@@ -332,7 +341,7 @@ func show_jumpscare():
 		player.set_process_input(false)
 		
 	# Audio
-	play_screech()
+	play_jumpscare()
 		
 	var jumpscare_layer = CanvasLayer.new()
 	jumpscare_layer.layer = 50
@@ -355,13 +364,9 @@ func show_jumpscare():
 	jumpscare_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	jumpscare_image.anchor_right = 1.0
 	jumpscare_image.anchor_bottom = 1.0
-	jumpscare_image.offset_left = 0
-	jumpscare_image.offset_right = 0
-	jumpscare_image.offset_top = 0
-	jumpscare_image.offset_bottom = 0
 	jumpscare_layer.add_child(jumpscare_image)
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.8).timeout
 	
 	if player and player.has_method("take_damage"):
 		player.take_damage(100)
@@ -382,6 +387,11 @@ func play_screech():
 	if screech_player and screech_player.stream:
 		screech_player.pitch_scale = randf_range(0.9, 1.1)
 		screech_player.play()
+		
+func play_jumpscare():
+	if jumpscare_player and jumpscare_player.stream:
+		jumpscare_player.pitch_scale = randf_range(0.9, 1.1)
+		jumpscare_player.play()
 		
 func start_ambient():
 	if ambient_player and ambient_player.stream:
@@ -437,8 +447,6 @@ func is_flashlight_pointing_at_me() -> bool:
 	var angle = rad_to_deg(flashlight_direction.angle_to(to_enemy))
 	
 	var is_lit = angle < flashlight.spot_angle / 2.0
-	if is_lit:
-		print("TheRake: Flashlight, freezing..")
 		
 	return is_lit
 	

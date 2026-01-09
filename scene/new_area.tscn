@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxt8cyx7h10qj" path="res://scene/enemies/Enemy New Area Model/sketchfab_scene_standing.tscn" id="2_r7pqo"]
 [ext_resource type="Texture2D" uid="uid://5mmu1dbblato" path="res://models/bridge/american_road_bridge_24.jpg" id="3_1fb26"]
 [ext_resource type="PackedScene" uid="uid://duwrmsa2u7k2h" path="res://scene/enemies/the_rake.tscn" id="3_uals8"]
-[ext_resource type="AudioStream" uid="uid://celabgoemo8kl" path="res://audio/sfx/the_rake_appear.wav" id="4_4pu46"]
+[ext_resource type="AudioStream" uid="uid://celabgoemo8kl" path="res://audio/enemy the rake/the_rake_appear.wav" id="4_4pu46"]
 [ext_resource type="Texture2D" uid="uid://c52vtraivkwow" path="res://models/bridge/american_road_bridge_25.png" id="4_geqtq"]
 [ext_resource type="Texture2D" uid="uid://l158ssslophc" path="res://models/bridge/american_road_bridge_26.png" id="5_pwv01"]
 [ext_resource type="PackedScene" uid="uid://biv4nea5nm3tt" path="res://models/road/road_in_2_edit/sketchfab_scene.tscn" id="6_dbekj"]
@@ -1234,7 +1234,7 @@ transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.903
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 15.6629095, 0, 0.15619731)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 14.98266, 0, 0.1294775)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)
@@ -1943,6 +1943,8 @@ theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("35_0hi81")]
+
 [node name="HudNewArea" parent="." instance=ExtResource("17_scf2g")]
 
 [node name="InvisibleWalls" type="StaticBody3D" parent="."]
@@ -2309,5 +2311,3 @@ sgt_tool_shape = {
 }
 metadata/_custom_type_script = "uid://2juaclm8gc1n"
 metadata/SimpleGrassTextured = "2.0.5"
-
-[node name="PauseMenu" parent="." instance=ExtResource("35_0hi81")]

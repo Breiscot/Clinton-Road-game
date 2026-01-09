@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbrp4cagq0v16"]
 
 [ext_resource type="Script" uid="uid://p34ycywjngb3" path="res://scripts/hud.gd" id="1_7n5te"]
-[ext_resource type="AudioStream" uid="uid://d1qq46inpst6m" path="res://audio/enemy/jumpscare.ogg" id="2_iafo3"]
+[ext_resource type="AudioStream" uid="uid://d1qq46inpst6m" path="res://audio/enemy wendigo/jumpscare.ogg" id="2_iafo3"]
 [ext_resource type="Texture2D" uid="uid://c0k2lsn75kjey" path="res://images/jumpscare.png" id="2_w1l6y"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_3h0bj"]

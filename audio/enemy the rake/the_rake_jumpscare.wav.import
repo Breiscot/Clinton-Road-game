@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byjhnnsfj4u2l"
+path="res://.godot/imported/the_rake_jumpscare.wav-d0977ecd9113aa1055b266c1c2cd66b8.mp3str"
+
+[deps]
+
+source_file="res://audio/enemy the rake/the_rake_jumpscare.wav"
+dest_files=["res://.godot/imported/the_rake_jumpscare.wav-d0977ecd9113aa1055b266c1c2cd66b8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

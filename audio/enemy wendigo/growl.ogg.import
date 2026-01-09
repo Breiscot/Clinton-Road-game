@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dpf5du13rh1pw"
-path="res://.godot/imported/growl.ogg-f2c87d740daf42399ec2e8f4df68e28e.sample"
+path="res://.godot/imported/growl.ogg-c95d141dac0011ea6b5718d65bb0e257.sample"
 
 [deps]
 
-source_file="res://audio/enemy/growl.ogg"
-dest_files=["res://.godot/imported/growl.ogg-f2c87d740daf42399ec2e8f4df68e28e.sample"]
+source_file="res://audio/enemy wendigo/growl.ogg"
+dest_files=["res://.godot/imported/growl.ogg-c95d141dac0011ea6b5718d65bb0e257.sample"]
 
 [params]
 

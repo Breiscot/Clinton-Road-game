@@ -73,6 +73,10 @@ func pause_game():
 	visible = true
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	if get_parent() is CanvasLayer:
+		get_parent().layer = 100
+	
 	resume_button.grab_focus()
 	
 	# Animazione Fade In

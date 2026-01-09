@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c5m55w2f8v0ra"
-path="res://.godot/imported/the_rake_screech.wav-bb46f27f3ca367e2b117c41b478c6922.sample"
+path="res://.godot/imported/the_rake_screech.wav-8951f3ee2c347a6aa898f35be162f5d4.sample"
 
 [deps]
 
-source_file="res://audio/sfx/the_rake_screech.wav"
-dest_files=["res://.godot/imported/the_rake_screech.wav-bb46f27f3ca367e2b117c41b478c6922.sample"]
+source_file="res://audio/enemy the rake/the_rake_screech.wav"
+dest_files=["res://.godot/imported/the_rake_screech.wav-8951f3ee2c347a6aa898f35be162f5d4.sample"]
 
 [params]
 

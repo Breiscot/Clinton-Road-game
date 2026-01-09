@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://6dnu3llv7djw"
-path="res://.godot/imported/the_rake_breath.wav-40acb2eacabb9ae151df4b1882f88579.sample"
+path="res://.godot/imported/the_rake_breath.wav-ca6457d539f2a4e79813baf7ba9b6ada.sample"
 
 [deps]
 
-source_file="res://audio/sfx/the_rake_breath.wav"
-dest_files=["res://.godot/imported/the_rake_breath.wav-40acb2eacabb9ae151df4b1882f88579.sample"]
+source_file="res://audio/enemy the rake/the_rake_breath.wav"
+dest_files=["res://.godot/imported/the_rake_breath.wav-ca6457d539f2a4e79813baf7ba9b6ada.sample"]
 
 [params]
 
