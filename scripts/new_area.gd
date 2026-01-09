@@ -137,6 +137,10 @@ func spawn_enemy():
 	
 	add_child(current_enemy)
 	
+	# Fear
+	if player.has_method("add_fear"):
+		player.add_fear(30.0)
+	
 	# Suono
 	if appear_sound:
 		appear_audio.stream = appear_sound

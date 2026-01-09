@@ -45,6 +45,10 @@ var stare_timer := 0.0
 var stare_duration := 3.0
 var teleport_distance := 20.0
 
+# Fear
+var fear_timer := 0.0
+var fear_internal := 0.5
+
 # Audio Timing
 var footstep_timer := 0.0
 var footstep_interval := 0.4
@@ -206,10 +210,38 @@ func process_walking(delta):
 		
 	move_behind_player(delta)
 	
+	# Aggiungi paura in base alla distanza
+	add_fear_by_distance(delta)
+	
 	# Controlla se può attaccare
 	var distance = global_position.distance_to(player.global_position)
 	if distance <= attack_range and not has_attacked:
 		attack_player()
+		
+func add_fear_by_distance(delta: float, multiplier := 1.0):
+	if player == null:
+		return
+		
+	fear_timer += delta
+	if fear_timer < fear_internal:
+		return
+		
+	fear_timer = 0.0
+	
+	var distance = global_position.distance_to(player.global_position)
+	var fear_amount := 0.0
+
+	if distance < 5.0:
+		fear_amount = 15.0 * multiplier
+	elif distance < 10.0:
+		fear_amount = 8.0 * multiplier
+	elif distance < 20.0:
+		fear_amount = 3.0 * multiplier
+		
+	fear_amount = fear_amount * multiplier
+		
+	if fear_amount > 0 and player.has_method("add_fear"):
+		player.add_fear(fear_amount)
 	
 func process_retreating(delta):
 	retreat_timer -= delta
@@ -254,6 +286,9 @@ func process_chasing(delta):
 	velocity.z = direction.z * chase_speed
 	
 	look_at_player()
+	
+	# Più paura durante chase
+	add_fear_by_distance(delta, 2.0)
 	
 	# Controlla se può attaccare
 	var distance = global_position.distance_to(player.global_position)
@@ -493,6 +528,11 @@ func activate_chase():
 	print("TheRake: Chase mode activated")
 	is_chase_mode = true
 	is_active = false
+	has_attacked = false
+	
+	# Fear
+	if player and player.has_method("add_fear"):
+		player.add_fear(50.0)
 	
 	# Urlo
 	change_state(State.SCREAMING)
