@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxfsoea1dusbs"
-path.s3tc="res://.godot/imported/brick_modern_01.jpg-baf8cb01937415f18c4a27bbff8d145c.s3tc.ctex"
-path.etc2="res://.godot/imported/brick_modern_01.jpg-baf8cb01937415f18c4a27bbff8d145c.etc2.ctex"
+path.s3tc="res://.godot/imported/brick_modern_01.jpg-fc5105a3b00598b6314132c0a8b06d83.s3tc.ctex"
+path.etc2="res://.godot/imported/brick_modern_01.jpg-fc5105a3b00598b6314132c0a8b06d83.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/brick_modern_01.jpg"
-dest_files=["res://.godot/imported/brick_modern_01.jpg-baf8cb01937415f18c4a27bbff8d145c.s3tc.ctex", "res://.godot/imported/brick_modern_01.jpg-baf8cb01937415f18c4a27bbff8d145c.etc2.ctex"]
+source_file="res://models/Sewer/Textures/brick_modern_01.jpg"
+dest_files=["res://.godot/imported/brick_modern_01.jpg-fc5105a3b00598b6314132c0a8b06d83.s3tc.ctex", "res://.godot/imported/brick_modern_01.jpg-fc5105a3b00598b6314132c0a8b06d83.etc2.ctex"]
 
 [params]
 

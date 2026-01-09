@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dymw5leran0ga"
-path.s3tc="res://.godot/imported/concrete_dirty.jpg-469ee7a77c075b1c32e177abc500e9c3.s3tc.ctex"
-path.etc2="res://.godot/imported/concrete_dirty.jpg-469ee7a77c075b1c32e177abc500e9c3.etc2.ctex"
+path.s3tc="res://.godot/imported/concrete_dirty.jpg-60e1008fe73053e795832fff5c1b8a09.s3tc.ctex"
+path.etc2="res://.godot/imported/concrete_dirty.jpg-60e1008fe73053e795832fff5c1b8a09.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/concrete_dirty.jpg"
-dest_files=["res://.godot/imported/concrete_dirty.jpg-469ee7a77c075b1c32e177abc500e9c3.s3tc.ctex", "res://.godot/imported/concrete_dirty.jpg-469ee7a77c075b1c32e177abc500e9c3.etc2.ctex"]
+source_file="res://models/Sewer/Textures/concrete_dirty.jpg"
+dest_files=["res://.godot/imported/concrete_dirty.jpg-60e1008fe73053e795832fff5c1b8a09.s3tc.ctex", "res://.godot/imported/concrete_dirty.jpg-60e1008fe73053e795832fff5c1b8a09.etc2.ctex"]
 
 [params]
 

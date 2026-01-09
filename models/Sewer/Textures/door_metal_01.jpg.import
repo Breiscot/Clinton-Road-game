@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cywyuf0crj5bb"
-path.s3tc="res://.godot/imported/door_metal_01.jpg-7df15e5f30f15b2471c9a0dcce2c7c55.s3tc.ctex"
-path.etc2="res://.godot/imported/door_metal_01.jpg-7df15e5f30f15b2471c9a0dcce2c7c55.etc2.ctex"
+path.s3tc="res://.godot/imported/door_metal_01.jpg-8ab42d28c990703c58bc24cf663e05a0.s3tc.ctex"
+path.etc2="res://.godot/imported/door_metal_01.jpg-8ab42d28c990703c58bc24cf663e05a0.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/door_metal_01.jpg"
-dest_files=["res://.godot/imported/door_metal_01.jpg-7df15e5f30f15b2471c9a0dcce2c7c55.s3tc.ctex", "res://.godot/imported/door_metal_01.jpg-7df15e5f30f15b2471c9a0dcce2c7c55.etc2.ctex"]
+source_file="res://models/Sewer/Textures/door_metal_01.jpg"
+dest_files=["res://.godot/imported/door_metal_01.jpg-8ab42d28c990703c58bc24cf663e05a0.s3tc.ctex", "res://.godot/imported/door_metal_01.jpg-8ab42d28c990703c58bc24cf663e05a0.etc2.ctex"]
 
 [params]
 

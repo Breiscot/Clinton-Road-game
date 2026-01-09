@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1ct42iimeqwj"
-path.s3tc="res://.godot/imported/Trash.png-a9e21999e8f821818c86cc0cd5eb2e3b.s3tc.ctex"
-path.etc2="res://.godot/imported/Trash.png-a9e21999e8f821818c86cc0cd5eb2e3b.etc2.ctex"
+path.s3tc="res://.godot/imported/Trash.png-86a71e3871b9a9ff3021544e47c8ccbb.s3tc.ctex"
+path.etc2="res://.godot/imported/Trash.png-86a71e3871b9a9ff3021544e47c8ccbb.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/Trash.png"
-dest_files=["res://.godot/imported/Trash.png-a9e21999e8f821818c86cc0cd5eb2e3b.s3tc.ctex", "res://.godot/imported/Trash.png-a9e21999e8f821818c86cc0cd5eb2e3b.etc2.ctex"]
+source_file="res://models/Sewer/Textures/Trash.png"
+dest_files=["res://.godot/imported/Trash.png-86a71e3871b9a9ff3021544e47c8ccbb.s3tc.ctex", "res://.godot/imported/Trash.png-86a71e3871b9a9ff3021544e47c8ccbb.etc2.ctex"]
 
 [params]
 

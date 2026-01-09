@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckc1drug4ftpc"
-path.s3tc="res://.godot/imported/brick_pavement.jpg-db898194c2ed46c201395b77f488250d.s3tc.ctex"
-path.etc2="res://.godot/imported/brick_pavement.jpg-db898194c2ed46c201395b77f488250d.etc2.ctex"
+path.s3tc="res://.godot/imported/brick_pavement.jpg-86c8dedf2cb2ce0747eee3ac2a30f940.s3tc.ctex"
+path.etc2="res://.godot/imported/brick_pavement.jpg-86c8dedf2cb2ce0747eee3ac2a30f940.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/brick_pavement.jpg"
-dest_files=["res://.godot/imported/brick_pavement.jpg-db898194c2ed46c201395b77f488250d.s3tc.ctex", "res://.godot/imported/brick_pavement.jpg-db898194c2ed46c201395b77f488250d.etc2.ctex"]
+source_file="res://models/Sewer/Textures/brick_pavement.jpg"
+dest_files=["res://.godot/imported/brick_pavement.jpg-86c8dedf2cb2ce0747eee3ac2a30f940.s3tc.ctex", "res://.godot/imported/brick_pavement.jpg-86c8dedf2cb2ce0747eee3ac2a30f940.etc2.ctex"]
 
 [params]
 

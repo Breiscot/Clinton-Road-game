@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cghjs8peq1wro"
-path.s3tc="res://.godot/imported/soil_mud.jpg-3a50bba1f2cfd89ec8e3e0a04898f096.s3tc.ctex"
-path.etc2="res://.godot/imported/soil_mud.jpg-3a50bba1f2cfd89ec8e3e0a04898f096.etc2.ctex"
+path.s3tc="res://.godot/imported/soil_mud.jpg-b92d16983aa993d6e05322405eafafad.s3tc.ctex"
+path.etc2="res://.godot/imported/soil_mud.jpg-b92d16983aa993d6e05322405eafafad.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/soil_mud.jpg"
-dest_files=["res://.godot/imported/soil_mud.jpg-3a50bba1f2cfd89ec8e3e0a04898f096.s3tc.ctex", "res://.godot/imported/soil_mud.jpg-3a50bba1f2cfd89ec8e3e0a04898f096.etc2.ctex"]
+source_file="res://models/Sewer/Textures/soil_mud.jpg"
+dest_files=["res://.godot/imported/soil_mud.jpg-b92d16983aa993d6e05322405eafafad.s3tc.ctex", "res://.godot/imported/soil_mud.jpg-b92d16983aa993d6e05322405eafafad.etc2.ctex"]
 
 [params]
 

@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyqv28bndii2w"
-path.s3tc="res://.godot/imported/concrete_base_03.jpg-4e6d080dca10df8241141ad10f2ea973.s3tc.ctex"
-path.etc2="res://.godot/imported/concrete_base_03.jpg-4e6d080dca10df8241141ad10f2ea973.etc2.ctex"
+path.s3tc="res://.godot/imported/concrete_base_03.jpg-8bf7959d795f799539aab5ea545c083c.s3tc.ctex"
+path.etc2="res://.godot/imported/concrete_base_03.jpg-8bf7959d795f799539aab5ea545c083c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/concrete_base_03.jpg"
-dest_files=["res://.godot/imported/concrete_base_03.jpg-4e6d080dca10df8241141ad10f2ea973.s3tc.ctex", "res://.godot/imported/concrete_base_03.jpg-4e6d080dca10df8241141ad10f2ea973.etc2.ctex"]
+source_file="res://models/Sewer/Textures/concrete_base_03.jpg"
+dest_files=["res://.godot/imported/concrete_base_03.jpg-8bf7959d795f799539aab5ea545c083c.s3tc.ctex", "res://.godot/imported/concrete_base_03.jpg-8bf7959d795f799539aab5ea545c083c.etc2.ctex"]
 
 [params]
 

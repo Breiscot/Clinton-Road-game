@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db2kiju0h1psv"
-path.s3tc="res://.godot/imported/Metal.jpg-54b10ef4e8c5177bbf1fbf4b8f48b51c.s3tc.ctex"
-path.etc2="res://.godot/imported/Metal.jpg-54b10ef4e8c5177bbf1fbf4b8f48b51c.etc2.ctex"
+path.s3tc="res://.godot/imported/Metal.jpg-c2c9204b107b78e8d6af6436eb631712.s3tc.ctex"
+path.etc2="res://.godot/imported/Metal.jpg-c2c9204b107b78e8d6af6436eb631712.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Sewer/textures/Metal.jpg"
-dest_files=["res://.godot/imported/Metal.jpg-54b10ef4e8c5177bbf1fbf4b8f48b51c.s3tc.ctex", "res://.godot/imported/Metal.jpg-54b10ef4e8c5177bbf1fbf4b8f48b51c.etc2.ctex"]
+source_file="res://models/Sewer/Textures/Metal.jpg"
+dest_files=["res://.godot/imported/Metal.jpg-c2c9204b107b78e8d6af6436eb631712.s3tc.ctex", "res://.godot/imported/Metal.jpg-c2c9204b107b78e8d6af6436eb631712.etc2.ctex"]
 
 [params]
 
