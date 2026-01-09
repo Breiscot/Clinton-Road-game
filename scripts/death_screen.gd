@@ -7,7 +7,7 @@ extends CanvasLayer
 
 func _ready():
 	add_to_group("death_screen")
-	layer = 100
+	layer = 1000
 	visible = false
 	
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
