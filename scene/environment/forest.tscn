@@ -265,6 +265,8 @@ shape = SubResource("BoxShape3D_18oyk")
 script = ExtResource("3_6dg63")
 tree_scene = ExtResource("1_18oyk")
 tree_count = 2000
+min_scale = 4.7
+max_scale = 5.7
 
 [node name="road_fence" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -3.9512687, 0.06511593, -2.9141738)
