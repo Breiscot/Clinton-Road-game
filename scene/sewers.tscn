@@ -1,6 +1,7 @@
-[gd_scene load_steps=314 format=4 uid="uid://bhm6kjjpsf2ed"]
+[gd_scene load_steps=316 format=4 uid="uid://bhm6kjjpsf2ed"]
 
 [ext_resource type="Texture2D" uid="uid://bpqxhfr4fw786" path="res://models/Sewer/Textures/concrete_base.png" id="1_0fn05"]
+[ext_resource type="Script" uid="uid://dtqdepoarrqnd" path="res://scripts/sewers.gd" id="1_0s21e"]
 [ext_resource type="Texture2D" uid="uid://dxfsoea1dusbs" path="res://models/Sewer/Textures/brick_modern_01.jpg" id="2_t1lc0"]
 [ext_resource type="Texture2D" uid="uid://dinp4rydccua7" path="res://models/Sewer/Textures/door_metal.jpg" id="3_t1lc0"]
 [ext_resource type="Texture2D" uid="uid://dy0ya5wwnst0c" path="res://models/Sewer/Textures/brick_modern.jpg" id="4_oxyfy"]
@@ -2325,7 +2326,11 @@ data = PackedVector3Array(0.0087, 0.005, 0.0828, 0, 0.01, 0.0828, 0, 0.01, -0.01
 [sub_resource type="BoxShape3D" id="BoxShape3D_8dtjo"]
 size = Vector3(0.20288086, 2.4354248, 1.0551758)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0s21e"]
+size = Vector3(0.4868164, 3.1539307, 1)
+
 [node name="Sewers" type="Node3D"]
+script = ExtResource("1_0s21e")
 
 [node name="Sewers_1" type="Node3D" parent="."]
 
@@ -5072,10 +5077,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.515427, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.68647, 1.42978, -32.547543)
 
 [node name="SewerDoor" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.960758, 0, -19.553387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.39899, 0, -19.553387)
 script = ExtResource("12_inb81")
 next_area_position = Vector3(26.4, 1.6, -42)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SewerDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045166016, 1.465271, -0.02758789)
 shape = SubResource("BoxShape3D_8dtjo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SewerDoor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SewerDoor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16918945, 1.0769653, 0)
+shape = SubResource("BoxShape3D_0s21e")
