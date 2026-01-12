@@ -2,6 +2,7 @@ extends Node3D
 
 @export var key_scene: PackedScene
 @export var spawn_points: Array[Marker3D] = []
+@export var key_scale := Vector3(0.3, 0.3, 0.3)
 
 var key_spawned := false
 
@@ -22,6 +23,7 @@ func spawn_key_random():
 	
 	var key = key_scene.instantiate()
 	key.global_position = spawn_point.global_position
+	key.scale = key_scale
 	add_child(key)
 	
 	key_spawned = true

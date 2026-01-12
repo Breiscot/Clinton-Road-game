@@ -35,7 +35,7 @@ func show_intro_messages():
 	
 	show_message("I don't think I want to go back out on the street with that thing waiting for me.")
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	show_message("These sewers... There must be a way out of here.")
 	
 func show_message(text: String):

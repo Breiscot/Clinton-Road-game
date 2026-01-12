@@ -7,7 +7,7 @@
 size = Vector3(0.85601807, 1.8979492, 0.13372803)
 
 [node name="SewerKey" type="Area3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_p2kh4")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_1ytms")]
