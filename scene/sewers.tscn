@@ -2321,2731 +2321,2733 @@ data = PackedVector3Array(0.0087, 0.005, 0.0828, 0, 0.01, 0.0828, 0, 0.01, -0.01
 
 [node name="Sewers" type="Node3D"]
 
-[node name="Serwers_010" type="MeshInstance3D" parent="."]
+[node name="Sewers_1" type="Node3D" parent="."]
+
+[node name="Serwers_010" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 0, 1.4101659, 7.0825367)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_010"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_010"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_010/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_010/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8dtjo")
 
-[node name="Serwers_017" type="MeshInstance3D" parent="."]
+[node name="Serwers_017" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 51.926, 2.406, -24.195)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_017"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_017"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_017/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c27rp")
 
-[node name="Serwers_026" type="MeshInstance3D" parent="."]
+[node name="Serwers_026" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 34.37021, 2.406, -63.631035)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_026"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_026"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_026/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_026/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_a05f4")
 
-[node name="Serwers_073" type="MeshInstance3D" parent="."]
+[node name="Serwers_073" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 48.198063, 2.406, -108.63638)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_073"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_073"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_073/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_073/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_j8e32")
 
-[node name="Serwers_079" type="MeshInstance3D" parent="."]
+[node name="Serwers_079" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -17.550766, 3.3751476, -86.55281)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_079"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_079"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_079/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_079/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fbtgd")
 
-[node name="Serwers_086" type="MeshInstance3D" parent="."]
+[node name="Serwers_086" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -1.2423729, 3.3751476, -86.55281)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_086"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_086"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_086/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_086/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_v0jsr")
 
-[node name="Serwers_104" type="MeshInstance3D" parent="."]
+[node name="Serwers_104" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -17.832367, 2.3850677, -127.5596)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_104"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_104"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_104/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_104/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_stv0y")
 
-[node name="Serwers_105" type="MeshInstance3D" parent="."]
+[node name="Serwers_105" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.1813474e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -249.51704, -24.21246, 2.3850677, -133.06566)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_105"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_105"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_105/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_105/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7ehne")
 
-[node name="Serwers_088" type="MeshInstance3D" parent="."]
+[node name="Serwers_088" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(14.247945, 0, 338.39322, 0, 338.69305, 0, -338.39322, 0, 14.247945, 13.27309, 3.3751476, -86.436325)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_088"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_088"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_088/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_088/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_w1y08")
 
-[node name="Serwers_074" type="MeshInstance3D" parent="."]
+[node name="Serwers_074" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 63.64003, 2.406, -108.63638)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_074"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_074"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_074/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_074/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r83fe")
 
-[node name="Serwers_023" type="MeshInstance3D" parent="."]
+[node name="Serwers_023" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 51.926, 2.406, -46.35923)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_023"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_023"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_023/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_023/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_evt8v")
 
-[node name="Serwers_021" type="MeshInstance3D" parent="."]
+[node name="Serwers_021" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 59.62904, 2.418793, -31.92369)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_021"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_021"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_021/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_021/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_knypr")
 
-[node name="Serwers_051" type="MeshInstance3D" parent="."]
+[node name="Serwers_051" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -58.19487, 2.3866756, -85.490166)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_051"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_051"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_051/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_051/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2dgf6")
 
-[node name="Serwers_058" type="MeshInstance3D" parent="."]
+[node name="Serwers_058" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -34.903, 2.4086094, -54.885)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_058"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_058"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_058/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_058/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ge5m6")
 
-[node name="Serwers_055" type="MeshInstance3D" parent="."]
+[node name="Serwers_055" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -42.67876, 3.3849075, -70.21049)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_055"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_055"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_055/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_055/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uohch")
 
-[node name="Serwers_082" type="MeshInstance3D" parent="."]
+[node name="Serwers_082" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -1.945455e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -222.53412, -8.978055, 3.3849075, -81.003334)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_082"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_082"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_082/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_082/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_acu4y")
 
-[node name="Serwers_062" type="MeshInstance3D" parent="."]
+[node name="Serwers_062" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -26.227346, 3.385, -64.39406)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_062"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_062"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_062/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_062/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_daqao")
 
-[node name="Serwers_070" type="MeshInstance3D" parent="."]
+[node name="Serwers_070" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -32.91439, 3.385, -102.04181)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_070"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_070"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_070/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_070/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3hnwv")
 
-[node name="Serwers_066" type="MeshInstance3D" parent="."]
+[node name="Serwers_066" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, -25.210812, 3.385, -94.3213)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_066"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_066"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_066/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_066/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mcce7")
 
-[node name="Serwers_095" type="MeshInstance3D" parent="."]
+[node name="Serwers_095" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.32452, 0, 15.7951975, 0, 338.69308, 0, -15.7951975, 0, 338.32452, -25.35466, 3.385, -109.5615)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_095"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_095"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_095/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_095/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oxafw")
 
-[node name="Serwers_022" type="MeshInstance3D" parent="."]
+[node name="Serwers_022" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 59.62904, 2.418793, -38.679413)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_022"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_022"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_022/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_022/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ydgdi")
 
-[node name="Serwers_025" type="MeshInstance3D" parent="."]
+[node name="Serwers_025" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 26.59226, 2.419, -71.35896)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_025"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_025"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_025/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_025/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lte8g")
 
-[node name="Serwers_018" type="MeshInstance3D" parent="."]
+[node name="Serwers_018" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 67.35536, 2.406, -24.195)
 mesh = SubResource("ArrayMesh_oxyfy")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_018"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_018"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_018/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_018/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kjumj")
 
-[node name="Serwers_007" type="MeshInstance3D" parent="."]
+[node name="Serwers_007" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 0, 1.4101659, 13.8546505)
 mesh = SubResource("ArrayMesh_0fn05")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_007"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_007"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_007/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_007/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4w3y0")
 
-[node name="door_metal" type="MeshInstance3D" parent="."]
+[node name="door_metal" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 105.31199, -4.7304648e-06, 0, 4.6033333e-06, 108.22042, -3.734881, 0.562779, 14.406216)
 mesh = SubResource("ArrayMesh_gx48k")
 skeleton = NodePath("")
 
-[node name="Serwers_011" type="MeshInstance3D" parent="."]
+[node name="Serwers_011" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 0, 1.4101659, 20.608116)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_011"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_011"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_011/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_011/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r13g0")
 
-[node name="Serwers_014" type="MeshInstance3D" parent="."]
+[node name="Serwers_014" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 26.596941, 1.4101659, 2.6197357)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_014"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_014"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_014/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_014/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_inb81")
 
-[node name="Serwers_020" type="MeshInstance3D" parent="."]
+[node name="Serwers_020" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 91.589, 2.409, -47.449)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_020"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_020"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_020/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_020/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lntxu")
 
-[node name="Serwers_027" type="MeshInstance3D" parent="."]
+[node name="Serwers_027" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 44.202675, 2.409, -54.108215)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_027"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_027"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_027/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_027/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xyawg")
 
-[node name="Serwers_040" type="MeshInstance3D" parent="."]
+[node name="Serwers_040" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 55.897762, 2.409, -55.86099)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_040"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_040"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_040/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_040/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vx2hw")
 
-[node name="Serwers_090" type="MeshInstance3D" parent="."]
+[node name="Serwers_090" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 6.5044107, 2.3909047, -72.03522)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_090"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_090"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_090/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_090/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c4qtb")
 
-[node name="Serwers_043" type="MeshInstance3D" parent="."]
+[node name="Serwers_043" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 64.644, 2.409, -80.147)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_043"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_043"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_043/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_043/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pe7rc")
 
-[node name="Serwers_078" type="MeshInstance3D" parent="."]
+[node name="Serwers_078" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, 47.9478, 2.409, -86.33685)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_078"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_078"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_078/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_078/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t4jlc")
 
-[node name="Serwers_091" type="MeshInstance3D" parent="."]
+[node name="Serwers_091" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 32.736694, 2.409, -108.64889)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_091"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_091"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_091/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_091/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jti6a")
 
-[node name="Serwers_122" type="MeshInstance3D" parent="."]
+[node name="Serwers_122" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 9.006442, -1.5789549, -182.2872)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_122"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_122"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_122/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_122/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8ncla")
 
-[node name="Serwers_129" type="MeshInstance3D" parent="."]
+[node name="Serwers_129" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 9.006442, -1.5789549, -173.52846)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_129"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_129"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_129/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_129/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7f1el")
 
-[node name="Serwers_123" type="MeshInstance3D" parent="."]
+[node name="Serwers_123" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, 41.822773, -1.5789549, -182.2872)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_123"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_123"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_123/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_123/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pq678")
 
-[node name="Serwers_130" type="MeshInstance3D" parent="."]
+[node name="Serwers_130" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 71.37987, -1.5935435, -152.07597)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_130"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_130"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_130/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_130/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c85mq")
 
-[node name="Serwers_037" type="MeshInstance3D" parent="."]
+[node name="Serwers_037" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 26.595, 2.4206693, -78.122)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_037"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_037"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_037/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_037/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_meisx")
 
-[node name="Serwers_031" type="MeshInstance3D" parent="."]
+[node name="Serwers_031" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, -4.7071495, 2.409, -40.112293)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_031"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_031"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_031/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_031/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oos1f")
 
-[node name="Serwers_063" type="MeshInstance3D" parent="."]
+[node name="Serwers_063" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, -18.471779, 3.363255, -72.13072)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_063"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_063"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_063/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_063/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_54jwd")
 
-[node name="Serwers_013" type="MeshInstance3D" parent="."]
+[node name="Serwers_013" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 5.072287, 1.41, -5.0584636)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_013"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_013"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_013/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_013/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tciol")
 
-[node name="Serwers_015" type="MeshInstance3D" parent="."]
+[node name="Serwers_015" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 39.76523, 2.4061403, -36.03915)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_015"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_015"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_015/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_015/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ei2vh")
 
-[node name="Serwers_016" type="MeshInstance3D" parent="."]
+[node name="Serwers_016" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 39.76523, 2.4061403, -29.271902)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_016"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_016"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_016/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_016/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lx5wt")
 
-[node name="Serwers_097" type="MeshInstance3D" parent="."]
+[node name="Serwers_097" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 6.510187, 3.381537, -94.247635)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_097"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_097"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_097/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_097/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_feilh")
 
-[node name="Serwers_098" type="MeshInstance3D" parent="."]
+[node name="Serwers_098" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, 2.9609488e-05, 0, 338.69305, 0, -2.9609488e-05, 0, -338.69305, -11.003508, 3.381537, -104.38052)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_098"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_098"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_098/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_098/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_h6tii")
 
-[node name="Serwers_108" type="MeshInstance3D" parent="."]
+[node name="Serwers_108" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -10.536339, 2.4147491, -152.741)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_108"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_108"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_108/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_108/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sp64o")
 
-[node name="Serwers_115" type="MeshInstance3D" parent="."]
+[node name="Serwers_115" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 47.211, -1.58, -168.456)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_115"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_115"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_115/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_115/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ucsg")
 
-[node name="Serwers_035" type="MeshInstance3D" parent="."]
+[node name="Serwers_035" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -8.957242, 2.4061403, -68.69762)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_035"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_035"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_035/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_035/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dcxtm")
 
-[node name="Serwers_003" type="MeshInstance3D" parent="."]
+[node name="Serwers_003" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 18.838, 1.41, -5.058)
 mesh = SubResource("ArrayMesh_xs4wn")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_003"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_003"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0s21e")
 
-[node name="Serwers_046" type="MeshInstance3D" parent="."]
+[node name="Serwers_046" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -27.965006, 1.41, -32.3526)
 mesh = SubResource("ArrayMesh_xs4wn")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_046"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_046"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_046/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_046/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_exh8h")
 
-[node name="Serwers_048" type="MeshInstance3D" parent="."]
+[node name="Serwers_048" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -58.198, 1.4106277, -63.486)
 mesh = SubResource("ArrayMesh_xs4wn")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_048"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_048"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_048/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_048/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2q8ou")
 
-[node name="Serwers_001" type="MeshInstance3D" parent="."]
+[node name="Serwers_001" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 26.600037, 1.41, -5.058)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_001"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_001"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_igbhw")
 
-[node name="Serwers_053" type="MeshInstance3D" parent="."]
+[node name="Serwers_053" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, -42.675755, 3.3872533, -77.9598)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_053"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_053"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_053/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_053/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kjabn")
 
-[node name="Serwers_069" type="MeshInstance3D" parent="."]
+[node name="Serwers_069" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, -25.21, 3.3870006, -102.048485)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_069"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_069"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_069/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_069/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3t6xx")
 
-[node name="Serwers_101" type="MeshInstance3D" parent="."]
+[node name="Serwers_101" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, -10.992497, 2.4006965, -118.82172)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_101"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_101"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_101/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_101/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sy2e1")
 
-[node name="Serwers_006" type="MeshInstance3D" parent="."]
+[node name="Serwers_006" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 59.61354, 2.4111776, -24.191181)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_006"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_006"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_006/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_006/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4qsbd")
 
-[node name="Serwers_029" type="MeshInstance3D" parent="."]
+[node name="Serwers_029" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -4.706, 2.411, -32.349)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_029"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_029"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_029/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_029/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hnt7c")
 
-[node name="Serwers_030" type="MeshInstance3D" parent="."]
+[node name="Serwers_030" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -13.48, 2.411, -32.349)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_030"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_030"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_030/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_030/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s78dv")
 
-[node name="Serwers_028" type="MeshInstance3D" parent="."]
+[node name="Serwers_028" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 4.064102, 2.4111776, -41.11939)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_028"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_028"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_028/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_028/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sndpb")
 
-[node name="Serwers_049" type="MeshInstance3D" parent="."]
+[node name="Serwers_049" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -58.19182, 2.3908362, -77.97008)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_049"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_049"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_049/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_049/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vea7g")
 
-[node name="Serwers_067" type="MeshInstance3D" parent="."]
+[node name="Serwers_067" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -49.426907, 2.391, -102.017845)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_067"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_067"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_067/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_067/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iqmfx")
 
-[node name="Serwers_100" type="MeshInstance3D" parent="."]
+[node name="Serwers_100" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -24.197908, 2.391, -139.85869)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_100"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_100"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_100/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_100/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ym48n")
 
-[node name="Serwers_041" type="MeshInstance3D" parent="."]
+[node name="Serwers_041" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 64.63826, 2.4111776, -72.38656)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_041"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_041"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_041/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_041/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hdnwk")
 
-[node name="Serwers_042" type="MeshInstance3D" parent="."]
+[node name="Serwers_042" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 55.89843, 2.4111776, -72.373344)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_042"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_042"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_042/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_042/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1t3e1")
 
-[node name="Serwers_034" type="MeshInstance3D" parent="."]
+[node name="Serwers_034" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 4.064102, 2.4111776, -63.6255)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_034"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_034"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_034/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_034/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y2alv")
 
-[node name="Serwers_075" type="MeshInstance3D" parent="."]
+[node name="Serwers_075" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 40.44779, 2.4111776, -108.639786)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_075"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_075"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_075/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_075/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_x2j8n")
 
-[node name="Serwers_119" type="MeshInstance3D" parent="."]
+[node name="Serwers_119" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 34.100266, -1.5880699, -182.2845)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_119"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_119"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_119/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_119/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ufbr4")
 
-[node name="Serwers_120" type="MeshInstance3D" parent="."]
+[node name="Serwers_120" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 25.40712, -1.5880699, -182.2845)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_120"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_120"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_120/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_120/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wnmu1")
 
-[node name="Serwers_121" type="MeshInstance3D" parent="."]
+[node name="Serwers_121" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 16.670544, -1.5880699, -182.2845)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_121"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_121"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_121/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_121/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kklk6")
 
-[node name="Serwers_124" type="MeshInstance3D" parent="."]
+[node name="Serwers_124" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 9.006442, -1.5789549, -164.81543)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_124"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_124"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_124/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_124/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4vdoo")
 
-[node name="Serwers_125" type="MeshInstance3D" parent="."]
+[node name="Serwers_125" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, 41.822773, -1.5789549, -164.81543)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_125"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_125"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_125/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_125/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bmvsx")
 
-[node name="Serwers_126" type="MeshInstance3D" parent="."]
+[node name="Serwers_126" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 34.100266, -1.5880699, -164.81273)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_126"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_126"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_126/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_126/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5srw3")
 
-[node name="Serwers_127" type="MeshInstance3D" parent="."]
+[node name="Serwers_127" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 25.40712, -1.5880699, -164.81273)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_127"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_127"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_127/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_127/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cr476")
 
-[node name="Serwers_128" type="MeshInstance3D" parent="."]
+[node name="Serwers_128" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 16.670544, -1.5880699, -164.81273)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_128"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_128"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_128/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_128/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jwqa6")
 
-[node name="Serwers_077" type="MeshInstance3D" parent="."]
+[node name="Serwers_077" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 40.44779, 2.4111776, -86.31389)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_077"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_077"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_077/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_077/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dj8xv")
 
-[node name="Serwers_060" type="MeshInstance3D" parent="."]
+[node name="Serwers_060" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -33.93082, 3.3887348, -86.56572)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_060"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_060"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_060/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_060/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hdkr1")
 
-[node name="Serwers_081" type="MeshInstance3D" parent="."]
+[node name="Serwers_081" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -8.974212, 3.3887348, -86.56683)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_081"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_081"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_081/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_081/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pmspi")
 
-[node name="Serwers_065" type="MeshInstance3D" parent="."]
+[node name="Serwers_065" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -25.213882, 3.3887348, -86.56572)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_065"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_065"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_065/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_065/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_08vl4")
 
-[node name="Serwers_012" type="MeshInstance3D" parent="."]
+[node name="Serwers_012" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 26.599525, 1.4101659, -12.815286)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_012"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_012"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_012/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_012/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2do6q")
 
-[node name="Serwers_050" type="MeshInstance3D" parent="."]
+[node name="Serwers_050" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, -58.1921, 1.4013789, -70.24008)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_050"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_050"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_050/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_050/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0tlsl")
 
-[node name="Serwers_056" type="MeshInstance3D" parent="."]
+[node name="Serwers_056" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, -42.679546, 2.384114, -63.45198)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_056"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_056"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_056/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_056/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bfpgk")
 
-[node name="Serwers_052" type="MeshInstance3D" parent="."]
+[node name="Serwers_052" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, -50.442745, 2.3899221, -77.95976)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_052"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_052"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_052/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_052/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3n3qo")
 
-[node name="Serwers_084" type="MeshInstance3D" parent="."]
+[node name="Serwers_084" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 32.754528, 2.3899221, -86.31177)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_084"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_084"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_084/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_084/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_uumbq")
 
-[node name="Serwers_109" type="MeshInstance3D" parent="."]
+[node name="Serwers_109" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 71.3859, 1.4092042, -116.357994)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_109"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_109"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_109/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_109/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_erwmn")
 
-[node name="Serwers_110" type="MeshInstance3D" parent="."]
+[node name="Serwers_110" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 71.3859, 0.41038287, -123.1107)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_110"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_110"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_110/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_110/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c7hyn")
 
-[node name="Serwers_111" type="MeshInstance3D" parent="."]
+[node name="Serwers_111" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 71.3859, -0.6045565, -129.84778)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_111"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_111"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_111/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_111/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0c0cm")
 
-[node name="Serwers_112" type="MeshInstance3D" parent="."]
+[node name="Serwers_112" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 71.3859, -1.6033779, -136.60048)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_112"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_112"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_112/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_112/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_u48r7")
 
-[node name="Serwers_080" type="MeshInstance3D" parent="."]
+[node name="Serwers_080" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, -8.969543, 2.3899221, -75.4148)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_080"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_080"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_080/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_080/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jc7l4")
 
-[node name="Serwers_099" type="MeshInstance3D" parent="."]
+[node name="Serwers_099" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -10.993832, 2.3899221, -111.1052)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_099"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_099"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_099/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_099/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_miiax")
 
-[node name="Serwers_102" type="MeshInstance3D" parent="."]
+[node name="Serwers_102" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4802123e-05, 6.372015, 338.63312, 2.785296e-07, 338.63312, -6.372015, -338.69305, 0, -1.4804743e-05, -18.099657, 2.3899221, -118.81241)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_102"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_102"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_102/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_102/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sloxd")
 
-[node name="Serwers_089" type="MeshInstance3D" parent="."]
+[node name="Serwers_089" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, 0, 0, 0, 338.69305, 6.5099573, 2.3899221, -78.80106)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_089"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_089"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_089/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_089/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4ph12")
 
-[node name="Serwers_068" type="MeshInstance3D" parent="."]
+[node name="Serwers_068" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, -41.678673, 2.3899221, -102.01664)
 mesh = SubResource("ArrayMesh_4w3y0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_068"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_068"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_068/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_068/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pcdwf")
 
-[node name="Serwers_008" type="MeshInstance3D" parent="."]
+[node name="Serwers_008" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 26.599, 2.4093347, -19.587791)
 mesh = SubResource("ArrayMesh_8dtjo")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_008"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_008"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_008/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_008/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gmwlu")
 
-[node name="SerwersP_008" type="MeshInstance3D" parent="."]
+[node name="SerwersP_008" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, -4.371139e-06, 0, 4.371139e-06, 100, -3.64394, 0.48469403, 13.854654)
 mesh = SubResource("ArrayMesh_inb81")
 skeleton = NodePath("")
 
-[node name="SerwersP_009" type="MeshInstance3D" parent="."]
+[node name="SerwersP_009" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, -4.371139e-06, 0, 4.371139e-06, 100, 23.03792, 1.4973172, -19.585768)
 mesh = SubResource("ArrayMesh_inb81")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP_009"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP_009"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP_009/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP_009/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4ceda")
 
-[node name="door_metal_01" type="MeshInstance3D" parent="."]
+[node name="door_metal_01" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, -4.4501867e-06, 0, 4.371139e-06, 101.8084, 22.91852, 1.5761248, -19.08183)
 mesh = SubResource("ArrayMesh_tciol")
 skeleton = NodePath("")
 
-[node name="Serwers_004" type="MeshInstance3D" parent="."]
+[node name="Serwers_004" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 26.599, 2.409, -26.342)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_004"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_004"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_004/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nmilh")
 
-[node name="Serwers_009" type="MeshInstance3D" parent="."]
+[node name="Serwers_009" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 26.599, 2.409, -48.86416)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_009"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_009"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_009/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_009/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b4ckr")
 
-[node name="Serwers_044" type="MeshInstance3D" parent="."]
+[node name="Serwers_044" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 55.9, 2.409, -80.139)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_044"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_044"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_044/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_044/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6b5n6")
 
-[node name="Serwers_064" type="MeshInstance3D" parent="."]
+[node name="Serwers_064" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 55.9, 2.409, -93.8738)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_064"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_064"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_064/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_064/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yfcbk")
 
-[node name="Serwers_076" type="MeshInstance3D" parent="."]
+[node name="Serwers_076" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 40.45703, 2.409, -93.962814)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_076"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_076"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_076/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_076/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xywow")
 
-[node name="Serwers_032" type="MeshInstance3D" parent="."]
+[node name="Serwers_032" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, 4.05756, 2.409, -48.86416)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_032"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_032"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_032/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_032/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_blhm4")
 
-[node name="Serwers_036" type="MeshInstance3D" parent="."]
+[node name="Serwers_036" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, -13.4805, 2.409, -40.109413)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_036"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_036"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_036/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_036/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nrfie")
 
-[node name="Serwers_061" type="MeshInstance3D" parent="."]
+[node name="Serwers_061" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, -33.951344, 3.372703, -72.08969)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_061"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_061"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_061/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_061/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2am7r")
 
-[node name="Serwers_054" type="MeshInstance3D" parent="."]
+[node name="Serwers_054" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -21.228292, 2.409, -54.88732)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_054"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_054"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_054/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_054/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bhbum")
 
-[node name="Serwers_005" type="MeshInstance3D" parent="."]
+[node name="Serwers_005" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 18.825148, 2.409, -41.113815)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_005"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_005"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_005/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_005/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8pb14")
 
-[node name="Serwers_033" type="MeshInstance3D" parent="."]
+[node name="Serwers_033" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 18.825, 2.409, -63.63)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_033"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_033"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_033/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_033/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wyr7y")
 
-[node name="Serwers_085" type="MeshInstance3D" parent="."]
+[node name="Serwers_085" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 26.086817, 3.395555, -86.317474)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_085"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_085"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_085/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_085/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1cyqn")
 
-[node name="Serwers_038" type="MeshInstance3D" parent="."]
+[node name="Serwers_038" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 48.137432, 2.409, -63.63)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_038"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_038"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_038/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_038/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4ssuf")
 
-[node name="Serwers_092" type="MeshInstance3D" parent="."]
+[node name="Serwers_092" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 48.168816, 2.409, -117.401344)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_092"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_092"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_092/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_092/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_p1yyd")
 
-[node name="Serwers_106" type="MeshInstance3D" parent="."]
+[node name="Serwers_106" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, 10.328015, 2.409, -142.58723)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_106"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_106"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_106/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_106/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vef8q")
 
-[node name="Serwers_093" type="MeshInstance3D" parent="."]
+[node name="Serwers_093" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -49.42101, 2.3795323, -116.743034)
 mesh = SubResource("ArrayMesh_igbhw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_093"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_093"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_093/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_093/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ivitf")
 
-[node name="Serwers_002" type="MeshInstance3D" parent="."]
+[node name="Serwers_002" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 26.599, 2.409, -41.114697)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_002"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_002"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_002/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jau21")
 
-[node name="Serwers_024" type="MeshInstance3D" parent="."]
+[node name="Serwers_024" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 26.599, 2.409, -63.629627)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_024"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_024"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_024/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_024/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kq83m")
 
-[node name="Serwers_087" type="MeshInstance3D" parent="."]
+[node name="Serwers_087" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 6.5161443, 3.374093, -86.54929)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_087"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_087"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_087/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_087/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qocnq")
 
-[node name="Serwers_039" type="MeshInstance3D" parent="."]
+[node name="Serwers_039" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 55.898003, 2.409, -63.629627)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_039"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_039"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_039/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_039/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4q82f")
 
-[node name="Serwers_113" type="MeshInstance3D" parent="."]
+[node name="Serwers_113" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 71.3832, -1.6072481, -144.35135)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_113"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_113"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_113/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_113/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_e63kv")
 
-[node name="Serwers_116" type="MeshInstance3D" parent="."]
+[node name="Serwers_116" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 34.09543, -1.5896459, -173.53899)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_116"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_116"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_116/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_116/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nxy1d")
 
-[node name="Serwers_117" type="MeshInstance3D" parent="."]
+[node name="Serwers_117" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 25.403519, -1.5896459, -173.53899)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_117"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_117"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_117/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_117/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yhbij")
 
-[node name="Serwers_118" type="MeshInstance3D" parent="."]
+[node name="Serwers_118" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 16.674603, -1.5896459, -173.53899)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_118"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_118"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_118/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_118/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5gyy7")
 
-[node name="Serwers_072" type="MeshInstance3D" parent="."]
+[node name="Serwers_072" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 55.898003, 2.409, -108.63849)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_072"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_072"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_072/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_072/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vnr8v")
 
-[node name="Serwers_019" type="MeshInstance3D" parent="."]
+[node name="Serwers_019" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, 74.0905, 2.4090304, -24.188992)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_019"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_019"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_019/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_019/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sg1ti")
 
-[node name="Serwers_047" type="MeshInstance3D" parent="."]
+[node name="Serwers_047" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, -58.2, 1.41, -49.85)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_047"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_047"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_047/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_047/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4f2gi")
 
-[node name="Serwers_094" type="MeshInstance3D" parent="."]
+[node name="Serwers_094" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -31.9423, 2.3922377, -139.86682)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_094"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_094"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_094/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_094/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_egy31")
 
-[node name="Serwers_096" type="MeshInstance3D" parent="."]
+[node name="Serwers_096" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 18.053177, 2.3922377, -134.90639)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_096"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_096"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_096/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_096/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xghm1")
 
-[node name="Serwers_114" type="MeshInstance3D" parent="."]
+[node name="Serwers_114" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.69305, 0, -2.9609488e-05, 0, 338.69305, 0, 2.9609488e-05, 0, -338.69305, 47.22503, -1.5731812, -161.83441)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_114"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_114"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_114/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_114/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kscp4")
 
-[node name="Serwers" type="MeshInstance3D" parent="."]
+[node name="Serwers" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, 59.62461, 2.4110215, -46.343666)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0q0u8")
 
-[node name="Serwers5" type="MeshInstance3D" parent="."]
+[node name="Serwers5" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 64.64879, 2.4110215, -63.63708)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers5"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers5"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers5/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ij7ef")
 
-[node name="Serwers12" type="MeshInstance3D" parent="."]
+[node name="Serwers12" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 71.38395, 2.4110215, -108.625824)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers12"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers12"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers12/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers12/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xthbj")
 
-[node name="Serwers13" type="MeshInstance3D" parent="."]
+[node name="Serwers13" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 55.898037, 2.4110215, -117.396576)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers13"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers13"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers13/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers13/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7c2iu")
 
-[node name="Serwers17" type="MeshInstance3D" parent="."]
+[node name="Serwers17" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, -3.8351064, 2.4110215, -152.7397)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers17"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers17"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers17/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers17/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_egt1r")
 
-[node name="Serwers20" type="MeshInstance3D" parent="."]
+[node name="Serwers20" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 18.054, 2.41, -142.578)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers20"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers20"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers20/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers20/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jb8iw")
 
-[node name="Serwers19" type="MeshInstance3D" parent="."]
+[node name="Serwers19" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -3.9240255, 2.4110215, -142.58853)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers19"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers19"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers19/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers19/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s11ob")
 
-[node name="Serwers4" type="MeshInstance3D" parent="."]
+[node name="Serwers4" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.9604645e-06, -4.3711398e-06, -100, -1.7763568e-13, 100, -4.3711398e-06, 100, 5.3290705e-13, 5.9604645e-06, -13.48053, 2.4110215, -54.88224)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tucjt")
 
-[node name="Serwers9" type="MeshInstance3D" parent="."]
+[node name="Serwers9" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -42.714832, 2.4110215, -54.88417)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers9"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers9"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers9/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers9/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ub58q")
 
-[node name="Serwers6" type="MeshInstance3D" parent="."]
+[node name="Serwers6" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -58.192234, 2.3897564, -93.24763)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers6"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers6"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers6/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m32mn")
 
-[node name="Serwers14" type="MeshInstance3D" parent="."]
+[node name="Serwers14" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -25.728973, 3.4276712, -118.823265)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers14"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers14"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers14/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers14/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8knjh")
 
-[node name="Serwers8" type="MeshInstance3D" parent="."]
+[node name="Serwers8" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -42.68007, 3.397173, -86.56704)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers8"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers8"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers8/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers8/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rhioa")
 
-[node name="Serwers7" type="MeshInstance3D" parent="."]
+[node name="Serwers7" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -49.428062, 2.3897564, -93.24763)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers7"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers7"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers7/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers7/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dk0ug")
 
-[node name="Serwers15" type="MeshInstance3D" parent="."]
+[node name="Serwers15" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, -10.998, 2.4, -127.56)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers15"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers15"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers15/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers15/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1mt1c")
 
-[node name="Serwers18" type="MeshInstance3D" parent="."]
+[node name="Serwers18" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -15.614955, 2.4, -139.83081)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers18"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers18"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers18/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers18/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rp47h")
 
-[node name="Serwers16" type="MeshInstance3D" parent="."]
+[node name="Serwers16" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -24.211298, 2.4, -127.56)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers16"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers16"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers16/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers16/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0roas")
 
-[node name="Serwers10" type="MeshInstance3D" parent="."]
+[node name="Serwers10" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -33.975918, 3.3801377, -64.39771)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers10"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers10"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers10/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers10/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lg14f")
 
-[node name="Serwers11" type="MeshInstance3D" parent="."]
+[node name="Serwers11" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -18.47318, 3.3801377, -64.39771)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers11"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers11"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers11/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers11/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jxpdy")
 
-[node name="Serwers2" type="MeshInstance3D" parent="."]
+[node name="Serwers2" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 44.203747, 2.4110215, -46.343666)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cbm2y")
 
-[node name="Serwers3" type="MeshInstance3D" parent="."]
+[node name="Serwers3" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 4.0633698, 2.4110215, -32.34767)
 mesh = SubResource("ArrayMesh_nmilh")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b4kjh")
 
-[node name="Pipe_004" type="MeshInstance3D" parent="."]
+[node name="Pipe_004" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 57.50753, 2.5848312, -67.84117)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_004"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_004"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_004/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c0ob4")
 
-[node name="Pipe_057" type="MeshInstance3D" parent="."]
+[node name="Pipe_057" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 66.31685, 2.5848312, -67.84117)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_057"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_057"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_057/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_057/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c0ob4")
 
-[node name="Pipe_058" type="MeshInstance3D" parent="."]
+[node name="Pipe_058" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 66.31685, 4.448434, -76.11945)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_058"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_058"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_058/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_058/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_c0ob4")
 
-[node name="TB" type="MeshInstance3D" parent="."]
+[node name="TB" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-116.31438, -2.2905321e-12, -2.4808978e-06, -3.8517765e-06, -149.17076, 10.749478, -9.410776e-06, 61.054737, 26.263443, 55.91402, 0.929146, -66.80314)
 mesh = SubResource("ArrayMesh_a05f4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TB"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/TB"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TB/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/TB/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y0m3v")
 
-[node name="debris" type="MeshInstance3D" parent="."]
+[node name="debris" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 55.87051, 0.09944856, -65.83854)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dx7xf")
 
-[node name="debris2" type="MeshInstance3D" parent="."]
+[node name="debris2" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587487, -0.3325389, -1.5678902, 1.1318885, -0.7869817, 1.7132711, -0.760847, -1.8083352, -0.4572872, 55.87051, 0.016828537, -68.427)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bqx4f")
 
-[node name="Pipe_005" type="MeshInstance3D" parent="."]
+[node name="Pipe_005" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 28.318714, 2.5848312, -58.53934)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_005"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_005"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_005/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_005/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5ictx")
 
-[node name="Pipe_006" type="MeshInstance3D" parent="."]
+[node name="Pipe_006" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(4.730121e-07, -10.909489, -8.174035e-07, -10.821256, -4.768689e-07, 0, -4.1352033e-14, 9.537378e-07, -9.350006, -34.95919, 1.6833162, -56.51727)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_006"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_006"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_006/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_006/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kc0oi")
 
-[node name="Pipe_044" type="MeshInstance3D" parent="."]
+[node name="Pipe_044" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-4.730121e-07, -10.909489, -3.5729842e-14, 4.730121e-07, 2.0844602e-14, -9.350006, 10.821256, -4.768689e-07, 4.0870174e-07, -35.01741, 6.1643686, -63.402256)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_044"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_044"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_044/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_044/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kc0oi")
 
-[node name="Pipe_009" type="MeshInstance3D" parent="."]
+[node name="Pipe_009" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(4.730121e-07, -10.909489, -8.174035e-07, -10.821256, -4.768689e-07, 0, -4.1352033e-14, 9.537378e-07, -9.350006, 62.251, 1.683, -110.275)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_009"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_009"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_009/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_009/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_py54o")
 
-[node name="TB2" type="MeshInstance3D" parent="."]
+[node name="TB2" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-116.31438, -2.2905321e-12, -2.4808978e-06, -3.8517765e-06, -149.17076, 10.749478, -9.410776e-06, 61.054737, 26.263443, 26.725204, 0.929146, -57.50131)
 mesh = SubResource("ArrayMesh_a05f4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TB2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/TB2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TB2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/TB2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1c8fh")
 
-[node name="debris3" type="MeshInstance3D" parent="."]
+[node name="debris3" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 26.681694, 0.09944856, -56.53671)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ym32h")
 
-[node name="Pipe_007" type="MeshInstance3D" parent="."]
+[node name="Pipe_007" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(4.7294802e-07, -10.9080105, -0.15387993, -10.821255, -4.768688e-07, -1.4751765e-21, -7.784709e-09, 0.1795455, -9.34874, -36.034138, 3.65208, -103.681725)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_007"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_007"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_007/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_007/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mtrjx")
 
-[node name="TB3" type="MeshInstance3D" parent="."]
+[node name="TB3" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.914262, 61.046474, 26.259884, -1.625421e-05, -149.17076, 10.749476, 116.29862, -1.0048388, -0.43223318, -34.970013, 1.9963949, -102.10551)
 mesh = SubResource("ArrayMesh_a05f4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TB3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/TB3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TB3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/TB3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_enp3r")
 
-[node name="TB4" type="MeshInstance3D" parent="."]
+[node name="TB4" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-6.0266066, -60.972736, -26.228165, -1.6200054e-05, -149.17076, 10.749476, -116.158134, 3.163455, 1.3607882, -37.18768, 1.9963949, -102.10551)
 mesh = SubResource("ArrayMesh_a05f4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TB4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/TB4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TB4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/TB4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_444fd")
 
-[node name="debris5" type="MeshInstance3D" parent="."]
+[node name="debris5" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.0809851, -1.9472518, 0.5314308, 1.362649, 0.27431768, 1.6996123, -1.4576135, 0.36463514, 1.5593551, -34.004826, 1.1666974, -102.07788)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris5"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris5"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris5/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cgdgi")
 
-[node name="debris6" type="MeshInstance3D" parent="."]
+[node name="debris6" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.7707424, -1.8107395, -0.41908458, 1.1266441, -0.7669827, 1.7307422, -1.4576135, 0.3646351, 1.5593551, -37.163876, 0.89534986, -102.07788)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris6"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris6"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris6/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris6/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8nki6")
 
-[node name="debris4" type="MeshInstance3D" parent="."]
+[node name="debris4" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587487, -0.3325389, -1.5678902, 1.1318885, -0.7869817, 1.7132711, -0.760847, -1.8083352, -0.4572872, 26.681694, 0.016828537, -59.12517)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hk2hm")
 
-[node name="Pipe_008" type="MeshInstance3D" parent="."]
+[node name="Pipe_008" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, -7.454438, 3.7119203, -82.15549)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_008"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_008"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_008/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_008/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8uiam")
 
-[node name="Pipe_056" type="MeshInstance3D" parent="."]
+[node name="Pipe_056" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 8.128225, 2.713632, -82.15549)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_056"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_056"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_056/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_056/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8uiam")
 
-[node name="Pipe_026" type="MeshInstance3D" parent="."]
+[node name="Pipe_026" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.0676015e-14, -4.768689e-07, 9.350006, -10.821256, -4.768689e-07, 0, 4.730121e-07, -10.909489, -4.0870177e-07, 1.6183538, 1.6065531, 21.655928)
 mesh = SubResource("ArrayMesh_c27rp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_026"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_026"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_026/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_026/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8uiam")
 
-[node name="TB5" type="MeshInstance3D" parent="."]
+[node name="TB5" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-116.31438, -2.2905321e-12, -2.4808978e-06, -3.8517765e-06, -149.17076, 10.749478, -9.410776e-06, 61.054737, 26.263443, -9.047948, 2.056235, -81.11745)
 mesh = SubResource("ArrayMesh_a05f4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TB5"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/TB5"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TB5/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/TB5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mv8cd")
 
-[node name="debris7" type="MeshInstance3D" parent="."]
+[node name="debris7" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, -9.091458, 1.2265376, -80.15285)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris7"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris7"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris7/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris7/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris9" type="MeshInstance3D" parent="."]
+[node name="debris9" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, -11.181912, 1.9962815, -81.453636)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris9"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris9"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris9/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris9/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris10" type="MeshInstance3D" parent="."]
+[node name="debris10" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, -7.02074, 1.9962815, -81.453636)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris10"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris10"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris10/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris10/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris11" type="MeshInstance3D" parent="."]
+[node name="debris11" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.282932, -0.016916854, -1.8138273, 0.98251534, -1.5242057, 0.996221, -1.1733528, -1.2948009, -1.1490272, -7.02074, 1.7690281, -83.07759)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris11"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris11"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris11/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris11/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris12" type="MeshInstance3D" parent="."]
+[node name="debris12" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.596116, -0.74129504, -1.1197912, 0.25231978, -1.3319049, 1.7402569, -1.173353, -1.294801, -1.1490273, -11.226931, 1.7690281, -83.07759)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris12"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris12"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris12/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris12/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris13" type="MeshInstance3D" parent="."]
+[node name="debris13" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 53.583416, 0.81645906, -67.78894)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris13"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris13"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris13/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris13/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris14" type="MeshInstance3D" parent="."]
+[node name="debris14" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 57.744587, 0.81645906, -67.78894)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris14"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris14"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris14/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris14/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris15" type="MeshInstance3D" parent="."]
+[node name="debris15" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.282932, -0.016916854, -1.8138273, 0.98251534, -1.5242057, 0.996221, -1.1733528, -1.2948009, -1.1490272, 57.744587, 0.5892056, -69.4129)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris15"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris15"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris15/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris15/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris16" type="MeshInstance3D" parent="."]
+[node name="debris16" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.596116, -0.74129504, -1.1197912, 0.25231978, -1.3319049, 1.7402569, -1.173353, -1.294801, -1.1490273, 53.5384, 0.5892056, -69.4129)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris16"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris16"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris16/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris16/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris17" type="MeshInstance3D" parent="."]
+[node name="debris17" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 24.338593, 0.81645906, -57.460308)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris17"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris17"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris17/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris17/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris18" type="MeshInstance3D" parent="."]
+[node name="debris18" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587489, -0.33253875, -1.5678902, 1.3626491, 0.27431762, 1.6996124, -0.05698526, -1.9529893, 0.5056956, 28.499763, 0.81645906, -57.460308)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris18"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris18"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris18/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris18/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris19" type="MeshInstance3D" parent="."]
+[node name="debris19" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.282932, -0.016916854, -1.8138273, 0.98251534, -1.5242057, 0.996221, -1.1733528, -1.2948009, -1.1490272, 28.499763, 0.5892056, -59.08427)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris19"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris19"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris19/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris19/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris20" type="MeshInstance3D" parent="."]
+[node name="debris20" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.596116, -0.74129504, -1.1197912, 0.25231978, -1.3319049, 1.7402569, -1.173353, -1.294801, -1.1490273, 24.293575, 0.5892056, -59.08427)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris20"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris20"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris20/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris20/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris21" type="MeshInstance3D" parent="."]
+[node name="debris21" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.04091228, 1.9708856, -0.3994742, 1.362649, 0.27431756, 1.6996123, 1.4592881, -0.20089631, -1.5982578, -36.40415, 1.6820244, -104.52115)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris21"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris21"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris21/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris21/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris22" type="MeshInstance3D" parent="."]
+[node name="debris22" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.04091228, 1.9708856, -0.3994742, 1.362649, 0.27431756, 1.6996123, 1.4592881, -0.20089631, -1.5982578, -36.68304, 1.6820244, -100.36933)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris22"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris22"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris22/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris22/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris23" type="MeshInstance3D" parent="."]
+[node name="debris23" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.084729, 1.2930235, 1.2680113, 0.9825153, -1.5242057, 0.99622095, 1.3586888, 0.06990222, -1.732738, -35.06273, 1.4547709, -100.26049)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris23"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris23"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris23/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris23/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris24" type="MeshInstance3D" parent="."]
+[node name="debris24" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.0637386, 1.3415731, 1.2214953, 0.25231984, -1.331905, 1.7402571, 1.6711683, -0.652847, -1.0402622, -34.78082, 1.4547709, -104.45722)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris24"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris24"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris24/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris24/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1enfb")
 
-[node name="debris8" type="MeshInstance3D" parent="."]
+[node name="debris8" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.4587487, -0.3325389, -1.5678902, 1.1318885, -0.7869817, 1.7132711, -0.760847, -1.8083352, -0.4572872, -9.091458, 1.1439176, -82.74132)
 mesh = SubResource("ArrayMesh_j8e32")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="debris8"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/debris8"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="debris8/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/debris8/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ogsl6")
 
-[node name="Serwers_045" type="MeshInstance3D" parent="."]
+[node name="Serwers_045" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, -338.69305, 0, 338.69305, 0, 338.69305, 0, -1.4804744e-05, -21.238886, 1.4101659, -32.348824)
 mesh = SubResource("ArrayMesh_v0jsr")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_045"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_045"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_045/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_045/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7dkqi")
 
-[node name="Serwers_057" type="MeshInstance3D" parent="."]
+[node name="Serwers_057" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.69305, 0, 0, 0, 338.69305, -1.4804744e-05, 0, 1.4804744e-05, 338.69305, -42.710373, 2.3651984, -62.410496)
 mesh = SubResource("ArrayMesh_stv0y")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_057"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_057"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_057/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_057/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gklca")
 
-[node name="Serwers_103" type="MeshInstance3D" parent="."]
+[node name="Serwers_103" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(336.93222, 1.5076797e-06, 34.491684, -8.207867e-13, 338.69308, -1.4804742e-05, -34.491684, 1.4727774e-05, 336.93222, -25.758953, 3.4023254, -115.23561)
 mesh = SubResource("ArrayMesh_stv0y")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_103"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_103"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_103/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_103/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_x81xi")
 
-[node name="Serwers_107" type="MeshInstance3D" parent="."]
+[node name="Serwers_107" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.64597, 0, -5.6509495, 0, 338.6931, 0, 5.6509495, 0, 338.64597, -3.8345141, 2.4060953, -149.34642)
 mesh = SubResource("ArrayMesh_stv0y")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_107"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_107"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_107/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_107/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_p1a8c")
 
-[node name="Serwers_059" type="MeshInstance3D" parent="."]
+[node name="Serwers_059" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -39.296158, 2.3651984, -54.876858)
 mesh = SubResource("ArrayMesh_stv0y")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_059"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_059"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_059/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_059/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_h6d7u")
 
-[node name="Serwers_071" type="MeshInstance3D" parent="."]
+[node name="Serwers_071" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -38.677727, 3.3904672, -102.05064)
 mesh = SubResource("ArrayMesh_w1y08")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_071"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_071"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_071/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_071/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nrqqw")
 
-[node name="Serwers_083" type="MeshInstance3D" parent="."]
+[node name="Serwers_083" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.4804744e-05, 0, 338.69305, 0, 338.69305, 0, -338.69305, 0, -1.4804744e-05, -16.665464, 3.3904672, -86.55271)
 mesh = SubResource("ArrayMesh_w1y08")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_083"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_083"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_083/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_083/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pipml")
 
-[node name="SerwersP1_010" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_010" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(175, 0, 0, 0, 175, -7.6494925e-06, 0, 7.6494925e-06, 175, 22.94085, 3.4335322, -86.29735)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_010"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_010"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_010/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_010/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t3jod")
 
-[node name="SerwersP1_012" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_012" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(175, 0, 0, 0, 175, -7.6494925e-06, 0, 7.6494925e-06, 175, 30.068285, -1.4905319, -173.53664)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_012"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_012"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_012/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_012/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qedqu")
 
-[node name="SerwersP1_013" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_013" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.6494925e-06, 0, 175, 0, 175, 0, -175, 0, -7.6494925e-06, 25.387886, -1.4905319, -169.3934)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_013"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_013"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_013/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_013/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_i1tmp")
 
-[node name="Serwers_131" type="MeshInstance3D" parent="."]
+[node name="Serwers_131" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-2.813763, 0, -338.68137, 0, 338.69308, 0, 338.68137, 0, -2.813763, 133.3822, -1.5789549, -105.92703)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_131"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_131"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_131/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_131/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5c2o4")
 
-[node name="Serwers_132" type="MeshInstance3D" parent="."]
+[node name="Serwers_132" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-2.813763, 0, -338.68137, 0, 338.69308, 0, 338.68137, 0, -2.813763, 133.45496, -1.5789549, -114.685486)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_132"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_132"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_132/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_132/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_smyj8")
 
-[node name="Serwers_133" type="MeshInstance3D" parent="."]
+[node name="Serwers_133" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.8137925, 0, 338.68137, 0, 338.69308, 0, -338.68137, 0, 2.8137925, 100.56701, -1.5789549, -106.19966)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_133"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_133"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_133/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_133/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7uk66")
 
-[node name="Serwers_134" type="MeshInstance3D" parent="."]
+[node name="Serwers_134" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-338.68137, 0, 2.8137777, 0, 338.69308, 0, -2.8137777, 0, -338.68137, 95.29387, -1.58, -120.075165)
 mesh = SubResource("ArrayMesh_mnfus")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_134"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_134"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_134/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_134/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2wsd6")
 
-[node name="Serwers_135" type="MeshInstance3D" parent="."]
+[node name="Serwers_135" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-99.996544, 0, 0.8307752, 0, 100, 0, -0.8307752, 0, -99.996544, 108.28927, -1.5880699, -106.138214)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_135"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_135"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_135/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_135/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7og7h")
 
-[node name="Serwers_136" type="MeshInstance3D" parent="."]
+[node name="Serwers_136" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-99.996544, 0, 0.8307752, 0, 100, 0, -0.8307752, 0, -99.996544, 116.98211, -1.5880699, -106.065994)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_136"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_136"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_136/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_136/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjsm2")
 
-[node name="Serwers_137" type="MeshInstance3D" parent="."]
+[node name="Serwers_137" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-99.996544, 0, 0.8307752, 0, 100, 0, -0.8307752, 0, -99.996544, 125.71838, -1.5880699, -105.99341)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_137"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_137"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_137/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_137/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cb57e")
 
-[node name="Serwers_138" type="MeshInstance3D" parent="."]
+[node name="Serwers_138" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-2.813763, 0, -338.68137, 0, 338.69308, 0, 338.68137, 0, -2.813763, 133.52734, -1.5789549, -123.39821)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_138"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_138"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_138/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_138/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8grxd")
 
-[node name="Serwers_139" type="MeshInstance3D" parent="."]
+[node name="Serwers_139" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(2.8137925, 0, 338.68137, 0, 338.69308, 0, -338.68137, 0, 2.8137925, 100.71216, -1.5789549, -123.67084)
 mesh = SubResource("ArrayMesh_t1lc0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_139"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_139"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_139/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_139/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nuj4r")
 
-[node name="Serwers_140" type="MeshInstance3D" parent="."]
+[node name="Serwers_140" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(99.996544, 0, -0.8307663, 0, 100, 0, 0.8307663, 0, 99.996544, 108.43442, -1.5880699, -123.609375)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_140"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_140"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_140/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_140/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_evmni")
 
-[node name="Serwers_141" type="MeshInstance3D" parent="."]
+[node name="Serwers_141" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(99.996544, 0, -0.8307663, 0, 100, 0, 0.8307663, 0, 99.996544, 117.127266, -1.5880699, -123.537155)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_141"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_141"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_141/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_141/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ilh8g")
 
-[node name="Serwers_142" type="MeshInstance3D" parent="."]
+[node name="Serwers_142" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(99.996544, 0, -0.8307663, 0, 100, 0, 0.8307663, 0, 99.996544, 125.86353, -1.5880699, -123.464584)
 mesh = SubResource("ArrayMesh_dn0cu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_142"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_142"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_142/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_142/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_t2xca")
 
-[node name="Serwers_143" type="MeshInstance3D" parent="."]
+[node name="Serwers_143" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0.8307691, 4.370988e-06, 99.996544, -1.7486021e-13, 100, -4.3711393e-06, -99.996544, 3.6313804e-08, 0.8307691, 108.36676, -1.5896459, -114.88338)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_143"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_143"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_143/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_143/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ajhci")
 
-[node name="Serwers_144" type="MeshInstance3D" parent="."]
+[node name="Serwers_144" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0.8307691, 4.370988e-06, 99.996544, -1.7486021e-13, 100, -4.3711393e-06, -99.996544, 3.6313804e-08, 0.8307691, 117.058365, -1.5896459, -114.81117)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_144"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_144"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_144/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_144/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3f4wm")
 
-[node name="Serwers_145" type="MeshInstance3D" parent="."]
+[node name="Serwers_145" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0.8307691, 4.370988e-06, 99.996544, -1.7486021e-13, 100, -4.3711393e-06, -99.996544, 3.6313804e-08, 0.8307691, 125.78698, -1.5896459, -114.73866)
 mesh = SubResource("ArrayMesh_2do6q")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_145"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_145"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_145/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_145/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7q7ic")
 
-[node name="Serwers_146" type="MeshInstance3D" parent="."]
+[node name="Serwers_146" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(338.68137, 0, -2.8137481, 0, 338.69308, 0, 2.8137481, 0, 338.68137, 95.33485, -1.5731812, -126.696625)
 mesh = SubResource("ArrayMesh_gmwlu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Serwers_146"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Serwers_146"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Serwers_146/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Serwers_146/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y6lkt")
 
-[node name="SerwersP1_015" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_015" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-174.99396, 6.3550075e-08, 1.4538565, -4.857058e-15, 174.99998, -7.649492e-06, -1.4538565, -7.649228e-06, -174.99396, 121.33021, -1.4905319, -114.81526)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_015"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_015"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_015/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_015/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r145v")
 
-[node name="SerwersP1_016" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_016" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.453849, 0, -174.99396, 0, 174.99998, 0, 174.99396, 0, -1.453849, 117.10844, -1.4905319, -118.95648)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_016"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_016"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_016/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_016/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3vfrv")
 
-[node name="SerwersP1_017" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_017" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.453849, 0, -174.99396, 0, 174.99998, 0, 174.99396, 0, -1.453849, 117.02021, -1.4905319, -110.54124)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_017"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_017"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_017/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_01xjl")
 
-[node name="SerwersP1_014" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_014" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.6494925e-06, 0, 175, 0, 175, 0, -175, 0, -7.6494925e-06, 71.379585, -1.4905319, -147.92313)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_014"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_014"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_014/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_014/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yatkj")
 
-[node name="SerwersP1_011" type="MeshInstance3D" parent="."]
+[node name="SerwersP1_011" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.6494925e-06, 0, 175, 0, 175, 0, -175, 0, -7.6494925e-06, -25.70147, 3.4335322, -114.442406)
 mesh = SubResource("ArrayMesh_r83fe")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="SerwersP1_011"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/SerwersP1_011"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SerwersP1_011/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/SerwersP1_011/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b2d5l")
 
-[node name="Player" parent="." instance=ExtResource("10_r13g0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5792227, -0.72434175, 13.854859)
-
-[node name="Pipe_003" type="MeshInstance3D" parent="."]
+[node name="Pipe_003" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(3.496911e-07, -3.0570967e-14, 8, -6.993822e-07, -8, 0, 8, -6.993822e-07, -3.496911e-07, 26.680664, 5.15458, -63.53327)
 mesh = SubResource("ArrayMesh_evt8v")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_003"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_003"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_22uj2")
 
-[node name="Pipe_053" type="MeshInstance3D" parent="."]
+[node name="Pipe_053" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(7.999896, -6.993731e-07, -0.040771052, -6.993822e-07, -8, 0, -0.040771052, 3.5643186e-09, -7.999896, 26.825575, 5.15458, -79.19659)
 mesh = SubResource("ArrayMesh_evt8v")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_053"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_053"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_053/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_053/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_22uj2")
 
-[node name="Pipe_010" type="MeshInstance3D" parent="."]
+[node name="Pipe_010" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 15.616953, 0.11443245, 15.792007)
 mesh = SubResource("ArrayMesh_iytsi")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_010"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_010"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_010/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_010/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5k8tf")
 
-[node name="Pipe_047" type="MeshInstance3D" parent="."]
+[node name="Pipe_047" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.5709306e-08, -0.09642234, -4.9990706, -5, -8.146034e-07, -1.1384028e-13, -8.1445194e-07, 4.9990706, -0.09642234, 69.581276, -1.8304448, -153.45132)
 mesh = SubResource("ArrayMesh_iytsi")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_047"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_047"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_047/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_047/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5k8tf")
 
-[node name="Pipe_048" type="MeshInstance3D" parent="."]
+[node name="Pipe_048" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.5709306e-08, -0.09642234, -4.9990706, -5, -8.146034e-07, -1.1384028e-13, -8.1445194e-07, 4.9990706, -0.09642234, 67.76938, -1.8304448, -153.45132)
 mesh = SubResource("ArrayMesh_iytsi")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_048"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_048"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_048/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_048/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5k8tf")
 
-[node name="Pipe_049" type="MeshInstance3D" parent="."]
+[node name="Pipe_049" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.5709306e-08, -0.09642234, -4.9990706, -5, -8.146034e-07, -1.1384028e-13, -8.1445194e-07, 4.9990706, -0.09642234, 75.000595, -1.8304448, -153.45132)
 mesh = SubResource("ArrayMesh_iytsi")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_049"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_049"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_049/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_049/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5k8tf")
 
-[node name="Pipe_050" type="MeshInstance3D" parent="."]
+[node name="Pipe_050" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.5709306e-08, -0.09642234, -4.9990706, -5, -8.146034e-07, -1.1384028e-13, -8.1445194e-07, 4.9990706, -0.09642234, 73.1887, -1.8304448, -153.45132)
 mesh = SubResource("ArrayMesh_iytsi")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_050"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_050"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_050/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_050/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5k8tf")
 
-[node name="Pipe_011" type="MeshInstance3D" parent="."]
+[node name="Pipe_011" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-3.496911e-07, 8, -3.496911e-07, 0, -3.496911e-07, -8, -8, -3.496911e-07, 1.5285484e-14, 28.334671, 3.0025926, 3.0597768)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_011"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_011"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_011/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_011/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_020" type="MeshInstance3D" parent="."]
+[node name="Pipe_020" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-3.496911e-07, 8, -3.496911e-07, -0.1284499, 3.440313e-07, 7.9989686, 7.9989686, 3.5526077e-07, 0.1284499, 28.334671, 1.7025311, -33.931213)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_020"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_020"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_020/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_020/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_043" type="MeshInstance3D" parent="."]
+[node name="Pipe_043" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0.0020882487, -9.999155, -0.13000934, 0.16055399, 0.1300261, -9.997866, 9.998711, 5.9604645e-07, 0.16056758, -35.046387, 2.6823952, -62.5285)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_043"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_043"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_043/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_043/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_032" type="MeshInstance3D" parent="."]
+[node name="Pipe_032" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-8.000001, -6.993824e-07, 0, 6.9938227e-07, -8.000002, 0, 0, 0, 8.000001, 48.72809, 5.1555457, -64.301994)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_032"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_032"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_032/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_032/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_012" type="MeshInstance3D" parent="."]
+[node name="Pipe_012" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.7162398e-07, -2.8793726, -2.5743597e-07, 0, 1.7162398e-07, -2.8793726, 2.8793726, 2.5743597e-07, 0, 14.444963, 0.3150795, 15.7183)
 mesh = SubResource("ArrayMesh_ywpae")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_012"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_012"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_012/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_012/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_w5267")
 
-[node name="Pipe_013" type="MeshInstance3D" parent="."]
+[node name="Pipe_013" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.7162398e-07, -2.8793726, -2.5743597e-07, 0, 1.7162398e-07, -2.8793726, 2.8793726, 2.5743597e-07, 0, 13.922641, 0.4106987, 15.804634)
 mesh = SubResource("ArrayMesh_04ru1")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_013"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_013"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_013/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_013/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5bm1o")
 
-[node name="Pipe_001" type="MeshInstance3D" parent="."]
+[node name="Pipe_001" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 17.862253, 0.11443245, 15.792007)
 mesh = SubResource("ArrayMesh_22n6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_001"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_001"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_e8sby")
 
-[node name="Pipe" type="MeshInstance3D" parent="."]
+[node name="Pipe" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 18.488695, 0.11443245, 15.792007)
 mesh = SubResource("ArrayMesh_kkb7o")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ppfq1")
 
-[node name="Pipe_014" type="MeshInstance3D" parent="."]
+[node name="Pipe_014" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 17.915598, 0.784914, 15.792938)
 mesh = SubResource("ArrayMesh_d7bmt")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_014"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_014"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_014/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_014/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_a74iv")
 
-[node name="Pipe_015" type="MeshInstance3D" parent="."]
+[node name="Pipe_015" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 17.915598, 1.1431015, 15.792938)
 mesh = SubResource("ArrayMesh_h4pfb")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_015"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_015"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_015/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_015/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lxplo")
 
-[node name="Pipe_002" type="MeshInstance3D" parent="."]
+[node name="Pipe_002" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 17.283487, 0.11443245, 15.792007)
 mesh = SubResource("ArrayMesh_ar5lm")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_002"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_002"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_002/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cp1is")
 
-[node name="Pipe_016" type="MeshInstance3D" parent="."]
+[node name="Pipe_016" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -8, -1.3033655e-06, -2.1600129e-13, 1.9198578e-14, 1.2079664e-06, -8, 28.331034, 2.3018386, -2.6238275)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_016"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_016"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_016/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_016/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_021" type="MeshInstance3D" parent="."]
+[node name="Pipe_021" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -8, -1.3033655e-06, -2.1600129e-13, 1.9198578e-14, 1.2079664e-06, -8, 28.331034, 2.303414, -8.305599)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_021"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_021"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_021/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_021/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_022" type="MeshInstance3D" parent="."]
+[node name="Pipe_022" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -8, -1.3033655e-06, -2.1600129e-13, 1.9198578e-14, 1.2079664e-06, -8, 28.331034, 2.2936363, -13.9669695)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_022"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_022"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_022/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_022/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_027" type="MeshInstance3D" parent="."]
+[node name="Pipe_027" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, 41.37982, 4.5247293, -34.665318)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_027"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_027"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_027/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_027/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_041" type="MeshInstance3D" parent="."]
+[node name="Pipe_041" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, -3.2137632, 4.5247293, -39.921467)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_041"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_041"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_041/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_041/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_042" type="MeshInstance3D" parent="."]
+[node name="Pipe_042" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, -11.867309, 4.5247293, -39.921467)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_042"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_042"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_042/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_042/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_029" type="MeshInstance3D" parent="."]
+[node name="Pipe_029" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, 32.882122, 5.1596866, -63.5896)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_029"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_029"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_029/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_029/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_030" type="MeshInstance3D" parent="."]
+[node name="Pipe_030" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, 39.266293, 5.1596866, -63.5896)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_030"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_030"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_030/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_030/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_051" type="MeshInstance3D" parent="."]
+[node name="Pipe_051" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(3.9338394e-07, -8.999576, 0.087334394, -8.999999, -3.9340242e-07, -1.5769908e-15, 3.8175045e-09, -0.087334394, -8.999576, 26.734352, 5.1358986, -69.7583)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_051"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_051"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_051/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_051/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_052" type="MeshInstance3D" parent="."]
+[node name="Pipe_052" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(3.9338394e-07, -8.999576, 0.087334394, -8.999999, -3.9340242e-07, -1.5769908e-15, 3.8175045e-09, -0.087334394, -8.999576, 26.796307, 5.1358986, -76.14218)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_052"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_052"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_052/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_052/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_054" type="MeshInstance3D" parent="."]
+[node name="Pipe_054" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-2.3825795e-09, 0.054507002, -8.999834, -8.999999, -3.9340242e-07, -1.9050396e-15, -3.9339525e-07, 8.999834, 0.054507002, 20.66068, 5.164688, -79.20538)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_054"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_054"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_054/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_054/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_055" type="MeshInstance3D" parent="."]
+[node name="Pipe_055" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-2.3825795e-09, 0.054507002, -8.999834, -8.999999, -3.9340242e-07, -1.9050396e-15, -3.9339525e-07, 8.999834, 0.054507002, 4.9938016, 5.164688, -79.20538)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_055"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_055"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_055/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_055/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_031" type="MeshInstance3D" parent="."]
+[node name="Pipe_031" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, 45.658913, 5.1596866, -63.5896)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_031"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_031"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_031/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_031/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_033" type="MeshInstance3D" parent="."]
+[node name="Pipe_033" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(7.999931, 6.993763e-07, -0.033509415, 6.993823e-07, -8.000002, 0, -0.033509415, -2.9294867e-09, -7.999931, 4.626242, 5.1555457, -62.749134)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_033"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_033"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_033/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_033/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_034" type="MeshInstance3D" parent="."]
+[node name="Pipe_034" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.647853e-09, 0.03769848, -8.999921, -9, -3.934025e-07, 0, -3.9339906e-07, 8.999921, 0.03769848, 20.469086, 5.1596866, -63.527893)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_034"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_034"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_034/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_034/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_035" type="MeshInstance3D" parent="."]
+[node name="Pipe_035" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.647853e-09, 0.03769848, -8.999921, -9, -3.934025e-07, 0, -3.9339906e-07, 8.999921, 0.03769848, 14.084971, 5.1596866, -63.501152)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_035"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_035"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_035/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_035/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_036" type="MeshInstance3D" parent="."]
+[node name="Pipe_036" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.647853e-09, 0.03769848, -8.999921, -9, -3.934025e-07, 0, -3.9339906e-07, 8.999921, 0.03769848, 7.6924076, 5.1596866, -63.474377)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_036"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_036"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_036/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_036/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_037" type="MeshInstance3D" parent="."]
+[node name="Pipe_037" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0.079305656, -0.020524254, 7.999582, 0.00020276249, 7.9999757, 0.02052325, -7.999608, -6.9934805e-07, 0.07930592, 3.0244005, 5.160206, -40.66114)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_037"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_037"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_037/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_037/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_038" type="MeshInstance3D" parent="."]
+[node name="Pipe_038" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.023089392, -8.999528, -0.08921925, 8.9999695, -0.023088258, -0.00022889556, 3.8998773e-09, -0.08921954, 8.9995575, 3.8938494, 5.1582956, -56.499268)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_038"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_038"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_038/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_038/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_039" type="MeshInstance3D" parent="."]
+[node name="Pipe_039" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.023089392, -8.999528, -0.08921925, 8.9999695, -0.023088258, -0.00022889556, 3.8998773e-09, -0.08921954, 8.9995575, 3.8305616, 5.158133, -50.11541)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_039"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_039"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_039/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_039/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_040" type="MeshInstance3D" parent="."]
+[node name="Pipe_040" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.023089392, -8.999528, -0.08921925, 8.9999695, -0.023088258, -0.00022889556, 3.8998773e-09, -0.08921954, 8.9995575, 3.7671914, 5.157971, -43.723103)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_040"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_040"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_040/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_040/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_028" type="MeshInstance3D" parent="."]
+[node name="Pipe_028" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.719617e-14, -3.934025e-07, 9, -9, -3.934025e-07, 0, 3.934025e-07, -9, -3.934025e-07, 61.19937, 4.5247293, -34.665318)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_028"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_028"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_028/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_028/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_023" type="MeshInstance3D" parent="."]
+[node name="Pipe_023" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -8, -1.3033655e-06, -2.1600129e-13, 1.9198578e-14, 1.2079664e-06, -8, 28.331034, 2.2936363, -19.649553)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_023"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_023"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_023/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_023/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_024" type="MeshInstance3D" parent="."]
+[node name="Pipe_024" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -8, -1.3033655e-06, -2.1600129e-13, 1.9198578e-14, 1.2079664e-06, -8, 28.331034, 2.2936363, -25.328985)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_024"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_024"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_024/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_024/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_025" type="MeshInstance3D" parent="."]
+[node name="Pipe_025" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.3033655e-06, -8, -1.2079664e-06, -7.9983096, -1.3279241e-06, 0.16446829, -0.16446829, 1.1809161e-06, -7.9983096, 28.331034, 2.3659213, -31.008436)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_025"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_025"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_025/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_025/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_059" type="MeshInstance3D" parent="."]
+[node name="Pipe_059" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-1.3131124e-08, 0.30040473, -7.9943576, 3.4944446e-07, -7.9943576, -0.30040473, -8, -3.496911e-07, 1.5285484e-14, 59.22348, 4.0464325, -76.902794)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_059"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_059"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_059/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_059/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_064" type="MeshInstance3D" parent="."]
+[node name="Pipe_064" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(7.992128, -0.013323123, 0.35456377, 3.4911213e-07, -7.9943576, -0.3004047, 0.354814, 0.30010912, -7.9864907, 59.22348, 3.9671068, -102.4504)
 mesh = SubResource("ArrayMesh_f72c7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_064"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_064"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_064/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_064/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dua7q")
 
-[node name="Pipe_060" type="MeshInstance3D" parent="."]
+[node name="Pipe_060" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.9943576, -0.3004064, -4.5360125e-08, -0.3004064, 7.9943576, 1.2071145e-06, 1.9198578e-14, 1.2079664e-06, -8, 58.523083, 4.0237517, -82.586395)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_060"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_060"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_060/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_060/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_061" type="MeshInstance3D" parent="."]
+[node name="Pipe_061" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.9943576, -0.3004064, -4.5360125e-08, -0.3004064, 7.9943576, 1.2071145e-06, 1.9198578e-14, 1.2079664e-06, -8, 58.52466, 4.023811, -88.26817)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_061"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_061"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_061/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_061/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_062" type="MeshInstance3D" parent="."]
+[node name="Pipe_062" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.9943576, -0.3004064, -4.5360125e-08, -0.3004064, 7.9943576, 1.2071145e-06, 1.9198578e-14, 1.2079664e-06, -8, 58.51489, 4.0234437, -93.929535)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_062"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_062"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_062/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_062/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_063" type="MeshInstance3D" parent="."]
+[node name="Pipe_063" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-7.9943576, -0.3004064, -4.5360125e-08, -0.3004064, 7.9943576, 1.2071145e-06, 1.9198578e-14, 1.2079664e-06, -8, 58.51489, 4.0234437, -99.61212)
 mesh = SubResource("ArrayMesh_x013x")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_063"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_063"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_063/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_063/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wjfqi")
 
-[node name="Pipe_017" type="MeshInstance3D" parent="."]
+[node name="Pipe_017" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(1.7162398e-07, -2.8793726, -2.5743597e-07, 0, 1.7162398e-07, -2.8793726, 2.8793726, 2.5743597e-07, 0, 12.980655, 0.3150795, 15.7183)
 mesh = SubResource("ArrayMesh_hanww")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_017"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_017"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_017/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7dst3")
 
-[node name="Pipe_018" type="MeshInstance3D" parent="."]
+[node name="Pipe_018" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477314e-07, -0.10068966, -4.4651037e-07, 2.8776116, -2.8776114, -3.2783433e-07, -0.100689664, 71.368195, -1.802894, -152.44922)
 mesh = SubResource("ArrayMesh_4vuke")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_018"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_018"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_018/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_018/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_p7gwi")
 
-[node name="Pipe_045" type="MeshInstance3D" parent="."]
+[node name="Pipe_045" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(-0.019185357, 0.050900303, 4.999705, -0.12285379, 4.998227, -0.051356696, -4.9984536, -0.12304358, -0.017927887, 71.371506, -1.8222703, -153.42822)
 mesh = SubResource("ArrayMesh_22n6h")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_045"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_045"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_045/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_045/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_e8sby")
 
-[node name="Pipe_046" type="MeshInstance3D" parent="."]
+[node name="Pipe_046" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(8.0015525e-07, -5, -7.5305417e-07, 0.01975867, -7.498863e-07, 4.999961, -4.999961, -8.031202e-07, 0.01975867, 71.37572, -1.8161134, -152.84158)
 mesh = SubResource("ArrayMesh_4vuke")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_046"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_046"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_046/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_046/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_p7gwi")
 
-[node name="Pipe_P" type="MeshInstance3D" parent="."]
+[node name="Pipe_P" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0, -100, -2.9802322e-06, 99.93884, -2.9784096e-06, 3.4969308, -3.4969337, 1.0421666e-07, 99.93884, 71.3682, -1.7990526, -152.33945)
 mesh = SubResource("ArrayMesh_x8uxj")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_P"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_P"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_P/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_P/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0060118437, 0)
 shape = SubResource("ConcavePolygonShape3D_cq7e0")
 
-[node name="Pipe_019" type="MeshInstance3D" parent="."]
+[node name="Pipe_019" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(5.1487194e-07, -2.8793724, -4.3477317e-07, -2.8793724, -3.4324796e-07, -8.183669e-14, 0, 4.3477317e-07, -2.8793726, 17.915598, 2.08407, 15.792938)
 mesh = SubResource("ArrayMesh_1ishu")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_019"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_019"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_019/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_019/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bs56i")
 
-[node name="Pipe_P_001" type="MeshInstance3D" parent="."]
+[node name="Pipe_P_001" type="MeshInstance3D" parent="Sewers_1"]
 transform = Transform3D(0, -1.5172622, -4.5217938e-08, -4.5217938e-08, 0, 1.5172622, -1.5172622, 4.5217938e-08, 0, 17.915598, 2.1713536, 15.792938)
 mesh = SubResource("ArrayMesh_4jfmw")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Pipe_P_001"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sewers_1/Pipe_P_001"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe_P_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/Pipe_P_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ku00p")
+
+[node name="Player" parent="." instance=ExtResource("10_r13g0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5792227, -0.72434175, 13.854859)
