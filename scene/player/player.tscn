@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c28sgfln8nlok"]
 
-[ext_resource type="Script" uid="uid://ua5ri8hrx3j7" path="res://scripts/playerV2.gd" id="1_v7pse"]
+[ext_resource type="Script" uid="uid://ua5ri8hrx3j7" path="res://scripts/player.gd" id="1_v7pse"]
 [ext_resource type="PackedScene" uid="uid://bsngxgg8s0t1i" path="res://scene/ui/fear_effects.tscn" id="2_cm2cf"]
 [ext_resource type="PackedScene" uid="uid://cdjctaaqnrgu3" path="res://scene/ui/death_screen.tscn" id="3_6smn3"]
 [ext_resource type="PackedScene" uid="uid://g5bpnur0eloo" path="res://scene/ui/message_ui.tscn" id="4_5lop3"]

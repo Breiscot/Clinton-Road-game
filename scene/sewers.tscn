@@ -5051,3 +5051,5 @@ shape = SubResource("ConcavePolygonShape3D_ku00p")
 
 [node name="Player" parent="." instance=ExtResource("10_r13g0")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5792227, -0.72434175, 13.854859)
+
+[node name="Node3D" type="Node3D" parent="."]
