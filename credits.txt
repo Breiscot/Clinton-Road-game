@@ -36,5 +36,17 @@ Model of Bridge:
 Model of Girl:
 	schmoldt.art: | https://sketchfab.com/3d-models/crazy-ex-gf-game-mesh-fdecbc5840eb4d2da3a871fb49fed9bd
 	
-
+Model of Door Tunnel:
+	witnessk: | https://sketchfab.com/3d-models/door-with-frame-2f2f149f3ec44d658a02c1f924dfa449
+	
+Model of Lights:
+	Sousinho: | https://sketchfab.com/3d-models/worn-overlead-light-654a331b3d4348d4b885cfd4770a7e4f
+	
+	Fishboe: | https://sketchfab.com/3d-models/industrial-caged-light-4009774b4a2541b991810e0f5c18adc2
+	
+Model of Sewer:
+	Elbolilloduro: | https://elbolilloduro.itch.io/sewers
+	
+Model of Door Key of the sewer:
+	GUIBEL | https://sketchfab.com/3d-models/door-key-6538a6a21f5545e0b1dcf22bee5741a1
 	
