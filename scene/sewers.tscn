@@ -6260,8 +6260,28 @@ transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06
 mesh = SubResource("ArrayMesh_uohch")
 skeleton = NodePath("")
 
+[node name="SerwersP1_379" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 15.984426, -3.986698, 97.06672)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_380" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 15.984426, -3.986698, 101.24643)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_381" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 15.984426, -3.986698, 105.42297)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
 [node name="SerwersP1_336" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 11.808526, -3.986698, 92.8805)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_383" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 11.808526, -3.986698, 97.03031)
 mesh = SubResource("ArrayMesh_uohch")
 skeleton = NodePath("")
 
@@ -6710,6 +6730,86 @@ transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0
 mesh = SubResource("ArrayMesh_uohch")
 skeleton = NodePath("")
 
+[node name="SerwersP1_357" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 29.704996, -3.966959, 96.58246)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_358" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 29.704996, -3.966959, 100.38825)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_359" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 29.704996, -3.966959, 104.22001)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_361" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.015250779, 0, 100.0261, 0, 99.999985, 0, -37.999683, 0, 0.040144432, 29.704996, -3.966959, 106.87771)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_372" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.0037642461, 0, 100.069595, 0, 99.999985, 0, -9.379203, 0, 0.040161885, 24.289309, -3.966959, 107.467926)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_394" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.0028561458, 0, 100.07139, 0, 99.999985, 0, -7.11653, 0, 0.040162604, 20.241787, -3.966959, 116.56023)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_363" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 24.291613, -3.966959, 84.10703)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_364" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 24.291613, -3.966959, 87.91283)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_365" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 24.291613, -3.966959, 91.74458)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_366" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 24.291613, -3.966959, 95.58118)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_367" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 24.291613, -3.966959, 99.38697)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_375" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 20.140985, -3.966959, 95.58118)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_377" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.02959095, 0, 100.01037, 0, 99.999985, 0, -73.730446, 0, 0.040138118, 20.140985, -3.966959, 92.3004)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_376" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 20.140985, -3.966959, 99.38697)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_369" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(0.02105709, 0, 100.01081, 0, 99.999985, 0, -52.46701, 0, 0.040138297, 24.291613, -3.966959, 106.213066)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_362" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-5.3296065, 0, -8.7448125e-06, 0, 99.999985, 0, 4.6592902e-07, 0, -100.029, 31.786757, -3.966959, 109.68446)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
 [node name="SerwersP1_188" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(0.036902618, 0, 100.003, 0, 99.999985, 0, -91.9486, 0, 0.04013516, 33.998375, -3.966959, 88.91411)
 mesh = SubResource("ArrayMesh_uohch")
@@ -6777,6 +6877,61 @@ skeleton = NodePath("")
 
 [node name="SerwersP1_341" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 53.77931, -3.966959, 105.586914)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_354" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 43.666534, -3.966959, 109.69464)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_355" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 38.928864, -3.966959, 109.69464)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_356" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 34.191387, -3.966959, 109.69464)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_385" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 48.215057, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_386" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 43.477386, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_387" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 38.73991, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_388" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 34.0052, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_389" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 29.267529, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_390" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(113.24479, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 24.530052, -3.966959, 118.74906)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_391" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.950087e-06, 0, 100.003006, 0, 99.999985, 0, -113.24479, 0, -4.3712703e-06, 20.238638, -3.966959, 114.094376)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
+[node name="SerwersP1_370" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(33.69034, 0, 0, 0, 99.999985, 0, 0, 0, 100.003006, 26.935793, -3.966959, 109.7033)
 mesh = SubResource("ArrayMesh_uohch")
 skeleton = NodePath("")
 
@@ -6972,6 +7127,26 @@ skeleton = NodePath("")
 
 [node name="SerwersP1_348" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 47.94182, -3.972745, 105.59077)
+mesh = SubResource("ArrayMesh_daqao")
+skeleton = NodePath("")
+
+[node name="SerwersP1_368" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 24.297714, -3.972745, 103.13657)
+mesh = SubResource("ArrayMesh_daqao")
+skeleton = NodePath("")
+
+[node name="SerwersP1_360" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 29.704678, -3.972745, 109.70207)
+mesh = SubResource("ArrayMesh_daqao")
+skeleton = NodePath("")
+
+[node name="SerwersP1_393" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 20.2398, -3.972745, 118.74725)
+mesh = SubResource("ArrayMesh_daqao")
+skeleton = NodePath("")
+
+[node name="SerwersP1_371" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 24.294523, -3.972745, 109.70959)
 mesh = SubResource("ArrayMesh_daqao")
 skeleton = NodePath("")
 
@@ -7270,6 +7445,16 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -17.374992, -3.9794414,
 mesh = SubResource("ArrayMesh_oxafw")
 skeleton = NodePath("")
 
+[node name="SerwersP1_392" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 11.805525, -3.9794414, 101.16668)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
+[node name="SerwersP1_396" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 7.6435223, -3.9794414, 101.16668)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
 [node name="SerwersP1_329" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, -17.374992, -3.9794414, 84.53394)
 mesh = SubResource("ArrayMesh_oxafw")
@@ -7317,6 +7502,11 @@ skeleton = NodePath("")
 
 [node name="SerwersP1_161" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 20.154205, -3.9664533, 71.872215)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
+[node name="SerwersP1_210" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 24.315632, -3.9664533, 80.352974)
 mesh = SubResource("ArrayMesh_oxafw")
 skeleton = NodePath("")
 
@@ -7460,6 +7650,11 @@ transform = Transform3D(-0.041725177, 0, 100.003, 0, 100, 0, -91.9486, 0, -0.045
 mesh = SubResource("ArrayMesh_uohch")
 skeleton = NodePath("")
 
+[node name="SerwersP1_352" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-0.041725177, 0, 100.003, 0, 100, 0, -91.9486, 0, -0.045380145, 58.160797, -3.966959, 109.48854)
+mesh = SubResource("ArrayMesh_uohch")
+skeleton = NodePath("")
+
 [node name="SerwersP1_177" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-0.041725177, 0, 100.003, 0, 100, 0, -91.9486, 0, -0.045380145, 58.15905, -3.966959, 93.93627)
 mesh = SubResource("ArrayMesh_uohch")
@@ -7485,6 +7680,21 @@ transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06
 mesh = SubResource("ArrayMesh_oxafw")
 skeleton = NodePath("")
 
+[node name="SerwersP1_353" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 47.944782, -3.9794414, 109.69777)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
+[node name="SerwersP1_382" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-100, 0, -8.742278e-06, 0, 100, 0, 8.742278e-06, 0, -100, 20.237291, -3.9794414, 109.69777)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
+[node name="SerwersP1_374" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, -100, 0, 100, 0, 100, 0, -4.371139e-06, 20.144073, -3.9794414, 103.136925)
+mesh = SubResource("ArrayMesh_oxafw")
+skeleton = NodePath("")
+
 [node name="SerwersP1_132" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 24.091124, -3.9794414, 59.632595)
 mesh = SubResource("ArrayMesh_oxafw")
@@ -7507,6 +7717,11 @@ skeleton = NodePath("")
 
 [node name="SerwersP1_115" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-4.3711393e-06, 0, 100.00001, 0, 100, 0, -100.00001, 0, -4.3711393e-06, 52.85055, -3.967079, 57.75629)
+mesh = SubResource("ArrayMesh_ydgdi")
+skeleton = NodePath("")
+
+[node name="SerwersP1_384" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-100.00001, 0, -8.742279e-06, 0, 100, 0, 8.742279e-06, 0, -100.00001, 52.638107, -3.967079, 118.75682)
 mesh = SubResource("ArrayMesh_ydgdi")
 skeleton = NodePath("")
 
@@ -7570,18 +7785,13 @@ transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.293114, 
 mesh = SubResource("ArrayMesh_lte8g")
 skeleton = NodePath("")
 
-[node name="SerwersP1_210" type="MeshInstance3D" parent="Sewers_2"]
-transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.293114, -3.9748259, 80.353195)
-mesh = SubResource("ArrayMesh_lte8g")
-skeleton = NodePath("")
-
 [node name="SerwersP1_211" type="MeshInstance3D" parent="Sewers_2"]
-transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.293114, -3.9748259, 84.53101)
+transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.26202, -3.9748259, 84.53101)
 mesh = SubResource("ArrayMesh_lte8g")
 skeleton = NodePath("")
 
 [node name="SerwersP1_212" type="MeshInstance3D" parent="Sewers_2"]
-transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.293114, -3.9748259, 88.678154)
+transform = Transform3D(100, 0, 0, 0, 100.89848, 0, 0, 0, 101.61142, 22.262236, -3.9748259, 88.678154)
 mesh = SubResource("ArrayMesh_lte8g")
 skeleton = NodePath("")
 
@@ -7640,6 +7850,11 @@ transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06
 mesh = SubResource("ArrayMesh_lntxu")
 skeleton = NodePath("")
 
+[node name="SerwersP1_378" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 20.166576, -3.9410458, 90.77702)
+mesh = SubResource("ArrayMesh_lntxu")
+skeleton = NodePath("")
+
 [node name="SerwersP1_259" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, -4.72956, -3.9481192, 16.123392)
 mesh = SubResource("ArrayMesh_lntxu")
@@ -7647,6 +7862,16 @@ skeleton = NodePath("")
 
 [node name="SerwersP1_185" type="MeshInstance3D" parent="Sewers_2"]
 transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 45.63406, -3.967824, 87.48653)
+mesh = SubResource("ArrayMesh_lntxu")
+skeleton = NodePath("")
+
+[node name="SerwersP1_373" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 24.288393, -3.967824, 107.580666)
+mesh = SubResource("ArrayMesh_lntxu")
+skeleton = NodePath("")
+
+[node name="SerwersP1_395" type="MeshInstance3D" parent="Sewers_2"]
+transform = Transform3D(-4.371139e-06, 0, 100, 0, 100, 0, -100, 0, -4.371139e-06, 20.235563, -3.9518373, 116.631355)
 mesh = SubResource("ArrayMesh_lntxu")
 skeleton = NodePath("")
 
