@@ -1,8 +1,10 @@
-[gd_scene load_steps=836 format=4 uid="uid://bhm6kjjpsf2ed"]
+[gd_scene load_steps=840 format=4 uid="uid://bhm6kjjpsf2ed"]
 
 [ext_resource type="Texture2D" uid="uid://bpqxhfr4fw786" path="res://models/Sewer/Textures/concrete_base.png" id="1_0fn05"]
 [ext_resource type="Script" uid="uid://dtqdepoarrqnd" path="res://scripts/sewers.gd" id="1_0s21e"]
+[ext_resource type="PackedScene" uid="uid://duwrmsa2u7k2h" path="res://scene/enemies/the_rake.tscn" id="2_nmilh"]
 [ext_resource type="Texture2D" uid="uid://dxfsoea1dusbs" path="res://models/Sewer/Textures/brick_modern_01.jpg" id="2_t1lc0"]
+[ext_resource type="AudioStream" uid="uid://c5m55w2f8v0ra" path="res://audio/enemy the rake/the_rake_screech.wav" id="3_c27rp"]
 [ext_resource type="Texture2D" uid="uid://dinp4rydccua7" path="res://models/Sewer/Textures/door_metal.jpg" id="3_t1lc0"]
 [ext_resource type="Texture2D" uid="uid://dy0ya5wwnst0c" path="res://models/Sewer/Textures/brick_modern.jpg" id="4_oxyfy"]
 [ext_resource type="Texture2D" uid="uid://cywyuf0crj5bb" path="res://models/Sewer/Textures/door_metal_01.jpg" id="5_gx48k"]
@@ -5041,8 +5043,17 @@ size = Vector3(0.20288086, 2.4354248, 1.0551758)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0s21e"]
 size = Vector3(0.4868164, 3.1539307, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c27rp"]
+size = Vector3(5.1291504, 4.98584, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a05f4"]
+size = Vector3(5.070343, 6.3167725, 1)
+
 [node name="Sewers" type="Node3D"]
 script = ExtResource("1_0s21e")
+the_rake_scene = ExtResource("2_nmilh")
+spawn_sound = ExtResource("3_c27rp")
+despawn_sound = ExtResource("3_c27rp")
 
 [node name="Sewers_1" type="Node3D" parent="."]
 
@@ -12255,7 +12266,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.68647, 1.42978, -32.547543
 [node name="SewerDoor" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.39899, 0, -19.553387)
 script = ExtResource("12_inb81")
-next_area_position = Vector3(21.8, 1.7, -19.5)
+next_area_position = Vector3(21.8, 1.4, -19.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SewerDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045166016, 1.465271, -0.02758789)
@@ -12269,3 +12280,26 @@ shape = SubResource("BoxShape3D_0s21e")
 
 [node name="Girl" parent="." instance=ExtResource("17_gmwlu")]
 transform = Transform3D(-0.013, 0, -1.9629456e-09, 0, 0.013, 0, 1.9629456e-09, 0, -0.013, -80.29235, -5.659747, 129.45346)
+
+[node name="RakeSpawnTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.867171, -5.786177, 13.098798)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RakeSpawnTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10534668, 1.9929199, 0)
+shape = SubResource("BoxShape3D_c27rp")
+
+[node name="RakeDespawnTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.685238, -4.633431, 106.51915)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RakeDespawnTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04093933, 0.7067261, 0)
+shape = SubResource("BoxShape3D_a05f4")
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
+
+[node name="DespawnSound" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RakeSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.808356, -5.642546, 47.159073)

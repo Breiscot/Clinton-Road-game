@@ -17,6 +17,7 @@ enum State {
 @export var retreat_duration := 4.0
 @export var min_distance_behind := 2.0
 @export var attack_range := 2.5
+@export var can_teleport := true
 
 # Animazioni
 @export var anim_idle := "the_rake/metarig|idle"
@@ -172,7 +173,8 @@ func process_idle(delta):
 	
 	# Timer per teletrasporto se guardato troppo a lungo
 	if is_flashlight_pointing_at_me():
-		stare_timer += delta
+		if can_teleport:
+			stare_timer += delta
 		
 		if stare_timer >= stare_duration:
 			teleport_behind_player()
