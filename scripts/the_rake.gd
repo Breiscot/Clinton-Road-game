@@ -61,10 +61,15 @@ var footstep_interval := 0.4
 @onready var screech_player: AudioStreamPlayer3D = $ScreechPlayer
 @onready var ambient_player: AudioStreamPlayer3D = $AmbientPlayer
 @onready var jumpscare_player: AudioStreamPlayer3D = $JumpscarePlayer
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
 	add_to_group("the_rake")
 	print("TheRake: _ready() called")
+	
+	if nav_agent:
+		nav_agent.path_desired_distance = 0.5
+		nav_agent.target_desired_distance = 0.5
 	
 	if anim_player:
 		print("Animazioni disponibili:")
@@ -265,13 +270,26 @@ func process_retreating(delta):
 	var direction = (global_position - player.global_position).normalized()
 	direction.y = 0
 	
-	velocity.x = direction.x * retreat_speed
-	velocity.z = direction.z * retreat_speed
+	var retreat_target = global_position + direction * 10.0
+	retreat_target.y = global_position.y
 	
-	# Guarda dove va indietro
-	if direction.length() > 0.1:
-		var look_pos = global_position + direction
-		look_at(Vector3(look_pos.x, global_position.y, look_pos.z))
+	# Usa Navigation per scappare
+	if nav_agent:
+		nav_agent.target_position = retreat_target
+		
+		if not nav_agent.is_navigation_finished():
+			var next_position = nav_agent.get_next_path_position()
+			var move_direction = (next_position - global_position).normalized()
+			move_direction.y = 0
+	
+			velocity.x = direction.x * retreat_speed
+			velocity.z = direction.z * retreat_speed
+			
+			if move_direction.length() > 0.1:
+				look_at(global_position + move_direction, Vector3.UP)
+	else:
+		velocity.x = direction.x * retreat_speed
+		velocity.z = direction.z * retreat_speed
 		
 	if retreat_timer <= 0:
 		if is_chase_mode:
@@ -288,16 +306,31 @@ func process_chasing(delta):
 	play_animation("run")
 	update_footsteps(delta, 0.2)
 	
-	# Corre verso il player
-	var direction = (player.global_position - global_position).normalized()
-	direction.y = 0
+	if player == null:
+		return
+		
+	if nav_agent:
+		nav_agent.target_position = player.global_position
+		
+		if not nav_agent.is_navigation_finished():
+			var next_pos = nav_agent.get_next_path_position()
+			var direction = global_position.direction_to(next_pos)
+			direction.y = 0
+			direction = direction.normalized()
+		
+			velocity.x = direction.x * chase_speed
+			velocity.z = direction.z * chase_speed
 	
-	velocity.x = direction.x * chase_speed
-	velocity.z = direction.z * chase_speed
-	
-	look_at_player()
-	
-	# Più paura durante chase
+			if direction.length() > 0.1:
+				var look_pos = Vector3 (next_pos.x, global_position.y, next_pos.z)
+				look_at(look_pos)
+	else:
+		var direction = (player.global_position - global_position).normalized()
+		direction.y = 0
+		velocity.x = direction.x * chase_speed
+		velocity.z = direction.z * chase_speed
+		look_at_player()
+		
 	add_fear_by_distance(delta, 2.0)
 	
 	# Controlla se può attaccare
@@ -410,17 +443,35 @@ func move_behind_player(delta):
 		
 	# Calcola posizione dietro al player
 	var player_forward = -player.global_transform.basis.z
-	var behind_position = player.global_position - player_forward * min_distance_behind
-	behind_position.y = global_position.y
+	var target_position = player.global_position - player_forward * min_distance_behind
 	
-	# Direzione verso posizione
-	var direction = (behind_position - global_position).normalized()
-	direction.y = 0
+	if nav_agent:
+		nav_agent.target_position = target_position
+		
+		if nav_agent.is_navigation_finished():
+			velocity.x = 0
+			velocity.z = 0
+			look_at_player()
+			return
+		
+		var next_pos = nav_agent.get_next_path_position()
+		var direction = global_position.direction_to(next_pos)
+		direction.y = 0
+		direction = direction.normalized()
 	
-	velocity.x = direction.x * walk_speed
-	velocity.z = direction.z * walk_speed
-	
-	look_at_player()
+		velocity.x = direction.x * walk_speed
+		velocity.z = direction.z * walk_speed
+		
+		if direction.length() > 0.1:
+			var look_pos = Vector3(next_pos.x, global_position.y, next_pos.z)
+			look_at(look_pos)
+	else:
+		# Fallback
+		var direction = (target_position - global_position).normalized()
+		direction.y = 0
+		velocity.x = direction.x * walk_speed
+		velocity.z = direction.z * walk_speed
+		look_at_player()
 	
 func look_at_player():
 	if player == null:
