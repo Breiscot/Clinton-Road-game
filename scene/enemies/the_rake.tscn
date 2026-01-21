@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://6dnu3llv7djw" path="res://audio/enemy the rake/the_rake_breath.wav" id="8_wr8wt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ny3v0"]
-radius = 0.89160156
+radius = 0.3
 height = 4.2521973
 
 [node name="TheRake" type="CharacterBody3D"]
@@ -33,8 +33,7 @@ libraries = {
 }
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.5
-avoidance_enabled = true
+path_desired_distance = 0.3
 height = 2.0
 
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
