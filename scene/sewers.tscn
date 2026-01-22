@@ -13651,12 +13651,13 @@ key_scene = ExtResource("12_tciol")
 spawn_points = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3")]
 
 [node name="SpawnPoint1" type="Marker3D" parent="KeySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.515427, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.962475, -3.2361856, -173.02655)
 
 [node name="SpawnPoint2" type="Marker3D" parent="KeySpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9675181, 0.8363627, -154.73615)
 
 [node name="SpawnPoint3" type="Marker3D" parent="KeySpawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.68647, 1.42978, -32.547543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9256496, 0.83655834, -71.2436)
 
 [node name="SewerDoor" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.39899, 0, -19.553387)

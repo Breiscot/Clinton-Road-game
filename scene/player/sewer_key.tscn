@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dsygo5u2rylwq" path="res://models/Sewer/door key/door_key.glb" id="1_1ytms"]
 [ext_resource type="Script" uid="uid://d1luro2p70rmg" path="res://scripts/sewer_key.gd" id="1_p2kh4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p2kh4"]
-size = Vector3(0.85601807, 1.8979492, 0.13372803)
+[sub_resource type="SphereShape3D" id="SphereShape3D_p2kh4"]
+radius = 1.5
 
 [node name="SewerKey" type="Area3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -13,7 +13,7 @@ script = ExtResource("1_p2kh4")
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("1_1ytms")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050354004, 0.21899414, 0.004119873)
-shape = SubResource("BoxShape3D_p2kh4")
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0049999994, 1.2690269, 0.0039999997)
+shape = SubResource("SphereShape3D_p2kh4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
