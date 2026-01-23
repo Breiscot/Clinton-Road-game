@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4 uid="uid://dxnu8xsppm32v"]
+
+[ext_resource type="Texture2D" uid="uid://dinp4rydccua7" path="res://models/Sewer/Textures/door_metal.jpg" id="1_bllay"]
+[ext_resource type="Script" uid="uid://cuc70ox5ksvgg" path="res://scripts/sewer_exit_door.gd" id="1_hkchc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stv0y"]
+resource_name = "door_metal"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_bllay")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c4qtb"]
+_surfaces = [{
+"aabb": AABB(-0.00024785407, -0.012415976, -0.010059106, 0.000801418, 0.023173124, 0.010058265),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgAEAAAAAQADAAUABQACAAEABgAEAAIAAgAFAAYABwAAAAQAAAAHAAMABAAGAAcABQADAAcABwAGAAUA"),
+"name": "door_metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("afKBucA+MDzyziS8afKBucA+MDyPwmG1afKBuWFsS7xmZmK1DB0ROsA+MDyPwmG1afKBuWFsS7zzziS8DB0ROmFsS7xmZmK1DB0ROmFsS7zzziS8DB0ROsA+MDzyziS8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hkchc"]
+resource_name = "door_metal"
+_surfaces = [{
+"aabb": AABB(-0.00024785407, -0.012415976, -0.010059106, 0.000801418, 0.023173124, 0.010058265),
+"attribute_data": PackedByteArray("W5t2P0ABFTwQShY9QAEVPGBKFj3+q30/YZt2P/6rfT9gShY9/qt9PxBKFj1AARU8W5t2P0ABFTxhm3Y//qt9P3YZ7T5AARU8SXMJP0ABFTxJcwk//qt9P3YZ7T7+q30/dhntPjmMNj9Jcwk/OYw2P0lzCT+a55I+dhntPprnkj52Ge0+lueSPklzCT+W55I+SXMJPzaMNj92Ge0+Now2P3YZ7T7+q30/SXMJP/6rfT9Jcwk/QAEVPHYZ7T5AARU8"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_stv0y"),
+"name": "door_metal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("afKBucA+MDzyziS8afKBucA+MDyPwmG1afKBuWFsS7xmZmK1afKBuWFsS7zzziS8DB0ROmFsS7xmZmK1DB0ROsA+MDyPwmG1DB0ROsA+MDzyziS8DB0ROmFsS7zzziS8DB0ROmFsS7xmZmK1afKBuWFsS7xmZmK1afKBucA+MDyPwmG1DB0ROsA+MDyPwmG1DB0ROsA+MDyPwmG1afKBucA+MDyPwmG1afKBucA+MDzyziS8DB0ROsA+MDzyziS8DB0ROmFsS7zzziS8afKBuWFsS7zzziS8afKBuWFsS7xmZmK1DB0ROmFsS7xmZmK1DB0ROsA+MDzyziS8afKBucA+MDzyziS8afKBuWFsS7zzziS8DB0ROmFsS7zzziS8AAD/f///AAAAAP9///8AAAAA/3///wAAAAD/f///AAD///9//////////3//////////f/////////9///////9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+//3///wAA/z//f///AAD/P/9///8AAP8//3///wAA/z//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/////8AAP8//////wAA/z//////AAD/P/////8AAP8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c4qtb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bllay"]
+size = Vector3(2, 2, 2)
+
+[node name="SewerExitDoor" type="Area3D"]
+script = ExtResource("1_hkchc")
+
+[node name="door_metal" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 107.05081, -4.664517e-06, 0, 4.67934e-06, 106.711716, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hkchc")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8843079, -0.05114746, -0.53302)
+shape = SubResource("BoxShape3D_bllay")
