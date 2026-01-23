@@ -44,7 +44,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c4qtb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bllay"]
-size = Vector3(2, 2, 2)
+size = Vector3(1.7939453, 2, 2)
 
 [node name="SewerExitDoor" type="Area3D"]
 script = ExtResource("1_hkchc")
@@ -55,5 +55,5 @@ mesh = SubResource("ArrayMesh_hkchc")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8843079, -0.05114746, -0.53302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98733526, -0.05114746, -0.53302)
 shape = SubResource("BoxShape3D_bllay")
