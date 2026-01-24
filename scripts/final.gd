@@ -16,8 +16,36 @@ var dialogue_finished := false
 var girl_text_color := Color("#d67fff")
 
 # Dialogo Finale
-var dialogue_lines: Array[String] = [
-	"You're wondering where you are, right?",
+var dialogue_lines := [
+	{ "speaker": "player", "text": "You.. you're the same girl I was about to run over." },
+	{ "speaker": "girl", "text": "..." },
+	
+	{ "speaker": "player", "text": "Why are you here too? Do you know how to get out of here?" },
+	{ "speaker": "girl", "text": "A way out of here?" },
+	{ "speaker": "girl", "text": "You know you're never leaving here again, right?" },
+	{ "speaker": "girl", "text": "Oh.. right... you don't know it." },
+	
+	{ "speaker": "player", "text": "What I don't know?" },
+	{ "speaker": "player", "text": "Don't mess with me because you're in serious trouble too, with those creatures out there." },
+	{ "speaker": "girl", "text": "Those creatures?, you're afraid of them, right?" },
+	{ "speaker": "player", "text": "Yes but I'm trying to escape from them, I'm sure we can still get out of this" },
+	{ "speaker": "girl", "text": "How were you sure that if you continued down the sewers you would get out?" },
+	{ "speaker": "girl", "text": "How were you also sure that if you continued down the road you would get out?" },
+	{ "speaker": "girl", "text": "How were you also sure that if you fixed the car in the beginning you would get out of it?" },
+	{ "speaker": "girl", "text": "But... did you think that you never fixed the car when you crashed?" },
+	
+	{ "speaker": "player", "text": "What you mean..." },
+	{ "speaker": "player", "text": "And.. how do you know I crashed before?" },
+	{ "speaker": "girl", "text": "..." },
+	{ "speaker": "player", "text": "I fixed the car and tried to escape, but I saw you on the bridge in the road and I had to stop" },
+	{ "speaker": "player", "text": "If it wasn't for you I would have already run away, maybe..." },
+	{ "speaker": "girl", "text": "You never actually made it to the bridge." },
+	{ "speaker": "girl", "text": "You never got out of that situation when you crashed." },
+	{ "speaker": "girl", "text": "Because you already dead." },
+
+
+
+
 	"This isn't just a road. It's Clinton Road.",
 	"The Clinton Road isn't the road that the living really known",
 	"Do you remember the forest? The car stopped... the engine wouldn't start.",
