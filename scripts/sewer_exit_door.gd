@@ -1,6 +1,5 @@
 extends Area3D
 
-@export var target_node: Marker3D
 @export var fade_duration := 1.0
 
 var player_in_range := false
@@ -28,11 +27,6 @@ func _process(_delta):
 		start_teleport()
 		
 func start_teleport():
-	# Disabilita l'iterazione dopo il teleport
-	player_in_range = false
-	if player.has_node("MessageUI"):
-		player.get_node("MessageUI").hide_prompt()
-		
 	# FadeOut
 	var canvas = CanvasLayer.new()
 	canvas.layer = 100
@@ -46,12 +40,7 @@ func start_teleport():
 	var tween = create_tween()
 	tween.tween_property(fade_rect, "color:a", 1.0, fade_duration)
 	tween.tween_callback(func():
-		if target_node:
-			player.velocity = Vector3.ZERO
-			player.global_position = target_node.global_position
-			player.global_basis = target_node.global_basis
-		else:
-			print("Err. Target node isn't assigned to the door")
+		get_tree().change_scene_to_file("res://scene/final.tscn")
 	)
 	
 	tween.tween_property(fade_rect, "color:a", 0.0, fade_duration)
