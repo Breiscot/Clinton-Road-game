@@ -805,9 +805,6 @@ transform = Transform3D(0.0009651483, 0, -0.09999536, 0, 0.099999994, 0, 0.09999
 [node name="lightoff94" parent="Sewer" instance=ExtResource("8_lj3v1")]
 transform = Transform3D(0.0009651483, 0, -0.09999536, 0, 0.099999994, 0, 0.09999536, 0, 0.0009651483, -65.968544, 0.36789167, 0.6718254)
 
-[node name="lightoff95" parent="Sewer" instance=ExtResource("8_lj3v1")]
-transform = Transform3D(0.053750567, 0, -0.08432603, 0, 0.09999999, 0, 0.08432603, 0, 0.053750567, -71.58049, 0.36789167, 2.071476)
-
 [node name="lighton59" parent="Sewer" instance=ExtResource("9_owvgy")]
 transform = Transform3D(0.0008649328, 7.0849375e-05, -0.09999624, 0.0027905481, 0.09996098, 9.49617e-05, 0.099957325, -0.0027912646, 0.0008626189, -22.704985, 0.37519324, 0.7199135)
 
@@ -848,6 +845,36 @@ spot_range = 15.0
 spot_angle = 60.0
 script = ExtResource("10_gwqf8")
 
+[node name="lighton66" parent="Sewer" instance=ExtResource("9_owvgy")]
+transform = Transform3D(-0.0004226066, 0.00010679545, -0.09999905, 0.0027905477, 0.09996097, 9.496169e-05, 0.099960156, -0.00279012, -0.00042542157, -74.84366, 0.37519324, 12.123821)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sewer/lighton66"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("10_gwqf8")
+
+[node name="lighton67" parent="Sewer" instance=ExtResource("9_owvgy")]
+transform = Transform3D(-0.0004226066, 0.00010679545, -0.09999905, 0.0027905477, 0.09996097, 9.496169e-05, 0.099960156, -0.00279012, -0.00042542157, -74.84366, 0.37519324, 16.354141)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sewer/lighton67"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("10_gwqf8")
+
+[node name="lighton68" parent="Sewer" instance=ExtResource("9_owvgy")]
+transform = Transform3D(-0.0004226066, 0.00010679545, -0.09999905, 0.0027905477, 0.09996097, 9.496169e-05, 0.099960156, -0.00279012, -0.00042542157, -74.84366, 0.37519324, 21.348902)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sewer/lighton68"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("10_gwqf8")
+
 [node name="lighton63" parent="Sewer" instance=ExtResource("9_owvgy")]
 transform = Transform3D(-0.0004226066, 0.00010679545, -0.09999905, 0.0027905477, 0.09996097, 9.496169e-05, 0.099960156, -0.00279012, -0.00042542157, -44.296112, 0.37519324, 0.6921196)
 
@@ -862,6 +889,16 @@ script = ExtResource("10_gwqf8")
 transform = Transform3D(-0.0004226066, 0.00010679545, -0.09999905, 0.0027905477, 0.09996097, 9.496169e-05, 0.099960156, -0.00279012, -0.00042542157, -49.652863, 0.37519324, 0.64844894)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Sewer/lighton64"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("10_gwqf8")
+
+[node name="lighton65" parent="Sewer" instance=ExtResource("9_owvgy")]
+transform = Transform3D(0.06260438, -0.0016736247, -0.07796082, 0.0027905477, 0.09996098, 9.496171e-05, 0.077928826, -0.0022349842, 0.06262668, -71.31598, 0.37519324, 1.9383582)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sewer/lighton65"]
 transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
 light_color = Color(1, 0.9607843, 0.8392157, 1)
 spot_range = 15.0
@@ -1077,9 +1114,23 @@ shape = SubResource("BoxShape3D_1218a")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.85800004
+anchor_right = 0.499
+anchor_bottom = 0.85800004
+offset_left = -0.84802246
+offset_top = -22.984009
+offset_right = 0.15197754
+offset_bottom = 0.015991211
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
 
 [node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
