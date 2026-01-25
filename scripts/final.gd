@@ -41,7 +41,35 @@ var dialogue_lines := [
 	{ "speaker": "player", "text": "If it wasn't for you I would have already run away, maybe..." },
 	{ "speaker": "girl", "text": "You never actually made it to the bridge." },
 	{ "speaker": "girl", "text": "You never got out of that situation when you crashed." },
+	{ "speaker": "girl", "text": "..." },
 	{ "speaker": "girl", "text": "Because you already dead." },
+	
+	{ "speaker": "player", "text": "What..." },
+	{ "speaker": "player", "text": "If you make fun of me again I'll leave this place alone." },
+	{ "speaker": "girl", "text": "You keep saying you're leaving this place." },
+	{ "speaker": "girl", "text": "Even though it's too late, you still can't understand that you'll never get out of here." },
+	
+	{ "speaker": "girl", "text": "The creatures that have been chasing you so far are forms recreated by the dark soul now within you." },
+	{ "speaker": "girl", "text": "The creature of the forest.." },
+	{ "speaker": "girl", "text": "He is the first corrupt soul that you met." },
+	{ "speaker": "girl", "text": "His name is Wendigo." },
+	{ "speaker": "girl", "text": "He was once one of the many Satanists." },
+	{ "speaker": "girl", "text": "Only one night the Wendigo decided to perform a ritual alone." },
+	{ "speaker": "girl", "text": "But he died..." },
+	{ "speaker": "girl", "text": "I don't know when he died, but looking at his rotting body, I can tell he died centuries ago." },
+	{ "speaker": "girl", "text": "He is looking for food because his hunger eats him inside and he will never die again.." },
+	
+	{ "speaker": "girl", "text": "Then.. The creature of the road.. who followed you here.." },
+	{ "speaker": "girl", "text": "His name is Rake." },
+	{ "speaker": "girl", "text": "I still have no idea if he was ever a living person." },
+	{ "speaker": "girl", "text": "But I think he's a corrupt soul looking for victims, especially all those who were taken from the Clinton Road." },
+	{ "speaker": "player", "text": "Taken from the Clinton Road?" },
+	{ "speaker": "girl", "text": "Yes... Like you." },
+	
+	{ "speaker": "player", "text": "." },
+	
+	
+	
 
 
 
