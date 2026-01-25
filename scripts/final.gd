@@ -14,9 +14,11 @@ var dialogue_finished := false
 
 # Colore del testo della ragazza (Rosa/Viola)
 var girl_text_color := Color("#d67fff")
+# Colore del testo del player (Bianco)
+var player_text_color := Color.WHITE
 
 # Dialogo Finale
-var dialogue_lines := [
+var dialogue_sequence := [
 	{ "speaker": "player", "text": "You.. you're the same girl I was about to run over." },
 	{ "speaker": "girl", "text": "..." },
 	
@@ -66,18 +68,30 @@ var dialogue_lines := [
 	{ "speaker": "player", "text": "Taken from the Clinton Road?" },
 	{ "speaker": "girl", "text": "Yes... Like you." },
 	
-	{ "speaker": "player", "text": "." },
+	{ "speaker": "player", "text": "I can't believe it.. I just wanted to go home!" },
+	{ "speaker": "girl", "text": "Like a mother who wanted to go home to her children, and then died on the edge of a bridge.." },
+	{ "speaker": "girl", "text": "It was an accident.." },
+	{ "speaker": "girl", "text": "And she went through the same situation as you." },
+	{ "speaker": "girl", "text": "But she realized long time ago that she was already dead.." },
+	{ "speaker": "player", "text": "Who was she?" },
+	{ "speaker": "girl", "text": "I forgotten she's name." },
+	{ "speaker": "girl", "text": "Clinton Road gives you this effect, I can't remember my name." },
+	{ "speaker": "girl", "text": "But it doesn't matter now, now that no one will mention us in this place anymore." },
 	
+	{ "speaker": "player", "text": "But how can Clinton Road be like this? Everyone should have known by now." },
+	{ "speaker": "girl", "text": "The Clinton Road isn't the road that the living really known." },
+	{ "speaker": "girl", "text": "People pass by on the street every day, and we watch them." },
+	{ "speaker": "girl", "text": "It's the night that wants to drag someone." },
+	{ "speaker": "girl", "text": "The road tries to show those who are already here, brought into the light by an oncoming car." },
+	{ "speaker": "player", "text": "..." },
 	
-	
-
-
-
-
-	"This isn't just a road. It's Clinton Road.",
-	"The Clinton Road isn't the road that the living really known",
-	"Do you remember the forest? The car stopped... the engine wouldn't start.",
-	"You fixed your car.. but... do you really fixed your car?"
+	{ "speaker": "player", "text": "So.. you already dead.." },
+	{ "speaker": "girl", "text": "..." },
+	{ "speaker": "player", "text": "But.. if I'm dead.. how can I understand it?, I can't understand how." },
+	{ "speaker": "girl", "text": "Just think back to before your accident." },
+	{ "speaker": "girl", "text": "And you'll see how things match up but you didn't realize it." },
+	{ "speaker": "girl", "text": "Close your eyes." },
+	{ "speaker": "girl", "text": "Think back to that moment.. and you will return to that moment..." },
 ]
 
 func _ready():
@@ -133,30 +147,39 @@ func look_at_girl(weight: float, cam: Camera3D):
 	cam.global_transform = current_transform.interpolate_with(target_transform, weight)
 	
 func show_current_line():
-	if dialogue_index >= 0 and dialogue_index < dialogue_lines.size():
-		var line = dialogue_lines[dialogue_index]
-		show_girl_text(line)
-	else:
+	if dialogue_index >= dialogue_sequence.size():
 		dialogue_finished = true
 		end_game()
+		return
+		
+	var line = dialogue_sequence[dialogue_index]
+	var text: String = line.get("text", "")
+	var speaker: String = line.get("speaker", "player")
+	
+	match speaker:
+		"girl":
+			show_colored_text(text, girl_text_color)
+		"player":
+			show_colored_text(text, player_text_color)
+		_:
+			show_colored_text(text, player_text_color) # Fallback
+			
+func show_colored_text(text: String, color: Color):
+	dialogue_label.text = text
+	dialogue_label.add_theme_color_override("font_color", color)
+	dialogue_label.visible = true
+	dialogue_label.modulate.a = 0.0
+	
+	var tween = create_tween()
+	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.3)
 		
 func _unhandled_input(event):
 	if dialogue_started and not dialogue_finished and event.is_action_pressed("ui_accept"):
 		dialogue_index += 1
-		if dialogue_index < dialogue_lines.size():
-			show_current_line()
-		else:
-			dialogue_finished = true
-			end_game()
+		show_current_line()
 			
 func show_girl_text(text: String):
-	dialogue_label.text = text
-	dialogue_label.add_theme_color_override("font_color", girl_text_color)
-	dialogue_label.visible = true
-	dialogue_label.modulate.a = 0
-	
-	var tween = create_tween()
-	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.3)
+	show_colored_text(text, girl_text_color)
 	
 func end_game():
 	# FadeOut testo

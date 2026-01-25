@@ -1092,7 +1092,7 @@ shape = SubResource("ConcavePolygonShape3D_22lw4")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.3014822, -5.422395, 0.63610816)
 
 [node name="Girl" parent="." instance=ExtResource("12_w8snk")]
-transform = Transform3D(-0.011, 0, -1.6609538e-09, 0, 0.011, 0, 1.6609538e-09, 0, -0.011, -75.82129, -5.659747, 16.361126)
+transform = Transform3D(-0.011, 0, -1.6609538e-09, 0, 0.011, 0, 1.6609538e-09, 0, -0.011, -75.82129, -5.659747, 14.35411)
 
 [node name="FaceTarget" type="Marker3D" parent="Girl"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.19873, 154.8859, 21.41101)
