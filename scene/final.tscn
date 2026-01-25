@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://cyogsqb5p6ypj"]
+[gd_scene load_steps=89 format=4 uid="uid://cyogsqb5p6ypj"]
 
 [ext_resource type="Script" uid="uid://pumdvx5v187" path="res://scripts/final.gd" id="1_4tu0d"]
 [ext_resource type="Texture2D" uid="uid://dy0ya5wwnst0c" path="res://models/Sewer/Textures/brick_modern.jpg" id="2_4tu0d"]
@@ -611,6 +611,18 @@ size = Vector3(1, 7.2976074, 7.8461914)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1218a"]
 size = Vector3(16.291992, 8.075439, 6.0891113)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tu0d"]
+bg_color = Color(0, 0, 0, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Final" type="Node3D"]
 script = ExtResource("1_4tu0d")
 
@@ -1113,19 +1125,36 @@ shape = SubResource("BoxShape3D_1218a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DialogueLabel" type="Label" parent="CanvasLayer"]
+[node name="DialogueBox" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.499
-anchor_top = 0.85800004
-anchor_right = 0.499
-anchor_bottom = 0.85800004
-offset_left = -0.84802246
-offset_top = -22.984009
-offset_right = 0.15197754
-offset_bottom = 0.015991211
-grow_horizontal = 2
-grow_vertical = 0
+anchor_left = 0.08
+anchor_top = 0.75
+anchor_right = 0.9
+anchor_bottom = 0.92
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4tu0d")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogueBox"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DialogueBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DialogueLabel" type="Label" parent="CanvasLayer/DialogueBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HintLabel" type="Label" parent="CanvasLayer/DialogueBox/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+text = "Press SPACE to continue"
+horizontal_alignment = 1
 
 [node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -1134,3 +1163,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="EntryLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.8
+theme_override_colors/font_color = Color(0.8392157, 0.49803922, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "\"\""
+horizontal_alignment = 1
+vertical_alignment = 1

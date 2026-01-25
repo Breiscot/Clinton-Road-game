@@ -4,8 +4,11 @@ extends Node3D
 @onready var entry_trigger := $EntryTrigger
 @onready var dialogue_trigger := $DialogueTrigger
 @onready var girl_face_target := $Girl/FaceTarget
-@onready var dialogue_label := $CanvasLayer/DialogueLabel
+@onready var dialogue_box := $CanvasLayer/DialogueBox
+@onready var dialogue_label := $CanvasLayer/DialogueBox/MarginContainer/VBoxContainer/DialogueLabel
+@onready var hint_label := $CanvasLayer/DialogueBox/MarginContainer/VBoxContainer/HintLabel
 @onready var black_screen := $CanvasLayer/BlackOverlay
+@onready var entry_label := $CanvasLayer/EntryLabel
 
 var entry_triggered := false
 var dialogue_started := false
@@ -44,7 +47,7 @@ var dialogue_sequence := [
 	{ "speaker": "girl", "text": "You never actually made it to the bridge." },
 	{ "speaker": "girl", "text": "You never got out of that situation when you crashed." },
 	{ "speaker": "girl", "text": "..." },
-	{ "speaker": "girl", "text": "Because you already dead." },
+	{ "speaker": "girl", "text": "Because you're already dead." },
 	
 	{ "speaker": "player", "text": "What..." },
 	{ "speaker": "player", "text": "If you make fun of me again I'll leave this place alone." },
@@ -74,12 +77,12 @@ var dialogue_sequence := [
 	{ "speaker": "girl", "text": "And she went through the same situation as you." },
 	{ "speaker": "girl", "text": "But she realized long time ago that she was already dead.." },
 	{ "speaker": "player", "text": "Who was she?" },
-	{ "speaker": "girl", "text": "I forgotten she's name." },
+	{ "speaker": "girl", "text": "I've forgotten her name." },
 	{ "speaker": "girl", "text": "Clinton Road gives you this effect, I can't remember my name." },
 	{ "speaker": "girl", "text": "But it doesn't matter now, now that no one will mention us in this place anymore." },
 	
 	{ "speaker": "player", "text": "But how can Clinton Road be like this? Everyone should have known by now." },
-	{ "speaker": "girl", "text": "The Clinton Road isn't the road that the living really known." },
+	{ "speaker": "girl", "text": "Clinton Road isn't the road the living really know." },
 	{ "speaker": "girl", "text": "People pass by on the street every day, and we watch them." },
 	{ "speaker": "girl", "text": "It's the night that wants to drag someone." },
 	{ "speaker": "girl", "text": "The road tries to show those who are already here, brought into the light by an oncoming car." },
@@ -95,8 +98,11 @@ var dialogue_sequence := [
 ]
 
 func _ready():
+	dialogue_box.visible = false
 	dialogue_label.visible = false
-	black_screen.color.a = 0
+	hint_label.visible = false
+	black_screen.color.a = 0.0
+	entry_label.visible = false
 	
 	# Connette Trigger
 	if entry_trigger:
@@ -165,10 +171,15 @@ func show_current_line():
 			show_colored_text(text, player_text_color) # Fallback
 			
 func show_colored_text(text: String, color: Color):
+	dialogue_box.visible = true
+	dialogue_label.visible = true
+	
 	dialogue_label.text = text
 	dialogue_label.add_theme_color_override("font_color", color)
-	dialogue_label.visible = true
 	dialogue_label.modulate.a = 0.0
+	
+	hint_label.visible = not dialogue_finished
+	hint_label.text = "Press SPACE to continue"
 	
 	var tween = create_tween()
 	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.3)
@@ -182,10 +193,11 @@ func show_girl_text(text: String):
 	show_colored_text(text, girl_text_color)
 	
 func end_game():
+	dialogue_finished = true
+	
 	# FadeOut testo
 	var tween = create_tween()
-	tween.tween_property(dialogue_label, "modulate:a", 0.0, 1.0)
-	
+	tween.tween_property(dialogue_box, "modulate:a", 0.0, 1.0)
 	# Fade to Black
 	tween.tween_property(black_screen, "color:a", 1.0, 5.0)
 	await tween.finished
@@ -194,15 +206,16 @@ func end_game():
 	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
 	
 func show_subtitle(text: String, duration: float):
-	dialogue_label.text = text
-	dialogue_label.add_theme_color_override("font_color", Color("#d67fff"))
-	dialogue_label.visible = true
-	dialogue_label.modulate.a = 0
+	entry_label.visible = true
+	entry_label.text = text
+	entry_label.modulate.a = 0.0
+	entry_label.add_theme_color_override("font_color", girl_text_color)
 	
 	var tween = create_tween()
-	tween.tween_property(dialogue_label, "modulate:a", 1.0, 0.5)
+	tween.tween_property(entry_label, "modulate:a", 1.0, 0.5)
 	tween.tween_interval(duration)
-	tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.5)
+	tween.tween_property(entry_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func(): entry_label.visible = false)
 	
 func setup_environment():
 	var world_env = WorldEnvironment.new()
