@@ -12,6 +12,8 @@ height = 2.1456056
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 7
 script = ExtResource("1_v7pse")
+stamina_drain = 15.0
+stamina_regen = 12.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0728028, 0)

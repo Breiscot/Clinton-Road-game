@@ -3,6 +3,9 @@ extends Area3D
 @export var required_key := "sewer_key"
 @export var next_area_position := Vector3.ZERO
 
+@onready var audio_open: AudioStreamPlayer3D = $AudioOpen
+@onready var audio_close: AudioStreamPlayer3D = $AudioClose
+
 var player: Node3D = null
 var player_in_range := false
 var is_locked := true
@@ -54,6 +57,10 @@ func try_open_door():
 		is_locked = false
 		door_opened = true
 		show_message("The key works. the door is now open.")
+		
+		if audio_open:
+			audio_open.play()
+			
 		hide_prompt()
 		
 		await get_tree().create_timer(1.5).timeout
@@ -88,6 +95,9 @@ func enter_door():
 	var tween = create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.8)
 	tween.tween_callback(func():
+			if audio_close:
+				audio_close.play()
+				
 			# Teletrasporta il player
 			if player:
 				player.global_position = next_area_position

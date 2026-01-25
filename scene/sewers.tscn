@@ -1,4 +1,4 @@
-[gd_scene load_steps=877 format=4 uid="uid://bhm6kjjpsf2ed"]
+[gd_scene load_steps=879 format=4 uid="uid://bhm6kjjpsf2ed"]
 
 [ext_resource type="Texture2D" uid="uid://bpqxhfr4fw786" path="res://models/Sewer/Textures/concrete_base.png" id="1_0fn05"]
 [ext_resource type="Script" uid="uid://dtqdepoarrqnd" path="res://scripts/sewers.gd" id="1_0s21e"]
@@ -13,11 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://bmrq1601h684l" path="res://models/Sewer/Textures/debris.jpg" id="8_dn0cu"]
 [ext_resource type="Texture2D" uid="uid://db2kiju0h1psv" path="res://models/Sewer/Textures/Metal.jpg" id="9_4w3y0"]
 [ext_resource type="PackedScene" uid="uid://c28sgfln8nlok" path="res://scene/player/player.tscn" id="10_r13g0"]
+[ext_resource type="AudioStream" uid="uid://bmvydwtf8xr7l" path="res://audio/ambience/door_closing.ogg" id="11_2dgf6"]
 [ext_resource type="Texture2D" uid="uid://b24u1ev5248n0" path="res://models/Sewer/Textures/concrete_bare_01.jpg" id="11_2do6q"]
 [ext_resource type="Script" uid="uid://c4ora8ug72ura" path="res://scripts/key_spawner.gd" id="11_8dtjo"]
 [ext_resource type="Texture2D" uid="uid://ckc1drug4ftpc" path="res://models/Sewer/Textures/brick_pavement.jpg" id="12_gmwlu"]
 [ext_resource type="Script" uid="uid://dn3vapoi3t6lc" path="res://scripts/sewer_door.gd" id="12_inb81"]
 [ext_resource type="PackedScene" uid="uid://ce80fuhwo7klu" path="res://scene/player/sewer_key.tscn" id="12_tciol"]
+[ext_resource type="AudioStream" uid="uid://bq737lpygwmh7" path="res://audio/ambience/door_opening.ogg" id="20_ge5m6"]
 [ext_resource type="Texture2D" uid="uid://b1ct42iimeqwj" path="res://models/Sewer/Textures/Trash.png" id="20_stv0y"]
 [ext_resource type="Texture2D" uid="uid://b1mgy6i5fnfpm" path="res://models/Sewer/Textures/Garbage_bag.png" id="21_7ehne"]
 [ext_resource type="Texture2D" uid="uid://c1ck20k7lkrj3" path="res://models/Sewer/Textures/debris_01.jpg" id="22_w1y08"]
@@ -12836,6 +12838,12 @@ shape = SubResource("BoxShape3D_8dtjo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16918945, 1.0769653, 0)
 shape = SubResource("BoxShape3D_0s21e")
 
+[node name="AudioOpen" type="AudioStreamPlayer3D" parent="SewerDoor"]
+stream = ExtResource("20_ge5m6")
+
+[node name="AudioClose" type="AudioStreamPlayer3D" parent="SewerDoor"]
+stream = ExtResource("11_2dgf6")
+
 [node name="RakeSpawnTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.867171, -5.786177, 13.098798)
 
@@ -13898,3 +13906,8 @@ script = ExtResource("28_2dgf6")
 [node name="HudNewArea" parent="." instance=ExtResource("28_evt8v")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("29_knypr")]
+
+[node name="AudioClose" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(-3.3073473e-08, -0.7730386, -0.63435894, 1, -1.5055019e-08, -3.379059e-08, 1.6571144e-08, -0.63435894, 0.7730387, -3.2101793, 0.33572745, 13.730488)
+stream = ExtResource("11_2dgf6")
+max_distance = 10.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=104 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://m7bd5t1hj0is" path="res://scripts/invisible_wall.gd" id="20_eo525"]
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="21_jue2w"]
 [ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="22_b1wa3"]
+[ext_resource type="AudioStream" uid="uid://bq737lpygwmh7" path="res://audio/ambience/door_opening.ogg" id="23_350pk"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="23_iy73c"]
 [ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="24_4pu46"]
 [ext_resource type="PackedScene" uid="uid://cjaljwq7lqrsi" path="res://models/road/road_tunnel/tunnel_road.glb" id="25_iy73c"]
@@ -1675,6 +1676,10 @@ transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0
 transform = Transform3D(0.8450286, 0, -0.53472114, 0, 1, 0, 0.53472114, 0, 0.8450286, 1.6836472, 0.68603516, 0.40771484)
 shape = SubResource("BoxShape3D_os54k")
 
+[node name="AudioOpen" type="AudioStreamPlayer3D" parent="TunnelDoor/Area3D"]
+transform = Transform3D(-3.4830332e-08, -0.79682535, -0.6042098, 1, -4.371138e-08, 6.631772e-15, -2.6410847e-08, -0.6042098, 0.79682535, 1.5843964, 0.6585312, 0.32073975)
+stream = ExtResource("23_350pk")
+
 [node name="Sketchfab_Scene2" parent="TunnelDoor" instance=ExtResource("16_nnxgq")]
 transform = Transform3D(-3.4830332e-08, -0.7968253, -0.6042098, 1, -4.371139e-08, 0, -2.6410847e-08, -0.6042098, 0.7968253, 113.64942, 5.0560017, -609.60175)
 
@@ -1698,7 +1703,7 @@ transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.903
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 14.98266, 0, 0.1294775)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 67.74726, 0, -613.5218)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)

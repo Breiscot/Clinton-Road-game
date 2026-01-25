@@ -7,6 +7,8 @@ var player_in_range := false
 var can_enter := false
 var first_interaction_done := false
 
+@onready var audio_open: AudioStreamPlayer3D = $AudioOpen
+
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -38,6 +40,8 @@ func interact():
 	hide_prompt()
 	
 	if can_enter:
+		if audio_open:
+			audio_open.play()
 		# The Rake apparso
 		enter_door()
 	else:

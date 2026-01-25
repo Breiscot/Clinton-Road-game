@@ -10,6 +10,7 @@ extends Node3D
 @onready var spawn_audio := $SpawnSound
 @onready var despawn_audio := $DespawnSound
 @onready var rake_spawn_point := $RakeSpawnPoint
+@onready var audio_close := $AudioClose
 
 var intro_shown := false
 var rake_spawned := false
@@ -20,6 +21,9 @@ func _ready():
 	setup_environment()
 	setup_audio()
 	connect_triggers()
+	
+	if audio_close:
+		audio_close.play()
 	
 	await get_tree().create_timer(2.0).timeout
 	show_intro_messages()
