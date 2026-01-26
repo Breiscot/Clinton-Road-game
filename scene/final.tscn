@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://cyogsqb5p6ypj"]
+[gd_scene load_steps=91 format=4 uid="uid://cyogsqb5p6ypj"]
 
 [ext_resource type="Script" uid="uid://pumdvx5v187" path="res://scripts/final.gd" id="1_4tu0d"]
 [ext_resource type="Texture2D" uid="uid://dy0ya5wwnst0c" path="res://models/Sewer/Textures/brick_modern.jpg" id="2_4tu0d"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dinp4rydccua7" path="res://models/Sewer/Textures/door_metal.jpg" id="11_gw4n2"]
 [ext_resource type="PackedScene" uid="uid://c28sgfln8nlok" path="res://scene/player/player.tscn" id="12_4tu0d"]
 [ext_resource type="PackedScene" uid="uid://dt0tnmn8pngyl" path="res://models/girl/girl_normal.tscn" id="12_w8snk"]
+[ext_resource type="AudioStream" uid="uid://bmvydwtf8xr7l" path="res://audio/ambience/door_closing.ogg" id="14_1218a"]
+[ext_resource type="PackedScene" uid="uid://1dq04pm7460b" path="res://scene/ui/pause_menu.tscn" id="15_s1hpw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ehne"]
 resource_name = "brick_modern"
@@ -626,6 +628,8 @@ corner_radius_bottom_left = 12
 [node name="Final" type="Node3D"]
 script = ExtResource("1_4tu0d")
 
+[node name="PauseMenu" parent="." instance=ExtResource("15_s1hpw")]
+
 [node name="Sewer" type="Node3D" parent="."]
 
 [node name="SerwersP" type="MeshInstance3D" parent="Sewer"]
@@ -1174,3 +1178,6 @@ theme_override_font_sizes/font_size = 24
 text = "\"\""
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioClose" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_1218a")

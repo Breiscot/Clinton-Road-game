@@ -13046,6 +13046,10 @@ shape = SubResource("ConcavePolygonShape3D_qunsj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06260681, -0.13858032, -0.526001)
 shape = SubResource("BoxShape3D_7ehne")
 
+[node name="AudioOpen" type="AudioStreamPlayer3D" parent="SewerExitDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23053122, -0.51293755, -0.54639435)
+stream = ExtResource("20_ge5m6")
+
 [node name="SewerExitDoorBack" type="Node3D" parent="."]
 
 [node name="Lights" type="Node3D" parent="."]

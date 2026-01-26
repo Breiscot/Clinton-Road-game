@@ -253,11 +253,7 @@ layout_mode = 2
 [node name="ObjectiveLabel" type="Label" parent="TutorialPopup/TutorialPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "OBJECTIVE:
-Find 3 car parts scattered in the forest.
-Return to your crashed car and repair it to escape.
-
-BEWARE: there may be something strange that can hurt you.
+text = "BEWARE: there may be something strange that can hurt you.
 Use your flashlight with [Q] to stun it temporarily."
 horizontal_alignment = 1
 

@@ -9,6 +9,7 @@ extends Node3D
 @onready var hint_label := $CanvasLayer/DialogueBox/MarginContainer/VBoxContainer/HintLabel
 @onready var black_screen := $CanvasLayer/BlackOverlay
 @onready var entry_label := $CanvasLayer/EntryLabel
+@onready var audio_close: AudioStreamPlayer3D = $AudioClose
 
 var entry_triggered := false
 var dialogue_started := false
@@ -98,9 +99,13 @@ var dialogue_sequence := [
 ]
 
 func _ready():
+	if audio_close:
+		audio_close.play()
+		
 	dialogue_box.visible = false
 	dialogue_label.visible = false
 	hint_label.visible = false
+	black_screen.visible = false
 	black_screen.color.a = 0.0
 	entry_label.visible = false
 	
@@ -199,6 +204,7 @@ func end_game():
 	var tween = create_tween()
 	tween.tween_property(dialogue_box, "modulate:a", 0.0, 1.0)
 	# Fade to Black
+	black_screen.visible = true
 	tween.tween_property(black_screen, "color:a", 1.0, 5.0)
 	await tween.finished
 	

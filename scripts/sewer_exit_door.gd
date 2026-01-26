@@ -2,6 +2,8 @@ extends Area3D
 
 @export var fade_duration := 1.0
 
+@onready var audio_close: AudioStreamPlayer3D = $AudioOpen
+
 var player_in_range := false
 var player: CharacterBody3D = null
 
@@ -27,6 +29,8 @@ func _process(_delta):
 		start_teleport()
 		
 func start_teleport():
+	if audio_close:
+		audio_close.play()
 	# FadeOut
 	var canvas = CanvasLayer.new()
 	canvas.layer = 100

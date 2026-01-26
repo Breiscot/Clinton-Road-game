@@ -121,6 +121,8 @@ func hide_tutorial():
 		# Mostra messaggio dopo tutorial
 		await get_tree().create_timer(1.0).timeout
 		show_message("I need to find a way out of here...", 4.0)
+		await get_tree().create_timer(6.0).timeout
+		show_message("Maybe in the forest i can find something..", 4.0)
 	)
 	
 func _unhandled_input(event):
