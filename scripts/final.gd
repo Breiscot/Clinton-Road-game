@@ -209,7 +209,7 @@ func end_game():
 	await tween.finished
 	
 	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scene/final_sequence.tscn")
 	
 func show_subtitle(text: String, duration: float):
 	entry_label.visible = true

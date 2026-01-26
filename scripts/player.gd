@@ -76,7 +76,7 @@ func setup_audio():
 	# Footsteps
 	footstep_player = AudioStreamPlayer3D.new()
 	footstep_player.name = "FootstepPlayer"
-	footstep_player.max_distance = 20
+	footstep_player.max_distance = 2
 	footstep_player.volume_db = -5
 	add_child(footstep_player)
 	

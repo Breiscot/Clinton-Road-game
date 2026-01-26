@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn2g25128rffi"]
+
+[ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_bunbi"]
+[ext_resource type="Script" uid="uid://buvoowvkp26xl" path="res://scripts/final_sequence.gd" id="1_t03qx"]
+[ext_resource type="PackedScene" uid="uid://5h5xyuaevrgt" path="res://models/player body/player_body.fbx" id="2_jnb3x"]
+[ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="3_h1x4c"]
+[ext_resource type="PackedScene" uid="uid://bwrgt3a55l1g8" path="res://scene/environment/forest.tscn" id="4_daine"]
+[ext_resource type="PackedScene" uid="uid://oc0djmbcgine" path="res://scene/enemies/Enemy Model/wendigo.glb" id="5_daine"]
+
+[sub_resource type="Curve3D" id="Curve3D_jnb3x"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h1x4c"]
+height = 0.57629395
+radius = 0.088378906
+
+[node name="FinalSequence" type="Node3D"]
+script = ExtResource("1_t03qx")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0, -0.9999999, 0, 1.0706834, 288.06464)
+curve = SubResource("Curve3D_jnb3x")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+
+[node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
+
+[node name="PlayerCamera" type="Camera3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.53047496, 0.34397176, 0.49034798)
+current = true
+
+[node name="player_body" parent="Path3D/PathFollow3D/Car" instance=ExtResource("2_jnb3x")]
+transform = Transform3D(0.9000001, 0, 0, 0, 0.89771575, -0.06408134, 0, 0.064081356, 0.89771587, 0.5538251, -0.9599604, 0.75653076)
+visible = false
+
+[node name="Forest" parent="." instance=ExtResource("4_daine")]
+
+[node name="Tree" type="StaticBody3D" parent="."]
+
+[node name="Tree" parent="Tree" instance=ExtResource("3_h1x4c")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3716002, -0.01830244, -4.0619926)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3790164, 1.3125693, -3.9407165)
+shape = SubResource("CylinderShape3D_h1x4c")
+
+[node name="Creature" type="Node3D" parent="."]
+visible = false
+
+[node name="Sketchfab_Scene" parent="Creature" instance=ExtResource("5_daine")]
+transform = Transform3D(0.014032493, 0, -0.0052999184, 0, 0.015, 0, 0.0052999184, 0, 0.014032493, 3.9285617, 0, 12.017927)
+
+[node name="ExteriorCamera" type="Camera3D" parent="."]
+transform = Transform3D(-0.9583874, 0, -0.28547102, 0, 1, 0, 0.28547102, 0, -0.9583874, 0, 1.1186291, -6.8155065)
+
+[node name="AudioEngine" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AudioCrash" type="AudioStreamPlayer3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03137255, 0.03137255, 0.03137255, 0)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
