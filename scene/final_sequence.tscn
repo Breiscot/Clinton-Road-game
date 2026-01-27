@@ -10,6 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://divu6e7ikkh7a" path="res://audio/sfx/crash_sound.wav" id="8_6ns3j"]
 
 [sub_resource type="Curve3D" id="Curve3D_jnb3x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0033942908, -4.6491623e-06, 180.49606, 0, 0, 0, 0, 0, 0, 0.032347098, -4.6491623e-06, 255.44598, 0, 0, 0, 0, 0, 0, -0.10626355, -4.6491623e-06, 266.7203, 0, 0, 0, 0, 0, 0, -1.7454923, -4.6491623e-06, 271.85605, 1.3963412, 0, -1.9006653, -1.3963412, 0, 1.9006653, 1.2706484, -4.6491623e-06, 282.45148, 1.1158345, 0, -3.997223, -1.1158345, 0, 3.997223, -2.696989, -4.6491623e-06, 289.88507),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h1x4c"]
 height = 0.57629395
@@ -20,12 +25,14 @@ script = ExtResource("1_t03qx")
 post_lines = Array[String](["No.. no....", "NOO!"])
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0, -0.9999999, 0, 1.0706834, 288.06464)
+transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0, -0.9999999, 0, 1.0706834, 280.6575)
 curve = SubResource("Curve3D_jnb3x")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999995, 0, -0.00038638717, 0, 1, 0, 0.00038638717, 0, -0.999995, 0.0033942908, -4.6491623e-06, 180.49606)
 
 [node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="InteriorCamera" type="Camera3D" parent="Path3D/PathFollow3D/Car"]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.53047496, 0.34397176, 0.49034798)

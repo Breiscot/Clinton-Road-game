@@ -2,13 +2,13 @@ extends Node3D
 
 enum Phase { DRIVE, SEE_CREATURE, SWERVE, CRASH, BLACK_TEXT, REVEAL, POST }
 
-@export var drive_speed := 12.0
+@export var drive_speed := 22.0
 @export var brake_time := 0.5
 @export var swerve_time := 0.3
 @export var crash_move_time := 0.4
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
-@export var creature_trigger_progress := 35.0
+@export var creature_trigger_progress := 95.0
 
 @export var post_lines: Array[String] = []
 
@@ -35,6 +35,17 @@ var car_detached := false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
+	var path3d = path_follow.get_parent() as Path3D
+	if path3d and path3d.curve:
+		print("Lunghezza tot curva: ", path3d.curve.get_baked_length())
+		print("Numero punti: ", path3d.curve.point_count)
+		for i in range(path3d.curve.point_count):
+			print("Punto ", i, ": ", path3d.curve.get_point_position(i))
+			
+	print("Tree position: ", tree.global_position)
+	print("Creature position: ", creature.global_position)
+	print("Car start position: ", car.global_position)
+	
 	black.visible = true
 	black.color.a = 0.0
 	subtitle.visible = false
@@ -53,13 +64,15 @@ func _ready():
 	if audio_engine and audio_engine.stream:
 		audio_engine.play()
 		
-	print("path_follow: ")
-		
 func _process(delta):
 	match phase:
 		Phase.DRIVE:
 			path_follow.progress += drive_speed * delta
+			if Engine.get_frames_drawn() % 60 == 0:
+				print("Progress: ", path_follow.progress, " | Z pos: ", car.global_position.z)
+			
 			if path_follow.progress >= creature_trigger_progress:
+				print("Trigger Creatura a progress: ", path_follow.progress)
 				start_see_creature()
 		Phase.SEE_CREATURE:
 			if not car_detached:
