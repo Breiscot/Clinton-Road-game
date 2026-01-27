@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn2g25128rffi"]
+[gd_scene load_steps=11 format=3 uid="uid://cn2g25128rffi"]
 
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_bunbi"]
 [ext_resource type="Script" uid="uid://buvoowvkp26xl" path="res://scripts/final_sequence.gd" id="1_t03qx"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="3_h1x4c"]
 [ext_resource type="PackedScene" uid="uid://bwrgt3a55l1g8" path="res://scene/environment/forest.tscn" id="4_daine"]
 [ext_resource type="PackedScene" uid="uid://oc0djmbcgine" path="res://scene/enemies/Enemy Model/wendigo.glb" id="5_daine"]
+[ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="7_padnl"]
+[ext_resource type="AudioStream" uid="uid://divu6e7ikkh7a" path="res://audio/sfx/crash_sound.wav" id="8_6ns3j"]
 
 [sub_resource type="Curve3D" id="Curve3D_jnb3x"]
 
@@ -15,6 +17,7 @@ radius = 0.088378906
 
 [node name="FinalSequence" type="Node3D"]
 script = ExtResource("1_t03qx")
+post_lines = Array[String](["No.. no....", "NOO!"])
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0, -0.9999999, 0, 1.0706834, 288.06464)
@@ -24,11 +27,11 @@ curve = SubResource("Curve3D_jnb3x")
 
 [node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
 
-[node name="PlayerCamera" type="Camera3D" parent="Path3D/PathFollow3D/Car"]
+[node name="InteriorCamera" type="Camera3D" parent="Path3D/PathFollow3D/Car"]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0.53047496, 0.34397176, 0.49034798)
 current = true
 
-[node name="player_body" parent="Path3D/PathFollow3D/Car" instance=ExtResource("2_jnb3x")]
+[node name="Corpse" parent="Path3D/PathFollow3D/Car" instance=ExtResource("2_jnb3x")]
 transform = Transform3D(0.9000001, 0, 0, 0, 0.89771575, -0.06408134, 0, 0.064081356, 0.89771587, 0.5538251, -0.9599604, 0.75653076)
 visible = false
 
@@ -53,8 +56,10 @@ transform = Transform3D(0.014032493, 0, -0.0052999184, 0, 0.015, 0, 0.0052999184
 transform = Transform3D(-0.9583874, 0, -0.28547102, 0, 1, 0, 0.28547102, 0, -0.9583874, 0, 1.1186291, -6.8155065)
 
 [node name="AudioEngine" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_padnl")
 
 [node name="AudioCrash" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_6ns3j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
