@@ -3,12 +3,12 @@ extends Node3D
 enum Phase { DRIVE, SEE_CREATURE, SWERVE, CRASH, BLACK_TEXT, REVEAL, POST }
 
 @export var drive_speed := 22.0
-@export var brake_time := 0.5
-@export var swerve_time := 0.3
-@export var crash_move_time := 0.4
+@export var brake_time := 1.2
+@export var swerve_time := 1.0
+@export var crash_move_time := 0.8
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
-@export var creature_trigger_progress := 95.0
+@export var creature_trigger_z := 16.0
 
 @export var post_lines: Array[String] = []
 
@@ -35,17 +35,6 @@ var car_detached := false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	var path3d = path_follow.get_parent() as Path3D
-	if path3d and path3d.curve:
-		print("Lunghezza tot curva: ", path3d.curve.get_baked_length())
-		print("Numero punti: ", path3d.curve.point_count)
-		for i in range(path3d.curve.point_count):
-			print("Punto ", i, ": ", path3d.curve.get_point_position(i))
-			
-	print("Tree position: ", tree.global_position)
-	print("Creature position: ", creature.global_position)
-	print("Car start position: ", car.global_position)
-	
 	black.visible = true
 	black.color.a = 0.0
 	subtitle.visible = false
@@ -71,8 +60,8 @@ func _process(delta):
 			if Engine.get_frames_drawn() % 60 == 0:
 				print("Progress: ", path_follow.progress, " | Z pos: ", car.global_position.z)
 			
-			if path_follow.progress >= creature_trigger_progress:
-				print("Trigger Creatura a progress: ", path_follow.progress)
+			if car.global_position.z <= creature_trigger_z:
+				print("Trigger Creatura a Z: ", car.global_position.z)
 				start_see_creature()
 		Phase.SEE_CREATURE:
 			if not car_detached:
@@ -96,20 +85,47 @@ func start_swerve():
 		
 	detach_car_from_path()
 	
+	print("Car position: ", car.global_position)
+	print("Car rotation: ", car.rotation_degrees)
+	print("Tree position: ", tree.global_position)
+	
 	# Calcola la direzione verso l'albero
 	var tree_pos = tree.global_position
 	var car_pos = car.global_position
-	var direction_to_tree = (tree_pos - car_pos).normalized()
 	
+	var mid_point = Vector3(
+		car_pos.x + (tree_pos.x - car_pos.x) * 0.4,
+		car_pos.y,
+		car_pos.z - 8.0
+	)
+	
+	var direction_to_tree = (tree_pos - car_pos).normalized()
 	# Calcola l'angolo Y
 	var target_y_angle = atan2(direction_to_tree.x, direction_to_tree.z)
+	
+	print("Mid point: ", mid_point)
+	print("Direction to tree: ", direction_to_tree)
+	print("Target Y angle: ", rad_to_deg(target_y_angle), " degrees")
+	
 	# Swerve verso l'albero
-	var tween = create_tween()
-	tween.tween_property(car, "rotation:y", target_y_angle, swerve_time)\
+	var tween_swerve = create_tween()
+	tween_swerve.set_parallel(true)
+	
+	tween_swerve.tween_property(car, "global_position", mid_point, swerve_time)\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_SINE)
 		
-	await tween.finished
+	tween_swerve.tween_property(car, "rotation:y", target_y_angle, swerve_time)\
+		.set_ease(Tween.EASE_IN_OUT)\
+		.set_trans(Tween.TRANS_SINE)
+		
+	tween_swerve.tween_property(car, "rotation_degrees:z", -8.0, swerve_time * 0.5)
+	
+	await tween_swerve.finished
+	
+	var tween_straighten = create_tween()
+	tween_straighten.tween_property(car, "rotation_degrees:z", -3.0, 0.2)
+	await  tween_straighten.finished
 	
 	start_crash()
 	
@@ -131,6 +147,8 @@ func detach_car_from_path():
 	
 	car_detached = true
 
+	print("Car detached at position: ", car.global_position)
+	
 func start_crash():
 	phase = Phase.CRASH
 	
