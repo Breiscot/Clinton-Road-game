@@ -35,6 +35,18 @@ current = true
 transform = Transform3D(0.9000001, 0, 0, 0, 0.89771575, -0.06408134, 0, 0.064081356, 0.89771587, 0.5538251, -0.9599604, 0.75653076)
 visible = false
 
+[node name="HeadlightLeft" type="SpotLight3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(-1.0000001, 0, -8.742791e-08, 0, 1, 0, 8.742791e-08, 0, -1.0000001, -0.5756969, -0.12576377, 3.2433472)
+
+[node name="HeadlightRight" type="SpotLight3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(-1.0000001, 0, -8.742791e-08, 0, 1, 0, 8.742791e-08, 0, -1.0000001, 0.66360533, -0.17549849, 3.181427)
+
+[node name="HeadlightWhiteRight" type="OmniLight3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.68561804, -0.16015518, 3.1735535)
+
+[node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.6286801, -0.16442645, 3.181488)
+
 [node name="Forest" parent="." instance=ExtResource("4_daine")]
 
 [node name="Tree" type="StaticBody3D" parent="."]
