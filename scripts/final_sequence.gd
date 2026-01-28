@@ -2,28 +2,35 @@ extends Node3D
 
 enum Phase { DRIVE, SEE_CREATURE, SWERVE, CRASH, BLACK_TEXT, REVEAL, POST }
 
+# Parametri
 @export var drive_speed := 22.0
-@export var brake_time := 1.2
-@export var swerve_time := 1.0
-@export var crash_move_time := 0.8
+@export var brake_time := 1.5
+@export var swerve_time := 1.2
+@export var crash_move_time := 0.6
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
-@export var creature_trigger_z := 16.0
 
 @export var post_lines: Array[String] = []
 
+# Nodi principali
 @onready var path_follow: PathFollow3D = $Path3D/PathFollow3D
 @onready var car: Node3D = $Path3D/PathFollow3D/Car
 @onready var interior_cam: Camera3D = $Path3D/PathFollow3D/Car/InteriorCamera
 @onready var exterior_cam: Camera3D = $ExteriorCamera
 @onready var corpse: Node3D = $Path3D/PathFollow3D/Car/Corpse
 
-@onready var tree: Node3D = $Tree
+@onready var tree: Node3D = $Tree/Tree
 @onready var creature: Node3D = $Creature
 
+# Markers 3D
+@onready var crash_point: Marker3D = $CrashPoint
+@onready var creature_trigger: Marker3D = $CreatureTrigger
+
+# UI
 @onready var black: ColorRect = $CanvasLayer/BlackOverlay
 @onready var subtitle: Label = $CanvasLayer/Label
 
+# Audio
 @onready var audio_engine: AudioStreamPlayer3D = $AudioEngine
 @onready var audio_crash: AudioStreamPlayer3D = $AudioCrash
 
@@ -31,9 +38,15 @@ var phase: Phase = Phase.DRIVE
 var post_index := 0
 var input_enabled := false
 var car_detached := false
+var current_speed: float
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	current_speed = drive_speed
+	
+	print("CreatureTrigger position: ", creature_trigger.global_position)
+	print("CrashPoint position: ", crash_point.global_position)
+	print("Creature position: ", creature.global_position)
 	
 	black.visible = true
 	black.color.a = 0.0
@@ -56,19 +69,19 @@ func _ready():
 func _process(delta):
 	match phase:
 		Phase.DRIVE:
-			path_follow.progress += drive_speed * delta
-			if Engine.get_frames_drawn() % 60 == 0:
-				print("Progress: ", path_follow.progress, " | Z pos: ", car.global_position.z)
-			
-			if car.global_position.z <= creature_trigger_z:
-				print("Trigger Creatura a Z: ", car.global_position.z)
+			path_follow.progress += current_speed * delta
+			if car.global_position.z <= creature_trigger.global_position.z:
 				start_see_creature()
+				
 		Phase.SEE_CREATURE:
 			if not car_detached:
-				path_follow.progress += drive_speed * 0.3 * delta
+				current_speed = lerp(current_speed, 4.0, delta * 2.0)
+				path_follow.progress += current_speed * delta
 			
 func start_see_creature():
 	phase = Phase.SEE_CREATURE
+	
+	print("Car Z: ", car.global_position.z)
 	
 	if creature:
 		creature.visible = true
@@ -85,27 +98,24 @@ func start_swerve():
 		
 	detach_car_from_path()
 	
-	print("Car position: ", car.global_position)
-	print("Car rotation: ", car.rotation_degrees)
-	print("Tree position: ", tree.global_position)
-	
-	# Calcola la direzione verso l'albero
-	var tree_pos = tree.global_position
 	var car_pos = car.global_position
+	var target_pos = crash_point.global_position
+	
+	print("Car start: ", car_pos)
+	print("Crash target: ", target_pos)
 	
 	var mid_point = Vector3(
-		car_pos.x + (tree_pos.x - car_pos.x) * 0.4,
+		lerp(car_pos.x, target_pos.x, 0.4),
 		car_pos.y,
-		car_pos.z - 8.0
+		lerp(car_pos.z, target_pos.z, 0.5)
 	)
 	
-	var direction_to_tree = (tree_pos - car_pos).normalized()
-	# Calcola l'angolo Y
-	var target_y_angle = atan2(direction_to_tree.x, direction_to_tree.z)
+	# Calcola l'angolo per puntare verso il crash point
+	var dir_to_crash = (target_pos - car_pos).normalized()
+	var target_y_angle = atan2(dir_to_crash.x, dir_to_crash.z)
 	
 	print("Mid point: ", mid_point)
-	print("Direction to tree: ", direction_to_tree)
-	print("Target Y angle: ", rad_to_deg(target_y_angle), " degrees")
+	print("Target angle: ", rad_to_deg(target_y_angle))
 	
 	# Swerve verso l'albero
 	var tween_swerve = create_tween()
@@ -118,14 +128,8 @@ func start_swerve():
 	tween_swerve.tween_property(car, "rotation:y", target_y_angle, swerve_time)\
 		.set_ease(Tween.EASE_IN_OUT)\
 		.set_trans(Tween.TRANS_SINE)
-		
-	tween_swerve.tween_property(car, "rotation_degrees:z", -8.0, swerve_time * 0.5)
 	
 	await tween_swerve.finished
-	
-	var tween_straighten = create_tween()
-	tween_straighten.tween_property(car, "rotation_degrees:z", -3.0, 0.2)
-	await  tween_straighten.finished
 	
 	start_crash()
 	
@@ -147,10 +151,13 @@ func detach_car_from_path():
 	
 	car_detached = true
 
-	print("Car detached at position: ", car.global_position)
+	print("Car detached at: ", car.global_position)
 	
 func start_crash():
 	phase = Phase.CRASH
+	
+	print("Car position: ", car.global_position)
+	print("Target Tree: ", tree.global_position)
 	
 	if audio_engine and audio_engine.playing:
 		audio_engine.stop()
@@ -158,9 +165,13 @@ func start_crash():
 	if audio_crash and audio_crash.stream:
 		audio_crash.play()
 		
-	var crash_target = tree.global_position + Vector3(0, 0.5, 0)
-	var current_y_rot: float = rad_to_deg(car.rotation.y)
-	var impact_rotation = Vector3(-12, current_y_rot + 25, 18)
+	var crash_target = crash_point.global_position
+	var current_rot = car.rotation_degrees
+	var impact_rotation = Vector3(
+		current_rot.x - 3,
+		current_rot.y,
+		current_rot.z + 2
+	)
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -175,10 +186,13 @@ func start_crash():
 	await  tween.finished
 	
 	var shake_tween = create_tween()
-	shake_tween.tween_property(car, "position:y", car.position.y + 0.2, 0.05)
-	shake_tween.tween_property(car, "position:y", car.position.y, 0.1)
+	shake_tween.tween_property(car, "position:z", car.position.z - 0.1, 0.05)
+	shake_tween.tween_property(car, "position:z", car.position.z, 0.1)
 	await shake_tween.finished
 	
+	print("Crash a: ", car.global_position)
+	
+	# Schermo nero
 	black.color.a = 1.0
 	subtitle.visible = true
 	subtitle.text = "I... I feel so cold."
@@ -238,5 +252,5 @@ func end_sequence():
 	tween.tween_property(black, "color:a", 1.0, 1.5)
 	await tween.finished
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
