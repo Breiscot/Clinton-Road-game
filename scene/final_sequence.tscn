@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn2g25128rffi"]
+[gd_scene load_steps=18 format=3 uid="uid://cn2g25128rffi"]
 
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_bunbi"]
 [ext_resource type="Script" uid="uid://buvoowvkp26xl" path="res://scripts/final_sequence.gd" id="1_t03qx"]
@@ -11,10 +11,51 @@
 
 [sub_resource type="Curve3D" id="Curve3D_jnb3x"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0033942908, -4.6491623e-06, 180.49606, 0, 0, 0, 0, 0, 0, 0.034015864, -4.6491623e-06, 251.7692, 0, 0, 0, 0, 0, 0, 1.400963, -4.6491623e-06, 265.72314, 0, 0, 0, 0, 0, 0, 0.8663789, -4.6491623e-06, 270.85123, 1.3963412, 0, -1.9006653, -1.3963412, 0, 1.9006653, 0.3422705, -4.6491623e-06, 276.80865, -0.02109456, 0, -2.353241, 0.02109456, 0, 2.353241, -2.788009, -4.6491623e-06, 282.83167),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0033942908, -4.6491623e-06, 180.49606, 0, 0, 0, 0, 0, 0, 0.034015864, -4.6491623e-06, 251.7692, 0, 0, 0, 0, 0, 0, 1.400963, -4.6491623e-06, 265.72314, 0, 0, 0, 0, 0, 0, 0.8663789, -4.6491623e-06, 270.85123, 1.3963412, 0, -1.9006653, -1.3963412, 0, 1.9006653, 0.3422705, -4.6491623e-06, 276.80865, -0.02109456, 0, -2.353241, 0.02109456, 0, 2.353241, -3.2961202, -0.24250162, 284.08014),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_padnl"]
+offsets = PackedFloat32Array(0, 0.4915254, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.3764706, 0.3764706, 0.3764706, 0.003921569, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f3tam"]
+gradient = SubResource("Gradient_padnl")
+
+[sub_resource type="Curve" id="Curve_6ns3j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f3tam"]
+curve = SubResource("Curve_6ns3j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k6ufk"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 1, 0.3)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, -0.2, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_f3tam")
+color_ramp = SubResource("GradientTexture1D_f3tam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeyka"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_c5al6"]
+material = SubResource("StandardMaterial3D_jeyka")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h1x4c"]
 height = 0.57629395
@@ -29,7 +70,7 @@ transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0
 curve = SubResource("Curve3D_jnb3x")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.99992466, 0, -0.00042951055, 0, 1, 0, 0.00042951055, 0, -0.99992466, 0.0033942908, -4.6491623e-06, 180.49606)
+transform = Transform3D(-0.9999119, 0, -0.00042950507, 0, 1, 0, 0.00042950507, 0, -0.9999119, 0.0033942908, -4.6491623e-06, 180.49606)
 
 [node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -56,6 +97,14 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.68561804, -
 [node name="HeadlightWhiteLeft" type="OmniLight3D" parent="Path3D/PathFollow3D/Car"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.6286801, -0.16442645, 3.181488)
 
+[node name="SmokeParticles" type="GPUParticles3D" parent="Path3D/PathFollow3D/Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32886147, 2.3308077)
+emitting = false
+amount = 50
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_k6ufk")
+draw_pass_1 = SubResource("QuadMesh_c5al6")
+
 [node name="Forest" parent="." instance=ExtResource("4_daine")]
 
 [node name="Tree" type="StaticBody3D" parent="."]
@@ -74,7 +123,7 @@ visible = false
 transform = Transform3D(0.014032493, 0, -0.0052999184, 0, 0.015, 0, 0.0052999184, 0, 0.014032493, 3.9285617, 0, 12.017927)
 
 [node name="CrashPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.263219, 0.8695059, -0.12831593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3314807, 0.8695059, -0.25040305)
 
 [node name="CreatureTrigger" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.192093)
@@ -83,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.192093)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0816329, 0, 4.5720625)
 
 [node name="ExteriorCamera" type="Camera3D" parent="."]
-transform = Transform3D(-0.9583874, 0, -0.28547102, 0, 1, 0, 0.28547102, 0, -0.9583874, 0, 1.1186291, -6.8155065)
+transform = Transform3D(-0.9583874, 0, -0.28547102, 0, 1, 0, 0.28547102, 0, -0.9583874, 0, 1.6569177, -6.8155065)
 
 [node name="AudioEngine" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_padnl")

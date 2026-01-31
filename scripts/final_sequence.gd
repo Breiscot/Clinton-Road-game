@@ -6,7 +6,7 @@ enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL
 @export var drive_speed := 22.0
 @export var slow_speed := 12.0
 @export var crash_time := 1.2
-@export var swerve_angle := 40.0
+@export var swerve_angle := 20.0
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
 
@@ -21,6 +21,8 @@ enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL
 
 @onready var tree: Node3D = $Tree/Tree
 @onready var creature: Node3D = $Creature
+
+@onready var smoke_effect: GPUParticles3D = $Path3D/PathFollow3D/Car/SmokeParticles
 
 # Markers 3D
 @onready var crash_point: Marker3D = $CrashPoint
@@ -107,30 +109,30 @@ func start_swerve_and_crash():
 	if audio_crash and audio_crash.stream:
 		audio_crash.play()
 	
-	var car_pos = crash_point.global_position
+	var car_pos = car.global_position
 	var target_pos = crash_point.global_position
 	
-	var direction = (target_pos - car_pos).normalized()
-	
-	var target_y_angle = atan2(direction.x, direction.z)
+	print("Target position: ", target_pos)
+	print("Distance: ", car_pos.distance_to(target_pos))
 	
 	var current_rot = car.rotation_degrees
 	
+	var turn_amount = +swerve_angle
+	
 	var impact_rotation = Vector3(
-		-5,
-		rad_to_deg(target_y_angle),
+		-2,
+		current_rot.y + turn_amount,
 		2
 	)
 	
-	print("Direction to crash: ", direction)
-	print("Rotation_angle current Y: ", current_rot.y)
-	print("Rotation target Y: ", rad_to_deg(target_y_angle))
-	print("Target position: ", target_pos)
+	print("Turn amount: ", turn_amount, "°")
+	print("Final rotation Y: ", impact_rotation.y, "°")
 	
-	# Swerve verso l'albero
+	# Animazione
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
+	# Movimento verso il crash point
 	tween.tween_property(car, "global_position", target_pos, crash_time)\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_SINE)
@@ -185,6 +187,9 @@ func start_reveal():
 	if creature:
 		creature.visible = false
 		
+	if smoke_effect:
+		smoke_effect.emitting = true
+	
 	subtitle.visible = false
 	
 	var tween = create_tween()
