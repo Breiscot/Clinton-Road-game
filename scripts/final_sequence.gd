@@ -1,6 +1,6 @@
 extends Node3D
 
-enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL, POST }
+enum Phase { INTRO, DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL, POST, BLINK, GIRL_APPEAR }
 
 # Parametri
 @export var drive_speed := 22.0
@@ -9,6 +9,9 @@ enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL
 @export var swerve_angle := 20.0
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
+@export var intro_time := 3.0
+@export var intro_fade_time := 1.5
+@export var blink_time := 0.15
 
 @export var post_lines: Array[String] = []
 
@@ -21,6 +24,7 @@ enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL
 
 @onready var tree: Node3D = $Tree/Tree
 @onready var creature: Node3D = $Creature
+@onready var girl: Node3D = $Girl
 
 @onready var smoke_effect: GPUParticles3D = $Path3D/PathFollow3D/Car/SmokeParticles
 
@@ -32,12 +36,14 @@ enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL
 # UI
 @onready var black: ColorRect = $CanvasLayer/BlackOverlay
 @onready var subtitle: Label = $CanvasLayer/Label
+@onready var time_label: Label = $CanvasLayer/TimeLabel
 
 # Audio
 @onready var audio_engine: AudioStreamPlayer3D = $AudioEngine
 @onready var audio_crash: AudioStreamPlayer3D = $AudioCrash
+@onready var creature_sound: AudioStreamPlayer3D = $Creature/CreatureSound
 
-var phase: Phase = Phase.DRIVE
+var phase: Phase = Phase.INTRO
 var post_index := 0
 var input_enabled := false
 var car_detached := false
@@ -54,23 +60,48 @@ func _ready():
 	black.visible = true
 	black.color.a = 0.0
 	subtitle.visible = false
+	time_label.visible = true
 	
 	# Camera
 	interior_cam.current = true
 	exterior_cam.current = false
 	
-	# Creature / Corpse
+	# Creature / Corpse / Girl
 	if creature: 
 		creature.visible = false
 	if corpse: 
 		corpse.visible = false
+	if girl:
+		girl.visible = false
+	if smoke_effect:
+		smoke_effect.emitting = false
 	
-	# Audio
+	start_intro()
+	
+func start_intro():
+	phase = Phase.INTRO
+	
+	await get_tree().create_timer(intro_time).timeout
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(black, "color:a", 0.0, intro_fade_time)
+	tween.tween_property(time_label, "modulate:a", 0.0, intro_fade_time)
+	
+	await tween.finished
+	
+	time_label.visible = false
+	
 	if audio_engine and audio_engine.stream:
 		audio_engine.play()
 		
+	phase = Phase.DRIVE
+		
 func _process(delta):
 	match phase:
+		Phase.INTRO:
+			pass
+			
 		Phase.DRIVE:
 			path_follow.progress += current_speed * delta
 			
@@ -92,6 +123,9 @@ func start_see_creature():
 	if creature:
 		creature.visible = true
 		
+	if creature_sound and creature_sound.stream:
+		creature_sound.play()
+		
 	await get_tree().create_timer(0.3).timeout
 	phase = Phase.APPROACH
 	
@@ -112,11 +146,9 @@ func start_swerve_and_crash():
 	var car_pos = car.global_position
 	var target_pos = crash_point.global_position
 	
-	print("Target position: ", target_pos)
 	print("Distance: ", car_pos.distance_to(target_pos))
 	
 	var current_rot = car.rotation_degrees
-	
 	var turn_amount = +swerve_angle
 	
 	var impact_rotation = Vector3(
@@ -143,7 +175,9 @@ func start_swerve_and_crash():
 	
 	await tween.finished
 	
-	print("Rotation Final: ", car.rotation_degrees)
+	# Fumo
+	if smoke_effect:
+		smoke_effect.emitting = true
 	
 	# Schermo nero
 	black.color.a = 1.0
@@ -186,9 +220,6 @@ func start_reveal():
 		
 	if creature:
 		creature.visible = false
-		
-	if smoke_effect:
-		smoke_effect.emitting = true
 	
 	subtitle.visible = false
 	
@@ -202,8 +233,7 @@ func start_reveal():
 		input_enabled = true
 		show_post_line()
 	else:
-		await get_tree().create_timer(3.0).timeout
-		end_sequence()
+		start_blink_and_girl()
 		
 func _unhandled_input(event):
 	if phase != Phase.POST or not input_enabled:
@@ -223,6 +253,25 @@ func show_post_line():
 	subtitle.visible = true
 	subtitle.text = post_lines[post_index]
 	
+func start_blink_and_girl():
+	phase = Phase.BLINK
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	# Blink veloce
+	var blink_tween = create_tween()
+	blink_tween.tween_property(black, "color:a", 1.0, blink_time)
+	await blink_tween.finished
+	
+	if girl:
+		girl.visible = true
+	
+	phase = Phase.GIRL_APPEAR
+	
+	await get_tree().create_timer(3.0).timeout
+	
+	end_sequence()
+
 func end_sequence():
 	var tween = create_tween()
 	tween.tween_property(black, "color:a", 1.0, 1.5)
