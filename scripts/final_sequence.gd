@@ -1,12 +1,12 @@
 extends Node3D
 
-enum Phase { DRIVE, SEE_CREATURE, SWERVE, CRASH, BLACK_TEXT, REVEAL, POST }
+enum Phase { DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT, REVEAL, POST }
 
 # Parametri
 @export var drive_speed := 22.0
-@export var brake_time := 1.5
-@export var swerve_time := 1.2
-@export var crash_move_time := 0.6
+@export var slow_speed := 12.0
+@export var crash_time := 1.2
+@export var swerve_angle := 40.0
 @export var black_text_time := 2.5
 @export var fade_in_time := 2.0
 
@@ -25,6 +25,7 @@ enum Phase { DRIVE, SEE_CREATURE, SWERVE, CRASH, BLACK_TEXT, REVEAL, POST }
 # Markers 3D
 @onready var crash_point: Marker3D = $CrashPoint
 @onready var creature_trigger: Marker3D = $CreatureTrigger
+@onready var swerve_trigger: Marker3D = $SwerveTrigger
 
 # UI
 @onready var black: ColorRect = $CanvasLayer/BlackOverlay
@@ -44,9 +45,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	current_speed = drive_speed
 	
-	print("CreatureTrigger position: ", creature_trigger.global_position)
-	print("CrashPoint position: ", crash_point.global_position)
-	print("Creature position: ", creature.global_position)
+	print("CreatureTrigger Z: ", creature_trigger.global_position.z)
+	print("SwerveTrigger Z: ", creature.global_position.z)
+	print("CrashPoint: ", crash_point.global_position)
 	
 	black.visible = true
 	black.color.a = 0.0
@@ -70,13 +71,16 @@ func _process(delta):
 	match phase:
 		Phase.DRIVE:
 			path_follow.progress += current_speed * delta
+			
 			if car.global_position.z <= creature_trigger.global_position.z:
 				start_see_creature()
 				
-		Phase.SEE_CREATURE:
-			if not car_detached:
-				current_speed = lerp(current_speed, 4.0, delta * 2.0)
-				path_follow.progress += current_speed * delta
+		Phase.SEE_CREATURE, Phase.APPROACH:
+			current_speed = lerp(current_speed, slow_speed, delta * 2.0)
+			path_follow.progress += current_speed * delta
+			
+			if car.global_position.z <= swerve_trigger.global_position.z:
+				start_swerve_and_crash()
 			
 func start_see_creature():
 	phase = Phase.SEE_CREATURE
@@ -86,52 +90,68 @@ func start_see_creature():
 	if creature:
 		creature.visible = true
 		
-	await get_tree().create_timer(brake_time).timeout
+	await get_tree().create_timer(0.3).timeout
+	phase = Phase.APPROACH
 	
-	start_swerve()
+func start_swerve_and_crash():
+	phase = Phase.SWERVE_AND_CRASH
 	
-func start_swerve():
-	phase = Phase.SWERVE
+	print("Car position: ", car.global_position)
+	print("Car rotation: ", car.rotation_degrees)
 	
 	if audio_engine and audio_engine.playing:
 		audio_engine.stop()
 		
 	detach_car_from_path()
 	
-	var car_pos = car.global_position
+	if audio_crash and audio_crash.stream:
+		audio_crash.play()
+	
+	var car_pos = crash_point.global_position
 	var target_pos = crash_point.global_position
 	
-	print("Car start: ", car_pos)
-	print("Crash target: ", target_pos)
+	var direction = (target_pos - car_pos).normalized()
 	
-	var mid_point = Vector3(
-		lerp(car_pos.x, target_pos.x, 0.4),
-		car_pos.y,
-		lerp(car_pos.z, target_pos.z, 0.5)
+	var target_y_angle = atan2(direction.x, direction.z)
+	
+	var current_rot = car.rotation_degrees
+	
+	var impact_rotation = Vector3(
+		-5,
+		rad_to_deg(target_y_angle),
+		2
 	)
 	
-	# Calcola l'angolo per puntare verso il crash point
-	var dir_to_crash = (target_pos - car_pos).normalized()
-	var target_y_angle = atan2(dir_to_crash.x, dir_to_crash.z)
-	
-	print("Mid point: ", mid_point)
-	print("Target angle: ", rad_to_deg(target_y_angle))
+	print("Direction to crash: ", direction)
+	print("Rotation_angle current Y: ", current_rot.y)
+	print("Rotation target Y: ", rad_to_deg(target_y_angle))
+	print("Target position: ", target_pos)
 	
 	# Swerve verso l'albero
-	var tween_swerve = create_tween()
-	tween_swerve.set_parallel(true)
+	var tween = create_tween()
+	tween.set_parallel(true)
 	
-	tween_swerve.tween_property(car, "global_position", mid_point, swerve_time)\
+	tween.tween_property(car, "global_position", target_pos, crash_time)\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_SINE)
 		
-	tween_swerve.tween_property(car, "rotation:y", target_y_angle, swerve_time)\
+	tween.tween_property(car, "rotation_degrees", impact_rotation, crash_time * 0.7)\
 		.set_ease(Tween.EASE_IN_OUT)\
 		.set_trans(Tween.TRANS_SINE)
 	
-	await tween_swerve.finished
+	await tween.finished
 	
-	start_crash()
+	print("Rotation Final: ", car.rotation_degrees)
+	
+	# Schermo nero
+	black.color.a = 1.0
+	subtitle.visible = true
+	subtitle.text = "I... I feel so cold.."
+	phase = Phase.BLACK_TEXT
+	
+	await get_tree().create_timer(black_text_time).timeout
+	
+	start_reveal()
 	
 func detach_car_from_path():
 	if car_detached:
@@ -152,55 +172,6 @@ func detach_car_from_path():
 	car_detached = true
 
 	print("Car detached at: ", car.global_position)
-	
-func start_crash():
-	phase = Phase.CRASH
-	
-	print("Car position: ", car.global_position)
-	print("Target Tree: ", tree.global_position)
-	
-	if audio_engine and audio_engine.playing:
-		audio_engine.stop()
-		
-	if audio_crash and audio_crash.stream:
-		audio_crash.play()
-		
-	var crash_target = crash_point.global_position
-	var current_rot = car.rotation_degrees
-	var impact_rotation = Vector3(
-		current_rot.x - 3,
-		current_rot.y,
-		current_rot.z + 2
-	)
-	
-	var tween = create_tween()
-	tween.set_parallel(true)
-	
-	tween.tween_property(car, "global_position", crash_target, crash_move_time)\
-		.set_ease(Tween.EASE_IN)\
-		.set_trans(Tween.TRANS_QUAD)
-		
-	tween.tween_property(car, "rotation_degrees", impact_rotation, crash_move_time)\
-		.set_ease(Tween.EASE_IN)
-		
-	await  tween.finished
-	
-	var shake_tween = create_tween()
-	shake_tween.tween_property(car, "position:z", car.position.z - 0.1, 0.05)
-	shake_tween.tween_property(car, "position:z", car.position.z, 0.1)
-	await shake_tween.finished
-	
-	print("Crash a: ", car.global_position)
-	
-	# Schermo nero
-	black.color.a = 1.0
-	subtitle.visible = true
-	subtitle.text = "I... I feel so cold."
-	phase = Phase.BLACK_TEXT
-	
-	await get_tree().create_timer(black_text_time).timeout
-	
-	start_reveal()
 	
 func start_reveal():
 	phase = Phase.REVEAL
