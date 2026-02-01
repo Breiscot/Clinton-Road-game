@@ -99,13 +99,19 @@ func start_intro():
 	
 	await get_tree().create_timer(intro_time).timeout
 	
+	if audio_engine and audio_engine.stream:
+		audio_engine.play()
+	
+	phase = Phase.DRIVE
+	
+	# Fade Out
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(black, "color:a", 0.0, intro_fade_time)
 	
 	if time_label:
 		tween.tween_property(time_label, "modulate:a", 0.0, intro_fade_time)
-	
+		
 	await tween.finished
 	
 	print("Intro fade finished, black alpha: ", black.color.a)
@@ -113,11 +119,6 @@ func start_intro():
 	if time_label:
 		time_label.visible = false
 	
-	if audio_engine and audio_engine.stream:
-		audio_engine.play()
-		
-	phase = Phase.DRIVE
-		
 func _process(delta):
 	match phase:
 		Phase.INTRO:
@@ -265,7 +266,8 @@ func show_post_line():
 	if post_index >= post_lines.size():
 		subtitle.visible = false
 		input_enabled = false
-		end_sequence()
+		
+		start_blink_and_girl()
 		return
 		
 	subtitle.visible = true
@@ -293,7 +295,7 @@ func start_blink_and_girl():
 	
 	phase = Phase.GIRL_APPEAR
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(0.2).timeout
 	
 	var unblink_tween = create_tween()
 	unblink_tween.tween_property(black, "color:a", 0.0, blink_time)
@@ -304,7 +306,7 @@ func start_blink_and_girl():
 	
 	phase = Phase.GIRL_APPEAR
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	
 	end_sequence()
 
