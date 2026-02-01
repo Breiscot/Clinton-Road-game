@@ -11,7 +11,7 @@ enum Phase { INTRO, DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT,
 @export var fade_in_time := 2.0
 @export var intro_time := 3.0
 @export var intro_fade_time := 1.5
-@export var blink_time := 0.15
+@export var blink_time := 0.3
 
 @export var post_lines: Array[String] = []
 
@@ -53,14 +53,27 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	current_speed = drive_speed
 	
-	print("CreatureTrigger Z: ", creature_trigger.global_position.z)
-	print("SwerveTrigger Z: ", creature.global_position.z)
-	print("CrashPoint: ", crash_point.global_position)
+	print("Black overlay: ", black)
+	print("Time label: ", time_label)
+	print("Girl: ", girl)
 	
-	black.visible = true
-	black.color.a = 0.0
+	if black:
+		print("Black size: ", black.size)
+		print("Black color: ", black.color)
+		
+	if black:
+		black.visible = true
+		black.color = Color(0, 0, 0, 1)
+		black.z_index = 100
+		print("Black overlay configured: alpha = ", black.color.a)
+		
+	if time_label:
+		time_label.visible = true
+		time_label.modulate.a = 1.0
+		time_label.z_index = 101
+		print("Time label configured")
+	
 	subtitle.visible = false
-	time_label.visible = true
 	
 	# Camera
 	interior_cam.current = true
@@ -73,6 +86,7 @@ func _ready():
 		corpse.visible = false
 	if girl:
 		girl.visible = false
+		print("Girl hidden initially")
 	if smoke_effect:
 		smoke_effect.emitting = false
 	
@@ -81,16 +95,23 @@ func _ready():
 func start_intro():
 	phase = Phase.INTRO
 	
+	print("Black alpha at intro start: ", black.color.a)
+	
 	await get_tree().create_timer(intro_time).timeout
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(black, "color:a", 0.0, intro_fade_time)
-	tween.tween_property(time_label, "modulate:a", 0.0, intro_fade_time)
+	
+	if time_label:
+		tween.tween_property(time_label, "modulate:a", 0.0, intro_fade_time)
 	
 	await tween.finished
 	
-	time_label.visible = false
+	print("Intro fade finished, black alpha: ", black.color.a)
+	
+	if time_label:
+		time_label.visible = false
 	
 	if audio_engine and audio_engine.stream:
 		audio_engine.play()
@@ -181,6 +202,7 @@ func start_swerve_and_crash():
 	
 	# Schermo nero
 	black.color.a = 1.0
+	subtitle.z_index = 102 
 	subtitle.visible = true
 	subtitle.text = "I... I feel so cold.."
 	phase = Phase.BLACK_TEXT
@@ -197,17 +219,11 @@ func detach_car_from_path():
 	var global_trans = car.global_transform
 	# Rimuove dal PathFollow3D
 	path_follow.remove_child(car)
-	
 	add_child(car)
-	
 	# Ripristina la transform global
 	car.global_transform = global_trans
-	
 	interior_cam.current = true
-	
 	car_detached = true
-
-	print("Car detached at: ", car.global_position)
 	
 func start_reveal():
 	phase = Phase.REVEAL
@@ -223,6 +239,7 @@ func start_reveal():
 	
 	subtitle.visible = false
 	
+	# Fade In
 	var tween = create_tween()
 	tween.tween_property(black, "color:a", 0.0, fade_in_time)
 	await tween.finished
@@ -233,6 +250,7 @@ func start_reveal():
 		input_enabled = true
 		show_post_line()
 	else:
+		print("No post_lines, going to blink")
 		start_blink_and_girl()
 		
 func _unhandled_input(event):
@@ -256,15 +274,33 @@ func show_post_line():
 func start_blink_and_girl():
 	phase = Phase.BLINK
 	
+	print("Current black alpha: ", black.color.a)
+	
 	await get_tree().create_timer(1.0).timeout
 	
-	# Blink veloce
+	# Blink
 	var blink_tween = create_tween()
 	blink_tween.tween_property(black, "color:a", 1.0, blink_time)
 	await blink_tween.finished
 	
+	print("Blink closed, black alpha: ", black.color.a)
+	
 	if girl:
 		girl.visible = true
+		print("Girl position: ", girl.global_position)
+	else:
+		print("ERR: Girl is null")
+	
+	phase = Phase.GIRL_APPEAR
+	
+	await get_tree().create_timer(3.0).timeout
+	
+	var unblink_tween = create_tween()
+	unblink_tween.tween_property(black, "color:a", 0.0, blink_time)
+	await unblink_tween.finished
+	
+	print("Blink opened, black alpha: ", black.color.a)
+	print("Girl visible: ", girl.visible if girl else "null")
 	
 	phase = Phase.GIRL_APPEAR
 	
