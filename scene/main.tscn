@@ -36,7 +36,7 @@ script = ExtResource("1_0ha60")
 transform = Transform3D(-0.9864294, 0.077623904, 0.1446783, 0.076802224, 0.9969828, -0.011264482, -0.14511617, -2.3278456e-10, -0.98941475, -0.16541028, 0.96520257, -0.3478825)
 
 [node name="Player" parent="." instance=ExtResource("3_4j5ol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39821485, -0.8855243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1806368, -0.8855243)
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -14.246564, 25)

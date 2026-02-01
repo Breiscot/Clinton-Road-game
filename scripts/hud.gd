@@ -122,6 +122,8 @@ func hide_tutorial():
 		await get_tree().create_timer(1.0).timeout
 		show_message("I need to find a way out of here...", 4.0)
 		await get_tree().create_timer(6.0).timeout
+		show_message("My phone is broken, damn it", 4.0)
+		await get_tree().create_timer(7.0).timeout
 		show_message("Maybe in the forest i can find something..", 4.0)
 	)
 	
