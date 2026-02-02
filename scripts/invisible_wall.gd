@@ -35,10 +35,7 @@ func _ready():
 	print("InvisibleWall ready, type: ", WallType.keys()[wall_type])
 	body_entered.connect(_on_body_entered)
 	
-func _on_body_entered(body: Node3D):
-	print("something entered wall: ", body.name)
-	print("is in player group: ", body.is_in_group("player"))
-	print("can show message: ", can_show_message)
+func _on_body_entered(body: Node3D): 
 	
 	if body.is_in_group("player") and can_show_message:
 		print("showing message")

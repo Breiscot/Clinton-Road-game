@@ -52,26 +52,16 @@ var current_speed: float
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	current_speed = drive_speed
-	
-	print("Black overlay: ", black)
-	print("Time label: ", time_label)
-	print("Girl: ", girl)
-	
-	if black:
-		print("Black size: ", black.size)
-		print("Black color: ", black.color)
 		
 	if black:
 		black.visible = true
 		black.color = Color(0, 0, 0, 1)
 		black.z_index = 100
-		print("Black overlay configured: alpha = ", black.color.a)
 		
 	if time_label:
 		time_label.visible = true
 		time_label.modulate.a = 1.0
 		time_label.z_index = 101
-		print("Time label configured")
 	
 	subtitle.visible = false
 	
@@ -86,7 +76,6 @@ func _ready():
 		corpse.visible = false
 	if girl:
 		girl.visible = false
-		print("Girl hidden initially")
 	if smoke_effect:
 		smoke_effect.emitting = false
 	
@@ -94,8 +83,6 @@ func _ready():
 	
 func start_intro():
 	phase = Phase.INTRO
-	
-	print("Black alpha at intro start: ", black.color.a)
 	
 	await get_tree().create_timer(intro_time).timeout
 	
@@ -113,8 +100,6 @@ func start_intro():
 		tween.tween_property(time_label, "modulate:a", 0.0, intro_fade_time)
 		
 	await tween.finished
-	
-	print("Intro fade finished, black alpha: ", black.color.a)
 	
 	if time_label:
 		time_label.visible = false
@@ -140,8 +125,6 @@ func _process(delta):
 func start_see_creature():
 	phase = Phase.SEE_CREATURE
 	
-	print("Car Z: ", car.global_position.z)
-	
 	if creature:
 		creature.visible = true
 		
@@ -154,9 +137,6 @@ func start_see_creature():
 func start_swerve_and_crash():
 	phase = Phase.SWERVE_AND_CRASH
 	
-	print("Car position: ", car.global_position)
-	print("Car rotation: ", car.rotation_degrees)
-	
 	if audio_engine and audio_engine.playing:
 		audio_engine.stop()
 		
@@ -168,8 +148,6 @@ func start_swerve_and_crash():
 	var car_pos = car.global_position
 	var target_pos = crash_point.global_position
 	
-	print("Distance: ", car_pos.distance_to(target_pos))
-	
 	var current_rot = car.rotation_degrees
 	var turn_amount = +swerve_angle
 	
@@ -178,9 +156,6 @@ func start_swerve_and_crash():
 		current_rot.y + turn_amount,
 		2
 	)
-	
-	print("Turn amount: ", turn_amount, "°")
-	print("Final rotation Y: ", impact_rotation.y, "°")
 	
 	# Animazione
 	var tween = create_tween()
@@ -251,7 +226,6 @@ func start_reveal():
 		input_enabled = true
 		show_post_line()
 	else:
-		print("No post_lines, going to blink")
 		start_blink_and_girl()
 		
 func _unhandled_input(event):
@@ -276,8 +250,6 @@ func show_post_line():
 func start_blink_and_girl():
 	phase = Phase.BLINK
 	
-	print("Current black alpha: ", black.color.a)
-	
 	await get_tree().create_timer(1.0).timeout
 	
 	# Blink
@@ -285,11 +257,8 @@ func start_blink_and_girl():
 	blink_tween.tween_property(black, "color:a", 1.0, blink_time)
 	await blink_tween.finished
 	
-	print("Blink closed, black alpha: ", black.color.a)
-	
 	if girl:
 		girl.visible = true
-		print("Girl position: ", girl.global_position)
 	else:
 		print("ERR: Girl is null")
 	
@@ -300,9 +269,6 @@ func start_blink_and_girl():
 	var unblink_tween = create_tween()
 	unblink_tween.tween_property(black, "color:a", 0.0, blink_time)
 	await unblink_tween.finished
-	
-	print("Blink opened, black alpha: ", black.color.a)
-	print("Girl visible: ", girl.visible if girl else "null")
 	
 	phase = Phase.GIRL_APPEAR
 	
