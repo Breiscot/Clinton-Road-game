@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmd3vwys08r48"]
+
+[ext_resource type="Script" uid="uid://cdve0g7f8hfov" path="res://scripts/interactable_image.gd" id="1_1s2rg"]
+[ext_resource type="Texture2D" uid="uid://b0gwetq5uy2o1" path="res://images/sewers_map.png" id="1_f2hl4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1s2rg"]
+size = Vector3(1.0165949, 0.9653299, 0.5467529)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1s2rg"]
+albedo_texture = ExtResource("1_f2hl4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_643tf"]
+material = SubResource("StandardMaterial3D_1s2rg")
+
+[node name="InteractableImage" type="Area3D"]
+script = ExtResource("1_1s2rg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018992424, 0.0040444136, 0.06829834)
+shape = SubResource("BoxShape3D_1s2rg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15212202)
+mesh = SubResource("QuadMesh_643tf")
