@@ -39,6 +39,7 @@ height = 2.0
 [node name="FootstepPlayer" type="AudioStreamPlayer3D" parent="."]
 
 [node name="ScreechPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_71gh4")
 
 [node name="AmbientPlayer" type="AudioStreamPlayer3D" parent="."]
 
