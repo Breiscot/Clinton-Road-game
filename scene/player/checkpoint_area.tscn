@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3023h2cl7vwe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oknvp"]
+size = Vector3(4.310486, 4.7700806, 3.0605469)
+
+[node name="CheckpointArea" type="Area3D"]
+transform = Transform3D(1.3165084, 0, 0, 0, 1.7759604, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03817749, 1.8850403, 1.0302734)
+shape = SubResource("BoxShape3D_oknvp")

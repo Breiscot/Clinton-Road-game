@@ -359,6 +359,8 @@ func attack_player():
 	
 	await get_tree().create_timer(0.3).timeout
 	
+	handle_player_death()
+	
 	if player and player.has_method("take_damage"):
 		player.take_damage(100)
 	else:
@@ -366,6 +368,79 @@ func attack_player():
 		# Fallback
 		await get_tree().create_timer(1.0).timeout
 		get_tree().reload_current_scene()
+		
+func handle_player_death():
+	print("TheRake: Handling player death")
+	
+	if CheckpointManager.has_checkpoint:
+		respawn_at_checkpoint()
+	else:
+		print("TheRake: No checkpoint, reloading scene...")
+		await get_tree().create_timer(1.0).timeout
+		get_tree().reload_current_scene()
+		
+func respawn_at_checkpoint():
+	var transition_layer = CanvasLayer.new()
+	transition_layer.layer = 100
+	transition_layer.name = "TransitionLayer"
+	get_tree().current_scene.add_child(transition_layer)
+	
+	var black_screen = ColorRect.new()
+	black_screen.color = Color(0, 0, 0, 1)
+	black_screen.anchor_right = 1.0
+	black_screen.anchor_bottom = 1.0
+	transition_layer.add_child(black_screen)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
+	if jumpscare_layer:
+		jumpscare_layer.queue_free()
+		
+	if player:
+		player.global_position = CheckpointManager.checkpoint_position
+		player.rotation_degrees = CheckpointManager.checkpoint_rotation
+		
+		player.set_physics_process(true)
+		player.set_process_input(true)
+		
+		if player.has_method("reset_health"):
+			player.reset_health()
+			
+		if player.has_method("reset_fear"):
+			player.reset_fear()
+			
+	reset_rake()
+	
+	# Fade Out
+	var tween = create_tween()
+	tween.tween_property(black_screen, "color:a", 0.0, 0.5)
+	await tween.finished
+	
+	transition_layer.queue_free()
+	
+func reset_rake():
+	has_attacked = false
+	is_active = false
+	stare_timer = 0.0
+	current_state = State.INACTIVE
+	
+	var spawn_positions = get_tree().get_nodes_in_group("rake_spawn_point")
+	
+	if spawn_positions.size() > 0:
+		var spawn_point = spawn_positions[randi() % spawn_positions.size()]
+		global_position = spawn_point.global_position
+	else:
+		var away_direction = (global_position - player.global_position).normalized()
+		global_position = player.global_position + away_direction * 30.0
+		global_position.y = 0
+		
+	visible = false
+	
+	await get_tree().create_timer(3.0).timeout
+	
+	visible = true
+	activate()
 		
 func show_jumpscare():
 	if player:

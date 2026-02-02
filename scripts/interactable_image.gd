@@ -35,10 +35,6 @@ func _unhandled_input(event):
 			open_image()
 		get_viewport().set_input_as_handled()
 		
-	elif event.is_action_pressed("ui_cancel") and is_viewing: # [ESC]
-		close_image()
-		get_viewport().set_input_as_handled()
-		
 func open_image():
 	if not image_viewer_ui or not image_texture:
 		return

@@ -16,7 +16,7 @@ func _ready():
 		background.color = Color(0, 0, 0, 0.85)
 		
 	if close_hint:
-		close_hint.text = "Press [E] or [ESC] to close"
+		close_hint.text = "Press [E] to close"
 		close_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		
 func show_image(texture: Texture2D):
@@ -24,7 +24,6 @@ func show_image(texture: Texture2D):
 		image_display.texture = texture
 		
 		image_display.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		image_display.custom_minimum_size = Vector2(800, 600)
 		
 	visible = true
 	
