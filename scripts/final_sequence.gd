@@ -39,8 +39,8 @@ enum Phase { INTRO, DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT,
 @onready var time_label: Label = $CanvasLayer/TimeLabel
 
 # Audio
-@onready var audio_engine: AudioStreamPlayer3D = $AudioEngine
-@onready var audio_crash: AudioStreamPlayer3D = $AudioCrash
+@onready var audio_engine: AudioStreamPlayer3D = $Path3D/PathFollow3D/Car/AudioEngine
+@onready var audio_crash: AudioStreamPlayer3D = $Path3D/PathFollow3D/Car/AudioCrash
 @onready var creature_sound: AudioStreamPlayer3D = $Creature/CreatureSound
 
 var phase: Phase = Phase.INTRO
