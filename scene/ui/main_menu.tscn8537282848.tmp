@@ -38,83 +38,8 @@ shape = SubResource("CylinderShape3D_e5dty")
 [node name="CrashedCar" parent="." instance=ExtResource("4_e5dty")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0279198, -0.29221535)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MainMenuUI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 406.0
-offset_top = 144.5
-offset_right = 706.0
-offset_bottom = 463.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="Label" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "CLINTON ROAD"
-horizontal_alignment = 1
-
-[node name="Spacer1" type="Control" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "PLAY"
-
-[node name="Spacer2" type="Control" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-
-[node name="OptionsButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "OPTIONS"
-
-[node name="Spacer3" type="Control" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-
-[node name="ExitButton" type="Button" parent="CanvasLayer/MainMenuUI/VBoxContainer"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-text = "EXIT"
-
-[node name="OptionsMenu" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="OptionsBackground" type="ColorRect" parent="CanvasLayer/OptionsMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.003921569)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OptionsMenu"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -127,102 +52,38 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionsTitle" type="Label" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "OPTIONS"
+theme_override_font_sizes/font_size = 32
+text = "CLINTON ROAD"
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Spacer1" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="SensitivityContainer" type="HBoxContainer" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "PLAY"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="SensitivityLabel" type="Label" parent="CanvasLayer/OptionsMenu/VBoxContainer/SensitivityContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-text = "Mouse Sensitivity"
+text = "OPTIONS"
 
-[node name="SensitivitySlider" type="HSlider" parent="CanvasLayer/OptionsMenu/VBoxContainer/SensitivityContainer"]
-custom_minimum_size = Vector2(200, 30)
-layout_mode = 2
-min_value = 0.001
-max_value = 0.01
-step = 0.001
-value = 0.003
-
-[node name="Spacer2" type="Control" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="VolumeContainer" type="HBoxContainer" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-
-[node name="VolumeLabel" type="Label" parent="CanvasLayer/OptionsMenu/VBoxContainer/VolumeContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "Master Volume"
-
-[node name="VolumeSlider" type="HSlider" parent="CanvasLayer/OptionsMenu/VBoxContainer/VolumeContainer"]
-custom_minimum_size = Vector2(200, 30)
-layout_mode = 2
-value = 100.0
-
-[node name="Spacer3" type="Control" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="FullscreenContainer" type="HBoxContainer" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="FullscreenLabel" type="Label" parent="CanvasLayer/OptionsMenu/VBoxContainer/FullscreenContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "Fullscreen"
-
-[node name="FullscreenCheck" type="CheckButton" parent="CanvasLayer/OptionsMenu/VBoxContainer/FullscreenContainer"]
-layout_mode = 2
-
-[node name="Spacer4" type="Control" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="BackButton" type="Button" parent="CanvasLayer/OptionsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "BACK"
-
-[node name="ChapterSelectMenu" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="GithubLink" type="LinkButton" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -40.0
-offset_right = 135.0
-grow_vertical = 0
-text = "View on GitHub"
-uri = "https://github.com/Breiscot/Clinton-Road-game"
-
-[node name="Version" type="Label" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(-20, -20)
-text = "V3.1"
+text = "EXIT"
 
 [node name="AudioManager" type="Node" parent="."]
 
@@ -239,3 +100,127 @@ autoplay = true
 [node name="HoverSound" type="AudioStreamPlayer2D" parent="AudioManager"]
 stream = ExtResource("3_k75cp")
 volume_db = -5.0
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsBackground" type="ColorRect" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.003921569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsTitle" type="Label" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="OptionsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="SensitivityContainer" type="HBoxContainer" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="SensitivityLabel" type="Label" parent="OptionsMenu/VBoxContainer/SensitivityContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="SensitivitySlider" type="HSlider" parent="OptionsMenu/VBoxContainer/SensitivityContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+min_value = 0.001
+max_value = 0.01
+step = 0.001
+value = 0.003
+
+[node name="Spacer2" type="Control" parent="OptionsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VolumeContainer" type="HBoxContainer" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="OptionsMenu/VBoxContainer/VolumeContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsMenu/VBoxContainer/VolumeContainer"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+value = 100.0
+
+[node name="Spacer3" type="Control" parent="OptionsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="OptionsMenu/VBoxContainer/FullscreenContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheck" type="CheckButton" parent="OptionsMenu/VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="OptionsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="OptionsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "BACK"
+
+[node name="GithubLink" type="LinkButton" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -40.0
+offset_right = 135.0
+grow_vertical = 0
+text = "View on GitHub"
+uri = "https://github.com/Breiscot/Clinton-Road-game"
+
+[node name="Version" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(-20, -20)
+text = "V3.1"

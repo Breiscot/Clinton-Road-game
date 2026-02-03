@@ -1,5 +1,15 @@
-extends Control
-# Menu
+extends Node3D
+
+# Camera
+@onready var menu_camera: Camera3D = $MenuCamera
+
+# UI Containers
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var main_menu_ui: Control = $CanvasLayer/MainMenuUI
+@onready var options_menu: Control = $CanvasLayer/OptionsMenu
+@onready var chapter_select_menu: Control = $CanvasLayer/ChapterSelectMenu
+
+# Main Menu Elements
 @onready var play_button := $VBoxContainer/PlayButton
 @onready var options_button := $VBoxContainer/OptionsButton
 @onready var exit_button := $VBoxContainer/ExitButton
