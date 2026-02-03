@@ -1121,7 +1121,7 @@ transform = Transform3D(0.754492, 0, 0.6563093, 0, 1, 0, -0.6563093, 0, 0.754492
 shape = SubResource("BoxShape3D_4tu0d")
 
 [node name="DialogueTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.659454, -4.245779, 13.330098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.659454, -4.245779, 12.389589)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30810547, 2.2176514, 2.3787842)

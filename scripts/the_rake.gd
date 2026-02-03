@@ -46,6 +46,7 @@ var has_attacked := false
 var stare_timer := 0.0
 var stare_duration := 3.0
 var teleport_distance := 20.0
+var is_respawning := false
 
 # Fear
 var fear_timer := 0.0
@@ -344,6 +345,7 @@ func attack_player():
 		return
 		
 	has_attacked = true
+	is_respawning = false
 	
 	print("TheRake: Attacking player!")
 	change_state(State.ATTACKING)
@@ -352,32 +354,57 @@ func attack_player():
 	
 	if player and player.has_method("add_fear"):
 		player.add_fear(100.0)
-		
-	show_jumpscare()
 	
 	look_at_player()
 	
-	await get_tree().create_timer(0.3).timeout
+	show_jumpscare_only()
+	
+	await get_tree().create_timer(1.0).timeout
 	
 	handle_player_death()
 	
-	if player and player.has_method("take_damage"):
-		player.take_damage(100)
-	else:
-		print("TheRake: ERROR - Player has no take_damage method")
-		# Fallback
-		await get_tree().create_timer(1.0).timeout
-		get_tree().reload_current_scene()
+func show_jumpscare_only():
+	if player:
+		player.set_physics_process(false)
+		player.set_process_input(false)
+		
+	play_jumpscare()
+	
+	var jumpscare_layer = CanvasLayer.new()
+	jumpscare_layer.layer = 50
+	jumpscare_layer.name = "JumpscareLayer"
+	get_tree().current_scene.add_child(jumpscare_layer)
+	
+	# Sfondo nero
+	var black_bg = ColorRect.new()
+	black_bg.color = Color(0, 0, 0, 1)
+	black_bg.anchor_right = 1.0
+	black_bg.anchor_bottom = 1.0
+	jumpscare_layer.add_child(black_bg)
+	
+	# Immagine jumpscare
+	var jumpscare_image = TextureRect.new()
+	var texture = load("res://images/jumpscare_the_rake.png")
+	if texture:
+		jumpscare_image.texture = texture
+	jumpscare_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	jumpscare_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	jumpscare_image.anchor_right = 1.0
+	jumpscare_image.anchor_bottom = 1.0
+	jumpscare_layer.add_child(jumpscare_image)
 		
 func handle_player_death():
 	print("TheRake: Handling player death")
 	
-	if CheckpointManager.has_checkpoint:
+	if CheckpointManager and CheckpointManager.has_checkpoint:
+		print("Checkpoint found, respawning...")
+		is_respawning = true
 		respawn_at_checkpoint()
 	else:
-		print("TheRake: No checkpoint, reloading scene...")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().reload_current_scene()
+		print("TheRake: No checkpoint, showing death screen...")
+		is_respawning = false
+		if player and player.has_method("take_damage"):
+			player.take_damage(100)
 		
 func respawn_at_checkpoint():
 	var transition_layer = CanvasLayer.new()
@@ -391,13 +418,14 @@ func respawn_at_checkpoint():
 	black_screen.anchor_bottom = 1.0
 	transition_layer.add_child(black_screen)
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
 	if jumpscare_layer:
 		jumpscare_layer.queue_free()
 		
 	if player:
+		print(" Moving player to: ", CheckpointManager.checkpoint_position)
 		player.global_position = CheckpointManager.checkpoint_position
 		player.rotation_degrees = CheckpointManager.checkpoint_rotation
 		
@@ -406,9 +434,15 @@ func respawn_at_checkpoint():
 		
 		if player.has_method("reset_health"):
 			player.reset_health()
+		elif "health" in player:
+			player.health = player.get("max_health") if "max_health" in player else 100
 			
 		if player.has_method("reset_fear"):
 			player.reset_fear()
+		elif "fear" in player:
+			player.fear = 0.0
+			
+		print(" Player respawned.")
 			
 	reset_rake()
 	
@@ -418,23 +452,29 @@ func respawn_at_checkpoint():
 	await tween.finished
 	
 	transition_layer.queue_free()
+	is_respawning = false
 	
 func reset_rake():
 	has_attacked = false
 	is_active = false
 	stare_timer = 0.0
 	current_state = State.INACTIVE
+	velocity = Vector3.ZERO
 	
-	var spawn_positions = get_tree().get_nodes_in_group("rake_spawn_point")
+	var spawn_points = get_tree().get_nodes_in_group("rake_spawn_point")
 	
-	if spawn_positions.size() > 0:
-		var spawn_point = spawn_positions[randi() % spawn_positions.size()]
+	if spawn_points.size() > 0:
+		var spawn_point = spawn_points[randi() % spawn_points.size()]
 		global_position = spawn_point.global_position
 	else:
-		var away_direction = (global_position - player.global_position).normalized()
-		global_position = player.global_position + away_direction * 30.0
-		global_position.y = 0
-		
+		if CheckpointManager.has_checkpoint:
+			var random_offset = Vector3(
+				randf_range(-1, 1),
+				0,
+				randf_range(-1, 1)
+			).normalized() * 25.0
+			global_position = CheckpointManager.checkpoint_position + random_offset
+	
 	visible = false
 	
 	await get_tree().create_timer(3.0).timeout
