@@ -130,3 +130,4 @@ func go_to_bridge_sequence():
 		
 	get_tree().change_scene_to_file("res://scene/bridge_sequence.tscn")
 	
+	GameProgress.complete_chapter(1)

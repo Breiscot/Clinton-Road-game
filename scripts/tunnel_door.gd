@@ -81,5 +81,8 @@ func enter_door():
 	var tween = create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
+		GameProgress.complete_chapter(2)
 		get_tree().change_scene_to_file(next_scene)
 	)
+	
+	

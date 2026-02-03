@@ -21,7 +21,7 @@ extends Node3D
 # Options Elements
 @onready var sensitivity_slider: HSlider = $CanvasLayer/OptionsMenu/VBoxContainer/SensitivityContainer/SensitivitySlider
 @onready var volume_slider: HSlider = $CanvasLayer/OptionsMenu/VBoxContainer/VolumeContainer/VolumeSlider
-@onready var fullscreen_check: CheckBox = $CanvasLayer/OptionsMenu/VBoxContainer/FullscreenContainer/FullscreenCheck
+@onready var fullscreen_check: CheckButton = $CanvasLayer/OptionsMenu/VBoxContainer/FullscreenContainer/FullscreenCheck
 @onready var back_button: Button = $CanvasLayer/OptionsMenu/VBoxContainer/BackButton
 
 # Chapter Select Elements
@@ -116,9 +116,9 @@ func _ready():
 	start_audio()
 	
 	# Fade in
-	canvas_layer.modulate.a = 0
+	main_menu_ui.modulate.a = 0
 	var tween = create_tween()
-	tween.tween_property(canvas_layer, "modulate:a", 1.0, 0.5)
+	tween.tween_property(main_menu_ui, "modulate:a", 1.0, 0.5)
 	
 # Audio
 func start_audio():
@@ -189,7 +189,7 @@ func _on_play_pressed():
 	
 	is_camera_moving = false
 	
-	func _on_options_pressed():
+func _on_options_pressed():
 	print("Options pressed")
 	main_menu_ui.visible = false
 	options_menu.visible = true
@@ -219,10 +219,17 @@ func show_chapter_select():
 	var tween = create_tween()
 	tween.tween_property(chapter_select_menu, "modulate:a", 1.0, 0.3)
 	
+	if chapter1_button:
+		chapter1_button.grab_focus()
+	
+func update_chapter_buttons():
+	var progress = load_chapter_progress()
+	
 	# Capitolo 1
 	if chapter1_button:
 		chapter1_button.disabled = false
 		chapter1_button.text = chapter_names[1]
+		chapter1_button.modulate.a = 1.0
 		
 	# Capitolo 2
 	if chapter2_button:
@@ -291,6 +298,16 @@ func start_chapter(chapter_num: int):
 	if not chapter_scenes.has(chapter_num):
 		print("ERR. chapter scene not found")
 		return
+		
+	# Carica la scena del capitolo
+	var scene_path = chapter_scenes[chapter_num]
+	print("Scene path: ", scene_path)
+	
+	if not FileAccess.file_exists(scene_path):
+		print("ERR. Scene file does not exist: ", scene_path)
+		return
+		
+	print("Scene file exists!")
 	
 	# Fade out Audio
 	if music_player:
@@ -298,33 +315,64 @@ func start_chapter(chapter_num: int):
 		audio_tween.tween_property(music_player, "volume_db", -40.0, 0.5)
 	
 	# Fade out schermo
-	var fade_tween = create_tween()
-	fade_tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.5)
-	
-	await fade_tween.finished
-	
-	# Carica la scena del capitolo
-	var scene_path = chapter_scenes[chapter_num]
+	if chapter_select_menu:
+		print("Fading out chapter select menu...")
+		var fade_tween = create_tween()
+		fade_tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.5)
+		await fade_tween.finished
+	else:
+		print("WARNING: chapter_select_menu is null")
 
 	# Carica la schermata di caricamento
 	var loading_scene = load("res://scene/ui/loading_screen.tscn")
+	
 	if loading_scene:
 		var loading_screen = loading_scene.instantiate()
 		get_tree().root.add_child(loading_screen)
-		queue_free()
-		loading_screen.load_scene(scene_path)
+		
+		if loading_screen.has_method("load_scene"):
+			print("calling load_scene with path: ", scene_path)
+			queue_free()
+			loading_screen.load_scene(scene_path)
+		else:
+			loading_screen.queue_free()
+			get_tree().change_scene_to_file(scene_path)
 	else:
 		get_tree().change_scene_to_file(scene_path)
 		
 # Progress SAVE/LOAD
 func load_chapter_progress() -> Dictionary:
+	var config = ConfigFile.new()
+	var err = config.load("user://progress.cfg")
+	
+	if err != OK:
+		return {
+			"chapter_1_completed": false,
+			"chapter_2_completed": false,
+			"chapter_3_completed": false
+		}
+		
+	return {
+		"chapter_1_completed": config.get_value("progress", "chapter_1_completed", false),
+		"chapter_2_completed": config.get_value("progress", "chapter_2_completed", false),
+		"chapter_3_completed": config.get_value("progress", "chapter_3_completed", false)
+	}
+	
+static func save_chapter_completed(chapter_num: int):
+	var config = ConfigFile.new()
+	config.load("user://progress.cfg") # Carica esistente se esiste
+	
+	config.set_value("progress", "chapter_" + str(chapter_num) + "_completed", true)
+	config.save("user://progress.cfg")
+	
+	print("Chapter ", chapter_num, " marked as completed!")
 	
 func load_game_scene(loading_screen: Control):
 	var progress_bar = loading_screen.get_node("VBoxContainer/ProgressBar") as ProgressBar
 	var scene_path := "res://scene/main.tscn"
 	
 	var error = ResourceLoader.load_threaded_request(scene_path)
-	
+
 	if error != OK:
 		loading_screen.queue_free()
 		get_tree().change_scene_to_file(scene_path)
@@ -361,7 +409,6 @@ func load_game_scene(loading_screen: Control):
 				loading_screen.queue_free()
 				get_tree().change_scene_to_file(scene_path)
 				return
-				
 
 # Options
 
@@ -371,9 +418,9 @@ func _on_back_pressed():
 func close_options():
 	if options_menu:
 		options_menu.visible = false
-	main_container.visible = true
-	play_button.grab_focus()
-	save_settings()
+		main_menu_ui.visible = true
+		play_button.grab_focus()
+		save_settings()
 	
 func _on_sensitivity_changed(value: float):
 	print("Sensitivity: ", value)
@@ -420,14 +467,6 @@ func load_settings():
 				_apply_fullscreen(true)
 	print("Settings saved!")
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		if options_menu and options_menu.visible:
-			_on_back_pressed()
-		var focused = get_viewport().gui_get_focus_owner()
-		if focused is Button:
-			focused.emit_signal("pressed")
-			
 # Style
 func style_buttons():
 	var buttons = [play_button, options_button, exit_button]
@@ -461,4 +500,11 @@ func style_buttons():
 		button.add_theme_color_override("font_color", Color(0.9, 0.9, 0.9))
 		button.add_theme_color_override("font_hover_color", Color(1, 0.3, 0.3))
 		button.add_theme_font_size_override("font_size", 24)
-	
+		
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		if options_menu and options_menu.visible:
+			_on_back_pressed()
+		var focused = get_viewport().gui_get_focus_owner()
+		if focused is Button:
+			focused.emit_signal("pressed")

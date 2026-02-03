@@ -282,4 +282,7 @@ func end_sequence():
 	await tween.finished
 	
 	await get_tree().create_timer(1.0).timeout
+	GameProgress.complete_chapter(3)
 	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
+	
+	

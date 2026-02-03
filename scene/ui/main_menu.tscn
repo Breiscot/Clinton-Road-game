@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dvllrvx7avhea"]
+[gd_scene load_steps=10 format=4 uid="uid://dvllrvx7avhea"]
 
 [ext_resource type="Script" uid="uid://dcne8jgjv4cvg" path="res://scripts/main_menu.gd" id="1_3er1b"]
 [ext_resource type="AudioStream" uid="uid://bgd2me7bu78il" path="res://audio/music/menu_music.ogg" id="2_8wb42"]
 [ext_resource type="PackedScene" uid="uid://bwrgt3a55l1g8" path="res://scene/environment/forest.tscn" id="2_k3dtv"]
 [ext_resource type="AudioStream" uid="uid://b3uqsdpncvu8p" path="res://audio/sfx/button_hover.wav" id="3_k75cp"]
+[ext_resource type="PackedScene" uid="uid://oc0djmbcgine" path="res://scene/enemies/Enemy Model/wendigo.glb" id="4_0rvh3"]
 [ext_resource type="PackedScene" uid="uid://cqox571gk3uh0" path="res://scene/environment/crashed_car.tscn" id="4_e5dty"]
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="5_k3dtv"]
 
@@ -35,6 +36,10 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3716002, -0.01830244, -4.06
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.3790164, 1.3125693, -3.9407165)
 shape = SubResource("CylinderShape3D_e5dty")
 
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("4_0rvh3")]
+transform = Transform3D(0.00035161112, 0, 0.009993819, 0, 0.01, 0, -0.009993819, 0, 0.00035161112, -5.5716987, 0.26312006, -1.5603197)
+visible = false
+
 [node name="CrashedCar" parent="." instance=ExtResource("4_e5dty")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.0279198, -0.29221535)
 
@@ -49,16 +54,13 @@ offset_bottom = 40.0
 [node name="LeftContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuUI"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 406.0
-offset_top = 144.5
-offset_right = 706.0
-offset_bottom = 463.5
-grow_horizontal = 2
+offset_left = 50.0
+offset_top = 80.0
+offset_right = 350.0
+offset_bottom = 399.0
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="CanvasLayer/MainMenuUI/LeftContainer"]
@@ -203,21 +205,49 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChapterContainer" type="VBoxContainer" parent="CanvasLayer/ChapterSelectMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SELECT CHAPTER"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="Chapter1Button" type="Button" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
 layout_mode = 2
+text = "Chapter 1: Forest"
 
 [node name="Chapter2Button" type="Button" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
 layout_mode = 2
+text = "Chapter 2: Road"
 
 [node name="Chapter3Button" type="Button" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
+layout_mode = 2
+text = "Chapter 3: Sewers"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="CanvasLayer/ChapterSelectMenu/ChapterContainer"]
 layout_mode = 2
+text = "BACK"
 
 [node name="GithubLink" type="LinkButton" parent="CanvasLayer"]
 anchors_preset = 2
@@ -236,8 +266,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -23.0
+offset_left = -51.0
+offset_top = -30.0
+offset_right = -5.0
+offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(-20, -20)
