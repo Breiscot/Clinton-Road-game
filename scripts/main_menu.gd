@@ -48,8 +48,8 @@ var is_camera_moving := false
 
 # Chapter scenes
 var chapter_scenes := {
-	1: "res://scene/main.tscn",
-	2: "res://scene/new_area.tscn",
+	1: "res://scene/ui/intro_screen.tscn",
+	2: "res://scene/bridge_sequence.tscn",
 	3: "res://scene/sewers.tscn"
 }
 
@@ -319,26 +319,30 @@ func start_chapter(chapter_num: int):
 		print("Fading out chapter select menu...")
 		var fade_tween = create_tween()
 		fade_tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.5)
+		var loading_scene = load("res://scene/ui/loading_screen.tscn")
+		if loading_scene:
+			var loading_screen = loading_scene.instantiate()
+			get_tree().root.add_child(loading_screen)
+			if loading_screen.has_method("load_scene"):
+				print("calling load_scene with path: ", scene_path)
+				queue_free()
+				loading_screen.load_scene(scene_path)
+			else:
+				loading_screen.queue_free()
+				get_tree().change_scene_to_file(scene_path)
+		else:
+			get_tree().change_scene_to_file(scene_path)
 		await fade_tween.finished
 	else:
 		print("WARNING: chapter_select_menu is null")
 
 	# Carica la schermata di caricamento
-	var loading_scene = load("res://scene/ui/loading_screen.tscn")
 	
-	if loading_scene:
-		var loading_screen = loading_scene.instantiate()
-		get_tree().root.add_child(loading_screen)
+	
+	
 		
-		if loading_screen.has_method("load_scene"):
-			print("calling load_scene with path: ", scene_path)
-			queue_free()
-			loading_screen.load_scene(scene_path)
-		else:
-			loading_screen.queue_free()
-			get_tree().change_scene_to_file(scene_path)
-	else:
-		get_tree().change_scene_to_file(scene_path)
+		
+	
 		
 # Progress SAVE/LOAD
 func load_chapter_progress() -> Dictionary:
