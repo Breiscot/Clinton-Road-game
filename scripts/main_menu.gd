@@ -10,41 +10,85 @@ extends Node3D
 @onready var chapter_select_menu: Control = $CanvasLayer/ChapterSelectMenu
 
 # Main Menu Elements
-@onready var play_button := $VBoxContainer/PlayButton
-@onready var options_button := $VBoxContainer/OptionsButton
-@onready var exit_button := $VBoxContainer/ExitButton
-@onready var main_container := $VBoxContainer
+@onready var left_container: VBoxContainer = $CanvasLayer/MainMenuUI/LeftContainer
+@onready var title_label: Label = $CanvasLayer/MainMenuUI/LeftContainer/Title
+@onready var play_button: Button = $CanvasLayer/MainMenuUI/LeftContainer/PlayButton
+@onready var options_button: Button = $CanvasLayer/MainMenuUI/LeftContainer/OptionsButton
+@onready var exit_button: Button = $CanvasLayer/MainMenuUI/LeftContainer/ExitButton
+@onready var github_link: LinkButton = $CanvasLayer/GithubLink
+@onready var version_label: Label = $CanvasLayer/Version
 
-# Options
-@onready var options_menu := $OptionsMenu
-@onready var sensitivity_slider := $OptionsMenu/VBoxContainer/SensitivityContainer/SensitivitySlider
-@onready var volume_slider := $OptionsMenu/VBoxContainer/VolumeContainer/VolumeSlider
-@onready var fullscreen_check := $OptionsMenu/VBoxContainer/FullscreenContainer/FullscreenCheck
-@onready var back_button := $OptionsMenu/VBoxContainer/BackButton
+# Options Elements
+@onready var sensitivity_slider: HSlider = $CanvasLayer/OptionsMenu/VBoxContainer/SensitivityContainer/SensitivitySlider
+@onready var volume_slider: HSlider = $CanvasLayer/OptionsMenu/VBoxContainer/VolumeContainer/VolumeSlider
+@onready var fullscreen_check: CheckBox = $CanvasLayer/OptionsMenu/VBoxContainer/FullscreenContainer/FullscreenCheck
+@onready var back_button: Button = $CanvasLayer/OptionsMenu/VBoxContainer/BackButton
+
+# Chapter Select Elements
+@onready var chapter_container: VBoxContainer = $CanvasLayer/ChapterSelectMenu/ChapterContainer
+@onready var chapter1_button: Button = $CanvasLayer/ChapterSelectMenu/ChapterContainer/Chapter1Button
+@onready var chapter2_button: Button = $CanvasLayer/ChapterSelectMenu/ChapterContainer/Chapter2Button
+@onready var chapter3_button: Button = $CanvasLayer/ChapterSelectMenu/ChapterContainer/Chapter3Button
+@onready var chapter_back_button: Button = $CanvasLayer/ChapterSelectMenu/ChapterContainer/BackButton
 
 # Audio
 @onready var music_player := $AudioManager/MusicPlayer
 @onready var ambience_player := $AudioManager/AmbientPlayer
 @onready var hover_sound := $AudioManager/HoverSound
 
-# Scena
-@export var game_scene: PackedScene
+# Camera positions
+var camera_start_pos := Vector3(-2.284, 3.4, 4.733)
+var camera_start_rot := Vector3(0, -20, 0)
+var camera_end_pos := Vector3(0.5, 1.4, -6.7)
+var camera_end_rot := Vector3(-5, 180, 0)
+
+# Camera animation
+var camera_move_duration := 2.0
+var is_camera_moving := false
+
+# Chapter scenes
+var chapter_scenes := {
+	1: "res://scene/main.tscn",
+	2: "res://scene/new_area.tscn",
+	3: "res://scene/sewers.tscn"
+}
+
+# Chapter names
+var chapter_names := {
+	1: "Chapter 1: Forest",
+	2: "Chapter 2: Road",
+	3: "Chapter 3: Sewers"
+}
 
 func _ready():
 	# Mostra il mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	# Nascondi l'options menu all'inizio
+	if menu_camera:
+		menu_camera.position = camera_start_pos
+		menu_camera.rotation_degrees = camera_start_rot
+		menu_camera.current = true
+	
+	# Nascondi menu secondari
 	if options_menu:
 		options_menu.visible = false
+	if chapter_select_menu:
+		chapter_select_menu.visible = false
 	
-	# Connetti i bottoni
+	# Connetti i bottoni del menu principale
 	play_button.pressed.connect(_on_play_pressed)
 	options_button.pressed.connect(_on_options_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
 	
-	# Connetti HoverSound ai Button
-	setup_button_sounds()
+	# Connetti i bottoni dei capitoli
+	if chapter1_button:
+		chapter1_button.pressed.connect(_on_chapter1_pressed)
+	if chapter2_button:
+		chapter2_button.pressed.connect(_on_chapter2_pressed)
+	if chapter3_button:
+		chapter3_button.pressed.connect(_on_chapter3_pressed)
+	if chapter_back_button:
+		chapter_back_button.pressed.connect(_on_chapter_back_pressed)
 	
 	# Connetti Controlli Options
 	if back_button:
@@ -55,23 +99,26 @@ func _ready():
 		volume_slider.value_changed.connect(_on_volume_changed)
 	if fullscreen_check:
 		fullscreen_check.toggled.connect(_on_fullscreen_toggled)
+		
+	# Connetti HoverSound ai Button
+	setup_button_sounds()
 	
 	# Carica Options
 	load_settings()
 	
-	# Focus sul primo bottone
-	play_button.grab_focus()
-	
 	# Style nei Button
 	style_buttons()
+	
+	# Focus sul primo bottone
+	play_button.grab_focus()
 	
 	# Avvia Audio
 	start_audio()
 	
-	# Animazione Fade in
-	modulate.a = 0
+	# Fade in
+	canvas_layer.modulate.a = 0
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 1.0, 0.5)
+	tween.tween_property(canvas_layer, "modulate:a", 1.0, 0.5)
 	
 # Audio
 func start_audio():
@@ -93,49 +140,184 @@ func setup_button_sounds():
 	var buttons = [play_button, options_button, exit_button]
 	if back_button:
 		buttons.append(back_button)
+	if chapter1_button:
+		buttons.append(chapter1_button)
+	if chapter2_button:
+		buttons.append(chapter2_button)
+	if chapter3_button:
+		buttons.append(chapter3_button)
+	if chapter_back_button:
+		buttons.append(chapter_back_button)
 		
 	for button in buttons:
 		if button:
 			button.mouse_entered.connect(_on_button_hover)
-			button.pressed.connect(_on_button_click)
 			
 func _on_button_hover():
 	if hover_sound and hover_sound.stream:
 		hover_sound.pitch_scale = randf_range(0.95, 1.05)
 		hover_sound.play()
-
-func _on_button_click():
-	# Suono click
-	if hover_sound and hover_sound.stream:
-		hover_sound.pitch_scale = 0.8
-		hover_sound.play()
-
+	
+# Main Menu
 func _on_play_pressed():
-	print("Starting game..")
+	if is_camera_moving:
+		return
+		
+	print("Play pressed, moving camera...")
+	is_camera_moving = true
+	
+	# Fade out Menu principale
+	var fade_tween = create_tween()
+	fade_tween.tween_property(main_menu_ui, "modulate:a", 0.0, 0.3)
+	
+	# Muovi la camera
+	var camera_tween = create_tween()
+	camera_tween.set_parallel(true)
+	camera_tween.set_ease(Tween.EASE_IN_OUT)
+	camera_tween.set_trans(Tween.TRANS_SINE)
+	
+	camera_tween.tween_property(menu_camera, "position", camera_end_pos, camera_move_duration)
+	camera_tween.tween_property(menu_camera, "rotation_degrees", camera_end_rot, camera_move_duration)
+	
+	await camera_tween.finished
+	
+	# Nascondi menu principale
+	main_menu_ui.visible = false
+	
+	# Mostra selezione capitoli
+	show_chapter_select()
+	
+	is_camera_moving = false
+	
+	func _on_options_pressed():
+	print("Options pressed")
+	main_menu_ui.visible = false
+	options_menu.visible = true
+	
+	if back_button:
+		back_button.grab_focus()
+		
+func _on_exit_pressed():
+	print("Exting..")
+	
+	# Fade out
+	var tween = create_tween()
+	tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(func():
+		get_tree().quit()
+	)
+	
+# Chapter Select	
+func show_chapter_select():
+	# Aggiorna stato bottoni capitoli
+	update_chapter_buttons()
+	
+	# Menu capitoli con Fade in
+	chapter_select_menu.visible = true
+	chapter_select_menu.modulate.a = 0.0
+	
+	var tween = create_tween()
+	tween.tween_property(chapter_select_menu, "modulate:a", 1.0, 0.3)
+	
+	# Capitolo 1
+	if chapter1_button:
+		chapter1_button.disabled = false
+		chapter1_button.text = chapter_names[1]
+		
+	# Capitolo 2
+	if chapter2_button:
+		var unlocked = progress.get("chapter_1_completed", false)
+		chapter2_button.disabled = not unlocked
+		if unlocked:
+			chapter2_button.text = chapter_names[2]
+		else:
+			chapter2_button.text = chapter_names[2] + " [LOCKED]"
+		chapter2_button.modulate.a = 1.0 if unlocked else 0.5
+		
+	# Capitolo 3
+	if chapter3_button:
+		var unlocked = progress.get("chapter_2_completed", false)
+		chapter3_button.disabled = not unlocked
+		if unlocked:
+			chapter3_button.text = chapter_names[3]
+		else:
+			chapter3_button.text = chapter_names[3] + " [LOCKED]"
+		chapter3_button.modulate.a = 1.0 if unlocked else 0.5
+		
+func _on_chapter1_pressed():
+	start_chapter(1)
+
+func _on_chapter2_pressed():
+	start_chapter(2)
+
+func _on_chapter3_pressed():
+	start_chapter(3)
+	
+func _on_chapter_back_pressed():
+	print("Back to main menu")
+	
+	# Fade out chapter select
+	var fade_tween = create_tween()
+	fade_tween.tween_property(chapter_select_menu, "modulate:a", 0.0, 0.3)
+	
+	await fade_tween.finished
+	chapter_select_menu.visible = false
+	
+	# Muovi camera indietro
+	is_camera_moving = true
+	
+	var camera_tween = create_tween()
+	camera_tween.set_parallel(true)
+	camera_tween.set_ease(Tween.EASE_IN_OUT)
+	camera_tween.set_trans(Tween.TRANS_SINE)
+	
+	camera_tween.tween_property(menu_camera, "position", camera_start_pos, camera_move_duration)
+	camera_tween.tween_property(menu_camera, "rotation_degrees", camera_start_rot, camera_move_duration)
+	
+	await camera_tween.finished
+	
+	main_menu_ui.visible = true
+	main_menu_ui.modulate.a = 0.0
+	
+	var show_tween = create_tween()
+	show_tween.tween_property(main_menu_ui, "modulate:a", 1.0, 0.3)
+	
+	play_button.grab_focus()
+	is_camera_moving = false
+	
+func start_chapter(chapter_num: int):
+	print("Starting chapter ", chapter_num)
+	
+	if not chapter_scenes.has(chapter_num):
+		print("ERR. chapter scene not found")
+		return
 	
 	# Fade out Audio
 	if music_player:
-		var tween = create_tween()
-		tween.tween_property(music_player, "volume_db", -40.0, 0.5)
+		var audio_tween = create_tween()
+		audio_tween.tween_property(music_player, "volume_db", -40.0, 0.5)
 	
-	# Fade out e carica il gioco
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func():
-		show_loading_screen()
-	)
+	# Fade out schermo
+	var fade_tween = create_tween()
+	fade_tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.5)
+	
+	await fade_tween.finished
+	
+	# Carica la scena del capitolo
+	var scene_path = chapter_scenes[chapter_num]
 
-func show_loading_screen():
 	# Carica la schermata di caricamento
 	var loading_scene = load("res://scene/ui/loading_screen.tscn")
-	var loading_screen = loading_scene.instantiate()
-	
-	get_tree().root.add_child(loading_screen)
-	
-	# Rimuovi il menu
-	queue_free()
-	
-	loading_screen.load_scene("res://scene/main.tscn")
+	if loading_scene:
+		var loading_screen = loading_scene.instantiate()
+		get_tree().root.add_child(loading_screen)
+		queue_free()
+		loading_screen.load_scene(scene_path)
+	else:
+		get_tree().change_scene_to_file(scene_path)
+		
+# Progress SAVE/LOAD
+func load_chapter_progress() -> Dictionary:
 	
 func load_game_scene(loading_screen: Control):
 	var progress_bar = loading_screen.get_node("VBoxContainer/ProgressBar") as ProgressBar
@@ -180,31 +362,7 @@ func load_game_scene(loading_screen: Control):
 				get_tree().change_scene_to_file(scene_path)
 				return
 				
-func _on_options_pressed():
-	print("Options button clicked")
-	print("options_menu exists: ", options_menu != null)
-	print("main_container exists: ", main_container != null)
-	
-	if options_menu == null:
-		print("not found")
-		return
-		
-	main_container.visible = false
-	options_menu.visible = true
-	
-	if back_button:
-		back_button.grab_focus()
-		
-func _on_exit_pressed():
-	print("Exting..")
-	
-	# Fade out
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(func():
-		get_tree().quit()
-	)
-	
+
 # Options
 
 func _on_back_pressed():
