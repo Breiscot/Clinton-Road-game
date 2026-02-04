@@ -258,10 +258,10 @@ material = SubResource("StandardMaterial3D_dgrff")
 size = Vector3(7, 7, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_os54k"]
-size = Vector3(0.57177734, 2.3720703, 1)
+size = Vector3(1.2467041, 2.6851807, 2.40271)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43gye"]
-size = Vector3(3.1228027, 6.671753, 7.607605)
+size = Vector3(3.6312866, 6.671753, 7.607605)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uc6l2"]
 resource_local_to_scene = true
@@ -1673,7 +1673,7 @@ script = ExtResource("19_dgrff")
 transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0, 0.004806368, 1.4251022, 0.07404393, 0.23706055)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/Area3D"]
-transform = Transform3D(0.8450286, 0, -0.53472114, 0, 1, 0, 0.53472114, 0, 0.8450286, 1.6836472, 0.68603516, 0.40771484)
+transform = Transform3D(0.8450286, 0, -0.53472114, 0, 1, 0, 0.53472114, 0, 0.8450286, 1.9741974, 0.84259033, 0.5796509)
 shape = SubResource("BoxShape3D_os54k")
 
 [node name="AudioOpen" type="AudioStreamPlayer3D" parent="TunnelDoor/Area3D"]
@@ -1691,7 +1691,7 @@ omni_range = 10.0
 [node name="StaticBody3D" type="StaticBody3D" parent="TunnelDoor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
-transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 66.71851, 2.8358765, -622.2028)
+transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 66.93999, 2.8358765, -622.078)
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
@@ -1703,7 +1703,7 @@ transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.903
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 20.02958, 0, 0.29152727)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 67.03728, 0, -605.8514)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)

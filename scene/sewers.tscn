@@ -12833,7 +12833,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9256496, 0.83655834, -71.24
 [node name="SewerDoor" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.39899, 0, -19.553387)
 script = ExtResource("12_inb81")
-next_area_position = Vector3(21.8, 1.4, -19.5)
+next_area_position = Vector3(21.8, 1, -19.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SewerDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0045166016, 1.465271, -0.02758789)
@@ -12889,7 +12889,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("22_daqao")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ImageViewerUI"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/ImageViewerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -12898,23 +12898,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.24705882)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ImageViewerUI"]
-custom_minimum_size = Vector2(0, 800)
+[node name="ImageContainer" type="CenterContainer" parent="CanvasLayer/ImageViewerUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 350.0
-offset_top = -76.0
-offset_right = -349.0
-offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ImageViewerUI/ImageContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
 texture = ExtResource("23_3hnwv")
-expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/ImageViewerUI"]
+[node name="CloseHint" type="Label" parent="CanvasLayer/ImageViewerUI"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
