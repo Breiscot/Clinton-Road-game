@@ -8,13 +8,16 @@ var player_in_range := false
 var is_viewing := false
 var image_viewer_ui: Control = null
 
-signal image_opened
-signal image_closed
-
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	
+	monitoring = true
+	monitorable = true
+	
+	call_deferred("_find_viewer_ui")
+	
+func _find_viewer_ui():
 	await get_tree().process_frame
 	image_viewer_ui = get_tree().get_first_node_in_group("image_viewer")
 	
@@ -23,22 +26,32 @@ func _ready():
 	else:
 		print("ERR: ImageViewer UI not found")
 		
-func _unhandled_input(event):
+func _input(event):
 	if not player_in_range:
 		return
 		
-	if event.is_action_pressed("interact"): # [E]
-		if is_viewing:
+	if is_viewing:
+		if event.is_action_pressed("interact"):
 			close_image()
-		else:
-			open_image()
+			get_viewport().set_input_as_handled()
+		return
+
+	if event.is_action_pressed("interact"): # [E]
+		open_image()
 		get_viewport().set_input_as_handled()
 		
 func open_image():
-	if not image_viewer_ui or not image_texture:
+	if not image_texture:
 		return
+	
+	if not image_viewer_ui:
+		image_viewer_ui = get_tree().get_first_node_in_group("image_viewer")
+		if not image_viewer_ui:
+			return
 		
 	is_viewing = true
+	hide_prompt()
+	
 	image_viewer_ui.show_image(image_texture)
 	
 	# Mette in pausa il gioco
@@ -47,14 +60,14 @@ func open_image():
 	# Mostra il cursore
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	emit_signal("image_opened")
-	
 func close_image():
 	if not image_viewer_ui:
 		return
 		
 	is_viewing = false
-	image_viewer_ui.hide_image()
+	
+	if image_viewer_ui:
+		image_viewer_ui.hide_image()
 	
 	# Riprende il gioco
 	get_tree().paused = false
@@ -62,7 +75,8 @@ func close_image():
 	# Nascondi il cursore
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	emit_signal("image_closed")
+	if player_in_range:
+		show_prompt()
 	
 func _on_body_entered(body):
 	if body.is_in_group("player"):
