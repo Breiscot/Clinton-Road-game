@@ -12900,25 +12900,55 @@ color = Color(0, 0, 0, 0.24705882)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ImageViewerUI"]
 custom_minimum_size = Vector2(0, 800)
-layout_mode = 0
-offset_left = 605.0
-offset_top = -75.0
-offset_right = 1321.0
-offset_bottom = 932.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 350.0
+offset_top = -76.0
+offset_right = -349.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("23_3hnwv")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/ImageViewerUI"]
-layout_mode = 0
-offset_left = 873.0
-offset_top = 838.0
-offset_right = 1066.0
-offset_bottom = 861.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.5
+offset_top = -23.0
+offset_right = 96.5
+grow_horizontal = 2
+grow_vertical = 0
 text = "Press [E] or [ESC] to close"
 
+[node name="InteractionPrompt" type="Label" parent="CanvasLayer" groups=["interaction_prompt"]]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -85.0
+offset_right = 41.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, -100)
+theme_override_font_sizes/font_size = 24
+text = "[E] Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RakeSpawnPoint" type="Marker3D" parent="." groups=["rake_spawn_point"]]
-transform = Transform3D(-0.04042827, 0, -0.99918246, 0, 1, 0, 0.99918246, 0, -0.04042827, -8.759262, -5.642546, 30.629635)
+transform = Transform3D(-0.04042827, 0, -0.99918246, 0, 1, 0, 0.99918246, 0, -0.04042827, 15.844158, -5.642546, 118.63012)
 
 [node name="TrashModels" type="Node3D" parent="."]
 

@@ -3,7 +3,7 @@ extends Control
 @onready var progress_bar := $VBoxContainer/ProgressBar
 @onready var title_label := $VBoxContainer/Title
 @onready var tip_label := $VBoxContainer/TipLabel
-@onready var background := $ColorRect
+@onready var background := $Background
 
 var scene_to_load: String = ""
 var load_progress: Array = []
@@ -96,10 +96,21 @@ func _process(delta):
 		
 func finish_loading():
 	print("LoadingScreen: Finishing...")
+	
 	if progress_bar:
 		progress_bar.value = 100
 	if title_label:
 		title_label.text = "Compleated.."
 		
+	await get_tree().create_timer(0.3).timeout
+	
+	var loaded_scene = ResourceLoader.load_threaded_get(scene_to_load)
+	
+	if loaded_scene:
+		print("LoadingScreen: Changing to loaded scene: ", scene_to_load)
+		get_tree().change_scene_to_packed(loaded_scene)
+	else:
+		print("LoadingScreen: ERROR: Not get loaded scene, using fallback")
+		get_tree().change_scene_to_file(scene_to_load)
+		
 	queue_free()
-	get_tree().change_scene_to_file("res://scene/ui/intro_screen.tscn")

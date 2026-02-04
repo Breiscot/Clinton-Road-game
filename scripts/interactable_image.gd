@@ -6,8 +6,7 @@ class_name InteractableImage
 
 var player_in_range := false
 var is_viewing := false
-
-var image_viewer_ui: Control
+var image_viewer_ui: Control = null
 
 signal image_opened
 signal image_closed

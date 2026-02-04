@@ -58,6 +58,7 @@ import/blender/enabled=false
 
 image_viewer=""
 rake_spawn_point=""
+interaction_prompt=""
 
 [input]
 
