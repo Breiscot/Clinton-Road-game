@@ -407,6 +407,11 @@ func handle_player_death():
 			player.take_damage(100)
 		
 func respawn_at_checkpoint():
+	
+	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
+	if jumpscare_layer:
+		jumpscare_layer.queue_free()
+	
 	var transition_layer = CanvasLayer.new()
 	transition_layer.layer = 100
 	transition_layer.name = "TransitionLayer"
@@ -418,31 +423,23 @@ func respawn_at_checkpoint():
 	black_screen.anchor_bottom = 1.0
 	transition_layer.add_child(black_screen)
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	
-	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
-	if jumpscare_layer:
-		jumpscare_layer.queue_free()
+	if not CheckpointManager.is_same_scene():
+		print("Checkpoint in different scene, reloading..")
+		get_tree().change_scene_to_file(CheckpointManager.checkpoint_scene_path)
+		return
 		
 	if player:
-		print(" Moving player to: ", CheckpointManager.checkpoint_position)
 		player.global_position = CheckpointManager.checkpoint_position
 		player.rotation_degrees = CheckpointManager.checkpoint_rotation
-		
 		player.set_physics_process(true)
 		player.set_process_input(true)
 		
 		if player.has_method("reset_health"):
 			player.reset_health()
-		elif "health" in player:
-			player.health = player.get("max_health") if "max_health" in player else 100
-			
 		if player.has_method("reset_fear"):
 			player.reset_fear()
-		elif "fear" in player:
-			player.fear = 0.0
-			
-		print(" Player respawned.")
 			
 	reset_rake()
 	

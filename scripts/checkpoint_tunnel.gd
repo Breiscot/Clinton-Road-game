@@ -14,14 +14,14 @@ func _ready():
 	print("Checkpoint ", checkpoint_id, ": Ready at ", global_position)
 	
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if not body.is_in_group("player"):
 		return
 		
 	if checkpoint_activated:
 		return
 		
 	var spawn_pos = body.global_position + spawn_offset
-	var spawn_rot = Vector3(0, body.global_rotation_degrees.y, 0)
+	var spawn_rot = Vector3(0, body.rotation_degrees.y, 0)
 	var current_scene = get_tree().current_scene.scene_file_path
 	
 	print(" Player position: ", body.global_position)

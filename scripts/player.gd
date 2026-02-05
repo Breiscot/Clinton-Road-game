@@ -70,6 +70,9 @@ func _ready():
 	if is_dead:
 		return
 		
+	if CheckpointManager.has_checkpoint:
+		CheckpointManager.apply_checkpoint_position()
+		
 	setup_audio()
 	
 func setup_audio():

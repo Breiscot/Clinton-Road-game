@@ -1649,7 +1649,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77108765, 4.070282, 0)
 shape = SubResource("BoxShape3D_is7oi")
 
 [node name="Checkpoint" type="Area3D" parent="."]
-transform = Transform3D(0.88020414, 0, -0.47459525, 0, 1, 0, 0.47459525, 0, 0.88020414, 67.95294, 0, -604.29297)
+transform = Transform3D(0.99999905, 0, -0.0013788044, 0, 1, 0, 0.0013788044, 0, 0.99999905, 0.8406193, 0, -296.3187)
 script = ExtResource("20_350pk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
@@ -1715,7 +1715,7 @@ transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.903
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 64.59785, 0, -595.1983)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, -1.3257828, 0, -277.76074)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)
