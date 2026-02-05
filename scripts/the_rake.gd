@@ -18,6 +18,7 @@ enum State {
 @export var min_distance_behind := 2.0
 @export var attack_range := 2.5
 @export var can_teleport := true
+@export var respawn_scene_path := "res://scene/new_area_checkpoint.tscn"
 
 # Animazioni
 @export var anim_idle := "the_rake/metarig|idle"
@@ -345,7 +346,6 @@ func attack_player():
 		return
 		
 	has_attacked = true
-	is_respawning = false
 	
 	print("TheRake: Attacking player!")
 	change_state(State.ATTACKING)
@@ -396,22 +396,14 @@ func show_jumpscare_only():
 func handle_player_death():
 	print("TheRake: Handling player death")
 	
-	if CheckpointManager and CheckpointManager.has_checkpoint:
-		print("Checkpoint found, respawning...")
-		is_respawning = true
-		respawn_at_checkpoint()
+	if FileAccess.file_exists(respawn_scene_path):
+		load_respawn_scene()
 	else:
 		print("TheRake: No checkpoint, showing death screen...")
-		is_respawning = false
-		if player and player.has_method("take_damage"):
-			player.take_damage(100)
+		await get_tree().create_timer(1.5).timeout
+		get_tree().reload_current_scene()
 		
-func respawn_at_checkpoint():
-	
-	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
-	if jumpscare_layer:
-		jumpscare_layer.queue_free()
-	
+func load_respawn_scene():
 	var transition_layer = CanvasLayer.new()
 	transition_layer.layer = 100
 	transition_layer.name = "TransitionLayer"
@@ -425,31 +417,11 @@ func respawn_at_checkpoint():
 	
 	await get_tree().create_timer(1.0).timeout
 	
-	if not CheckpointManager.is_same_scene():
-		print("Checkpoint in different scene, reloading..")
-		get_tree().change_scene_to_file(CheckpointManager.checkpoint_scene_path)
-		return
+	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
+	if jumpscare_layer:
+		jumpscare_layer.queue_free()
 		
-	if player:
-		player.global_position = CheckpointManager.checkpoint_position
-		player.rotation_degrees = CheckpointManager.checkpoint_rotation
-		player.set_physics_process(true)
-		player.set_process_input(true)
-		
-		if player.has_method("reset_health"):
-			player.reset_health()
-		if player.has_method("reset_fear"):
-			player.reset_fear()
-			
-	reset_rake()
-	
-	# Fade Out
-	var tween = create_tween()
-	tween.tween_property(black_screen, "color:a", 0.0, 0.5)
-	await tween.finished
-	
-	transition_layer.queue_free()
-	is_respawning = false
+	get_tree().change_scene_to_file(respawn_scene_path)
 	
 func reset_rake():
 	has_attacked = false

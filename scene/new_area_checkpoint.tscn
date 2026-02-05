@@ -1,0 +1,874 @@
+[gd_scene load_steps=46 format=3 uid="uid://cjlmaobv8720w"]
+
+[ext_resource type="Script" uid="uid://cjjaldg7y0ho0" path="res://scripts/new_area_checkpoint.gd" id="1_soij8"]
+[ext_resource type="PackedScene" uid="uid://duwrmsa2u7k2h" path="res://scene/enemies/the_rake.tscn" id="3_rydna"]
+[ext_resource type="Texture2D" uid="uid://dea2exlw8d5d" path="res://images/Grass003_1K-JPG_Color.jpg" id="6_f557q"]
+[ext_resource type="Texture2D" uid="uid://dj3ajygp7mlk0" path="res://models/bridge/american_road_bridge_21.jpg" id="16_1of4x"]
+[ext_resource type="Script" uid="uid://dt1jd42uoob7x" path="res://scripts/envronment_new_area.gd" id="19_wlov2"]
+[ext_resource type="Texture2D" uid="uid://t0o882g5en3k" path="res://models/bridge/american_road_bridge_0.jpg" id="21_3dn7w"]
+[ext_resource type="Script" uid="uid://cdjqkvm7yi8bd" path="res://scripts/tunnel_door.gd" id="22_jcxjm"]
+[ext_resource type="PackedScene" uid="uid://0kvaahu5xhyj" path="res://models/door/door_with_frame.glb" id="23_204f0"]
+[ext_resource type="AudioStream" uid="uid://bq737lpygwmh7" path="res://audio/ambience/door_opening.ogg" id="24_tc4lk"]
+[ext_resource type="PackedScene" uid="uid://b673ysh5pm7kg" path="res://models/lights/industrial_caged_light.glb" id="25_7l5ui"]
+[ext_resource type="PackedScene" uid="uid://c28sgfln8nlok" path="res://scene/player/player.tscn" id="26_er0es"]
+[ext_resource type="PackedScene" uid="uid://1dq04pm7460b" path="res://scene/ui/pause_menu.tscn" id="28_g2idg"]
+[ext_resource type="PackedScene" uid="uid://c2kutkxffmdq1" path="res://scene/ui/hud_new_area.tscn" id="29_kdcv6"]
+[ext_resource type="PackedScene" uid="uid://cjaljwq7lqrsi" path="res://models/road/road_tunnel/tunnel_road.glb" id="33_28o2r"]
+[ext_resource type="Script" uid="uid://cbslfjiama45u" path="res://scripts/tunnel_light_controller.gd" id="34_nm3q8"]
+[ext_resource type="PackedScene" uid="uid://pa61p0p5y0qr" path="res://models/lights/worn_edit.tscn" id="35_s7v2b"]
+[ext_resource type="PackedScene" uid="uid://biaqsf8um6nom" path="res://models/lights/worn_overlead_light.glb" id="36_8jqun"]
+[ext_resource type="Script" uid="uid://bpxwx3pd3kxg1" path="res://scripts/tunnel_light.gd" id="37_nnpsp"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0hi81"]
+vertices = PackedVector3Array(-307.43677, 0.25229645, -334.516, -211.18677, 0.25229645, -334.266, -210.93677, 0.25229645, -336.016, -303.93677, 0.25229645, -468.016, -307.43677, 0.25229645, -467.766, -12.186768, 0.25229645, -336.016, -12.186768, 0.25229645, -788.016, -303.93677, 0.25229645, -788.016, -9.936768, 0.25229645, -333.766, 10.563232, 0.25229645, -333.766, 10.563232, 0.25229645, -335.766, -10.186768, 0.25229645, -336.016, 12.813232, 0.25229645, -336.016, 12.813232, 0.25229645, -788.016, 211.56323, 0.25229645, -336.016, 211.81323, 0.25229645, -333.766, 307.31323, 0.25229645, -333.766, 307.31323, 0.25229645, -467.766, 302.81323, 0.25229645, -468.016, 302.81323, 0.25229645, -788.016, -307.43677, 0.25229645, -276.266, -211.18677, 0.25229645, -276.516, -16.936768, 0.25229645, -327.266, -15.186768, 0.25229645, -327.516, -15.436768, 0.25229645, -333.766, -209.93677, 0.25229645, -333.766, -11.186768, 0.25229645, -279.766, -11.186768, 0.25229645, -293.266, -17.936768, 0.25229645, -294.016, -209.93677, 0.25229645, -279.766, -17.936768, 0.25229645, -295.766, -16.936768, 0.25229645, -296.016, -11.186768, 0.25229645, -327.516, -11.186768, 0.25229645, -333.766, -8.936768, 0.25229645, -294.516, 9.063232, 0.25229645, -294.516, 9.313232, 0.25229645, -295.516, -9.186768, 0.25229645, -295.516, 10.563232, 0.25229645, -295.516, -9.936768, 0.25229645, -295.516, 11.813232, 0.25229645, -333.766, 11.813232, 0.25229645, -327.516, 17.313232, 0.25229645, -327.266, 210.56323, 0.25229645, -333.766, 17.813232, 0.25229645, -293.766, 11.813232, 0.25229645, -293.266, 11.813232, 0.25229645, -279.766, 210.56323, 0.25229645, -279.766, 17.313232, 0.25229645, -296.016, 18.063232, 0.25229645, -295.766, 211.81323, 0.25229645, -277.016, 307.31323, 0.25229645, -277.016, -16.436768, 23.502296, -324.016, -16.436768, 18.502296, -312.766, -15.936768, 18.502296, -312.766, -13.686768, 24.002296, -324.266, 16.313232, 18.502296, -312.766, 17.063232, 18.252296, -312.766, 17.063232, 23.502296, -324.016, 15.563232, 24.002296, -324.266, 15.563232, 27.002296, -331.016, -13.686768, 27.002296, -331.016, -7.9262695, 24.752296, -326.54053, -2.9367676, 18.502296, -295.016, 16.313232, 18.502296, -295.266, 8.559814, 18.502296, -313.04068, -13.916077, 20.502296, -317.51474, -15.936768, 18.502296, -295.266, -9.936768, 18.502296, -326.516, -9.936768, 18.502296, -320.516, 10.563232, 18.502296, -320.516, 10.563232, 18.502296, -326.516, -15.686768, 0.25229645, -296.016, -11.936768, 0.25229645, -295.766, -11.936768, 0.25229645, -326.266, -15.686768, 0.25229645, -326.266, 12.313232, 0.25229645, -326.266, 12.313232, 0.25229645, -295.766, 16.063232, 0.25229645, -296.016, 16.063232, 0.25229645, -326.266, -15.936768, 18.502296, -318.516, -14.686768, 18.502296, -318.516, -14.436768, 18.502296, -320.516, -15.936768, 18.502296, -325.266, -11.186768, 18.502296, -320.516, -11.186768, 18.502296, -325.266, 11.813232, 18.502296, -325.266, 11.813232, 18.502296, -320.516, 16.313232, 18.502296, -320.516, 16.313232, 18.502296, -325.266, -12.186768, 9.252296, -293.266, -12.936768, 9.752296, -294.266, -16.936768, 9.752296, -294.516, -16.936768, 18.252296, -312.766, -210.18677, 23.502296, -324.016, -10.936768, 0.50229645, -275.016, -10.936768, 9.252296, -293.266, -210.18677, 0.50229645, -275.016, -307.43677, 0.25229645, -68.76599, -10.436768, 0.25229645, -68.76599, -211.18677, 0.25229645, -275.016, -10.436768, 0.50229645, -275.016, 17.313232, 9.752296, -294.516, 13.063232, 9.752296, -294.266, 12.313232, 9.252296, -293.266, 11.563232, 9.252296, -293.266, 11.563232, 0.50229645, -275.016, 11.063232, 0.25229645, -68.76599, 307.31323, 0.25229645, -68.76599, 210.81323, 0.50229645, -275.016, 13.064606, 5.5022964, -286.02747, 210.81323, 23.502296, -324.016, 211.81323, 0.25229645, -275.016, 11.063232, 0.50229645, -275.016, -13.186768, 10.502296, -296.266, -11.936768, 10.502296, -296.266, -11.936768, 11.252296, -297.516, -14.686768, 11.252296, -297.766, -15.686768, 16.252296, -308.266, -15.686768, 10.252296, -295.516, -14.686768, 16.252296, -308.266, -13.436768, 10.252296, -295.516, -13.436768, 16.252296, -308.266, -13.436768, 13.502296, -302.266, -11.936768, 13.502296, -302.266, -11.936768, 16.252296, -308.266, 12.313232, 16.252296, -308.266, 12.313232, 13.502296, -302.266, 13.313232, 13.502296, -302.266, 13.313232, 16.252296, -308.266, 12.313232, 11.252296, -297.516, 12.313232, 10.502296, -296.266, 13.063232, 10.502296, -296.266, 14.563232, 11.252296, -297.766, 16.063232, 16.252296, -308.266, 14.563232, 16.252296, -308.266, 16.063232, 10.252296, -295.516, 13.313232, 10.252296, -295.516, 10.563232, 0.25229645, -277.016, 10.563232, 0.25229645, -293.266, 9.313232, 0.25229645, -293.266, -8.936768, 0.25229645, -293.516, -9.936768, 0.25229645, -293.266, -9.936768, 0.25229645, -277.016, 10.563232, 0.25229645, -275.016, -9.936768, 0.25229645, -275.016, -210.18677, -1.9977036, -269.516, -210.18677, -20.747704, -230.01599, -10.936768, -20.747704, -230.01599, -10.936768, -1.9977036, -269.516, -210.18677, -6.7477036, -259.27527, -10.936768, -6.7477036, -259.27527, -58.952606, -6.4977036, -260.54077, -208.95381, -6.4977036, -260.5395, -12.417236, -6.4977036, -260.50018, 11.563232, -1.9977036, -269.516, 11.563232, -20.747704, -230.01599, 210.81323, -20.747704, -230.01599, 210.81323, -1.9977036, -269.516, 11.563232, -6.7477036, -259.27527, 210.81323, -6.7477036, -259.27527, 163.0474, -6.4977036, -260.54077, 13.046204, -6.4977036, -260.5395, 209.58276, -6.4977036, -260.50018)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(2, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(10, 9, 8), PackedInt32Array(8, 11, 10), PackedInt32Array(10, 11, 12), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 6), PackedInt32Array(11, 5, 6), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(14, 12, 18), PackedInt32Array(18, 12, 19), PackedInt32Array(19, 12, 13), PackedInt32Array(21, 20, 1), PackedInt32Array(1, 20, 0), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 22), PackedInt32Array(22, 30, 25), PackedInt32Array(25, 30, 29), PackedInt32Array(30, 28, 29), PackedInt32Array(32, 23, 33), PackedInt32Array(33, 23, 24), PackedInt32Array(34, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(36, 37, 8), PackedInt32Array(36, 8, 9), PackedInt32Array(9, 38, 36), PackedInt32Array(37, 39, 8), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(48, 42, 49), PackedInt32Array(49, 42, 43), PackedInt32Array(49, 43, 47), PackedInt32Array(47, 44, 49), PackedInt32Array(15, 16, 50), PackedInt32Array(50, 16, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(61, 62, 55), PackedInt32Array(55, 62, 59), PackedInt32Array(59, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(55, 66, 54), PackedInt32Array(54, 65, 63), PackedInt32Array(63, 65, 64), PackedInt32Array(64, 65, 56), PackedInt32Array(56, 65, 59), PackedInt32Array(59, 65, 55), PackedInt32Array(66, 65, 54), PackedInt32Array(55, 65, 66), PackedInt32Array(63, 67, 54), PackedInt32Array(71, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(75, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(79, 78, 76), PackedInt32Array(76, 78, 77), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83), PackedInt32Array(84, 82, 85), PackedInt32Array(85, 82, 83), PackedInt32Array(89, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(92, 91, 90), PackedInt32Array(53, 93, 52), PackedInt32Array(52, 93, 94), PackedInt32Array(90, 96, 95), PackedInt32Array(90, 95, 92), PackedInt32Array(92, 95, 97), PackedInt32Array(97, 95, 99), PackedInt32Array(97, 99, 98), PackedInt32Array(21, 100, 20), PackedInt32Array(20, 100, 98), PackedInt32Array(95, 101, 99), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 97), PackedInt32Array(98, 100, 97), PackedInt32Array(104, 103, 102), PackedInt32Array(106, 105, 104), PackedInt32Array(108, 107, 109), PackedInt32Array(109, 106, 102), PackedInt32Array(102, 110, 104), PackedInt32Array(104, 110, 106), PackedInt32Array(106, 109, 107), PackedInt32Array(106, 110, 102), PackedInt32Array(57, 58, 102), PackedInt32Array(102, 58, 111), PackedInt32Array(102, 111, 109), PackedInt32Array(50, 51, 112), PackedInt32Array(112, 51, 108), PackedInt32Array(107, 113, 106), PackedInt32Array(109, 112, 108), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(120, 117, 118), PackedInt32Array(118, 117, 119), PackedInt32Array(114, 121, 117), PackedInt32Array(117, 121, 119), PackedInt32Array(125, 124, 122), PackedInt32Array(122, 124, 123), PackedInt32Array(129, 128, 126), PackedInt32Array(126, 128, 127), PackedInt32Array(131, 130, 132), PackedInt32Array(132, 130, 133), PackedInt32Array(135, 134, 133), PackedInt32Array(133, 134, 136), PackedInt32Array(132, 133, 137), PackedInt32Array(137, 133, 136), PackedInt32Array(140, 139, 138), PackedInt32Array(142, 141, 143), PackedInt32Array(143, 141, 35), PackedInt32Array(143, 35, 140), PackedInt32Array(143, 140, 138), PackedInt32Array(141, 34, 35), PackedInt32Array(145, 143, 144), PackedInt32Array(144, 143, 138), PackedInt32Array(144, 107, 145), PackedInt32Array(145, 107, 99), PackedInt32Array(99, 101, 145), PackedInt32Array(144, 113, 107), PackedInt32Array(151, 154, 149), PackedInt32Array(149, 152, 146), PackedInt32Array(146, 153, 150), PackedInt32Array(150, 153, 147), PackedInt32Array(147, 152, 148), PackedInt32Array(148, 154, 151), PackedInt32Array(154, 152, 149), PackedInt32Array(152, 153, 146), PackedInt32Array(153, 152, 147), PackedInt32Array(152, 154, 148), PackedInt32Array(160, 163, 158), PackedInt32Array(158, 161, 155), PackedInt32Array(155, 162, 159), PackedInt32Array(159, 162, 156), PackedInt32Array(156, 161, 157), PackedInt32Array(157, 163, 160), PackedInt32Array(163, 161, 158), PackedInt32Array(161, 162, 155), PackedInt32Array(162, 161, 156), PackedInt32Array(161, 163, 157)]
+agent_height = 2.0
+agent_max_climb = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vk0dc"]
+albedo_color = Color(0.16752782, 0.28977254, 0.111970894, 1)
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_641ss"]
+material = SubResource("StandardMaterial3D_vk0dc")
+size = Vector2(600, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geqtq"]
+albedo_color = Color(0.101960786, 0.1882353, 0.0627451, 1)
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8kf4"]
+material = SubResource("StandardMaterial3D_geqtq")
+size = Vector3(600, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scf2g"]
+size = Vector3(607.5436, 0, 719.90027)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iy73c"]
+albedo_color = Color(0.6872149, 0.68721503, 0.6872149, 1)
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4pu46"]
+material = SubResource("StandardMaterial3D_iy73c")
+size = Vector2(200, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc6l2"]
+albedo_color = Color(0.6862745, 0.6862745, 0.6862745, 1)
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_215j1"]
+material = SubResource("StandardMaterial3D_uc6l2")
+size = Vector3(30, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pu46"]
+albedo_color = Color(0.6862745, 0.6862745, 0.6862745, 1)
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uc6l2"]
+material = SubResource("StandardMaterial3D_4pu46")
+size = Vector3(200, 50, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_215j1"]
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ldmev"]
+material = SubResource("StandardMaterial3D_215j1")
+size = Vector3(1, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_is7oi"]
+albedo_texture = ExtResource("6_f557q")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnxgq"]
+material = SubResource("StandardMaterial3D_is7oi")
+size = Vector3(28, 5, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d6oh"]
+size = Vector3(21.894104, 9.40863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if066"]
+albedo_texture = ExtResource("16_1of4x")
+
+[sub_resource type="BoxMesh" id="BoxMesh_l542c"]
+material = SubResource("StandardMaterial3D_if066")
+size = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgrff"]
+albedo_texture = ExtResource("21_3dn7w")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hi81"]
+material = SubResource("StandardMaterial3D_dgrff")
+size = Vector3(7, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_os54k"]
+size = Vector3(1.2467041, 2.6851807, 2.40271)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43gye"]
+size = Vector3(3.6312866, 6.671753, 7.607605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgrff"]
+size = Vector3(5.522, 0.25402832, 1.692)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hi81"]
+size = Vector3(0.5021515, 0.076408386, 0.010772705)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ww6od"]
+size = Vector3(0.46505737, 0.07788086, 0.009796143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_350pk"]
+size = Vector3(0.50390625, 0.1281128, 0.10546875)
+
+[node name="NewArea" type="Node3D"]
+script = ExtResource("1_soij8")
+the_rake_chase_scene = ExtResource("3_rydna")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_0hi81")
+
+[node name="Floor2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -69.81091)
+
+[node name="floor2" type="MeshInstance3D" parent="NavigationRegion3D/Floor2"]
+transform = Transform3D(1.0264559, 0, 0, 0, 2.6340704, 0, 0, 0, 1, 0, 0, 98.37629)
+mesh = SubResource("PlaneMesh_641ss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5246863, -1.1230927)
+mesh = SubResource("BoxMesh_d8kf4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60566497, -0.006918013, 358.75488)
+shape = SubResource("BoxShape3D_scf2g")
+
+[node name="Floor3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -269.80334)
+
+[node name="floor2" type="MeshInstance3D" parent="NavigationRegion3D/Floor3"]
+transform = Transform3D(1.0264559, 0, 0, 0, 2.6340704, 0, 0, 0, 1, 0, 0, 98.37629)
+mesh = SubResource("PlaneMesh_641ss")
+
+[node name="Hill" type="Node3D" parent="NavigationRegion3D/Floor3"]
+
+[node name="hill" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1, 3.7253177e-08, 8.334581e-09, -3.7253177e-08, 0.9046635, 0.4261267, 8.334581e-09, -0.4261267, 0.9046635, 110.60042, 0, 5.069977)
+mesh = SubResource("PlaneMesh_4pu46")
+skeleton = NodePath("../..")
+
+[node name="hilltop" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1, 0, 0, 0, 0.90482706, 0.42577928, 0, -0.42577928, 0.90482706, -0.8958271, 22.010616, 52.706177)
+mesh = SubResource("BoxMesh_215j1")
+
+[node name="hillpart" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1, 0, 0, 0, 0.9048272, 0.42577934, 0, -0.42577934, 0.9048272, 110.6, -20.588058, 20.080322)
+mesh = SubResource("BoxMesh_uc6l2")
+skeleton = NodePath("../..")
+
+[node name="Hill2" type="Node3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -221.77644, 0, -3.0517578e-05)
+
+[node name="hill" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill/Hill2"]
+transform = Transform3D(1, 3.7253177e-08, 8.334581e-09, -3.7253177e-08, 0.9046635, 0.4261267, 8.334581e-09, -0.4261267, 0.9046635, 110.60042, 0, 5.069977)
+mesh = SubResource("PlaneMesh_4pu46")
+skeleton = NodePath("../../..")
+
+[node name="hillpart" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill/Hill2"]
+transform = Transform3D(1, 0, 0, 0, 0.9048272, 0.42577934, 0, -0.42577934, 0.9048272, 110.6, -20.588058, 20.080322)
+mesh = SubResource("BoxMesh_uc6l2")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.8575065, 0, 0, 0, 1.883641, 0, 0, 0, 1, -11.009172, 4.744502, 24.56128)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.836815, -0.28037056, -9.738343e-10, 0.27648056, 1.8626584, 1.30124445e-08, -1.8089281e-09, -2.4510767e-08, 0.99999994, -10.432085, -0.6482749, 24.60794)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-1.8366215, 0.28167093, -8.742277e-08, 0.2777629, 1.8624622, 0, 1.6056255e-07, -2.4624455e-08, -0.99999994, 10.358656, -0.6482749, 24.60794)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-1.8251493, -0.35005227, -7.75865e-08, -0.34519556, 1.8508288, -5.781777e-08, 1.6156545e-07, -7.985145e-08, -0.9999999, 10.879225, 4.252687, 24.670166)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.8252094, 0.34972927, 0, -0.34487692, 1.8508898, 0, 0, 0, 0.9999999, -10.9153, 4.252687, 24.670166)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.6856035, 0.79141, -2.6502605e-09, -0.7804296, 1.70932, -2.1362606e-08, -1.2204723e-08, 3.8612953e-08, 0.9999999, -10.368715, 6.7205763, 24.900726)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-1.6862024, -0.7900973, -8.742277e-08, -0.7791349, 1.7099271, 0, 1.4741249e-07, 6.90725e-08, -0.9999999, 10.273893, 6.7205763, 24.900726)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-1.3009024, -1.3445445, -7.608686e-08, -1.3258892, 1.319206, -6.1931935e-08, 1.8109648e-07, 2.060117e-08, -0.9999997, 10.273893, 8.211362, 25.100647)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.3019433, 1.343508, 0, -1.3248671, 1.3202616, 0, 0, 0, 0.9999997, -10.376482, 8.211362, 25.100647)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(0.87359154, 1.662322, -3.5767371e-09, -1.6392578, 0.885883, -2.4750387e-08, -3.7447684e-08, 2.7871636e-08, 0.9999995, -5.067843, 12.77685, 25.271698)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-0.87490726, -1.6616102, -8.7422734e-08, -1.6385559, 0.8872171, 0, 7.648682e-08, 1.452626e-07, -0.9999995, 4.9561744, 12.77685, 25.311096)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-0.30891064, -1.8574103, -7.836118e-08, -1.8316393, 0.313257, -5.5557415e-08, 1.259678e-07, 1.2814522e-07, -0.9999995, 3.4003274, 13.563713, 25.311096)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(0.3097739, 1.8572625, 0, -1.8314935, 0.3141324, 0, 0, 0, 0.9999995, -3.484011, 13.563713, 25.311096)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1.8575065, 0, 0, 0, 1.883641, 0, 0, 0, 1, 10.879896, 4.744502, 24.56128)
+mesh = SubResource("BoxMesh_ldmev")
+skeleton = NodePath("../Hill2")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.581079e-06, 15.695324, 40.96277)
+mesh = SubResource("BoxMesh_nnxgq")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 13.932052, 4.1795263, 41.052155)
+mesh = SubResource("BoxMesh_nnxgq")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="NavigationRegion3D/Floor3/Hill"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -14.158368, 4.1795263, 41.052155)
+mesh = SubResource("BoxMesh_nnxgq")
+
+[node name="Environment" type="Node3D" parent="."]
+script = ExtResource("19_wlov2")
+
+[node name="ChaseTrigger" type="Area3D" parent="."]
+transform = Transform3D(0.902277, 0, -0.43115687, 0, 1, 0, 0.43115687, 0, 0.902277, 83.9686, 0, -637.6188)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseTrigger"]
+transform = Transform3D(0.9929593, 0, -0.118455976, 0, 1, 0, 0.118455976, 0, 0.9929593, 0.5443573, 4.204315, 6.1035156e-05)
+shape = SubResource("BoxShape3D_4d6oh")
+
+[node name="TunnelDoor" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TunnelDoor"]
+transform = Transform3D(0.8599592, 0, -0.5103628, 0, 1, 0, 0.5103628, 0, 0.8599592, 61.874847, 1.2104492, -621.431)
+mesh = SubResource("BoxMesh_l542c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TunnelDoor"]
+transform = Transform3D(0.8599592, 0, -0.5103628, 0, 1, 0, 0.5103628, 0, 0.8599592, 65.168045, 1.2104492, -626.91284)
+mesh = SubResource("BoxMesh_l542c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TunnelDoor"]
+transform = Transform3D(0.47623825, 0, 0.87931633, 0, 1, 0, -0.87931633, 0, 0.47623825, 67.4978, 2.7053287, -621.59326)
+mesh = SubResource("BoxMesh_0hi81")
+
+[node name="Area3D" type="Area3D" parent="TunnelDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.49796, 0, -621.5653)
+script = ExtResource("22_jcxjm")
+
+[node name="Sketchfab_Scene" parent="TunnelDoor/Area3D" instance=ExtResource("23_204f0")]
+transform = Transform3D(0.004806368, 0, 0.008769197, 0, 0.01, 0, -0.008769197, 0, 0.004806368, 1.4251022, 0.07404393, 0.23706055)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/Area3D"]
+transform = Transform3D(0.8450286, 0, -0.53472114, 0, 1, 0, 0.53472114, 0, 0.8450286, 1.9741974, 0.84259033, 0.5796509)
+shape = SubResource("BoxShape3D_os54k")
+
+[node name="AudioOpen" type="AudioStreamPlayer3D" parent="TunnelDoor/Area3D"]
+transform = Transform3D(-3.4830332e-08, -0.79682535, -0.6042098, 1, -4.371138e-08, 6.631772e-15, -2.6410847e-08, -0.6042098, 0.79682535, 1.5843964, 0.6585312, 0.32073975)
+stream = ExtResource("24_tc4lk")
+
+[node name="Sketchfab_Scene2" parent="TunnelDoor" instance=ExtResource("25_7l5ui")]
+transform = Transform3D(-3.4830332e-08, -0.7968253, -0.6042098, 1, -4.371139e-08, 0, -2.6410847e-08, -0.6042098, 0.7968253, 113.64942, 5.0560017, -609.60175)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TunnelDoor/Sketchfab_Scene2"]
+transform = Transform3D(1, 8.881784e-15, 1.7763568e-15, 0, 1, 0, 0, 0, 1, -1.4305115e-06, 42.808258, 20.002441)
+light_color = Color(0.63529414, 0.4745098, 0, 1)
+omni_range = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TunnelDoor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
+transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 66.93999, 2.8358765, -622.078)
+shape = SubResource("BoxShape3D_43gye")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
+transform = Transform3D(0.871111, 0, -0.49108624, 0, 1, 0, 0.49108624, 0, 0.871111, 61.3525, 2.8358765, -617.69745)
+shape = SubResource("BoxShape3D_43gye")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="TunnelDoor/StaticBody3D"]
+transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.9038288, 67.17807, 2.8358765, -629.7232)
+shape = SubResource("BoxShape3D_43gye")
+
+[node name="Player" parent="." instance=ExtResource("26_er0es")]
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 67.350464, 0, -602.14484)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.95
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("28_g2idg")]
+
+[node name="HudNewArea" parent="." instance=ExtResource("29_kdcv6")]
+
+[node name="Tunnel" parent="." instance=ExtResource("33_28o2r")]
+transform = Transform3D(-33.260555, 0, -94.30659, 0, 100.00001, 0, 94.30659, 0, -33.260555, 44.6, -2.5000002, -537.699)
+
+[node name="LightController" type="Node3D" parent="Tunnel"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+script = ExtResource("34_nm3q8")
+
+[node name="lightoff" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0003480813, 0, 0.0009374636, 0, 0.001, 0, -0.0009374636, 0, -0.0003480813, 2.329859, 0.13702749, -0.34930718)
+
+[node name="lighton" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00034652645, 0, -0.0009380397, 0, 0.001, 0, 0.0009380397, 0, 0.00034652645, 2.2781687, 0.13670795, -0.33099556)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff2" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0003270695, 0, 0.00094499916, 0, 0.001, 0, -0.00094499916, 0, -0.0003270695, 2.227389, 0.13702753, -0.3127222)
+
+[node name="lighton2" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.0003255022, 0, -0.00094554044, 0, 0.001, 0, 0.00094554044, 0, 0.0003255022, 2.175303, 0.13670798, -0.2955693)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton2"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff3" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00029300604, 0, 0.0009561094, 0, 0.001, 0, -0.0009561094, 0, -0.00029300604, 2.1229687, 0.13702756, -0.27875996)
+
+[node name="lightoff4" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0002930061, 0, 0.00095610926, 0, 0.001, 0, -0.00095610926, 0, -0.0002930061, 2.0673597, 0.13702756, -0.26074195)
+
+[node name="lighton3" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00020596533, 0, -0.0009785581, 0, 0.001, 0, 0.0009785581, 0, 0.00020596533, 2.0133579, 0.13670798, -0.24680328)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton3"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff5" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0002913035, 0, 0.0009566301, 0, 0.001, 0, -0.0009566301, 0, -0.0002913035, 1.9570501, 0.13702756, -0.23277903)
+
+[node name="lighton4" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00028971693, 0, -0.0009571122, 0, 0.001, 0, 0.0009571122, 0, 0.00028971693, 1.904355, 0.13670798, -0.21759641)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton4"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff6" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00026987802, 0, 0.0009628935, 0, 0.001, 0, -0.0009628935, 0, -0.00026987802, 1.8525727, 0.13702756, -0.20239747)
+
+[node name="lighton5" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00026828126, 0, -0.0009633399, 0, 0.001, 0, 0.0009633399, 0, 0.00026828126, 1.7995524, 0.13670798, -0.18839514)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton5"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff7" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00023521032, 0, 0.0009719434, 0, 0.001, 0, -0.0009719434, 0, -0.00023521032, 1.7463055, 0.13702756, -0.17475116)
+
+[node name="lightoff8" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0002352104, 0, 0.00097194343, 0, 0.001, 0, -0.00097194343, 0, -0.0002352104, 1.689717, 0.13702756, -0.1600964)
+
+[node name="lighton6" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.0001469812, 0, -0.0009891383, 0, 0.001, 0, 0.0009891383, 0, 0.0001469812, 1.6349773, 0.13670798, -0.1494168)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton6"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff9" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0002913035, 0, 0.0009566301, 0, 0.001, 0, -0.0009566301, 0, -0.0002913035, 1.5800924, 0.13702756, -0.13667643)
+
+[node name="lighton7" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00028971693, 0, -0.0009571121, 0, 0.001, 0, 0.0009571121, 0, 0.00028971693, 1.5273974, 0.13670798, -0.12149382)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton7"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff10" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.000174525, 0, 0.0009846517, 0, 0.001, 0, -0.0009846517, 0, -0.000174525, 1.4742136, 0.13702756, -0.110268)
+
+[node name="lighton8" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00018863329, 0, -0.0009820472, 0, 0.001, 0, 0.0009820472, 0, 0.00018863329, 1.4196062, 0.13670798, -0.100765824)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton8"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff11" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00018664458, 0, 0.0009824265, 0, 0.001, 0, -0.0009824265, 0, -0.00018664458, 1.3654366, 0.13702756, -0.08973789)
+
+[node name="lightoff12" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0002352105, 0, 0.0009719437, 0, 0.001, 0, -0.0009719437, 0, -0.0002352105, 1.3116524, 0.13702756, -0.08052194)
+
+[node name="lighton9" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.0001469813, 0, -0.0009891383, 0, 0.001, 0, 0.0009891383, 0, 0.0001469813, 1.2569125, 0.13670798, -0.06984222)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton9"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff13" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.0001745251, 0, 0.0009846517, 0, 0.001, 0, -0.0009846517, 0, -0.0001745251, 1.199328, 0.13702756, -0.06070912)
+
+[node name="lighton10" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(0.00018863339, 0, -0.0009820473, 0, 0.001, 0, 0.0009820473, 0, 0.00018863339, 1.1447206, 0.13670798, -0.051207185)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton10"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff14" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00018664467, 0, 0.0009824266, 0, 0.001, 0, -0.0009824266, 0, -0.00018664467, 1.0905514, 0.13702756, -0.040178895)
+
+[node name="lightoff15" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-0.00017734301, 0, 0.0009841485, 0, 0.001, 0, -0.0009841485, 0, -0.00017734301, 1.0366125, 0.13702756, -0.031402826)
+
+[node name="lighton11" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(9.5464115e-05, 0, -0.000995432, 0, 0.001, 0, 0.000995432, 0, 9.5464115e-05, 0.9804778, 0.13670798, -0.024676204)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton11"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff16" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-8.423504e-05, 0, 0.000996445, 0, 0.001, 0, -0.000996445, 0, -8.423504e-05, 0.92567635, 0.13702756, -0.019856334)
+
+[node name="lighton12" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(9.852165e-05, 0, -0.0009951346, 0, 0.001, 0, 0.0009951346, 0, 9.852165e-05, 0.87043, 0.13670798, -0.015360951)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton12"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff17" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-9.650666e-05, 0, 0.0009953314, 0, 0.001, 0, -0.0009953314, 0, -9.650666e-05, 0.8158016, 0.13702756, -0.008402348)
+
+[node name="lightoff18" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-8.708684e-05, 0, 0.0009962003, 0, 0.001, 0, -0.0009962003, 0, -8.708684e-05, 0.7615156, 0.13702756, -0.003926873)
+
+[node name="lightoff19" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-9.650666e-05, 0, 0.0009953314, 0, 0.001, 0, -0.0009953314, 0, -9.650666e-05, 0.65014935, 0.13702756, 0.007822633)
+
+[node name="lightoff20" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-8.708684e-05, 0, 0.0009962003, 0, 0.001, 0, -0.0009962003, 0, -8.708684e-05, 0.59586287, 0.13702756, 0.012297869)
+
+[node name="lightoff21" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-9.650666e-05, 0, 0.0009953314, 0, 0.001, 0, -0.0009953314, 0, -9.650666e-05, 0.54012156, 0.13702756, 0.016828656)
+
+[node name="lightoff22" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-8.708684e-05, 0, 0.0009962003, 0, 0.001, 0, -0.0009962003, 0, -8.708684e-05, 0.48583508, 0.13702756, 0.021303415)
+
+[node name="lightoff27" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.077409744, 0.13702756, 0.03729379)
+
+[node name="lightoff28" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(2.502458e-05, 0, 0.0009996861, 0, 0.0010000002, 0, -0.0009996861, 0, 2.502458e-05, -0.13328838, 0.13702756, 0.03502488)
+
+[node name="lightoff29" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.18771839, 0.13702756, 0.032877922)
+
+[node name="lightoff30" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.24391985, 0.13702756, 0.03146696)
+
+[node name="lightoff31" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(2.502458e-05, 0, 0.0009996861, 0, 0.0010000002, 0, -0.0009996861, 0, 2.502458e-05, -0.29979897, 0.13702756, 0.02919805)
+
+[node name="lightoff32" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(3.4480152e-05, 0, 0.0009994048, 0, 0.001, 0, -0.0009994048, 0, 3.4480152e-05, -0.3542285, 0.13702756, 0.027051568)
+
+[node name="lightoff23" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-6.183321e-05, 0, 0.0009980856, 0, 0.0010000002, 0, -0.0009980856, 0, -6.183321e-05, 0.3184681, 0.13702756, 0.033212185)
+
+[node name="lightoff24" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-5.238896e-05, 0, 0.0009986263, 0, 0.001, 0, -0.0009986263, 0, -5.238896e-05, 0.2640605, 0.13702756, 0.035796523)
+
+[node name="lighton13" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(8.26177e-05, 0, -0.0009965806, 0, 0.0010000002, 0, 0.0009965806, 0, 8.26177e-05, 0.70681953, 0.13670798, 0.0028241873)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton13"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton14" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(8.2617655e-05, 0, -0.0009965806, 0, 0.0010000002, 0, 0.0009965806, 0, 8.2617655e-05, 0.4285388, 0.13670798, 0.025853872)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton14"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton15" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(5.338242e-05, 0, -0.0009985735, 0, 0.0010000004, 0, 0.0009985735, 0, 5.338242e-05, 0.37369108, 0.13670798, 0.030265927)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton15"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton16" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(1.99044e-06, 0, -0.0009999975, 0, 0.0010000004, 0, 0.0009999975, 0, 1.99044e-06, 0.20590544, 0.13670798, 0.037150145)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton16"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff25" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-5.238902e-05, 0, 0.0009986265, 0, 0.001, 0, -0.0009986265, 0, -5.238902e-05, 0.15026522, 0.13702756, 0.0398618)
+
+[node name="lighton17" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(1.99044e-06, 0, -0.0009999975, 0, 0.0010000004, 0, 0.0009999975, 0, 1.99044e-06, 0.09211016, 0.13670798, 0.041215777)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton17"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff26" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(-5.593174e-07, 0, 0.0009999999, 0, 0.001, 0, -0.0009999999, 0, -5.593174e-07, 0.035858154, 0.13702756, 0.040694833)
+
+[node name="lighton18" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.022287369, 0.13670798, 0.039032817)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton18"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton19" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.409297, 0.13670798, 0.024853945)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton19"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton20" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-4.984252e-05, 0, -0.000998757, 0, 0.0010000006, 0, 0.000998757, 0, -4.984252e-05, -0.46542263, 0.13670798, 0.02251494)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton20"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lightoff33" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(7.2802155e-05, 0, 0.0009973457, 0, 0.0010000002, 0, -0.0009973457, 0, 7.2802155e-05, -0.52013826, 0.13702756, 0.01910603)
+
+[node name="lightoff34" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(8.2233455e-05, 0, 0.0009966126, 0, 0.0010000004, 0, -0.0009966126, 0, 8.2233455e-05, -0.57440376, 0.13702756, 0.014359593)
+
+[node name="lightoff35" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(7.2802155e-05, 0, 0.0009973457, 0, 0.0010000002, 0, -0.0009973457, 0, 7.2802155e-05, -0.73945284, 0.13702756, -0.0010533333)
+
+[node name="lightoff36" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(8.2233455e-05, 0, 0.0009966126, 0, 0.0010000004, 0, -0.0009966126, 0, 8.2233455e-05, -0.7937207, 0.13702756, -0.0057991743)
+
+[node name="lightoff37" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00010695733, 0, 0.0009942629, 0, 0.0010000002, 0, -0.0009942629, 0, 0.00010695733, -0.84865236, 0.13702756, -0.011264563)
+
+[node name="lightoff38" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.0001163579, 0, 0.0009932066, 0, 0.0010000004, 0, -0.0009932066, 0, 0.0001163579, -0.9027257, 0.13702756, -0.017867565)
+
+[node name="lightoff39" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.0118775, 0.13702756, -0.03364837)
+
+[node name="lightoff40" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.069304, 0.13702756, -0.042372823)
+
+[node name="lightoff41" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00015455438, 0, 0.0009879837, 0, 0.0010000006, 0, -0.0009879837, 0, 0.00015455438, -1.1803803, 0.13702756, -0.059554935)
+
+[node name="lightoff42" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.4089155, 0.13702756, -0.10327995)
+
+[node name="lightoff43" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.4654965, 0.13702756, -0.114277005)
+
+[node name="lightoff44" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00020230789, 0, 0.0009793213, 0, 0.0010000006, 0, -0.0009793213, 0, 0.00020230789, -1.5213037, 0.13702756, -0.12648273)
+
+[node name="lightoff45" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.5746994, 0.13702756, -0.13884044)
+
+[node name="lightoff46" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.6308875, 0.13702756, -0.15170038)
+
+[node name="lightoff47" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.00023454742, 0, 0.0009721041, 0, 0.0010000009, 0, -0.0009721041, 0, 0.00023454742, -1.6862612, 0.13702756, -0.16574252)
+
+[node name="lightoff48" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.7457585, 0.13702756, -0.1775651)
+
+[node name="lightoff49" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.8019481, 0.13702756, -0.19042456)
+
+[node name="lightoff50" parent="Tunnel/LightController" instance=ExtResource("35_s7v2b")]
+transform = Transform3D(0.0002345473, 0, 0.00097210414, 0, 0.0010000009, 0, -0.00097210414, 0, 0.0002345473, -1.8573213, 0.13702756, -0.20446694)
+
+[node name="lighton21" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-9.754719e-05, 0, -0.0009952309, 0, 0.0010000006, 0, 0.0009952309, 0, -9.754719e-05, -0.6293049, 0.13670798, 0.0095306635)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton21"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton22" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-9.754719e-05, 0, -0.0009952309, 0, 0.0010000006, 0, 0.0009952309, 0, -9.754719e-05, -0.6852536, 0.13670798, 0.0045102835)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton22"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton23" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-0.0001508458, 0, -0.0009885572, 0, 0.0010000006, 0, 0.0009885572, 0, -0.0001508458, -0.9572458, 0.13670798, -0.025236487)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton23"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton24" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-0.0001508458, 0, -0.0009885572, 0, 0.0010000006, 0, 0.0009885572, 0, -0.0001508458, -1.1245251, 0.13670798, -0.051055312)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton24"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton25" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-0.00017799408, 0, -0.0009840317, 0, 0.0010000006, 0, 0.0009840317, 0, -0.00017799408, -1.2372885, 0.13670798, -0.06846511)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton25"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton26" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-0.00022952215, 0, -0.0009733038, 0, 0.0010000009, 0, 0.0009733038, 0, -0.00022952215, -1.2948728, 0.13670798, -0.07992065)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton26"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="lighton27" parent="Tunnel/LightController" instance=ExtResource("36_8jqun")]
+transform = Transform3D(-0.00022952212, 0, -0.0009733038, 0, 0.0010000009, 0, 0.0009733038, 0, -0.00022952212, -1.3521738, 0.13670798, -0.09152973)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Tunnel/LightController/lighton27"]
+transform = Transform3D(-9.995728, -0.29247397, -1.2784455e-08, 0, -4.3711427e-07, 9.999998, -0.292474, 9.995728, 4.3692756e-07, -2.1271973, -0.47216797, 6.550537)
+light_color = Color(1, 0.9607843, 0.8392157, 1)
+spot_range = 15.0
+spot_angle = 60.0
+script = ExtResource("37_nnpsp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tunnel"]
+
+[node name="floor" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999994, 0, 1.7881393e-07, 0, 1, 0, -1.7881393e-07, 0, 0.9999994, -0.27988625, -0.1036662, -0.19692206)
+shape = SubResource("BoxShape3D_dgrff")
+
+[node name="wall" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9483501, 0, 0.31722197, 0, 1, 0, -0.31722197, 0, 0.9483501, 2.243657, 0.060329463, -0.21589541)
+shape = SubResource("BoxShape3D_0hi81")
+
+[node name="wall2" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9500685, 0, 0.31203628, 0, 1, 0, -0.31203628, 0, 0.9500685, 2.1881642, 0.05920409, -0.4117902)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall14" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.96963173, 0, 0.24456295, 0, 1, 0, -0.24456295, 0, 0.96963173, 1.7436094, 0.059204094, -0.28297472)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall15" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98252666, 0, 0.18611278, 0, 1, 0, -0.18611278, 0, 0.98252666, 1.2925963, 0.059204094, -0.18321157)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall16" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99261594, 0, 0.121280834, 0, 1, 0, -0.121280834, 0, 0.99261594, 0.83434105, 0.059204094, -0.11157012)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall17" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99863076, 0, 0.05224955, 0, 1, 0, -0.05224955, 0, 0.99863076, 0.373991, 0.059204094, -0.071535945)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall18" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99885446, 0, -0.04776755, 0, 1, 0, 0.04776755, 0, 0.99885446, -0.085700035, 0.059204094, -0.070287704)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall19" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999557, 0, -0.00889951, 0, 1, 0, 0.00889951, 0, 0.9999557, -0.16443682, 0.059204094, -0.065616965)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall20" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9951487, 0, -0.09832734, 0, 1, 0, 0.09832734, 0, 0.9951487, -0.6244879, 0.059204094, -0.0906564)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall21" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9893099, 0, -0.14578655, 0, 1, 0, 0.14578655, 0, 0.9893099, -1.0856299, 0.059204094, -0.1484518)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall22" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9748874, 0, -0.22266749, 0, 1, 0, 0.22266749, 0, 0.9748874, -1.5389524, 0.059204094, -0.23396385)
+shape = SubResource("BoxShape3D_ww6od")
+
+[node name="wall3" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.96667707, 0, 0.25598592, 0, 1, 0, -0.25598592, 0, 0.96667707, 1.877702, 0.0786438, -0.056853652)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall4" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98105603, 0, 0.19370417, 0, 1, 0, -0.19370417, 0, 0.98105603, 1.4838924, 0.0786438, 0.035179734)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall5" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9911044, 0, 0.13305324, 0, 1, 0, -0.13305324, 0, 0.9911044, 1.017447, 0.0786438, 0.11231923)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall6" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9977102, 0, 0.06752992, 0, 1, 0, -0.06752992, 0, 0.9977102, 0.5153146, 0.0786438, 0.16648531)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall9" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99260235, 0, 0.12135151, 0, 1, 0, -0.12135151, 0, 0.99260235, 0.51893616, 0.0786438, 0.1767528)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall7" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9999725, 0, -0.0062452257, 0, 1, 0, 0.0062452257, 0, 0.9999725, 0.0109272, 0.0786438, 0.18513894)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall10" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.99900824, 0, -0.044330657, 0, 1, 0, 0.044330657, 0, 0.99900824, -0.49462557, 0.0786438, 0.17291045)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall11" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9950452, 0, -0.09925988, 0, 1, 0, 0.09925988, 0, 0.9950452, -0.7656965, 0.0786438, 0.15009451)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall12" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9879285, 0, -0.15480515, 0, 1, 0, 0.15480515, 0, 0.9879285, -1.1125302, 0.0786438, 0.102219224)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall13" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.9719218, 0, -0.23523378, 0, 1, 0, 0.23523378, 0, 0.9719218, -1.5894995, 0.0786438, 0.008390665)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall23" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(-0.26256582, 0, -0.9648966, 0, 1, 0, 0.9648966, 0, -0.26256582, -1.6546478, 0.0786438, -0.16869688)
+shape = SubResource("BoxShape3D_350pk")
+
+[node name="wall8" type="CollisionShape3D" parent="Tunnel/StaticBody3D"]
+transform = Transform3D(0.98807436, 0, 0.15390193, 0, 1, 0, -0.15390193, 0, 0.98807436, 0.018864632, 0.0786438, 0.21793413)
+shape = SubResource("BoxShape3D_350pk")
