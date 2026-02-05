@@ -396,14 +396,15 @@ func show_jumpscare_only():
 func handle_player_death():
 	print("TheRake: Handling player death")
 	
-	if FileAccess.file_exists(respawn_scene_path):
-		load_respawn_scene()
+	if CheckpointManager.has_checkpoint():
+		var respawn_scene = CheckpointManager.get_checkpoint_scene()
+		load_respawn_scene(respawn_scene)
 	else:
 		print("TheRake: No checkpoint, showing death screen...")
 		await get_tree().create_timer(1.5).timeout
 		get_tree().reload_current_scene()
 		
-func load_respawn_scene():
+func load_respawn_scene(scene_path: String):
 	var transition_layer = CanvasLayer.new()
 	transition_layer.layer = 100
 	transition_layer.name = "TransitionLayer"
@@ -421,7 +422,7 @@ func load_respawn_scene():
 	if jumpscare_layer:
 		jumpscare_layer.queue_free()
 		
-	get_tree().change_scene_to_file(respawn_scene_path)
+	get_tree().change_scene_to_file(scene_path)
 	
 func reset_rake():
 	has_attacked = false
