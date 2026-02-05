@@ -396,33 +396,70 @@ func show_jumpscare_only():
 func handle_player_death():
 	print("TheRake: Handling player death")
 	
-	if CheckpointManager.has_checkpoint():
-		var respawn_scene = CheckpointManager.get_checkpoint_scene()
-		load_respawn_scene(respawn_scene)
-	else:
-		print("TheRake: No checkpoint, showing death screen...")
+	if not CheckpointManager.has_checkpoint():
 		await get_tree().create_timer(1.5).timeout
 		get_tree().reload_current_scene()
+		return
 		
-func load_respawn_scene(scene_path: String):
-	var transition_layer = CanvasLayer.new()
-	transition_layer.layer = 100
-	transition_layer.name = "TransitionLayer"
-	get_tree().current_scene.add_child(transition_layer)
+	if CheckpointManager.is_scene_checkpoint():
+		# SCENE
+		print("Loading checkpoint scene..")
+		load_checkpoint_scene()
+	else:
+		print("Respawning at position..")
+		respawn_at_position()
+		
+func load_checkpoint_scene():
+	var transition = create_transition()
 	
-	var black_screen = ColorRect.new()
-	black_screen.color = Color(0, 0, 0, 1)
-	black_screen.anchor_right = 1.0
-	black_screen.anchor_bottom = 1.0
-	transition_layer.add_child(black_screen)
+	var jumpscare = get_tree().current_scene.get_node_or_null("JumpscareLayer")
+	if jumpscare:
+		jumpscare.queue_free()
 	
 	await get_tree().create_timer(1.0).timeout
 	
-	var jumpscare_layer = get_tree().current_scene.get_node_or_null("JumpscareLayer")
-	if jumpscare_layer:
-		jumpscare_layer.queue_free()
+	get_tree().change_scene_to_file(CheckpointManager.checkpoint_scene_path)
+	
+func respawn_at_position():
+	var transition = create_transition()
+	await get_tree().create_timer(1.0).timeout
+	
+	var jumpscare = get_tree().current_scene.get_node_or_null("JumpscareLayer")
+	if jumpscare:
+		jumpscare.queue_free()
 		
-	get_tree().change_scene_to_file(scene_path)
+	if player:
+		player.global_position = CheckpointManager.checkpoint_position
+		player.rotation_degrees = CheckpointManager.checkpoint_rotation
+		player.set_physics_process(true)
+		player.set_process_input(true)
+		
+		if player.has_method("reset_health"):
+			player.reset_health()
+		if player.has_method("reset_fear"):
+			player.reset_fear()
+			
+	reset_rake()
+	
+	var black = transition.get_child(0)
+	var tween = create_tween()
+	tween.tween_property(black, "color:a", 0.0, 0.5)
+	await tween.finished
+	transition.queue_free()
+	
+func create_transition() -> CanvasLayer:
+	var layer = CanvasLayer.new()
+	layer.layer = 100
+	layer.name = "TransitionLayer"
+	get_tree().current_scene.add_child(layer)
+	
+	var black = ColorRect.new()
+	black.color = Color(0, 0, 0, 1)
+	black.anchor_right = 1.0
+	black.anchor_bottom = 1.0
+	layer.add_child(black)
+	
+	return layer
 	
 func reset_rake():
 	has_attacked = false
@@ -432,23 +469,14 @@ func reset_rake():
 	velocity = Vector3.ZERO
 	
 	var spawn_points = get_tree().get_nodes_in_group("rake_spawn_point")
-	
 	if spawn_points.size() > 0:
-		var spawn_point = spawn_points[randi() % spawn_points.size()]
-		global_position = spawn_point.global_position
+		var spawn = spawn_points[randi() % spawn_points.size()]
+		global_position = spawn.global_position
 	else:
-		if CheckpointManager.has_checkpoint:
-			var random_offset = Vector3(
-				randf_range(-1, 1),
-				0,
-				randf_range(-1, 1)
-			).normalized() * 25.0
-			global_position = CheckpointManager.checkpoint_position + random_offset
-	
+		global_position = CheckpointManager.checkpoint_position + Vector3(20, 0, 20)
+		
 	visible = false
-	
 	await get_tree().create_timer(3.0).timeout
-	
 	visible = true
 	activate()
 		
