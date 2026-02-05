@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://ck5k34oh83uyt"]
+[gd_scene load_steps=106 format=4 uid="uid://ck5k34oh83uyt"]
 
 [ext_resource type="Script" uid="uid://c3o8o2pgj0l0q" path="res://scripts/new_area.gd" id="1_geqtq"]
 [ext_resource type="PackedScene" uid="uid://dtmfqc4ns0doo" path="res://models/bridge/american_road_bridge.glb" id="1_gfrut"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://b673ysh5pm7kg" path="res://models/lights/industrial_caged_light.glb" id="16_nnxgq"]
 [ext_resource type="PackedScene" uid="uid://c2kutkxffmdq1" path="res://scene/ui/hud_new_area.tscn" id="17_scf2g"]
 [ext_resource type="Script" uid="uid://cdjqkvm7yi8bd" path="res://scripts/tunnel_door.gd" id="19_dgrff"]
+[ext_resource type="Script" uid="uid://bxfx8g0mgc0ny" path="res://scripts/checkpoint_tunnel.gd" id="20_350pk"]
 [ext_resource type="Script" uid="uid://m7bd5t1hj0is" path="res://scripts/invisible_wall.gd" id="20_eo525"]
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="21_jue2w"]
 [ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="22_b1wa3"]
@@ -239,6 +240,9 @@ size = Vector3(22.43631, 8.752441, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_is7oi"]
 size = Vector3(21.038025, 9.140564, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf7gu"]
+size = Vector3(25.603394, 15.441467, 1.4746094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d6oh"]
 size = Vector3(21.894104, 9.40863, 1)
@@ -1644,6 +1648,14 @@ transform = Transform3D(0.9411819, 0, -0.33790028, 0, 1, 0, 0.33790028, 0, 0.941
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77108765, 4.070282, 0)
 shape = SubResource("BoxShape3D_is7oi")
 
+[node name="Checkpoint" type="Area3D" parent="."]
+transform = Transform3D(0.88020414, 0, -0.47459525, 0, 1, 0, 0.47459525, 0, 0.88020414, 67.95294, 0, -604.29297)
+script = ExtResource("20_350pk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6278992, 7.2207336, -0.23754883)
+shape = SubResource("BoxShape3D_mf7gu")
+
 [node name="ChaseTrigger" type="Area3D" parent="."]
 transform = Transform3D(0.902277, 0, -0.43115687, 0, 1, 0, 0.43115687, 0, 0.902277, 83.9686, 0, -637.6188)
 
@@ -1703,7 +1715,7 @@ transform = Transform3D(0.9038288, 0, -0.42789432, 0, 1, 0, 0.42789432, 0, 0.903
 shape = SubResource("BoxShape3D_43gye")
 
 [node name="Player" parent="." instance=ExtResource("7_qjw1y")]
-transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 67.03728, 0, -605.8514)
+transform = Transform3D(0.941447, 0, -0.33716094, 0, 1, 0, 0.33716094, 0, 0.941447, 64.59785, 0, -595.1983)
 
 [node name="Car" parent="." instance=ExtResource("8_1fb26")]
 transform = Transform3D(0.998135, 0.061048523, -1.7133015e-09, -0.055057414, 0.9001803, 0.43202293, 0.026374368, -0.43121684, 0.9018628, 19.316467, -4.7240562, -12.468283)
