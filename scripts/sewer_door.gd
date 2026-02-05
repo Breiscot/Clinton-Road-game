@@ -5,6 +5,7 @@ extends Area3D
 
 @onready var audio_open: AudioStreamPlayer3D = $AudioOpen
 @onready var audio_close: AudioStreamPlayer3D = $AudioClose
+@onready var ambient_audio: AudioStreamPlayer = $AmbientAudio
 
 var player: Node3D = null
 var player_in_range := false
@@ -103,6 +104,9 @@ func enter_door():
 				player.global_position = next_area_position
 				player.set_physics_process(true)
 				player.set_process_input(true)
+				
+			if ambient_audio:
+				ambient_audio.stop()
 				
 			# Fade In
 			var fade_tween = create_tween()

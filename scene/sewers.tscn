@@ -1,4 +1,4 @@
-[gd_scene load_steps=884 format=4 uid="uid://bhm6kjjpsf2ed"]
+[gd_scene load_steps=885 format=4 uid="uid://bhm6kjjpsf2ed"]
 
 [ext_resource type="Texture2D" uid="uid://bpqxhfr4fw786" path="res://models/Sewer/Textures/concrete_base.png" id="1_0fn05"]
 [ext_resource type="Script" uid="uid://dtqdepoarrqnd" path="res://scripts/sewers.gd" id="1_0s21e"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ct42iimeqwj" path="res://models/Sewer/Textures/Trash.png" id="20_stv0y"]
 [ext_resource type="Texture2D" uid="uid://b1mgy6i5fnfpm" path="res://models/Sewer/Textures/Garbage_bag.png" id="21_7ehne"]
 [ext_resource type="Script" uid="uid://cp6jo2mvmpcpc" path="res://scripts/image_viewer_ui.gd" id="22_daqao"]
+[ext_resource type="AudioStream" uid="uid://bwwwu3deygfaj" path="res://audio/ambience/the-sewer.ogg" id="22_mcce7"]
 [ext_resource type="Texture2D" uid="uid://c1ck20k7lkrj3" path="res://models/Sewer/Textures/debris_01.jpg" id="22_w1y08"]
 [ext_resource type="Texture2D" uid="uid://b0gwetq5uy2o1" path="res://images/sewers_map.png" id="23_3hnwv"]
 [ext_resource type="Texture2D" uid="uid://co5yf7dvg2k6c" path="res://models/Sewer/Textures/debris_02.jpg" id="23_r83fe"]
@@ -12850,6 +12851,10 @@ stream = ExtResource("20_ge5m6")
 
 [node name="AudioClose" type="AudioStreamPlayer3D" parent="SewerDoor"]
 stream = ExtResource("11_2dgf6")
+
+[node name="AmbientAudio" type="AudioStreamPlayer" parent="SewerDoor"]
+stream = ExtResource("22_mcce7")
+autoplay = true
 
 [node name="RakeSpawnTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.867171, -5.786177, 13.098798)

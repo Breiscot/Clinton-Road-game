@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d1luro2p70rmg" path="res://scripts/sewer_key.gd" id="1_p2kh4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p2kh4"]
-radius = 1.5
+radius = 7.5515146
 
 [node name="SewerKey" type="Area3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
