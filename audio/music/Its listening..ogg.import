@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cg0uae7dl5b14"
+path="res://.godot/imported/Its listening..ogg-a968eab0c4f3ce9be56517e4ebe9b2d8.mp3str"
+
+[deps]
+
+source_file="res://audio/music/Its listening..ogg"
+dest_files=["res://.godot/imported/Its listening..ogg-a968eab0c4f3ce9be56517e4ebe9b2d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

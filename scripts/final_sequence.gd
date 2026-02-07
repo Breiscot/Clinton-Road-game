@@ -47,6 +47,7 @@ enum Phase { INTRO, DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT,
 @onready var audio_engine: AudioStreamPlayer3D = $Path3D/PathFollow3D/Car/AudioEngine
 @onready var audio_crash: AudioStreamPlayer3D = $Path3D/PathFollow3D/Car/AudioCrash
 @onready var creature_sound: AudioStreamPlayer3D = $Creature/CreatureSound
+@onready var music: AudioStreamPlayer = $Music
 
 var phase: Phase = Phase.INTRO
 var post_index := 0
@@ -57,6 +58,9 @@ var current_speed: float
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	current_speed = drive_speed
+		
+	if music:
+		music.play()
 		
 	if black:
 		black.visible = true
