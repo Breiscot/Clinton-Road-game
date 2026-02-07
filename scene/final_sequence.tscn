@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cn2g25128rffi"]
+[gd_scene load_steps=21 format=3 uid="uid://cn2g25128rffi"]
 
 [ext_resource type="PackedScene" uid="uid://dcpopvoa6mibj" path="res://models/car/small_price_car.glb" id="1_bunbi"]
 [ext_resource type="Script" uid="uid://buvoowvkp26xl" path="res://scripts/final_sequence.gd" id="1_t03qx"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dpf5du13rh1pw" path="res://audio/enemy wendigo/growl.ogg" id="7_k6ufk"]
 [ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="7_padnl"]
 [ext_resource type="AudioStream" uid="uid://divu6e7ikkh7a" path="res://audio/sfx/crash_sound.wav" id="8_6ns3j"]
+[ext_resource type="FontFile" uid="uid://ofr0841trdww" path="res://fonts/Strange Path.ttf" id="11_c5al6"]
 
 [sub_resource type="Curve3D" id="Curve3D_jnb3x"]
 _data = {
@@ -72,7 +73,7 @@ transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0
 curve = SubResource("Curve3D_jnb3x")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.9999111, 0, -0.00042950473, 0, 1, 0, 0.00042950473, 0, -0.9999111, 0.0033942908, -4.6491623e-06, 180.49606)
+transform = Transform3D(-0.9999107, 0, -0.00042950455, 0, 1, 0, 0.00042950455, 0, -0.9999107, 0.0033942908, -4.6491623e-06, 180.49606)
 
 [node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -188,3 +189,86 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "11:47 PM"
 vertical_alignment = 2
+
+[node name="ContinueHint" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, -80)
+theme_override_colors/font_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+theme_override_font_sizes/font_size = 16
+text = "Press SPACE to continue"
+horizontal_alignment = 1
+
+[node name="EndScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, -50)
+theme_override_fonts/font = ExtResource("11_c5al6")
+theme_override_font_sizes/font_size = 64
+text = "CLINTON ROAD"
+horizontal_alignment = 1
+
+[node name="ThanksLabel" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = 56.0
+offset_right = 146.5
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 30)
+theme_override_font_sizes/font_size = 28
+text = "Thank you for playing"
+horizontal_alignment = 1
+
+[node name="ReturnHint" type="Label" parent="CanvasLayer/EndScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, -100)
+theme_override_colors/font_color = Color(0.6542321, 0.6542321, 0.654232, 1)
+theme_override_font_sizes/font_size = 20
+text = "Press SPACE to return to Menu"
+horizontal_alignment = 1

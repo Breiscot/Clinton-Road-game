@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dvllrvx7avhea"]
+[gd_scene load_steps=11 format=4 uid="uid://dvllrvx7avhea"]
 
 [ext_resource type="Script" uid="uid://dcne8jgjv4cvg" path="res://scripts/main_menu.gd" id="1_3er1b"]
 [ext_resource type="AudioStream" uid="uid://bgd2me7bu78il" path="res://audio/music/menu_music.ogg" id="2_8wb42"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://oc0djmbcgine" path="res://scene/enemies/Enemy Model/wendigo.glb" id="4_0rvh3"]
 [ext_resource type="PackedScene" uid="uid://cqox571gk3uh0" path="res://scene/environment/crashed_car.tscn" id="4_e5dty"]
 [ext_resource type="PackedScene" uid="uid://bmng1a35s7t4e" path="res://models/trees/tree_edit/tree.tscn" id="5_k3dtv"]
+[ext_resource type="FontFile" uid="uid://ofr0841trdww" path="res://fonts/Strange Path.ttf" id="6_xk1tq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e5dty"]
 height = 0.57629395
@@ -65,6 +66,7 @@ grow_vertical = 2
 
 [node name="Title" type="Label" parent="CanvasLayer/MainMenuUI/LeftContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_xk1tq")
 theme_override_font_sizes/font_size = 32
 text = "CLINTON ROAD"
 horizontal_alignment = 1

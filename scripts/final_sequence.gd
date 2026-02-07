@@ -37,6 +37,11 @@ enum Phase { INTRO, DRIVE, SEE_CREATURE, APPROACH, SWERVE_AND_CRASH, BLACK_TEXT,
 @onready var black: ColorRect = $CanvasLayer/BlackOverlay
 @onready var subtitle: Label = $CanvasLayer/Label
 @onready var time_label: Label = $CanvasLayer/TimeLabel
+@onready var continue_hint: Label = $CanvasLayer/ContinueHint
+@onready var end_screen: Control = $CanvasLayer/EndScreen
+@onready var title_label: Label = $CanvasLayer/EndScreen/TitleLabel
+@onready var thanks_label: Label = $CanvasLayer/EndScreen/ThanksLabel
+@onready var return_hint: Label = $CanvasLayer/EndScreen/ReturnHint
 
 # Audio
 @onready var audio_engine: AudioStreamPlayer3D = $Path3D/PathFollow3D/Car/AudioEngine
@@ -64,6 +69,12 @@ func _ready():
 		time_label.z_index = 101
 	
 	subtitle.visible = false
+	
+	if continue_hint:
+		continue_hint.visible = false
+		
+	if end_screen:
+		end_screen.visible = false
 	
 	# Camera
 	interior_cam.current = true
@@ -228,44 +239,43 @@ func start_reveal():
 	else:
 		start_blink_and_girl()
 		
-func _unhandled_input(event):
-	if phase != Phase.POST or not input_enabled:
-		return
-	
-	if event.is_action_pressed("ui_accept"):
-		post_index += 1
-		show_post_line()
-		
 func show_post_line():
 	if post_index >= post_lines.size():
 		subtitle.visible = false
-		input_enabled = false
 		
+		if continue_hint:
+			continue_hint.visible = false
+		
+		input_enabled = false
 		start_blink_and_girl()
 		return
 		
 	subtitle.visible = true
 	subtitle.text = post_lines[post_index]
 	
+	if continue_hint:
+		continue_hint.visible = true
+		continue_hint.text = "Press SPACE to continue"
+		
 func start_blink_and_girl():
 	phase = Phase.BLINK
 	
+	if continue_hint:
+		continue_hint.visible = false
+	
 	await get_tree().create_timer(1.0).timeout
 	
-	# Blink
+	# Close Blink
 	var blink_tween = create_tween()
 	blink_tween.tween_property(black, "color:a", 1.0, blink_time)
 	await blink_tween.finished
 	
 	if girl:
 		girl.visible = true
-	else:
-		print("ERR: Girl is null")
-	
-	phase = Phase.GIRL_APPEAR
-	
+		
 	await get_tree().create_timer(0.2).timeout
 	
+	# Open Blick
 	var unblink_tween = create_tween()
 	unblink_tween.tween_property(black, "color:a", 0.0, blink_time)
 	await unblink_tween.finished
@@ -274,15 +284,88 @@ func start_blink_and_girl():
 	
 	await get_tree().create_timer(4.0).timeout
 	
-	end_sequence()
-
-func end_sequence():
-	var tween = create_tween()
-	tween.tween_property(black, "color:a", 1.0, 1.5)
-	await tween.finished
+	show_end_screen()
 	
-	await get_tree().create_timer(1.0).timeout
+func show_end_screen():
+	print("=== END SCREEN ===")
+	
+	# Fade to black
+	var fade_tween = create_tween()
+	fade_tween.tween_property(black, "color:a", 1.0, 1.5)
+	await fade_tween.finished
+	
+	if girl:
+		girl.visible = false
+		
+	print("end_screen: ", end_screen)
+	print("title_label: ", title_label)
+	print("thanks_label: ", thanks_label)
+	print("return_hint: ", return_hint)
+	
+	# End Screen
+	if end_screen:
+		end_screen.visible = true
+		
+		if title_label:
+			title_label.text = "CLINTON ROAD"
+			title_label.visible = true
+			title_label.modulate.a = 0.0
+			
+		if thanks_label:
+			thanks_label.text = "Thank you for playing"
+			thanks_label.visible = true
+			thanks_label.modulate.a = 0.0
+			
+		if return_hint:
+			return_hint.text = "Press SPACE to return to Menu"
+			return_hint.visible = false
+			
+		# Fade In Title
+		await get_tree().create_timer(0.5).timeout
+		var title_tween = create_tween()
+		title_tween.tween_property(title_label, "modulate:a", 1.0, 1.0)
+		await title_tween.finished
+		
+		# Fade in Thanks
+		await get_tree().create_timer(0.5).timeout
+		var thanks_tween = create_tween()
+		thanks_tween.tween_property(thanks_label, "modulate:a", 1.0, 1.0)
+		await thanks_tween.finished
+		
+		# Mostra hint per tornare al menu
+		await get_tree().create_timer(2.0).timeout
+		if return_hint:
+			return_hint.visible = true
+			return_hint.modulate.a = 0.0
+			var hint_tween = create_tween()
+			hint_tween.tween_property(return_hint, "modulate:a", 1.0, 0.5)
+			
+		# Abilita Input
+		input_enabled = true
+		phase = Phase.GIRL_APPEAR
+		
+func _unhandled_input(event):
+	if not input_enabled:
+		return
+		
+	if event.is_action_pressed("ui_accept"):
+		match phase:
+			Phase.POST:
+				post_index += 1
+				show_post_line()
+			Phase.GIRL_APPEAR:
+				if end_screen and end_screen.visible:
+					return_to_menu()
+					
+func return_to_menu():
+	input_enabled = false
+	
+	# Fade out
+	if end_screen:
+		var fade_tween = create_tween()
+		fade_tween.tween_property(end_screen, "modulate:a", 0.0, 0.5)
+		await fade_tween.finished
+		
+	await get_tree().create_timer(0.5).timeout
 	GameProgress.complete_chapter(3)
 	get_tree().change_scene_to_file("res://scene/ui/main_menu.tscn")
-	
-	
