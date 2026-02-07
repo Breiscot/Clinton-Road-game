@@ -7,16 +7,19 @@ Model of The Rake Enemy:
 	Sealife Fan 3 | https://sketchfab.com/3d-models/the-rake-92898b04b24e4315b0673fcfe307f64e
 
 Model of Trees:
-	 DJMaesen | https://sketchfab.com/3d-models/oak-trees-d841c3bcc5324daebee50f45619e05fc
+	DJMaesen | https://sketchfab.com/3d-models/oak-trees-d841c3bcc5324daebee50f45619e05fc
 
 Model of Road:
-	 VX-Designs | https://sketchfab.com/3d-models/road-free-d42c4932221747a9af29ad20bf85a490
+	VX-Designs | https://sketchfab.com/3d-models/road-free-d42c4932221747a9af29ad20bf85a490
+	
+Model of Road Separation Fence:
+	Frice | https://sketchfab.com/3d-models/road-separation-fence-cf6ec5a65e1843c59d1e783b04132e9d
 
 Model of Battery:
-	 hoschu | https://sketchfab.com/3d-models/battery-4cab1d1dfcb54ab79230a0a8d44a087e
+	hoschu | https://sketchfab.com/3d-models/battery-4cab1d1dfcb54ab79230a0a8d44a087e
 
 Model of Fuel Can:
-	 Forge_Of_Hephaestus | https://sketchfab.com/3d-models/fuel-can-2k-c6d46b0285d64455873681c91038b17e
+	Forge_Of_Hephaestus | https://sketchfab.com/3d-models/fuel-can-2k-c6d46b0285d64455873681c91038b17e
 
 Model of Spark Plug: 
 	Unity Fan youtube channel | https://sketchfab.com/3d-models/spark-plug-dcd81accfd58412ca276711335bc6a5d
@@ -32,6 +35,9 @@ Model of Broken Road:
 	
 Model of Bridge:
 	jimbogies: | https://sketchfab.com/3d-models/american-road-bridge-62412773c6ba408c9fb2985024760278
+	
+Model of Tunnel Road:
+	Low poly 3d Models | https://sketchfab.com/3d-models/tunnel-road-9022ca0e48924aad96123389d5322a7d
 	
 Model of Girl:
 	schmoldt.art: | https://sketchfab.com/3d-models/crazy-ex-gf-game-mesh-fdecbc5840eb4d2da3a871fb49fed9bd
@@ -49,4 +55,9 @@ Model of Sewer:
 	
 Model of Door Key of the sewer:
 	GUIBEL | https://sketchfab.com/3d-models/door-key-6538a6a21f5545e0b1dcf22bee5741a1
+	
+Model of Player body:
+	Vinrax | https://vinrax.itch.io/psx-casual-male-character
+	
+
 	
