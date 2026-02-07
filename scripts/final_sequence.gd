@@ -305,6 +305,8 @@ func show_end_screen():
 	# End Screen
 	if end_screen:
 		end_screen.visible = true
+		end_screen.z_index = 103
+		print("EndScreen is now visible")
 		
 		if title_label:
 			title_label.text = "CLINTON ROAD"
