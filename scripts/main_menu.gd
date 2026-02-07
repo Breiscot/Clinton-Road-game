@@ -303,46 +303,31 @@ func start_chapter(chapter_num: int):
 	var scene_path = chapter_scenes[chapter_num]
 	print("Scene path: ", scene_path)
 	
-	if not FileAccess.file_exists(scene_path):
-		print("ERR. Scene file does not exist: ", scene_path)
-		return
-		
-	print("Scene file exists!")
+	if chapter1_button:
+		chapter1_button.disabled = true
+	if chapter2_button:
+		chapter2_button.disabled = true
+	if chapter3_button:
+		chapter3_button.disabled = true
+	if chapter_back_button:
+		chapter_back_button.disabled = true
 	
 	# Fade out Audio
-	if music_player:
+	if music_player and music_player.playing:
 		var audio_tween = create_tween()
 		audio_tween.tween_property(music_player, "volume_db", -40.0, 0.5)
-	
-	# Fade out schermo
-	if chapter_select_menu:
-		print("Fading out chapter select menu...")
-		var fade_tween = create_tween()
-		fade_tween.tween_property(canvas_layer, "modulate:a", 0.0, 0.5)
-		var loading_scene = load("res://scene/ui/loading_screen.tscn")
-		if loading_scene:
-			var loading_screen = loading_scene.instantiate()
-			get_tree().root.add_child(loading_screen)
-			if loading_screen.has_method("load_scene"):
-				print("calling load_scene with path: ", scene_path)
-				queue_free()
-				loading_screen.load_scene(scene_path)
-			else:
-				loading_screen.queue_free()
-				get_tree().change_scene_to_file(scene_path)
-		else:
+		
+	# Fade Out cambio scena
+	print("Starting fade out...")
+	var fade_tween = create_tween()
+	fade_tween.tween_property(chapter_select_menu, "modulate:a", 0.0, 0.5)
+	fade_tween.tween_callback(func():
+		if ResourceLoader.exists(scene_path):
 			get_tree().change_scene_to_file(scene_path)
-		await fade_tween.finished
-	else:
-		print("WARNING: chapter_select_menu is null")
-
-	# Carica la schermata di caricamento
-	
-	
-	
-		
-		
-	
+		else:
+			print("ERR. Scene not found: ", scene_path)
+			get_tree().change_scene_to_file(scene_path)
+		)
 		
 # Progress SAVE/LOAD
 func load_chapter_progress() -> Dictionary:

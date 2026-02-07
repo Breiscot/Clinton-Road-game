@@ -16,6 +16,7 @@ func _ready():
 func set_scene_checkpoint(scene_path: String):
 	checkpoint_type = CheckpointType.SCENE
 	checkpoint_scene_path = scene_path
+	print(" Type: SCENE")
 	print(" Scene: ", scene_path)
 	
 # Checkpoint: POSITION
@@ -23,12 +24,15 @@ func set_position_checkpoint(position: Vector3, rotation: Vector3):
 	checkpoint_type = CheckpointType.POSITION
 	checkpoint_position = position
 	checkpoint_rotation = rotation
+	print(" Type: POSITION")
+	print(" Position: ", position)
 	
 func has_checkpoint() -> bool:
 	return checkpoint_type != CheckpointType.NONE
 	
 func is_scene_checkpoint() -> bool:
-	return checkpoint_type == CheckpointType.NONE
+	var result = checkpoint_type != CheckpointType.NONE
+	return result
 	
 func is_position_checkpoint() -> bool:
 	return checkpoint_type == CheckpointType.POSITION

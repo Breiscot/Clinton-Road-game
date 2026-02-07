@@ -395,6 +395,9 @@ func show_jumpscare_only():
 		
 func handle_player_death():
 	print("TheRake: Handling player death")
+	print("has_checkpoint: ", CheckpointManager.has_checkpoint())
+	print("is_scene_checkpoint: ", CheckpointManager.is_scene_checkpoint())
+	print("is_position_checkpoint: ", CheckpointManager.is_position_checkpoint())
 	
 	if not CheckpointManager.has_checkpoint():
 		await get_tree().create_timer(1.5).timeout
@@ -411,14 +414,14 @@ func handle_player_death():
 		
 func load_checkpoint_scene():
 	var transition = create_transition()
+	await get_tree().create_timer(1.0).timeout
 	
 	var jumpscare = get_tree().current_scene.get_node_or_null("JumpscareLayer")
 	if jumpscare:
 		jumpscare.queue_free()
 	
-	await get_tree().create_timer(1.0).timeout
-	
-	get_tree().change_scene_to_file(CheckpointManager.checkpoint_scene_path)
+	var scene_path = CheckpointManager.checkpoint_scene_path
+	get_tree().change_scene_to_file(scene_path)
 	
 func respawn_at_position():
 	var transition = create_transition()
