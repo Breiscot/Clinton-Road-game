@@ -5,6 +5,8 @@ extends Node3D
 @export var despawn_sound: AudioStream
 
 @onready var player := $Player
+@onready var black_overlay := $CanvasLayer/BlackOverlay
+@onready var chapter_label := $CanvasLayer/ChapterLabel
 @onready var rake_spawn_trigger := $RakeSpawnTrigger
 @onready var rake_despawn_trigger := $RakeDespawnTrigger
 @onready var spawn_audio := $SpawnSound
@@ -19,9 +21,32 @@ var current_rake: Node3D = null
 var rake_spawn_position := Vector3.ZERO
 
 func _ready():
+	black_overlay.color = Color(0, 0, 0, 1)
+	black_overlay.visible = true
+	
+	chapter_label.text = "Chapter III"
+	chapter_label.modulate.a = 0
+	
+	# Disablita player temporaneamente
+	player.set_physics_process(false)
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	var tween = create_tween()
+	tween.tween_property(chapter_label, "modulate:a", 1.0, 1.0)
+	tween.tween_interval(2.0)
+	tween.tween_property(chapter_label, "modulate:a", 0.0, 1.0)
+	tween.tween_property(black_overlay, "color:a", 0.0, 1.5)
+	tween.tween_callback(start_gameplay)
+	
 	setup_environment()
 	setup_audio()
 	connect_triggers()
+	
+	
+func start_gameplay():
+	player.set_physics_process(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if audio_close:
 		audio_close.play()

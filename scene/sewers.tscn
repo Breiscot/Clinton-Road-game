@@ -1,4 +1,4 @@
-[gd_scene load_steps=891 format=4 uid="uid://bhm6kjjpsf2ed"]
+[gd_scene load_steps=892 format=4 uid="uid://bhm6kjjpsf2ed"]
 
 [ext_resource type="Texture2D" uid="uid://bpqxhfr4fw786" path="res://models/Sewer/Textures/concrete_base.png" id="1_0fn05"]
 [ext_resource type="Script" uid="uid://dtqdepoarrqnd" path="res://scripts/sewers.gd" id="1_0s21e"]
@@ -4728,6 +4728,9 @@ data = PackedVector3Array(0.0028, 0.0022, -0.0013, -0.0001, 0.0036, -0.001199999
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_knypr"]
 size = Vector3(1.4567871, 3.3097153, 1.6571045)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lntxu"]
+size = Vector3(1, 3.8796387, 4.1503296)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8dtjo"]
 size = Vector3(0.20288086, 2.4354248, 1.0551758)
@@ -12824,8 +12827,15 @@ shape = SubResource("ConcavePolygonShape3D_2mh7a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9101472, 0.9313698, 13.835806)
 shape = SubResource("BoxShape3D_knypr")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="Sewers_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4003, 0.5984259, -19.856031)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sewers_1/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4398193, 0.14541626)
+shape = SubResource("BoxShape3D_lntxu")
+
 [node name="Player" parent="." instance=ExtResource("10_r13g0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0158973, -0.43570334, 13.932173)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.0158973, -0.7232844, 13.932173)
 
 [node name="KeySpawner" type="Node3D" parent="." node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("11_8dtjo")
@@ -12959,6 +12969,30 @@ theme_override_font_sizes/font_size = 24
 text = "[E] Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ChapterLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -144.0
+offset_right = 20.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("29_knypr")]
 
 [node name="RakeSpawnPoint" type="Marker3D" parent="." groups=["rake_spawn_point"]]
 transform = Transform3D(-0.04042827, 0, -0.99918246, 0, 1, 0, 0.99918246, 0, -0.04042827, 15.844158, -5.642546, 118.63012)
@@ -13997,8 +14031,6 @@ spot_angle = 60.0
 script = ExtResource("28_2dgf6")
 
 [node name="HudNewArea" parent="." instance=ExtResource("28_evt8v")]
-
-[node name="PauseMenu" parent="." instance=ExtResource("29_knypr")]
 
 [node name="CheckpointArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.704217, -5.837052, 5.0513678)

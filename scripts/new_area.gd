@@ -25,9 +25,10 @@ var message_shown_3 := false
 var message_shown_4 := false
 
 @onready var player := $Player
-@onready var black_overlay :=$CanvasLayer/BlackOverlay
+@onready var black_overlay := $CanvasLayer/BlackOverlay
 @onready var intro_text := $CanvasLayer/IntroText
 @onready var intro_text_2 := $CanvasLayer/IntroText2
+@onready var chapter_label := $CanvasLayer/ChapterLabel
 @onready var message_label := $CanvasLayer/MessageLabel
 @onready var bridge_trigger := $BridgeTrigger
 @onready var the_rake_trigger := $TheRakeTrigger
@@ -43,8 +44,10 @@ func _ready():
 	# Testo introduttivo
 	intro_text.text = "Hours later..."
 	intro_text_2.text = "When the night gets darker"
+	chapter_label.text = "Chapter II"
 	intro_text.modulate.a = 0
 	intro_text_2.modulate.a = 0
+	chapter_label.modulate.a = 0
 	
 	# Disablita player temporaneamente
 	player.set_physics_process(false)
@@ -58,6 +61,9 @@ func _ready():
 	tween.tween_property(intro_text_2, "modulate:a", 1.0, 1.0)
 	tween.tween_interval(2.0)
 	tween.tween_property(intro_text_2, "modulate:a", 0.0, 1.0)
+	tween.tween_property(chapter_label, "modulate:a", 1.0, 1.0)
+	tween.tween_interval(2.0)
+	tween.tween_property(chapter_label, "modulate:a", 0.0, 1.0)
 	tween.tween_property(black_overlay, "color:a", 0.0, 1.5)
 	tween.tween_callback(start_gameplay)
 	

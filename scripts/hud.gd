@@ -22,6 +22,7 @@ extends Control
 @onready var jumpscare_sound := $JumpscareSound
 
 @onready var message_label := $MessageContainer/MessageLabel
+@onready var chapter_label := $MessageContainer/ChapterLabel
 
 @onready var tutorial_popup := $TutorialPopup
 @onready var tutorial_background := $TutorialPopup/TutorialBackground
@@ -119,6 +120,9 @@ func hide_tutorial():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
 		# Mostra messaggio dopo tutorial
+		show_chapter("Chapter I", 4.0)
+		await get_tree().create_timer(1.0).timeout
+		
 		await get_tree().create_timer(1.0).timeout
 		show_message("I need to find a way out of here...", 4.0)
 		await get_tree().create_timer(6.0).timeout
@@ -365,4 +369,25 @@ func show_message(text: String, duration: float = 3.0):
 	tween.tween_property(message_label, "modulate:a", 0.0, 0.5)
 	tween.tween_callback(func():
 		message_label.visible = false
+		)
+		
+func show_chapter(text: String, duration: float = 3.0):
+	if chapter_label == null:
+		return
+		
+	chapter_label.text = text
+	chapter_label.visible = true
+	chapter_label.modulate.a = 0
+	
+	# Fade In
+	var tween = create_tween()
+	tween.tween_property(chapter_label, "modulate:a", 1.0, 0.5)
+	
+	# Aspetta
+	tween.tween_interval(duration)
+	
+	# Fade Out
+	tween.tween_property(chapter_label, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(func():
+		chapter_label.visible = false
 		)
