@@ -112,17 +112,9 @@ func _ready():
 	black_screen.color.a = 0.0
 	entry_label.visible = false
 	
-	if reveal_music and reveal_music.stream:
-		if reveal_music.stream is AudioStreamOggVorbis:
-			reveal_music.stream.loop = true
-		elif reveal_music.stream is AudioStreamWAV:
-			reveal_music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-			
-	if heartbeat_audio and heartbeat_audio.stream:
-		if heartbeat_audio.stream is AudioStreamOggVorbis:
-			heartbeat_audio.stream.loop = false
-		elif heartbeat_audio.stream is AudioStreamWAV:
-			heartbeat_audio.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+	# Connette Audio Loop
+	if reveal_music:
+		reveal_music.finished.connect(_on_reveal_music_finished)
 	
 	# Connette Trigger
 	if entry_trigger:
@@ -131,6 +123,10 @@ func _ready():
 		dialogue_trigger.body_entered.connect(_on_dialogue_trigger)
 	
 	setup_environment()
+	
+func _on_reveal_music_finished():
+	if reveal_music_should_loop and reveal_music:
+		reveal_music.play()
 	
 func _on_entry_trigger(body):
 	if body.is_in_group("player") and not entry_triggered:
@@ -198,6 +194,7 @@ func show_current_line():
 			
 func start_reveal_music():
 	if reveal_music and not reveal_music.playing:
+		reveal_music_should_loop = true
 		reveal_music.volume_db = -40
 		reveal_music.play()
 		
@@ -206,6 +203,8 @@ func start_reveal_music():
 		print("Reveal music looping")
 		
 func transition_to_heartbeat():
+	reveal_music_should_loop = false
+	
 	if reveal_music and reveal_music.playing:
 		var tween = create_tween()
 		tween.tween_property(reveal_music, "volume_db", -40.0, 2.0)
