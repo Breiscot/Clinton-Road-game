@@ -10,11 +10,14 @@ extends Node3D
 @onready var black_screen := $CanvasLayer/BlackOverlay
 @onready var entry_label := $CanvasLayer/EntryLabel
 @onready var audio_close: AudioStreamPlayer3D = $AudioClose
+@onready var reveal_music: AudioStreamPlayer = $RevealMusic
+@onready var heartbeat_audio: AudioStreamPlayer = $HeartbeatAudio
 
 var entry_triggered := false
 var dialogue_started := false
 var dialogue_index := 0
 var dialogue_finished := false
+var reveal_music_should_loop := false
 
 # Colore del testo della ragazza (Rosa/Viola)
 var girl_text_color := Color("#d67fff")
@@ -109,6 +112,18 @@ func _ready():
 	black_screen.color.a = 0.0
 	entry_label.visible = false
 	
+	if reveal_music and reveal_music.stream:
+		if reveal_music.stream is AudioStreamOggVorbis:
+			reveal_music.stream.loop = true
+		elif reveal_music.stream is AudioStreamWAV:
+			reveal_music.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			
+	if heartbeat_audio and heartbeat_audio.stream:
+		if heartbeat_audio.stream is AudioStreamOggVorbis:
+			heartbeat_audio.stream.loop = false
+		elif heartbeat_audio.stream is AudioStreamWAV:
+			heartbeat_audio.stream.loop_mode = AudioStreamWAV.LOOP_DISABLED
+	
 	# Connette Trigger
 	if entry_trigger:
 		entry_trigger.body_entered.connect(_on_entry_trigger)
@@ -167,6 +182,12 @@ func show_current_line():
 	var text: String = line.get("text", "")
 	var speaker: String = line.get("speaker", "player")
 	
+	if text == "Because you're already dead.":
+		start_reveal_music()
+		
+	if speaker == "player" and text == "...":
+		transition_to_heartbeat()
+	
 	match speaker:
 		"girl":
 			show_colored_text(text, girl_text_color)
@@ -174,6 +195,30 @@ func show_current_line():
 			show_colored_text(text, player_text_color)
 		_:
 			show_colored_text(text, player_text_color) # Fallback
+			
+func start_reveal_music():
+	if reveal_music and not reveal_music.playing:
+		reveal_music.volume_db = -40
+		reveal_music.play()
+		
+		var tween = create_tween()
+		tween.tween_property(reveal_music, "volume_db", 0.0, 2.0)
+		print("Reveal music looping")
+		
+func transition_to_heartbeat():
+	if reveal_music and reveal_music.playing:
+		var tween = create_tween()
+		tween.tween_property(reveal_music, "volume_db", -40.0, 2.0)
+		tween.tween_callback(func():
+			reveal_music.stop()
+		)
+			
+	await get_tree().create_timer(1.0).timeout
+	
+	if heartbeat_audio and heartbeat_audio.stream:
+		heartbeat_audio.volume_db = -10
+		heartbeat_audio.play()
+		print("Heartbeat started")
 			
 func show_colored_text(text: String, color: Color):
 	dialogue_box.visible = true

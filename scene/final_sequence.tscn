@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dqldv0yahghl6" path="res://audio/sfx/engine.wav" id="7_padnl"]
 [ext_resource type="AudioStream" uid="uid://divu6e7ikkh7a" path="res://audio/sfx/crash_sound.wav" id="8_6ns3j"]
 [ext_resource type="FontFile" uid="uid://ofr0841trdww" path="res://fonts/Strange Path.ttf" id="11_c5al6"]
-[ext_resource type="AudioStream" uid="uid://cg0uae7dl5b14" path="res://audio/music/Its listening..ogg" id="12_u3aon"]
+[ext_resource type="AudioStream" uid="uid://btc8un7wdfsx" path="res://audio/music/Its listening. v2.ogg" id="12_u3aon"]
 
 [sub_resource type="Curve3D" id="Curve3D_jnb3x"]
 _data = {
@@ -74,7 +74,7 @@ transform = Transform3D(-0.9999999, 0, -0.00045386155, 0, 1, 0, 0.00045386155, 0
 curve = SubResource("Curve3D_jnb3x")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.99991053, 0, -0.00042950446, 0, 1, 0, 0.00042950446, 0, -0.99991053, 0.0033942908, -4.6491623e-06, 180.49606)
+transform = Transform3D(-0.9999104, 0, -0.00042950443, 0, 1, 0, 0.00042950443, 0, -0.9999104, 0.0033942908, -4.6491623e-06, 180.49606)
 
 [node name="Car" parent="Path3D/PathFollow3D" instance=ExtResource("1_bunbi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

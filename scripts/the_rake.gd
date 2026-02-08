@@ -69,6 +69,8 @@ func _ready():
 	add_to_group("the_rake")
 	print("TheRake: _ready() called")
 	
+	setup_audio()
+	
 	if nav_agent:
 		print("TheRake: NavigationAgent exists")
 		await get_tree().physics_frame
@@ -89,13 +91,12 @@ func _ready():
 			print(" - ", anim)
 		print("===========================")
 		
-	setup_audio()
 	find_player()
 	
 func setup_audio():
 	# Footsteps
 	if footstep_player and footstep_sound:
-		footstep_player.stream = screech_sound
+		footstep_player.stream = footstep_sound
 		footstep_player.max_distance = 30
 		footstep_player.volume_db = -5
 		
@@ -706,6 +707,8 @@ func activate_chase():
 	
 	# Urlo
 	change_state(State.SCREAMING)
+	
+	print(" Playing screech sound..")
 	play_screech()
 	
 	if anim_player and anim_player.has_animation(anim_screech):
