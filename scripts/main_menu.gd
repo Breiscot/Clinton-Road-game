@@ -303,6 +303,9 @@ func start_chapter(chapter_num: int):
 	var scene_path = chapter_scenes[chapter_num]
 	print("Scene path: ", scene_path)
 	
+	CheckpointManager.clear_checkpoint()
+	print("Checkpoint cleared for new chapter")
+	
 	if chapter1_button:
 		chapter1_button.disabled = true
 	if chapter2_button:

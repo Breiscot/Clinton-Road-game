@@ -21,6 +21,10 @@ var current_rake: Node3D = null
 var rake_spawn_position := Vector3.ZERO
 
 func _ready():
+	if CheckpointManager.has_checkpoint() and CheckpointManager.is_scene_checkpoint():
+		print("Clearing old scene checkpoint from previous chapter")
+		CheckpointManager.clear_checkpoint()
+	
 	black_overlay.color = Color(0, 0, 0, 1)
 	black_overlay.visible = true
 	
